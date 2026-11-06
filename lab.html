@@ -1259,15 +1259,16 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
   var hlab=['Compreender','Encontrar a direção','Dar forma','Evoluir'];
   var FAM=['126,160,63','184,106,75','125,115,200'],LC=['86,114,38','158,84,56','96,86,176'],FN=['.aether','.vortex','.spectra'];
   var NP=120,NR=10,PR=12,CF=Math.cos(-.13),SF=Math.sin(-.13);
-  var WORDS=['mercado','pessoas','negócio','cultura','concorrência','ambição'];
+  var WORDS=['MERCADO','PESSOAS','NEGÓCIO','CULTURA','CONCORRÊNCIA','AMBIÇÃO'];
   var CEN=[[-.48,-.17],[.46,-.22],[.04,.47]];
   var HUB=[[-.75,-.30],[.67,-.39],[-.08,.67],[-.40,.25],[.38,.30],[.05,-.22]];
   var LNK=[[0,5],[5,1],[0,3],[3,2],[2,4],[4,1],[3,5],[5,4],[3,4],[0,2],[1,2]];
   var ez=function(x){x=cl(x,0,1);return x<.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2};
   var sm=function(x){x=cl(x,0,1);return x*x*(3-2*x)};
   var g={},hmx=-999,hmy=-999,hsx=-999,hsy=-999,hmon=false,lk=0,lxs=0,lys=0,pmx=0,pmy=0;
-  var DK=['78,100,36','118,62,44','70,62,134'];
-  var FX={};(function(){var m=/fx=([a-z0-9,]*)/.exec(location.hash);var dd=m?m[1]:'mat,depth,sparse,grain';dd.split(',').forEach(function(k){if(k)FX[k]=1})})();
+  FAM=['176,98,64','158,116,70','132,76,54'];
+  var DK=['92,46,30','82,58,34','68,38,26'];
+  var FX={};(function(){var m=/fx=([a-z0-9,]*)/.exec(location.hash);var dd=m?m[1]:'mat,depth,orb3d,sparse,leader,lens,grain,intro,ringz,dial,bokeh,light';dd.split(',').forEach(function(k){if(k)FX[k]=1})})();
   w.__fx=FX;
   function rnd(i,k){var x=Math.sin(i*127.1+k*311.7)*43758.5453;return x-Math.floor(x)}
   function hxResize(){
@@ -1288,6 +1289,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
     var x2=ux*cb+z1*sb,z2=-ux*sb+z1*cb,f=1/(1-z2/(g.R*5));
     return [x2*f,y1*f,f];
   }
+  function P2(rad,th,T){if(FX.orb3d)return p3(rad,th,T);return [rad*Math.cos(th),rad*Math.sin(th)*.56,1]}
   function ringPt(rad,an,T){
     var ex,ey,f=1;
     if(FX.orb3d){var q=p3(rad,an,T);ex=q[0];ey=q[1];f=q[2]}else{ex=Math.cos(an)*rad;ey=Math.sin(an)*rad*.56}
@@ -1336,6 +1338,14 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
     var gl=hx.createRadialGradient(cx,cy,0,cx,cy,R*2.1);
     gl.addColorStop(0,'rgba(226,160,112,.34)');gl.addColorStop(1,'rgba(226,160,112,0)');
     hx.fillStyle=gl;hx.fillRect(0,0,hw,hh);
+    if(FX.light){
+      var lx0=cx-R*.6,ly0=cy-R*.85,lg=hx.createRadialGradient(lx0,ly0,0,lx0,ly0,R*2.8);
+      lg.addColorStop(0,'rgba(255,248,230,.62)');lg.addColorStop(.5,'rgba(255,242,218,.2)');lg.addColorStop(1,'rgba(255,242,218,0)');
+      hx.fillStyle=lg;hx.fillRect(0,0,hw,hh);
+      var vg=hx.createRadialGradient(cx,cy,R*1.3,cx,cy,R*3.4);
+      vg.addColorStop(0,'rgba(110,72,44,0)');vg.addColorStop(1,'rgba(110,72,44,.07)');
+      hx.fillStyle=vg;hx.fillRect(0,0,hw,hh);
+    }
     var intro=first?sm((T-300)/1500):1;
     /* campo panorâmico: arcos largos que atravessam a página */
     hx.lineWidth=.7;
@@ -1351,9 +1361,27 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
       for(var k2=0;k2<NR;k2++){
         var rk=R*(.2+.8*k2/(NR-1))*tf,ra=RA;
         if(FX.intro&&first){var ri=ez((T/1000-.15-k2*.1)/1.4);rk*=ri;ra=RA*Math.min(1,ri*1.6)}
-        if(FX.orb3d){hx.beginPath();for(var a3=0;a3<=64;a3++){var q3=p3(rk,a3/64*6.283185,T),xx3=cx+q3[0]*CF-q3[1]*SF,yy3=cy+q3[0]*SF+q3[1]*CF;if(a3)hx.lineTo(xx3,yy3);else hx.moveTo(xx3,yy3)}hx.closePath()}
+        var segd=false;
+        if(FX.orb3d&&FX.ringz){
+          segd=true;
+          for(var a4=0;a4<72;a4++){
+            var qa=p3(rk,a4/72*6.283185,T),qb=p3(rk,(a4+1)/72*6.283185,T),zn=cl(((qa[2]+qb[2])/2-.85)/.3,0,1);
+            hx.beginPath();hx.moveTo(cx+qa[0]*CF-qa[1]*SF,cy+qa[0]*SF+qa[1]*CF);hx.lineTo(cx+qb[0]*CF-qb[1]*SF,cy+qb[0]*SF+qb[1]*CF);
+            hx.strokeStyle='rgba(110,74,48,'+(.2*ra*(.25+.95*zn)).toFixed(3)+')';hx.lineWidth=.45+.95*zn;hx.stroke();
+          }
+        }
+        else if(FX.orb3d){hx.beginPath();for(var a3=0;a3<=64;a3++){var q3=p3(rk,a3/64*6.283185,T),xx3=cx+q3[0]*CF-q3[1]*SF,yy3=cy+q3[0]*SF+q3[1]*CF;if(a3)hx.lineTo(xx3,yy3);else hx.moveTo(xx3,yy3)}hx.closePath()}
         else ell(rk,rk*.56,0,Math.PI*2);
-        hx.strokeStyle='rgba(120,84,54,'+(.17*ra).toFixed(3)+')';hx.stroke()}
+        if(!segd){hx.strokeStyle='rgba(120,84,54,'+(.17*ra).toFixed(3)+')';hx.stroke()}
+        if(FX.dial&&k2===NR-1){
+          hx.beginPath();
+          for(var tk=0;tk<120;tk++){
+            var th2=tk/120*6.283185,ln=tk%10===0?.05:(tk%5===0?.034:.018),o1=P2(rk,th2,T),o2=P2(rk*(1-ln),th2,T);
+            hx.moveTo(cx+o1[0]*CF-o1[1]*SF,cy+o1[0]*SF+o1[1]*CF);hx.lineTo(cx+o2[0]*CF-o2[1]*SF,cy+o2[0]*SF+o2[1]*CF);
+          }
+          hx.strokeStyle='rgba(110,74,48,'+(.36*ra).toFixed(3)+')';hx.lineWidth=.8;hx.stroke();
+        }
+      }
     }
     /* posições das partículas (cada etapa nasce da anterior, de dentro para fora) */
     var X=[],Y=[],S=[],I0=[],Z=[];
@@ -1382,7 +1410,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
       hx.stroke();
     }
     var wn=ph===2?sm((q-.4)/.3):(ph===3?1-sm(q/.2):0);
-    if(wn>.01){
+    if(false&&wn>.01){
       hx.save();hx.globalAlpha=wn;hx.font='500 '+(g.mob?12:14)+'px Geist,system-ui,sans-serif';hx.textAlign='center';
       for(var f2=0;f2<3;f2++){
         var lbx=cx+CEN[f2][0]*R,lby=cy+CEN[f2][1]*R+R*(f2===1?.34:.38)+(g.mob?14:20)-(1-wn)*8;
@@ -1429,29 +1457,31 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
       hx.strokeStyle='rgba(120,84,54,'+(.4*lk).toFixed(3)+')';hx.lineWidth=.9;hx.stroke();
     }
     for(var pass=0;pass<3;pass++)for(var i3=0;i3<NP;i3++){
-      var ly=FX.depth?(rnd(i3,11)<.32?0:(rnd(i3,11)>.88?2:1)):1;if(ly!==pass)continue;
+      var ly=FX.depth?(rnd(i3,11)<.2?0:(rnd(i3,11)>.93?2:1)):1;if(ly!==pass)continue;
       var u2=((X[i3]-(cx-1.1*R))/(2.2*R)+(Y[i3]-(cy-.6*R))/(1.2*R))*.5,hit=Math.max(0,1-Math.abs(u2-ws)/.13)*sw;
       var zz=FX.orb3d?Z[i3]:1;
       var rad=g.r*(1+.32*Math.sin(Math.PI*cl(S[i3],0,1))+.5*hit)*I0[i3]*Math.pow(zz,1.6);
       var al=Math.min(1,(.82+.18*hit)*I0[i3])*(zz>=1?1:.55+.45*cl((zz-.84)/.16,0,1));
       var pxx=X[i3],pyy=Y[i3];
-      if(FX.mat)rad*=1.5;
+      if(FX.mat)rad*=1.8;
       if(FX.sparse){var dust=rnd(i3,21)<.42,dd2=Math.hypot(pxx-cx,pyy-cy)/R;al*=1-.75*sm((dd2-.85)/.7);if(dust){rad*=.6;al*=.5}else rad*=1.15}
       if(lk>.01){var dl2=Math.hypot(pxx-lxs,pyy-lys),pr=Math.max(0,1-dl2/LR);al*=1-.5*lk*(1-pr);rad*=1+.7*lk*pr}
       var soft=false;
-      if(ly===0){rad*=1.8;al*=.4;pxx-=pmx*14;pyy-=pmy*14;soft=true}
-      else if(ly===2){rad*=3.1;al*=.22;pxx+=pmx*36;pyy+=pmy*36;soft=true}
+      if(ly===0){rad*=1.55;al*=.4;pxx-=pmx*14;pyy-=pmy*14;soft=true}
+      else if(ly===2){rad*=2.7;al*=.24;pxx+=pmx*36;pyy+=pmy*36;soft=true}
       if(rad<.05||al<.01)continue;
       var fi=i3%3,ai=al.toFixed(3);
       if(soft){
         var rb=rad*1.5,gb=hx.createRadialGradient(pxx,pyy,0,pxx,pyy,rb);
-        gb.addColorStop(0,'rgba('+FAM[fi]+','+ai+')');gb.addColorStop(.6,'rgba('+FAM[fi]+','+(al*.7).toFixed(3)+')');gb.addColorStop(1,'rgba('+FAM[fi]+',0)');
+        if(FX.bokeh){gb.addColorStop(0,'rgba('+FAM[fi]+','+(al*.32).toFixed(3)+')');gb.addColorStop(.72,'rgba('+FAM[fi]+','+(al*.46).toFixed(3)+')');gb.addColorStop(.9,'rgba('+FAM[fi]+','+(al*1.1).toFixed(3)+')');gb.addColorStop(1,'rgba('+FAM[fi]+',0)')}
+        else{gb.addColorStop(0,'rgba('+FAM[fi]+','+ai+')');gb.addColorStop(.6,'rgba('+FAM[fi]+','+(al*.7).toFixed(3)+')');gb.addColorStop(1,'rgba('+FAM[fi]+',0)')}
         hx.fillStyle=gb;hx.beginPath();hx.arc(pxx,pyy,rb,0,6.2832);hx.fill();
       }else if(FX.mat){
         hx.beginPath();hx.ellipse(pxx+rad*.25,pyy+rad*1.12,rad*.95,rad*.3,0,0,6.2832);hx.fillStyle='rgba(70,48,30,'+(.15*al).toFixed(3)+')';hx.fill();
         var gs=hx.createRadialGradient(pxx-rad*.36,pyy-rad*.42,rad*.08,pxx,pyy,rad);
         gs.addColorStop(0,'rgba(255,248,234,'+ai+')');gs.addColorStop(.36,'rgba('+FAM[fi]+','+ai+')');gs.addColorStop(1,'rgba('+DK[fi]+','+ai+')');
         hx.fillStyle=gs;hx.beginPath();hx.arc(pxx,pyy,rad,0,6.2832);hx.fill();
+        hx.beginPath();hx.arc(pxx-rad*.36,pyy-rad*.42,Math.max(.4,rad*.16),0,6.2832);hx.fillStyle='rgba(255,255,255,'+(.72*al).toFixed(3)+')';hx.fill();
       }else{
         hx.beginPath();hx.arc(pxx,pyy,rad,0,6.2832);hx.fillStyle='rgba('+FAM[fi]+','+ai+')';hx.fill();
       }
@@ -1459,7 +1489,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
     /* as seis forças (começo) e o potencial (descoberta) */
     var wv=ph===0?(first?sm((T-1200)/1000):sm(q/.12))*(1-sm((q-.78)/.2)):0;
     if(wv>.01){
-      hx.font='500 '+(g.mob?11:13)+'px Geist,system-ui,sans-serif';hx.textAlign='center';
+      hx.font='500 '+(g.mob?9.5:11)+'px Geist,system-ui,sans-serif';hx.textAlign='center';if('letterSpacing' in hx)hx.letterSpacing='.04em';
       WORDS.forEach(function(wd,i){
         var an=i*Math.PI/3+T*.000013,ex=Math.cos(an)*R*1.16,ey=Math.sin(an)*R*(.56*1.16+.1);
         if(FX.orb3d){var qw=p3(R*1.18,an,T);ex=qw[0];ey=qw[1]+Math.sin(an)*R*.1}
@@ -1468,7 +1498,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
       });
     }
     var pv=ph===1?sm((q-.12)/.2)*(1-sm((q-.62)/.25)):0;
-    if(pv>.01){hx.textAlign='center';hx.font='500 '+(g.mob?14:18)+'px Geist,system-ui,sans-serif';hx.lineWidth=6;hx.lineJoin='round';hx.strokeStyle='rgba(243,232,214,'+(.92*pv).toFixed(3)+')';hx.strokeText('potencial',cx,cy-R*.05);hx.fillStyle='rgba(165,83,47,'+pv.toFixed(3)+')';hx.fillText('potencial',cx,cy-R*.05)}
+    if(pv>.01){hx.textAlign='center';hx.font='500 '+(g.mob?14:18)+'px Geist,system-ui,sans-serif';hx.lineWidth=6;hx.lineJoin='round';hx.strokeStyle='rgba(243,232,214,'+(.92*pv).toFixed(3)+')';hx.strokeText('POTENCIAL',cx,cy-R*.05);hx.fillStyle='rgba(165,83,47,'+pv.toFixed(3)+')';hx.fillText('POTENCIAL',cx,cy-R*.05)}
     requestAnimationFrame(hxFrame);
   }
   hxZ.addEventListener('click',function(){hpaused=!hpaused;hxZ.textContent=hpaused?'▶':'Ⅱ';hxZ.setAttribute('aria-label',hpaused?'Reproduzir animação':'Pausar animação')});
@@ -1477,13 +1507,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
   w.__rzrdHero=function(ms){hel=ms};
 
   
-  /* ===== LAB: interruptores das 9 ideias ===== */
+  /* ===== LAB: interruptores das ideias ===== */
   (function(){
-    var items=[['mat','1 · Pontos com matéria'],['depth','2 · Três camadas de profundidade'],['orb3d','3 · Órbitas em 3D'],['sparse','4 · Menos pontos, mais hierarquia'],['leader','5 · Linhas de chamada'],['lens','6 · Cursor como lente'],['grain','7 · Grão de papel'],['scroll','8 · Diagrama segue a rolagem'],['intro','9 · Entrada de cinema']];
+    var items=[['mat','1 · Pontos com matéria'],['depth','2 · Três camadas de profundidade'],['orb3d','3 · Órbitas em 3D'],['sparse','4 · Menos pontos, mais hierarquia'],['leader','5 · Linhas de chamada'],['lens','6 · Cursor como lente'],['grain','7 · Grão de papel'],['scroll','8 · Diagrama segue a rolagem'],['intro','9 · Entrada de cinema'],['ringz','10 · Anéis com profundidade'],['dial','11 · Régua na órbita externa'],['bokeh','12 · Bokeh com borda'],['light','13 · Luz de fundo']];
     var box=d.createElement('div');box.id='fxlab';
     var h='<div class="fxh"><b>Ideias do topo</b><button type="button" id="fxmin" aria-label="Recolher">–</button></div><div class="fxb">';
     items.forEach(function(it){h+='<label><input type="checkbox" data-k="'+it[0]+'"><span>'+it[1]+'</span></label>'});
-    h+='<div class="fxr"><button type="button" data-p="">Nenhuma</button><button type="button" data-p="mat,depth,sparse,grain">Recomendada</button><button type="button" data-p="mat,depth,orb3d,sparse,leader,lens,grain,scroll,intro">Todas</button></div><div class="fxr"><button type="button" id="fxre">Rever a entrada</button></div></div>';
+    h+='<div class="fxr"><button type="button" data-p="">Nenhuma</button><button type="button" data-p="mat,depth,orb3d,sparse,leader,lens,grain,intro,ringz,dial,bokeh,light">Premium</button><button type="button" data-p="mat,depth,orb3d,sparse,leader,lens,grain,intro,ringz,dial,bokeh,light,scroll">Todas</button></div><div class="fxr"><button type="button" id="fxre">Rever a entrada</button></div></div>';
     box.innerHTML=h;d.body.appendChild(box);
     var gr=null;
     function grain(){
