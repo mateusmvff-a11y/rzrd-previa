@@ -871,6 +871,98 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
 .tvs.on .st{transform:none}
 .rz-art .rg2{transform-box:view-box;transform-origin:380px 450px;transform:scale(calc(.8 + var(--p,0)*.5));will-change:transform}
 .qk{box-shadow:none}
+
+/* ---------- V28: motion ---------- */
+/* revelação geral: sobe, desfoca e assenta com saída longa */
+html.js .rv{filter:blur(7px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.2s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+html.js .rv.in{filter:none}
+
+/* topo: título por palavras */
+.hx h1{animation:none!important}
+.hx h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em;margin:0 -.04em -.12em}
+.hx h1 .w i{display:inline-block;font-style:normal;transform:translateY(112%);animation:wup 1.25s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(.15s + var(--i)*75ms)}
+@keyframes wup{from{transform:translateY(112%)}to{transform:none}}
+.hx-n.sw,.hx-nm.sw{animation:swp .9s cubic-bezier(.16,1,.3,1) both}
+@keyframes swp{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+/* tese 1: quadradinhos entram em diagonal e acendem em onda */
+.tvs .sqw{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--d) + .1s)}
+.tvs.on .sqw{opacity:1;transform:none}
+.tvs.on .sq{animation:sqw 4.2s cubic-bezier(.45,0,.2,1) infinite;animation-delay:calc(var(--d)*1.6 + 1.5s)}
+@keyframes sqw{0%,62%,100%{fill:#cbbb9c}22%{fill:#c0643f}}
+.tvs .lb,.tvs .bt{opacity:0;transition:opacity .9s cubic-bezier(.16,1,.3,1) .8s}
+.tvs.on .lb,.tvs.on .bt{opacity:1}
+
+/* tese 2: entram de lados diferentes e ficam à deriva */
+.tvs .en{opacity:0;transform:translate(var(--ex),var(--ey));transition:opacity .8s cubic-bezier(.16,1,.3,1),transform 1.5s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--k)*.18s + .12s)}
+.tvs.on .en{opacity:1;transform:none}
+.tvs .fl{transform-box:fill-box;transform-origin:center}
+.tvs.on .fl{animation:fl2 var(--fd,8s) cubic-bezier(.45,0,.55,1) infinite alternate;animation-delay:var(--fr,0s)}
+@keyframes fl2{from{transform:translate(0,0) rotate(-.6deg)}to{transform:translate(5px,-9px) rotate(.8deg)}}
+.tvs.on .mr{animation:march 2.6s linear infinite}
+@keyframes march{to{stroke-dashoffset:-26}}
+
+/* tese 3: camadas deslizam */
+.tvs .hb{transform:translateX(-26px) scaleX(.2);transform-origin:0 50%;opacity:0;transition:transform 1.3s cubic-bezier(.16,1,.3,1),opacity .7s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--k)*.16s + .12s)}
+.tvs.on .hb{transform:none;opacity:1}
+
+/* tese 4: a presença sobe e abre ondas */
+.tvs .sun{transform:translateY(64px) scale(.55);opacity:0;transform-box:fill-box;transform-origin:center;transition:transform 1.8s cubic-bezier(.16,1,.3,1) .55s,opacity 1s cubic-bezier(.16,1,.3,1) .55s}
+.tvs.on .sun{transform:none;opacity:1}
+.tvs .rp{transform-box:fill-box;transform-origin:center;opacity:0;transform:scale(.56)}
+.tvs.on .rp{animation:rip 5.4s cubic-bezier(.2,.6,.3,1) infinite;animation-delay:calc(1.8s + var(--k)*1.8s)}
+@keyframes rip{0%{transform:scale(.56);opacity:0}14%{opacity:.5}100%{transform:scale(1);opacity:0}}
+
+/* clareza: site montando na rolagem */
+.qc-board{container-type:size;background-color:var(--well);background-image:radial-gradient(rgba(120,84,54,.2) 1.3px,transparent 1.5px);background-size:22px 22px;border-radius:clamp(18px,2.4vw,36px);--c:0}
+.wf{--q:1;position:absolute;margin:0;border-radius:clamp(8px,1vw,14px);opacity:var(--q);will-change:transform,opacity;
+  transform:translate(calc((1 - var(--q))*var(--dx)*1cqw),calc((1 - var(--q))*var(--dy)*1cqw)) rotate(calc((1 - var(--q))*var(--r)*1deg)) scale(calc(.9 + .1*var(--q)))}
+.wf-nav{background:var(--card);display:flex;align-items:center;gap:4%;padding:0 3%}
+.wf-nav .nd{height:46%;aspect-ratio:1;border-radius:50%;background:color-mix(in srgb,#c0643f calc(var(--c)*100%),#cdbfa6)}
+.wf-nav span{display:flex;gap:7cqw;margin-left:auto;margin-right:3%}
+.wf-nav span i{display:block;width:9cqw;height:1.2cqw;border-radius:99px;background:#cdbfa6}
+.wf-nav u{display:block;width:12cqw;height:46%;border-radius:99px;background:#2b2118}
+.wf-hl{display:flex;flex-direction:column;justify-content:space-between}
+.wf-hl i{display:block;height:24%;border-radius:99px;background:#2b2118}
+.wf-sub{display:flex;flex-direction:column;justify-content:space-between;padding:1% 0}
+.wf-sub i{display:block;height:28%;border-radius:99px;background:#c3b59a}
+.wf-bt{border-radius:99px;background:color-mix(in srgb,#c0643f calc(var(--c)*100%),#cdbfa6)}
+.wf-img{overflow:hidden;background:color-mix(in srgb,#8fae5a calc(var(--c)*100%),#d6caaf);border-radius:clamp(12px,1.6vw,24px)}
+.wf-img svg{display:block;width:100%;height:100%}
+.wf-mk{aspect-ratio:1;color:color-mix(in srgb,#dba73f calc(var(--c)*100%),#cdbfa6)}
+.wf-mk svg{display:block;width:100%;height:100%}
+.wf-cd{display:flex;flex-direction:column;justify-content:flex-end;gap:9%;padding:9% 10%}
+.wf-cd i{display:block;height:11%;border-radius:99px;background:rgba(251,244,228,.8)}
+.wf-cd i+i{width:60%}
+.wf-cd.c1{background:color-mix(in srgb,#7ea03f calc(var(--c)*100%),#d6caaf)}
+.wf-cd.c2{background:color-mix(in srgb,#B86A4B calc(var(--c)*100%),#d6caaf)}
+.wf-cd.c3{background:color-mix(in srgb,#7D73C8 calc(var(--c)*100%),#d6caaf)}
+
+/* por trás: sem balanço; setas se desenham */
+.px-v.on .pa{animation:none!important}
+.par path{stroke-dasharray:1;stroke-dashoffset:1}
+.px-v.on .par .pl{animation:draw 1.5s cubic-bezier(.16,1,.3,1) .9s forwards}
+.px-v.on .par .ph{animation:draw .5s cubic-bezier(.16,1,.3,1) 2s forwards}
+.px-v:not(.on) .par path{animation:none;stroke-dashoffset:1}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* respiro: ondas do centro */
+.rz-art .rg2{transform:scale(calc(.85 + var(--p,0)*.3))}
+.rz-art .rr{transform-box:fill-box;transform-origin:center;opacity:0;animation:sonar 12s cubic-bezier(.2,.5,.3,1) infinite;animation-delay:calc(var(--k)*-1.72s)}
+@keyframes sonar{0%{transform:scale(.04);opacity:0}8%{opacity:1}100%{transform:scale(1);opacity:0}}
+.rz-art .rc{transform-box:fill-box;transform-origin:center;animation:rcb 4.6s cubic-bezier(.45,0,.55,1) infinite alternate}
+@keyframes rcb{from{transform:scale(.85)}to{transform:scale(1.2)}}
+
+/* ícones: contorno se desenha */
+.bi{opacity:0;transform:translateY(10px) scale(.86);transition:opacity .9s cubic-bezier(.16,1,.3,1) .25s,transform 1.1s cubic-bezier(.16,1,.3,1) .25s}
+.in .bi{opacity:1;transform:none}
+.bi path,.bi circle,.bi rect{stroke-dasharray:1;stroke-dashoffset:1}
+.in .bi path,.in .bi circle,.in .bi rect{animation:draw 1.3s cubic-bezier(.16,1,.3,1) .45s forwards}
+@media(prefers-reduced-motion:reduce){
+  .hx h1 .w i{animation:none;transform:none}
+  .rz-art .rr{animation:none;opacity:.2;transform:none}
+  .bi path,.bi circle,.bi rect{stroke-dashoffset:0}
+}
 </style>
 <noscript><style>.hd.hid{transform:none;opacity:1;pointer-events:auto}</style></noscript>
 </head>
@@ -904,7 +996,7 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
   <canvas id="hxc" aria-hidden="true"></canvas>
   <div class="hx-txt">
     <p class="hx-br">Rzrd. <span>direção e execução</span></p>
-    <h1>Toda marca tem forças que ainda não aprendeu a usar.</h1>
+    <h1 aria-label="Toda marca tem forças que ainda não aprendeu a usar."><span class="w"><i style="--i:0">Toda</i></span> <span class="w"><i style="--i:1">marca</i></span> <span class="w"><i style="--i:2">tem</i></span> <span class="w"><i style="--i:3">forças</i></span> <span class="w"><i style="--i:4">que</i></span> <span class="w"><i style="--i:5">ainda</i></span> <span class="w"><i style="--i:6">não</i></span> <span class="w"><i style="--i:7">aprendeu</i></span> <span class="w"><i style="--i:8">a</i></span> <span class="w"><i style="--i:9">usar.</i></span></h1>
     <p class="hx-sub">Entendemos seu negócio, seu mercado e as pessoas que você quer alcançar. Identificamos oportunidades, construímos direções e transformamos estratégia em ações que fazem sua marca avançar.</p>
     <a class="btn" href="#sistema">Conheça nosso trabalho <span aria-hidden="true">↗</span></a>
   </div>
@@ -927,10 +1019,10 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
         <div class="tz-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
       </div>
       <div class="tz-vis" aria-hidden="true">
-        <svg class="tvs on" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="st" style="--k:0.0"><rect x="74" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:0.4"><rect x="112" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:0.8"><rect x="150" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:1.2"><rect x="188" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:1.5"><rect x="226" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:1.9"><rect x="264" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:2.3"><rect x="302" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:2.7"><rect x="74" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:3.1"><rect x="112" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:3.5"><rect x="150" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:3.8"><rect x="188" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:4.2"><rect x="226" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:4.6"><rect x="264" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:5.0"><rect x="302" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:5.4"><rect x="74" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:5.8"><rect x="112" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:6.2"><rect x="150" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:6.5"><rect x="188" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:6.9"><rect x="226" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:7.3"><rect x="264" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:7.7"><rect x="302" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:8.1"><rect x="74" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:8.5"><rect x="112" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:8.8"><rect x="150" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:9.2"><rect x="188" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:9.6"><rect x="226" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:10.0"><rect x="264" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:10.4"><rect x="302" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:10.8"><rect x="74" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:11.2"><rect x="112" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:11.5"><rect x="150" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:11.9"><rect x="188" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:12.3"><rect x="226" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:12.7"><rect x="264" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:13.1"><rect x="302" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:13.5"><rect x="74" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:13.8"><rect x="112" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:14.2"><rect x="150" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:14.6"><rect x="188" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:15.0"><rect x="226" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:15.4"><rect x="264" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:15.8"><rect x="302" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:16.2"><rect x="74" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:16.5"><rect x="112" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:16.9"><rect x="150" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:17.3"><rect x="188" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:17.7"><rect x="226" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:18.1"><rect x="264" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:18.5"><rect x="302" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:18.8"><rect x="74" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:19.2"><rect x="112" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:19.6"><rect x="150" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:20.0"><rect x="188" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:20.4"><rect x="226" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:20.8"><rect x="264" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:21.2"><rect x="302" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:21.5"><rect x="74" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:21.9"><rect x="112" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:22.3"><rect x="150" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:22.7"><rect x="188" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:23.1"><rect x="226" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:23.5"><rect x="264" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="st" style="--k:23.8"><rect x="302" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><text x="200" y="446" text-anchor="middle" font-size="13" fill="#8d7f6a" font-family="Geist,system-ui,sans-serif" font-weight="500">frequência</text></svg>
-        <svg class="tvs" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="st" style="--k:1"><rect x="62" y="96" width="150" height="92" rx="12" fill="#c0643f"/><text x="137" y="148" text-anchor="middle" font-size="16" fill="#fbf4e4" font-family="Geist,system-ui,sans-serif" font-weight="500">campanhas</text></g><g class="st" style="--k:5"><circle cx="270" cy="236" r="58" fill="#dba73f"/><text x="270" y="232" text-anchor="middle" font-size="15" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">identidade</text><text x="270" y="251" text-anchor="middle" font-size="15" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">visual</text></g><g class="st" style="--k:9"><rect x="62" y="346" width="276" height="62" rx="10" fill="none" stroke="#b9a98a" stroke-width="1.6" stroke-dasharray="6 7"/></g></svg>
-        <svg class="tvs" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="hb" style="--k:0"><rect x="56" y="112" width="288" height="72" rx="12" fill="#cdd9ae"/><text x="78" y="154" font-size="18" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">quem são</text></g><g class="hb" style="--k:1"><rect x="56" y="204" width="288" height="72" rx="12" fill="#efcdb3"/><text x="78" y="246" font-size="18" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">o que defendem</text></g><g class="hb" style="--k:2"><rect x="56" y="296" width="288" height="72" rx="12" fill="#d3cef2"/><text x="78" y="338" font-size="18" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">o que desejam construir</text></g></svg>
-        <svg class="tvs" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="hb" style="--k:0"><rect x="56" y="334" width="288" height="26" rx="8" fill="#cdd9ae"/></g><g class="hb" style="--k:1"><rect x="56" y="368" width="288" height="26" rx="8" fill="#efcdb3"/></g><g class="hb" style="--k:2"><rect x="56" y="402" width="288" height="26" rx="8" fill="#d3cef2"/></g><g class="sun"><circle cx="200" cy="188" r="124" fill="none" stroke="#c0643f" stroke-opacity=".16" stroke-width="1.4"/><circle cx="200" cy="188" r="98" fill="none" stroke="#c0643f" stroke-opacity=".3" stroke-width="1.4"/><circle cx="200" cy="188" r="70" fill="#c0643f"/><text x="200" y="195" text-anchor="middle" font-size="20" fill="#fbf4e4" font-family="Geist,system-ui,sans-serif" font-weight="500">presença</text></g></svg>
+        <svg class="tvs on" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="sqw" style="--d:0.00s"><rect class="sq" x="74" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.07s"><rect class="sq" x="112" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.14s"><rect class="sq" x="150" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.21s"><rect class="sq" x="188" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.28s"><rect class="sq" x="226" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.35s"><rect class="sq" x="264" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="302" y="86" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.07s"><rect class="sq" x="74" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.14s"><rect class="sq" x="112" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.21s"><rect class="sq" x="150" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.28s"><rect class="sq" x="188" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.35s"><rect class="sq" x="226" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="264" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="302" y="124" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.14s"><rect class="sq" x="74" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.21s"><rect class="sq" x="112" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.28s"><rect class="sq" x="150" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.35s"><rect class="sq" x="188" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="226" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="264" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="302" y="162" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.21s"><rect class="sq" x="74" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.28s"><rect class="sq" x="112" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.35s"><rect class="sq" x="150" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="188" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="226" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="264" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.63s"><rect class="sq" x="302" y="200" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.28s"><rect class="sq" x="74" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.35s"><rect class="sq" x="112" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="150" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="188" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="226" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.63s"><rect class="sq" x="264" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.70s"><rect class="sq" x="302" y="238" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.35s"><rect class="sq" x="74" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="112" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="150" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="188" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.63s"><rect class="sq" x="226" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.70s"><rect class="sq" x="264" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.77s"><rect class="sq" x="302" y="276" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.42s"><rect class="sq" x="74" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="112" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="150" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.63s"><rect class="sq" x="188" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.70s"><rect class="sq" x="226" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.77s"><rect class="sq" x="264" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.84s"><rect class="sq" x="302" y="314" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.49s"><rect class="sq" x="74" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="112" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.63s"><rect class="sq" x="150" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.70s"><rect class="sq" x="188" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.77s"><rect class="sq" x="226" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.84s"><rect class="sq" x="264" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.91s"><rect class="sq" x="302" y="352" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.56s"><rect class="sq" x="74" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.63s"><rect class="sq" x="112" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.70s"><rect class="sq" x="150" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.77s"><rect class="sq" x="188" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.84s"><rect class="sq" x="226" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.91s"><rect class="sq" x="264" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><g class="sqw" style="--d:0.98s"><rect class="sq" x="302" y="390" width="24" height="24" rx="6" fill="#cbbb9c"/></g><text class="lb" x="200" y="446" text-anchor="middle" font-size="13" fill="#8d7f6a" font-family="Geist,system-ui,sans-serif" font-weight="500">frequência</text></svg>
+        <svg class="tvs" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="en" style="--ex:-60px;--ey:-24px;--k:0"><g class="fl" style="--fd:7s"><rect x="62" y="96" width="150" height="92" rx="12" fill="#c0643f"/><text x="137" y="148" text-anchor="middle" font-size="16" fill="#fbf4e4" font-family="Geist,system-ui,sans-serif" font-weight="500">campanhas</text></g></g><g class="en" style="--ex:64px;--ey:20px;--k:1"><g class="fl" style="--fd:9s;--fr:-1.4s"><circle cx="270" cy="236" r="58" fill="#dba73f"/><text x="270" y="232" text-anchor="middle" font-size="15" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">identidade</text><text x="270" y="251" text-anchor="middle" font-size="15" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">visual</text></g></g><g class="en" style="--ex:0px;--ey:40px;--k:2"><rect class="mr" x="62" y="346" width="276" height="62" rx="10" fill="none" stroke="#b9a98a" stroke-width="1.6" stroke-dasharray="6 7"/></g></svg>
+        <svg class="tvs" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="hb" style="--k:0"><rect x="56" y="112" width="288" height="72" rx="12" fill="#cdd9ae"/><text class="bt" x="78" y="154" font-size="18" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">quem são</text></g><g class="hb" style="--k:1"><rect x="56" y="204" width="288" height="72" rx="12" fill="#efcdb3"/><text class="bt" x="78" y="246" font-size="18" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">o que defendem</text></g><g class="hb" style="--k:2"><rect x="56" y="296" width="288" height="72" rx="12" fill="#d3cef2"/><text class="bt" x="78" y="338" font-size="18" fill="#2b2118" font-family="Geist,system-ui,sans-serif" font-weight="500">o que desejam construir</text></g></svg>
+        <svg class="tvs" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="400" height="500" fill="#ecdfc6"/><rect x="28" y="36" width="344" height="428" rx="14" fill="#fbf4e4"/><g class="hb" style="--k:0"><rect x="56" y="334" width="288" height="26" rx="8" fill="#cdd9ae"/></g><g class="hb" style="--k:1"><rect x="56" y="368" width="288" height="26" rx="8" fill="#efcdb3"/></g><g class="hb" style="--k:2"><rect x="56" y="402" width="288" height="26" rx="8" fill="#d3cef2"/></g><circle class="rp" style="--k:0" cx="200" cy="188" r="124" fill="none" stroke="#c0643f" stroke-width="1.4"/><circle class="rp" style="--k:1" cx="200" cy="188" r="124" fill="none" stroke="#c0643f" stroke-width="1.4"/><circle class="rp" style="--k:2" cx="200" cy="188" r="124" fill="none" stroke="#c0643f" stroke-width="1.4"/><g class="sun"><circle cx="200" cy="188" r="70" fill="#c0643f"/><text x="200" y="195" text-anchor="middle" font-size="20" fill="#fbf4e4" font-family="Geist,system-ui,sans-serif" font-weight="500">presença</text></g></svg>
       </div>
     </div>
   </div>
@@ -969,7 +1061,7 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
         <h2>A clareza vem primeiro.</h2>
         <p>Porque sem estrutura, nenhuma presença se sustenta.</p>
       </div>
-      <div class="qc-board" id="qcboard" aria-hidden="true"><i class="qs" style="left:2%;top:3%"></i><i class="qs" style="left:35.5%;top:3%"></i><i class="qs" style="left:69%;top:3%"></i><i class="qs" style="left:2%;top:54%"></i><i class="qs" style="left:35.5%;top:54%"></i><i class="qs" style="left:69%;top:54%"></i><figure class="qk" style="left:2%;top:3%;--dx:80;--dy:60;--r:-14;z-index:2"><svg viewBox="0 0 90 160" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%"><rect width="90" height="160" fill="#f3dfcf"/><circle cx="45" cy="80" r="34" fill="none" stroke="#c0643f" stroke-opacity=".3" stroke-width="1.4"/><circle cx="45" cy="80" r="22" fill="none" stroke="#c0643f" stroke-opacity=".55" stroke-width="1.4"/><circle cx="45" cy="80" r="10" fill="#c0643f"/></svg></figure><figure class="qk" style="left:35.5%;top:3%;--dx:-90;--dy:90;--r:11;z-index:3"><svg viewBox="0 0 90 160" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%"><rect width="90" height="160" fill="#e3e8cf"/><g><circle cx="19" cy="42" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="36.3" cy="42" r="4.6" fill="#6c8f2f" fill-opacity="1"/><circle cx="53.6" cy="42" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="70.9" cy="42" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="19" cy="58" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="36.3" cy="58" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="53.6" cy="58" r="4.6" fill="#6c8f2f" fill-opacity="1"/><circle cx="70.9" cy="58" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="19" cy="74" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="36.3" cy="74" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="53.6" cy="74" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="70.9" cy="74" r="4.6" fill="#6c8f2f" fill-opacity="1"/><circle cx="19" cy="90" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="36.3" cy="90" r="4.6" fill="#6c8f2f" fill-opacity="1"/><circle cx="53.6" cy="90" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="70.9" cy="90" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="19" cy="106" r="4.6" fill="#6c8f2f" fill-opacity="1"/><circle cx="36.3" cy="106" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="53.6" cy="106" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="70.9" cy="106" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="19" cy="122" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="36.3" cy="122" r="4.6" fill="#6c8f2f" fill-opacity="1"/><circle cx="53.6" cy="122" r="3" fill="#6c8f2f" fill-opacity="0.3"/><circle cx="70.9" cy="122" r="3" fill="#6c8f2f" fill-opacity="0.3"/></g></svg></figure><figure class="qk" style="left:69%;top:3%;--dx:-120;--dy:40;--r:17;z-index:4"><svg viewBox="0 0 90 160" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%"><rect width="90" height="160" fill="#f1e3c8"/><g fill="#2b2118"><rect x="14" y="46" width="62" height="6" rx="3"/><rect x="14" y="62" width="50" height="4" rx="2" fill-opacity=".45"/><rect x="14" y="74" width="58" height="4" rx="2" fill-opacity=".45"/><rect x="14" y="86" width="44" height="4" rx="2" fill-opacity=".45"/><rect x="14" y="98" width="54" height="4" rx="2" fill-opacity=".45"/></g><rect x="14" y="116" width="26" height="6" rx="3" fill="#c0643f"/></svg></figure><figure class="qk" style="left:2%;top:54%;--dx:120;--dy:-50;--r:-9;z-index:5"><svg viewBox="0 0 90 160" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%"><rect width="90" height="160" fill="#ddd8f3"/><text x="14" y="88" font-size="46" fill="#2b2118" font-family="Bricolage Grotesque,Geist,system-ui,sans-serif" font-weight="600">Aa</text><circle cx="22" cy="112" r="7" fill="#c0643f"/><circle cx="40" cy="112" r="7" fill="#dba73f"/><circle cx="58" cy="112" r="7" fill="#7ea03f"/></svg></figure><figure class="qk" style="left:35.5%;top:54%;--dx:60;--dy:-70;--r:15;z-index:6"><svg viewBox="0 0 90 160" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%"><rect width="90" height="160" fill="#f0d4c3"/><circle cx="36" cy="80" r="26" fill="#c0643f" fill-opacity=".8"/><circle cx="56" cy="80" r="26" fill="#7D73C8" fill-opacity=".7"/></svg></figure><figure class="qk" style="left:69%;top:54%;--dx:-110;--dy:-60;--r:-18;z-index:7"><svg viewBox="0 0 90 160" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%"><rect width="90" height="160" fill="#d6e4de"/><g fill="#2b2118"><rect x="14" y="104" width="16" height="22" rx="3" fill-opacity=".35"/><rect x="37" y="86" width="16" height="40" rx="3" fill-opacity=".6"/><rect x="60" y="62" width="16" height="64" rx="3"/></g></svg></figure></div>
+      <div class="qc-board" id="qcboard" aria-hidden="true"><div class="wf wf-img" style="--i:0;--dx:-34;--dy:30;--r:-5;left:6%;top:57%;width:88%;height:24%"><svg viewBox="0 0 100 27" preserveAspectRatio="xMidYMid slice"><circle cx="74" cy="9.5" r="6.2" fill="#fbf4e4" opacity=".9"/><path d="M0 27V20C12 12 24 12 36 18S58 22 70 17 90 12 100 16V27Z" fill="#fbf4e4" opacity=".55"/><path d="M0 27V23C14 18 30 19 44 23S76 24 100 20V27Z" fill="#fbf4e4" opacity=".8"/></svg></div><div class="wf wf-nav" style="--i:1;--dx:0;--dy:-26;--r:0;left:6%;top:4%;width:88%;height:7%"><b class="nd"></b><span><i></i><i></i><i></i></span><u></u></div><div class="wf wf-mk" style="--i:2;--dx:36;--dy:-20;--r:14;left:70%;top:15%;width:24%"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="currentColor"/><circle cx="50" cy="50" r="30" fill="#fbf4e4" opacity=".55"/><circle cx="50" cy="50" r="12" fill="#fbf4e4"/></svg></div><div class="wf wf-hl" style="--i:3;--dx:-40;--dy:8;--r:-3;left:6%;top:15%;width:58%;height:19%"><i style="width:100%"></i><i style="width:86%"></i><i style="width:54%"></i></div><div class="wf wf-sub" style="--i:4;--dx:-30;--dy:14;--r:2;left:6%;top:37%;width:50%;height:7%"><i style="width:100%"></i><i style="width:78%"></i></div><div class="wf wf-bt" style="--i:5;--dx:-24;--dy:24;--r:-4;left:6%;top:46.5%;width:26%;height:6%"></div><div class="wf wf-cd c1" style="--i:6;--dx:-20;--dy:34;--r:-6;left:6%;top:84%;width:27%;height:11%"><i></i><i></i></div><div class="wf wf-cd c2" style="--i:7;--dx:0;--dy:38;--r:4;left:36.5%;top:84%;width:27%;height:11%"><i></i><i></i></div><div class="wf wf-cd c3" style="--i:8;--dx:24;--dy:34;--r:-3;left:67%;top:84%;width:27%;height:11%"><i></i><i></i></div></div>
     </div>
   </div>
 </section>
@@ -986,8 +1078,8 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
             <div class="pile">
               <div class="pb"><b>direção</b></div>
               <div class="pa"><b>presença</b></div>
-              <svg class="par ar-u" viewBox="0 0 60 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M52 190C6 160 6 40 50 12"/><path d="M43 23L50 12L37 13"/></svg>
-              <svg class="par ar-d" viewBox="0 0 60 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12C54 40 54 160 10 188"/><path d="M23 187L10 188L17 176"/></svg>
+              <svg class="par ar-u" viewBox="0 0 60 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="pl" pathLength="1" d="M52 190C6 160 6 40 50 12"/><path class="ph" pathLength="1" d="M43 23L50 12L37 13"/></svg>
+              <svg class="par ar-d" viewBox="0 0 60 200" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="pl" pathLength="1" d="M8 12C54 40 54 160 10 188"/><path class="ph" pathLength="1" d="M23 187L10 188L17 176"/></svg>
             </div>
           </div>
           <div class="px-v" data-v="2">
@@ -1011,7 +1103,7 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
 <!-- BLOCO DE RESPIRO: tela inteira, foto, sem botão, sem card, sem explicação -->
 <section class="rz" id="respiro" aria-label="Respiro">
   <div class="rz-pin">
-    <svg class="rz-art" id="rzsc" viewBox="0 0 760 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g class="rg2"><circle cx="380" cy="450" r="62" fill="none" stroke="#fbf4e4" stroke-opacity="0.305" stroke-width="1.4"/><circle cx="380" cy="450" r="124" fill="none" stroke="#fbf4e4" stroke-opacity="0.270" stroke-width="1.4"/><circle cx="380" cy="450" r="186" fill="none" stroke="#fbf4e4" stroke-opacity="0.235" stroke-width="1.4"/><circle cx="380" cy="450" r="248" fill="none" stroke="#fbf4e4" stroke-opacity="0.200" stroke-width="1.4"/><circle cx="380" cy="450" r="310" fill="none" stroke="#fbf4e4" stroke-opacity="0.165" stroke-width="1.4"/><circle cx="380" cy="450" r="372" fill="none" stroke="#fbf4e4" stroke-opacity="0.130" stroke-width="1.4"/><circle cx="380" cy="450" r="434" fill="none" stroke="#fbf4e4" stroke-opacity="0.095" stroke-width="1.4"/><circle cx="380" cy="450" r="9" fill="#dba73f"/></g></svg>
+    <svg class="rz-art" id="rzsc" viewBox="0 0 760 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g class="rg2"><circle class="rr" style="--k:0" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rr" style="--k:1" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rr" style="--k:2" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rr" style="--k:3" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rr" style="--k:4" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rr" style="--k:5" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rr" style="--k:6" cx="380" cy="450" r="430" fill="none" stroke="#fbf4e4" stroke-opacity=".38" stroke-width="1.4"/><circle class="rc" cx="380" cy="450" r="9" fill="#dba73f"/></g></svg>
     <div class="wrap">
       <p class="rz-a" data-words>Toda marca constrói algo.</p>
       <p class="rz-b" data-words>A questão é se ela está construindo isso de forma intencional.</p>
@@ -1024,11 +1116,11 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
   <div class="wrap">
     <h2 class="pr-h rv">O que acreditamos.</h2>
     <div class="bento">
-      <article class="bc b3 rv" style="--d:0.1s"><span class="bn">01</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="22" fill="#cdd9ae"/><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="3" fill="#2b2118"/></svg><p>Clareza vem antes da escala.</p></article>
-      <article class="bc b3 rv" style="--d:0.2s"><span class="bn">02</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 36l8-12 8 20 8-26 8 22 8-14 6 10" fill="none"/><path d="M6 52h52" stroke-dasharray="3 5"/></svg><p>Presença sem direção é ruído.</p></article>
-      <article class="bc b2 rv" style="--d:0s"><span class="bn">03</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="12" width="30" height="40" rx="5" fill="#efcdb3"/><path d="M15 24h16M15 32h16M15 40h9"/><path d="M42 44l6 6 10-14" stroke="#c0643f" stroke-width="2.4"/></svg><p>Estratégia sem execução é teoria.</p></article>
-      <article class="bc b2 rv" style="--d:0.1s"><span class="bn">04</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 12h30a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H22l-8 8v-8H8a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" fill="#d3cef2"/><path d="M50 26h6a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-2v7l-8-7H30a4 4 0 0 1-4-4v-4" fill="#fbf4e4"/></svg><p>Tudo comunica.</p></article>
-      <article class="bc b2 rv" style="--d:0.2s"><span class="bn">05</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="24" cy="32" r="16" fill="#e7b79a" fill-opacity=".8"/><circle cx="40" cy="32" r="16" fill="#cdd9ae" fill-opacity=".8"/></svg><p>Relações constroem reputação.</p></article>
+      <article class="bc b3 rv" style="--d:0.1s"><span class="bn">01</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle pathLength="1" cx="32" cy="32" r="22" fill="#cdd9ae"/><circle pathLength="1" cx="32" cy="32" r="12"/><circle pathLength="1" cx="32" cy="32" r="3" fill="#2b2118"/></svg><p>Clareza vem antes da escala.</p></article>
+      <article class="bc b3 rv" style="--d:0.2s"><span class="bn">02</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M6 36l8-12 8 20 8-26 8 22 8-14 6 10" fill="none"/><path pathLength="1" d="M6 52h52"/></svg><p>Presença sem direção é ruído.</p></article>
+      <article class="bc b2 rv" style="--d:0s"><span class="bn">03</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect pathLength="1" x="8" y="12" width="30" height="40" rx="5" fill="#efcdb3"/><path pathLength="1" d="M15 24h16M15 32h16M15 40h9"/><path pathLength="1" d="M42 44l6 6 10-14" stroke="#c0643f" stroke-width="2.4"/></svg><p>Estratégia sem execução é teoria.</p></article>
+      <article class="bc b2 rv" style="--d:0.1s"><span class="bn">04</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path pathLength="1" d="M8 12h30a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H22l-8 8v-8H8a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" fill="#d3cef2"/><path pathLength="1" d="M50 26h6a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-2v7l-8-7H30a4 4 0 0 1-4-4v-4" fill="#fbf4e4"/></svg><p>Tudo comunica.</p></article>
+      <article class="bc b2 rv" style="--d:0.2s"><span class="bn">05</span><svg class="bi" viewBox="0 0 64 64" fill="none" stroke="#2b2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle pathLength="1" cx="24" cy="32" r="16" fill="#e7b79a" fill-opacity=".8"/><circle pathLength="1" cx="40" cy="32" r="16" fill="#cdd9ae" fill-opacity=".8"/></svg><p>Relações constroem reputação.</p></article>
     </div>
   </div>
 </section>
@@ -1093,11 +1185,12 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
 
   /* topo: campo de força (adaptado do HTML do cliente; papel quente, cor por produto) */
   var hxC=$('#hxc'),hx=hxC.getContext('2d'),hxSec=$('#topo'),hxN=$('#hxn'),hxS=$('#hxs'),hxP=$('#hxp'),hxZ=$('#hxz');
-  var hw=0,hh=0,hdpr=1,hpaused=false,hel=0,hlast=0,HD=28000,hbrk=[0,.25,.5,.75,1];
+  var hw=0,hh=0,hdpr=1,hpaused=false,hel=0,hlast=0,HD=28000,hbrk=[0,.25,.5,.75,1],hcur=-1;
   var hlab=['Compreender','Encontrar a direção','Dar forma','Evoluir'];
   var FAM=['126,160,63','184,106,75','125,115,200'],FN=['.aether','.vortex','.spectra'],NP=120;
-  var sm=function(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x)};
-  var HP=[],HD0=[],hgeo={};
+  var ez=function(x){x=cl(x,0,1);return x<.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2};
+  var sm=function(x){x=cl(x,0,1);return x*x*(3-2*x)};
+  var HP=[],DL=[],hgeo={};
   function rnd(i,k){var x=Math.sin(i*127.1+k*311.7)*43758.5453;return x-Math.floor(x)}
   function hxResize(){
     hdpr=Math.min(w.devicePixelRatio||1,2);hw=hxC.clientWidth;hh=hxC.clientHeight;
@@ -1105,22 +1198,18 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
     var mob=hw<700,W,H,cx,cy;
     if(mob){var tt=hxSec.querySelector('.hx-txt').offsetTop,top0=84;W=hw*.84;H=Math.max(150,Math.min(300,(tt-12-top0-44)/.9));cx=hw/2;cy=top0+.44*H}else{W=Math.min(hw*.42,600);H=Math.min(hh*.62,520);cx=hw*.755;cy=hh*.5}
     hgeo={W:W,H:H,cx:cx,cy:cy,r:mob?2.6:3.5,mob:mob};
-    HP=[[],[],[],[]];
+    HP=[[],[],[],[]];DL=[[],[],[],[]];
     var COL=12,ROW=10,BC=5,BR=8,bw=W*.26,gap=W*.11,sx=bw/(BC-1),sy=H*.52/(BR-1),y0=cy-H*.2;
     for(var i=0;i<NP;i++){
       var f=i%3,idx=Math.floor(i/3);
-      // 1: dispersos
       HP[0].push([cx+(rnd(i,1)-.5)*W*1.02,cy+(rnd(i,2)-.5)*H*1.02]);
-      // 2: malha regular, três cores entrelaçadas
       var c=i%COL,r=Math.floor(i/COL);
       HP[1].push([cx-W*.46+c*(W*.92/(COL-1)),cy-H*.42+r*(H*.84/(ROW-1))]);
-      // 3: três frentes (um bloco por produto)
       var bc=idx%BC,br=Math.floor(idx/BC),bx=cx-W/2+f*(bw+gap);
       HP[2].push([bx+bc*sx,y0+br*sy]);
-      // 4: os mesmos blocos subindo em degraus
       HP[3].push([bx+bc*sx,y0+br*sy+(1-f)*H*.17-H*.04]);
-      HD0.push(rnd(i,3));
     }
+    for(var st=0;st<4;st++)for(var j=0;j<NP;j++){var xn=cl((HP[st][j][0]-(cx-W/2))/W,0,1);DL[st].push(.7*xn+.3*rnd(j,3))}
   }
   w.addEventListener('resize',hxResize);hxResize();
   function hxFrame(now){
@@ -1130,40 +1219,42 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
     if(r0.bottom<-40||r0.top>w.innerHeight){requestAnimationFrame(hxFrame);return}
     var p=(hel%HD)/HD,ph=0;for(var k=0;k<4;k++){if(p>=hbrk[k]&&p<hbrk[k+1])ph=k}
     var q=(p-hbrk[ph])/(hbrk[ph+1]-hbrk[ph]),T=hel,prev=(ph+3)%4,g=hgeo;
-    hxN.textContent=ph+1;hxS.textContent=hlab[ph];hxP.style.width=(q*100)+'%';
+    if(hel<HD*.25&&ph===0)prev=0;
+    if(ph!==hcur){hcur=ph;hxN.textContent=ph+1;hxS.textContent=hlab[ph];
+      [hxN,hxS].forEach(function(e){e.classList.remove('sw');void e.offsetWidth;e.classList.add('sw')})}
+    hxP.style.width=(q*100)+'%';
     hx.clearRect(0,0,hw,hh);
     var gl=hx.createRadialGradient(g.cx,g.cy,0,g.cx,g.cy,Math.max(g.W,g.H)*.9);
     gl.addColorStop(0,'rgba(226,160,112,.34)');gl.addColorStop(1,'rgba(226,160,112,0)');
     hx.fillStyle=gl;hx.fillRect(0,0,hw,hh);
-    var X=[],Y=[],pos=[];
+    var X=[],Y=[],S=[],I0=[];
     for(var i=0;i<NP;i++){
-      var s0=sm((q-HD0[i]*.22)/.4),a=HP[prev][i],b=HP[ph][i];
+      var s0=ez((q-DL[ph][i]*.2)/.38),a=HP[prev][i],b=HP[ph][i];
       var x=a[0]+(b[0]-a[0])*s0,y=a[1]+(b[1]-a[1])*s0;
-      var dr=(ph===0?s0:(prev===0?1-s0:0));
-      x+=Math.sin(T*.0006+i*1.7)*5*dr;y+=Math.cos(T*.0005+i*2.3)*5*dr;
-      X.push(x);Y.push(y);
+      var dr=(ph===0?s0:(prev===0&&hel>=HD*.25?1-s0:0));
+      x+=Math.sin(T*.0006+i*1.7)*5*dr+Math.sin(T*.0011+i*1.9)*1.1;
+      y+=Math.cos(T*.0005+i*2.3)*5*dr+Math.cos(T*.0009+i*2.7)*1.1;
+      X.push(x);Y.push(y);S.push(s0);
+      I0.push(T<3200?ez((T/1000-rnd(i,5)*1.1-.2)/1.1):1);
     }
-    // malha: linhas finas entre vizinhos na etapa 2
-    var wl=ph===1?sm((q-.2)/.25):(ph===2?1-sm(q/.3):0);
+    var wl=ph===1?sm((q-.3)/.25):(ph===2?1-sm(q/.3):0);
     if(wl>.01){
       hx.lineWidth=.8;hx.strokeStyle='rgba(120,84,54,'+(.2*wl).toFixed(3)+')';hx.beginPath();
       for(var i2=0;i2<NP;i2++){var c2=i2%12;if(c2<11){hx.moveTo(X[i2],Y[i2]);hx.lineTo(X[i2+1],Y[i2+1])}if(i2+12<NP){hx.moveTo(X[i2],Y[i2]);hx.lineTo(X[i2+12],Y[i2+12])}}
       hx.stroke();
     }
-    // chão e nomes das três frentes (etapas 3 e 4), acompanham cada bloco
-    var wf=ph===2?sm((q-.3)/.3):(ph===3?1:(ph===0?1-sm(q/.25):0));
+    var wf=ph===2?sm((q-.35)/.3):(ph===3?1:(ph===0&&hel>=HD*.25?1-sm(q/.2):0));
     if(wf>.01){
       hx.save();hx.globalAlpha=wf;hx.lineWidth=1;
       hx.font='500 '+(g.mob?12:14)+'px Geist,system-ui,sans-serif';hx.textAlign='center';
       for(var f2=0;f2<3;f2++){
         var yb=Y[111+f2]+g.r+(g.mob?12:16),xl=X[105+f2]-g.r,xr=X[117+f2]+g.r;
-        hx.strokeStyle='rgba(120,84,54,.35)';hx.beginPath();hx.moveTo(xl,yb);hx.lineTo(xr,yb);hx.stroke();
-        hx.fillStyle='rgb('+FAM[f2]+')';hx.fillText(FN[f2],(xl+xr)/2,yb+(g.mob?18:24));
+        hx.strokeStyle='rgba(120,84,54,.35)';hx.beginPath();hx.moveTo(xl,yb);hx.lineTo(xl+(xr-xl)*wf,yb);hx.stroke();
+        hx.fillStyle='rgb('+FAM[f2]+')';hx.fillText(FN[f2],(xl+xr)/2,yb+(g.mob?18:24)-(1-wf)*8);
       }
       hx.restore();
     }
-    // linha de crescimento (etapa 4): liga o topo dos três blocos
-    var we=ph===3?sm((q-.35)/.35):0;
+    var we=ph===3?ez((q-.3)/.4):0;
     if(we>.01){
       var ax=[],ay=[];
       for(var f5=0;f5<3;f5++){var j5=f5+6;ax.push(X[j5]);ay.push(Y[j5]-g.H*.07)}
@@ -1173,10 +1264,13 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
       if(we>.95){var an=Math.atan2(y2-y0,x2-x0);hx.beginPath();hx.moveTo(x2,y2);hx.lineTo(x2-9*Math.cos(an-.45),y2-9*Math.sin(an-.45));hx.moveTo(x2,y2);hx.lineTo(x2-9*Math.cos(an+.45),y2-9*Math.sin(an+.45));hx.stroke()}
       hx.restore();
     }
-    // pontos
+    // varredura: uma faixa diagonal atravessa a malha e cresce os pontos por onde passa
+    var sw=ph===0?0:(ph===1?sm((q-.5)/.2):1),ws=((T*.00026)%1.7)-.35;
     for(var i3=0;i3<NP;i3++){
-      hx.beginPath();hx.arc(X[i3],Y[i3],g.r,0,Math.PI*2);
-      hx.fillStyle='rgba('+FAM[i3%3]+','+(ph===0||prev===0&&q<.5?.8:.95)+')';hx.fill();
+      var u=((X[i3]-(g.cx-g.W/2))/g.W+(Y[i3]-(g.cy-g.H/2))/g.H)*.5,hit=Math.max(0,1-Math.abs(u-ws)/.13)*sw;
+      var rr=g.r*(1+.38*Math.sin(Math.PI*cl(S[i3],0,1))+.55*hit)*I0[i3];
+      hx.beginPath();hx.arc(X[i3],Y[i3],Math.max(.01,rr),0,Math.PI*2);
+      hx.fillStyle='rgba('+FAM[i3%3]+','+Math.min(1,(.82+.18*hit)*I0[i3]).toFixed(3)+')';hx.fill();
     }
     requestAnimationFrame(hxFrame);
   }
@@ -1252,10 +1346,12 @@ body:after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opac
   
   /* clareza: o caos vira ordem com o scroll */
   var qcS=$('#clareza'),qcB=$('#qcboard');
+  var qcP=$$('#qcboard .wf');
   function qcFrame(){
     var r=qcS.getBoundingClientRect(),vh=w.innerHeight;if(r.bottom<0||r.top>vh)return;
-    var p=cl(-r.top/(r.height-vh),0,1),t=rm?1:cl((p-.1)/.6,0,1);t=t*t*(3-2*t);
-    qcB.style.setProperty('--t',t.toFixed(4));
+    var p=cl(-r.top/(r.height-vh),0,1),t=rm?1:cl((p-.05)/.62,0,1);
+    qcP.forEach(function(e,i){var u=cl((t-i*.055)/.44,0,1);e.style.setProperty('--q',(1-Math.pow(1-u,4)).toFixed(4))});
+    qcB.style.setProperty('--c',(rm?1:cl((p-.6)/.28,0,1)).toFixed(3));
   }
   /* por trás: três cenas, uma por frase */
   var pxS=$('#por-tras'),pxP=$$('.px-s'),pxV=$$('.px-v'),pxD=$$('.px-dots i'),pxCur=-1;
