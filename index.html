@@ -996,6 +996,29 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
   .tvs .sqw,.tvs .en,.tvs .hb,.tvs .sun,.tvs .lb,.tvs .bt{opacity:1!important;transform:none!important}
   .tvs .rp{opacity:0}
 }
+
+/* ---------- V30: a clareza como foco ---------- */
+.qc-pin{overflow:hidden}
+.qc-grid{grid-template-columns:1fr!important;justify-items:center;text-align:center;position:relative;z-index:1}
+.qc-txt{display:flex;flex-direction:column;align-items:center}
+.qc h2.qc-h{position:relative;max-width:none;font-size:clamp(3rem,8.4vw,10rem);line-height:.98;letter-spacing:-.055em}
+.qw{--f:1;display:inline-block;will-change:transform,filter;
+  filter:blur(calc((1 - var(--f))*13px));
+  transform:translateY(calc(var(--o)*(1 - var(--f))*.17em)) rotate(calc(var(--o)*(1 - var(--f))*-2.4deg)) scale(calc(1 + (1 - var(--f))*.05));
+  text-shadow:calc((1 - var(--f))*-.16em) 0 0 rgba(192,100,63,calc((1 - var(--f))*.5)),calc((1 - var(--f))*.16em) 0 0 rgba(125,115,200,calc((1 - var(--f))*.5))}
+.qc-txt p{text-wrap:balance;--pf:1;margin:clamp(22px,3vw,44px) auto 0;max-width:22em;text-align:center;opacity:var(--pf);transform:translateY(calc((1 - var(--pf))*18px));filter:blur(calc((1 - var(--pf))*6px))}
+.qc-guides{position:absolute;inset:0;pointer-events:none;z-index:0}
+.qc-guides .gh,.qc-guides .gv{position:absolute;background:rgba(120,84,54,.3);--g:0}
+.qc-guides .gh{left:0;right:0;height:1px;transform:scaleX(var(--g));transform-origin:50% 50%}
+.qc-guides .gv{top:0;bottom:0;width:1px;transform:scaleY(var(--g));transform-origin:50% 0}
+.qc-guides .gp{position:absolute;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:#a5532f;transform:scale(var(--g,0));opacity:var(--g,0);--g:0}
+@media(max-width:700px){
+  .qc h2.qc-h{font-size:clamp(2.6rem,13.4vw,4.4rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  .qw{filter:none!important;transform:none!important;text-shadow:none!important}
+  .qc-txt p{opacity:1!important;transform:none!important;filter:none!important}
+}
 </style>
 <noscript><style>.hd.hid{transform:none;opacity:1;pointer-events:auto}</style></noscript>
 </head>
@@ -1089,12 +1112,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
 <!-- BLOCO 4: a clareza vem primeiro (o caos vira ordem com o scroll) -->
 <section class="qc" id="clareza">
   <div class="qc-pin">
+    <div class="qc-guides" id="qcg" aria-hidden="true"><i class="gh"></i><i class="gh"></i><i class="gh"></i><i class="gv"></i><i class="gv"></i><i class="gv"></i><b class="gp"></b><b class="gp"></b><b class="gp"></b><b class="gp"></b><b class="gp"></b><b class="gp"></b></div>
     <div class="wrap qc-grid">
       <div class="qc-txt">
-        <h2>A clareza vem primeiro.</h2>
+        <h2 class="qc-h" id="qch" aria-label="A clareza vem primeiro."><span class="qw" style="--i:0;--o:-1">A</span> <span class="qw" style="--i:1;--o:1">clareza</span><br><span class="qw" style="--i:2;--o:1">vem</span> <span class="qw" style="--i:3;--o:-1">primeiro.</span></h2>
         <p>Porque sem estrutura, nenhuma presença se sustenta.</p>
       </div>
-      <div class="qc-board" id="qcboard" aria-hidden="true"><div class="wf wf-img" style="--i:0;--dx:-34;--dy:30;--r:-5;left:6%;top:57%;width:88%;height:24%"><svg viewBox="0 0 100 27" preserveAspectRatio="xMidYMid slice"><circle cx="74" cy="9.5" r="6.2" fill="#fbf4e4" opacity=".9"/><path d="M0 27V20C12 12 24 12 36 18S58 22 70 17 90 12 100 16V27Z" fill="#fbf4e4" opacity=".55"/><path d="M0 27V23C14 18 30 19 44 23S76 24 100 20V27Z" fill="#fbf4e4" opacity=".8"/></svg></div><div class="wf wf-nav" style="--i:1;--dx:0;--dy:-26;--r:0;left:6%;top:4%;width:88%;height:7%"><b class="nd"></b><span><i></i><i></i><i></i></span><u></u></div><div class="wf wf-mk" style="--i:2;--dx:36;--dy:-20;--r:14;left:70%;top:15%;width:24%"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="currentColor"/><circle cx="50" cy="50" r="30" fill="#fbf4e4" opacity=".55"/><circle cx="50" cy="50" r="12" fill="#fbf4e4"/></svg></div><div class="wf wf-hl" style="--i:3;--dx:-40;--dy:8;--r:-3;left:6%;top:15%;width:58%;height:19%"><i style="width:100%"></i><i style="width:86%"></i><i style="width:54%"></i></div><div class="wf wf-sub" style="--i:4;--dx:-30;--dy:14;--r:2;left:6%;top:37%;width:50%;height:7%"><i style="width:100%"></i><i style="width:78%"></i></div><div class="wf wf-bt" style="--i:5;--dx:-24;--dy:24;--r:-4;left:6%;top:46.5%;width:26%;height:6%"></div><div class="wf wf-cd c1" style="--i:6;--dx:-20;--dy:34;--r:-6;left:6%;top:84%;width:27%;height:11%"><i></i><i></i></div><div class="wf wf-cd c2" style="--i:7;--dx:0;--dy:38;--r:4;left:36.5%;top:84%;width:27%;height:11%"><i></i><i></i></div><div class="wf wf-cd c3" style="--i:8;--dx:24;--dy:34;--r:-3;left:67%;top:84%;width:27%;height:11%"><i></i><i></i></div></div>
+      
     </div>
   </div>
 </section>
@@ -1381,15 +1405,30 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visibl
   }
   w.addEventListener('scroll',endFrame,{passive:true});w.addEventListener('resize',endFrame);endFrame();
   
-  /* clareza: o caos vira ordem com o scroll */
-  var qcS=$('#clareza'),qcB=$('#qcboard');
-  var qcP=$$('#qcboard .wf');
+  /* clareza: o foco. Palavras saem do desfoque e assentam na grade; linhas-guia se desenham */
+  var qcS=$('#clareza'),qcPin=$('.qc-pin'),qcH=$('#qch'),qcWs=$$('#qch .qw'),qcPar=$('.qc-txt p'),
+      qcGh=$$('#qcg .gh'),qcGv=$$('#qcg .gv'),qcGp=$$('#qcg .gp');
+  var qcEz=function(x){x=cl(x,0,1);return x<.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2};
+  function qcLay(){
+    var pr=qcPin.getBoundingClientRect(),hr=qcH.getBoundingClientRect(),x0=1e9,x1=-1e9,yTop=hr.top-pr.top,yBot=yTop+qcH.offsetHeight,yMid=0;
+    qcWs.forEach(function(e,i){var l=hr.left-pr.left+e.offsetLeft;x0=Math.min(x0,l);x1=Math.max(x1,l+e.offsetWidth);if(i===1)yMid=e.offsetTop+e.offsetHeight});
+    var cx=(x0+x1)/2,ys=[yTop,yTop+yMid,yBot],xs=[x0,cx,x1];
+    qcGh.forEach(function(e,i){e.style.top=ys[i]+'px'});
+    qcGv.forEach(function(e,i){e.style.left=xs[i]+'px'});
+    var k=0;[0,2].forEach(function(r){xs.forEach(function(x){var p=qcGp[k++];p.style.left=x+'px';p.style.top=ys[r]+'px'})});
+  }
   function qcFrame(){
     var r=qcS.getBoundingClientRect(),vh=w.innerHeight;if(r.bottom<0||r.top>vh)return;
-    var p=cl(-r.top/(r.height-vh),0,1),t=rm?1:cl((p+.04)/.62,0,1);
-    qcP.forEach(function(e,i){var u=cl((t-i*.055)/.44,0,1);e.style.setProperty('--q',(1-Math.pow(1-u,4)).toFixed(4))});
-    qcB.style.setProperty('--c',(rm?1:cl((p-.6)/.28,0,1)).toFixed(3));
+    var p=rm?1:cl(-r.top/(r.height-vh),0,1);
+    var t=rm?1:cl((p+.02)/.5,0,1);
+    qcWs.forEach(function(e,i){e.style.setProperty('--f',qcEz((t-i*.11)/.67).toFixed(4))});
+    qcGh.forEach(function(e,i){e.style.setProperty('--g',qcEz((rm?1:(p+.04)/.36)-i*.12).toFixed(4))});
+    qcGv.forEach(function(e,i){e.style.setProperty('--g',qcEz((rm?1:(p+.04)/.36)-i*.12).toFixed(4))});
+    qcGp.forEach(function(e,i){e.style.setProperty('--g',qcEz(((rm?1:(p-.2)/.3))-i*.05).toFixed(4))});
+    qcPar.style.setProperty('--pf',qcEz(rm?1:(p-.5)/.2).toFixed(4));
   }
+  w.addEventListener('resize',function(){qcLay();qcFrame()});
+  qcLay();if(d.fonts&&d.fonts.ready)d.fonts.ready.then(function(){qcLay();qcFrame()});
   /* por trás: três cenas, uma por frase */
   var pxS=$('#por-tras'),pxP=$$('.px-s'),pxV=$$('.px-v'),pxD=$$('.px-dots i'),pxCur=-1;
   function pxFrame(){
