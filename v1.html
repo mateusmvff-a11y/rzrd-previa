@@ -1088,6 +1088,40 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
 /* ---------- V1.1: topo com a órbita nova ---------- */
 .hx{background:radial-gradient(48% 62% at 73% 50%,rgba(105,209,235,.07),rgba(105,209,235,0) 70%),var(--bg)}
 .hx-st{gap:16px}.hx-ln{width:96px;height:1px}
+
+/* ---------- V1.3: topo com diagrama 3D, etiquetas e seletor de etapas ---------- */
+.hx{background:radial-gradient(42% 58% at 73% 47%,rgba(105,209,235,.08),rgba(105,209,235,0) 70%),var(--bg)}
+.hx-txt{width:min(44%,640px)}
+.hx h1{font-size:clamp(2.4rem,4.2vw,5.2rem);line-height:1;letter-spacing:-.05em}
+.hx-sub{max-width:28em}
+.hx-lab{position:absolute;inset:0;z-index:1;pointer-events:none;will-change:transform}
+.rz-chip{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:8px;padding:8px 13px 8px 11px;border-radius:999px;background:rgba(28,48,54,.62);-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);font:500 12.5px/1 var(--sans);letter-spacing:-.005em;color:#E7F1F4;white-space:nowrap;opacity:0;will-change:transform,opacity}
+.rz-chip i{width:6px;height:6px;border-radius:50%;background:#69D1EB;flex:none}
+.rz-pot{padding:9px 15px;background:rgba(105,209,235,.16);color:#9fe3f3;font-size:13.5px}
+.hx-steps{position:absolute;left:calc(50% + 2vw);right:max(var(--pad),calc((100vw - 1440px)/2 + var(--pad)));bottom:clamp(26px,5vh,52px);z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 36px;gap:clamp(10px,1.2vw,20px);align-items:end}
+.hx-steps button[data-s]{display:grid;grid-template-columns:auto 1fr;column-gap:8px;row-gap:12px;text-align:left;font:500 13px/1.2 var(--sans);letter-spacing:-.01em;color:rgba(231,241,244,.42);transition:color .6s var(--ease);padding:4px 0}
+.hx-steps button[data-s]:hover,.hx-steps button.on{color:#E7F1F4}
+.hx-steps b{font-weight:500;color:rgba(105,209,235,.55);font-variant-numeric:tabular-nums;transition:color .6s var(--ease)}
+.hx-steps .on b{color:#69D1EB}
+.hx-steps i{grid-column:1/3;display:block;height:1px;background:rgba(231,241,244,.14);overflow:hidden}
+.hx-steps u{display:block;height:100%;background:#69D1EB;transform-origin:0 50%;transform:scaleX(0)}
+.hx-steps .on u{transform:scaleX(var(--p,0))}
+.hx-steps .done u{transform:scaleX(1);background:rgba(231,241,244,.4)}
+.hx-steps .hx-pz{position:static;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(231,241,244,.06);box-shadow:none;color:#E7F1F4;transition:background .4s var(--ease)}
+.hx-steps .hx-pz:hover{background:rgba(231,241,244,.14);color:#E7F1F4}
+.hx-pz svg{width:12px;height:12px}
+.hx-pz path{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hx-pz .ic-pl{display:none;fill:currentColor;stroke:none}
+.hx-pz.off .ic-pa{display:none}.hx-pz.off .ic-pl{display:block}
+@media(max-width:980px){.hx-txt{width:min(52%,560px)}.hx-steps{left:52%}.hx-steps span{display:none}.hx-steps .on span{display:inline}}
+@media(max-width:700px){
+  .hx-txt{width:auto}
+  .hx-steps{left:var(--pad);right:var(--pad);top:auto;bottom:auto;top:calc(var(--hxst,52svh));grid-template-columns:repeat(4,1fr) 32px;gap:8px}
+  .hx-steps button[data-s]{font-size:11.5px;row-gap:8px}
+  .hx-steps span{display:none}.hx-steps .on span{display:inline;white-space:nowrap}
+  .hx-steps .hx-pz{width:32px;height:32px}
+  .rz-chip{font-size:11px;padding:6px 10px 6px 9px}
+}
 /* ---------- LAB ---------- */
 .fx-grain{position:absolute;inset:0;z-index:0;pointer-events:none;background-size:150px 150px;mix-blend-mode:multiply;opacity:.075}
 </style>
@@ -1127,8 +1161,14 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
     <p class="hx-sub">Entendemos seu negócio, seu mercado e as pessoas que você quer alcançar. Identificamos oportunidades, construímos direções e transformamos estratégia em ações que fazem sua marca avançar.</p>
     <a class="btn" href="#sistema">Conheça nosso trabalho <span aria-hidden="true">↗</span></a>
   </div>
-  <div class="hx-st" aria-live="off"><span class="hx-n" id="hxn">1</span><span class="hx-nm" id="hxs">Compreender</span><i class="hx-ln"><b id="hxp"></b></i></div>
-  <button class="hx-pz" id="hxz" type="button" aria-label="Pausar animação">Ⅱ</button>
+  <div class="hx-lab" id="hxl" aria-hidden="true"></div>
+  <div class="hx-steps" id="hxsteps" aria-label="Etapas do diagrama">
+    <button type="button" data-s="0" class="on"><b>01</b><span>Compreender</span><i><u></u></i></button>
+    <button type="button" data-s="1"><b>02</b><span>Encontrar a direção</span><i><u></u></i></button>
+    <button type="button" data-s="2"><b>03</b><span>Dar forma</span><i><u></u></i></button>
+    <button type="button" data-s="3"><b>04</b><span>Evoluir</span><i><u></u></i></button>
+    <button type="button" class="hx-pz" id="hxz" aria-label="Pausar animação"><svg viewBox="0 0 12 12" aria-hidden="true"><path class="ic-pa" d="M3 2v8M9 2v8"/><path class="ic-pl" d="M3 1.5v9l7.5-4.5z"/></svg></button>
+  </div>
 </section>
 
 <!-- SEÇÃO 2: tese + sistema -->
@@ -1299,7 +1339,9 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/rz-orbit.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/rz-campo3d.js"></script>
+<script src="assets/rz-campo.js"></script>
 <script>
 (function(){
   var d=document,w=window,root=d.documentElement;
@@ -1321,15 +1363,21 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
   }
   var cl=function(v,a,b){return Math.min(b,Math.max(a,v))},ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2},lerp=function(a,b,t){return a+(b-a)*t};
 
-  /* topo V1.1: órbita em quatro atos (assets/rz-orbit.js) */
-  var hxC=$('#hxc'),hxSec=$('#topo'),hxN=$('#hxn'),hxS=$('#hxs'),hxP=$('#hxp'),hxZ=$('#hxz'),hlab=['Compreender','Encontrar a direção','Dar forma','Evoluir'],hcur=-1;
-  var orb=w.RzOrbit(hxC,{section:hxSec,colors:{line:'150,200,214',node:'231,241,244',acc:'105,209,235',text:'231,241,244',bg:'20,35,39'},
-    layout:function(W,H){if(W<700){var tt=hxSec.querySelector('.hx-txt').offsetTop,top0=84,av=tt-12-top0;return {cx:W/2,cy:top0+av*.5,R:Math.max(64,Math.min(W*.25,av/1.9))}}
-      if(W<1000)return {cx:W*.74,cy:H*.5,R:Math.min(W*.15,H*.3)};return {cx:W*.73,cy:H*.5,R:Math.min(W*.17,H*.33)}},
-    onStage:function(s,u){if(s!==hcur){hcur=s;hxN.textContent=s+1;hxS.textContent=hlab[s];[hxN,hxS].forEach(function(e){e.classList.remove('sw');void e.offsetWidth;e.classList.add('sw')})}hxP.style.width=(u*100).toFixed(1)+'%'}});
-  hxZ.addEventListener('click',function(){var p=!orb.paused();orb.pause(p);hxZ.textContent=p?'▶':'Ⅱ';hxZ.setAttribute('aria-label',p?'Reproduzir animação':'Pausar animação')});
-  if(rm)hxZ.textContent='▶';
-  w.addEventListener('scroll',function(){var y=w.scrollY,p=cl(y/(hxSec.offsetHeight||800),0,1);hxC.style.transform='translate3d(0,'+(y*.22).toFixed(1)+'px,0)';hxC.style.opacity=(1-.8*p*p).toFixed(3)},{passive:true});
+  /* topo V1.3: o diagrama original em 3D (assets/rz-campo3d.js), etiquetas HTML e seletor de etapas */
+  var hxC=$('#hxc'),hxSec=$('#topo'),hxZ=$('#hxz'),hxB=$$('#hxsteps button[data-s]'),hcur=-1;
+  function hxLay(W,H){
+    if(W<700){var tt=hxSec.querySelector('.hx-txt').offsetTop,top0=80,av=tt-24-top0,tg=Math.min(W*.62,av*1.05);hxSec.style.setProperty('--hxst',(top0+av-24)+'px');return {x:W/2,y:top0+av*.5,s:(8*H/(.536*tg))/15.5}}
+    var tg2=Math.min(W*.36,H*.6);return {x:W*.73,y:H*.47,s:(8*H/(.536*tg2))/15.5};
+  }
+  function hxStage(s,u){if(s!==hcur){hcur=s;hxB.forEach(function(b,i){b.classList.toggle('on',i===s);b.classList.toggle('done',i<s)})}hxB[s].style.setProperty('--p',u.toFixed(3))}
+  var orb=w.RzCampo3D?w.RzCampo3D(hxC,{section:hxSec,labels:$('#hxl'),layout:hxLay,onStage:hxStage}):null;
+  if(!orb&&w.RzCampo){orb=w.RzCampo(hxC,{section:hxSec,colors:{line:'150,200,214',acc:'105,209,235',text:'231,241,244',bg:'20,35,39',fam0:'105,209,235',fam1:'190,232,243',fam2:'72,160,190'},
+    layout:function(W,H){var L=hxLay(W,H);return {cx:L.x,cy:L.y,R:Math.min(W*.19,H*.36)}},onStage:hxStage})}
+  hxB.forEach(function(b){b.addEventListener('click',function(){if(orb&&orb.seek)orb.seek(+b.dataset.s)})});
+  (function(){var mh=/st=([\d.]+)/.exec(location.hash);if(mh&&orb&&orb.seek)orb.seek(parseFloat(mh[1]))})();
+  hxZ.addEventListener('click',function(){var p=!orb.paused();orb.pause(p);hxZ.classList.toggle('off',p);hxZ.setAttribute('aria-label',p?'Reproduzir animação':'Pausar animação')});
+  if(rm)hxZ.classList.add('off');
+  w.addEventListener('scroll',function(){var y=w.scrollY,p=cl(y/(hxSec.offsetHeight||800),0,1);hxC.style.transform='translate3d(0,'+(y*.22).toFixed(1)+'px,0)';hxC.style.opacity=(1-.8*p*p).toFixed(3);$('#hxl').style.transform=hxC.style.transform;$('#hxl').style.opacity=hxC.style.opacity},{passive:true});
 
   /* respiro: os anéis crescem com o scroll */
   var gearS=$('#respiro');
