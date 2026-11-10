@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {"name": "rzrd-previa", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "4810"], "port": 4810}
+  ]
+}
