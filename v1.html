@@ -1372,6 +1372,20 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
 .hx-act .btn{flex:none;white-space:nowrap}
 .hx-act .hx-steps{flex:none}
 .hx-act .hx-steps button[data-s] span{white-space:nowrap}
+/* V1.10: textos até perto da margem direita; diagrama à esquerda */
+.hx{--hm:max(var(--pad),3.4vw);background:radial-gradient(56% 62% at 36% 30%,rgba(105,209,235,.1),rgba(105,209,235,0) 72%),var(--bg)}
+.hx-txt{column-gap:clamp(32px,4vw,84px)!important}
+.hx h1{font-size:clamp(2.4rem,min(5.9vw,11svh),7.4rem)!important}
+.hx-side{justify-self:stretch!important}
+.hx-side .hx-sub{max-width:none!important;font-size:clamp(1rem,1.32vw,1.5rem)!important;line-height:1.45!important}
+.hx-act{justify-content:space-between;align-self:stretch}
+.hx-side{align-items:stretch!important}
+.hx-side .btn{align-self:flex-start}
+/* ---------- V1.11: frases que trocam com a rolagem ficam centradas numa área fixa ---------- */
+.tz-steps,.px-steps{align-content:center!important;align-items:center}
+.tz-s{font-size:clamp(1.8rem,2.85vw,3.2rem)!important;line-height:1.08!important;max-width:15.5em!important}
+.px-s{font-size:clamp(1.3rem,2.05vw,2.3rem)!important;max-width:19em!important}
+@media(max-width:980px){.tz-s{font-size:clamp(1.45rem,6vw,2rem)!important}.px-s{font-size:clamp(1.1rem,4.6vw,1.45rem)!important}}
 /* ---------- conheça nosso trabalho ---------- */
 .wk{position:relative;height:200vh}
 .wk-pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.6vh,44px);padding-top:82px}
@@ -1681,7 +1695,7 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
   var hxC=$('#hxc'),hxSec=$('#topo'),hxZ=$('#hxz'),hxB=$$('#hxsteps button[data-s]'),hcur=-1;
   function hxLay(W,H){
     if(W<700){var tt=hxSec.querySelector('.hx-txt').offsetTop,top0=80,av=tt-24-top0,tg=Math.min(W*.62,av*1.05);hxSec.style.setProperty('--hxst',(top0+av-24)+'px');return {x:W/2,y:top0+av*.5,s:(8*H/(.536*tg))/15.5}}
-    if(W<1000){var tg3=Math.min(W*.78,H*.62);hxSec.style.setProperty('--sty',(H*.32+tg3*.28)+'px');return {x:W*.5,y:H*.32,s:(8*H/(.536*tg3))/15.5}}var tg2=Math.min(W*.64,H*.74);hxSec.style.setProperty('--sty',(H*.3+tg2*.25)+'px');return {x:W*.5,y:H*.29,s:(8*H/(.536*tg2))/15.5};
+    if(W<1000){var tg3=Math.min(W*.78,H*.62);hxSec.style.setProperty('--sty',(H*.32+tg3*.28)+'px');return {x:W*.5,y:H*.32,s:(8*H/(.536*tg3))/15.5}}var tg2=Math.min(W*.64,H*.74);hxSec.style.setProperty('--sty',(H*.3+tg2*.25)+'px');return {x:W*.36,y:H*.29,s:(8*H/(.536*tg2))/15.5};
   }
   function hxStage(s,u){if(s!==hcur){hcur=s;hxB.forEach(function(b,i){b.classList.toggle('on',i===s);b.classList.toggle('done',i<s)})}hxB[s].style.setProperty('--p',u.toFixed(3))}
   var orb=w.RzCampo3D?w.RzCampo3D(hxC,{section:hxSec,labels:$('#hxl'),layout:hxLay,onStage:hxStage}):null;
