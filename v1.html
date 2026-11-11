@@ -1421,30 +1421,6 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
 .wk-stage .wk-c figcaption span{font-size:12.5px;color:rgba(231,241,244,.6);align-self:center}
 .wk-stage .wk-n b{color:#69D1EB}
 .wk-stage{height:320vh}
-/* ---------- V1.12: padrão único de texto, margens do site e texto parado na rolagem ---------- */
-:root{--fs-h:clamp(2.3rem,min(5.9vw,11svh),7.4rem);--fs-s:clamp(1.25rem,2.1vw,2.4rem)}
-@media(max-width:700px){:root{--fs-h:clamp(2rem,9.2vw,2.8rem);--fs-s:clamp(1.1rem,4.8vw,1.45rem)}}
-/* texto principal de cada seção: um tamanho, um peso, um espaçamento */
-.hx h1,.tz-s,.sis-head h2,.wk-h,.qc h2.qc-h,.px-title,.rz-a,.pr-h,.ct h2{font-size:var(--fs-h)!important;font-weight:500!important;line-height:1!important;letter-spacing:-.05em!important}
-.tz-s,.px-title,.rz-a,.pr-h{max-width:none!important}
-/* frases de apoio: um tamanho */
-.px-s,.rz-b,.pr .bc p,.cf-info .tg{font-size:var(--fs-s)!important;line-height:1.12!important;letter-spacing:-.035em!important}
-/* margens: as mesmas do cabeçalho e das outras seções */
-.hx{--hm:max(var(--pad),calc((100vw - 1728px)/2 + var(--pad)))}
-/* tese: coluna de texto mais larga para o tamanho novo; frase presa no alto; troca só por luz */
-@media(min-width:981px){.tz-grid{grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr)!important}}
-.tz-steps,.px-steps{align-content:start!important;align-items:start!important}
-.tz-s,.px-s{transform:none!important;filter:none!important;transition:opacity .7s var(--ease)!important}
-.tz-s.on,.px-s.on{transition:opacity .9s var(--ease) .2s!important}
-.tz-s .wd>span,.px-s .wd>span{transform:none!important;opacity:1!important;transition:none!important}
-/* ecossistema: as palavras só acendem, sem mudar de lugar */
-.sis .wd>span{transform:none!important}
-/* clareza: título parado e nítido, sem distorção nem desfoque */
-.qw{transform:none!important;filter:none!important;text-shadow:none!important}
-.qc-txt p{transform:none!important;filter:none!important;opacity:1!important}
-.qc{height:auto!important}.qc-pin{position:relative!important}
-/* princípios: os cartões só acendem, sem subir */
-.pr .bc{transform:none!important;opacity:calc(.22 + var(--a,0)*.78)!important}
 /* ---------- LAB ---------- */
 .fx-grain{position:absolute;inset:0;z-index:0;pointer-events:none;background-size:150px 150px;mix-blend-mode:multiply;opacity:.075}
 </style>
@@ -1952,7 +1928,7 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
     var S=$('#sistema'),r=S.getBoundingClientRect(),vh=w.innerHeight;if(r.bottom<-vh||r.top>vh*1.2)return;
     /* a seção fica presa; o título acende primeiro, depois os dois parágrafos; só então ela solta */
     var p=cl(-r.top/Math.max(1,r.height-vh),0,1),q=rm?1e3:cl((p-.04)/.82,0,1)*(sisSp.length+2);
-    sisSp.forEach(function(e,i){var a=cl(q-i,0,1);e.style.opacity=(.3+.7*a).toFixed(3)});
+    sisSp.forEach(function(e,i){var a=cl(q-i,0,1);e.style.opacity=(.12+.88*a).toFixed(3);e.style.transform='translateY('+((1-a)*40).toFixed(1)+'%)'});
   }
   w.addEventListener('scroll',sisScrub,{passive:true});w.addEventListener('resize',sisScrub);sisScrub();
 
