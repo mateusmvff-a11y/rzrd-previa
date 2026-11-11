@@ -1350,6 +1350,28 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
   .hx-side{margin-top:18px;gap:20px!important}
   .hx-steps{left:var(--pad)!important}
 }
+
+/* ---------- V1.9: título maior; bloco da direita mais perto; etapas ao lado do botão ---------- */
+.hx-txt{grid-template-columns:auto minmax(0,1fr)!important;column-gap:clamp(40px,5.4vw,104px)!important}
+.hx h1{font-size:clamp(2.4rem,min(6vw,11svh),7rem)!important}
+.hx-side{max-width:30rem!important;margin-top:.4em}
+.hx-act{display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);flex-wrap:wrap}
+.hx-act .hx-steps{position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:auto!important}
+@media(max-width:980px) and (min-width:701px){.hx h1{font-size:clamp(2.1rem,5.4vw,3.4rem)!important}}
+@media(max-width:700px){.hx-act{gap:14px 20px}}
+.hx{--hm:max(var(--pad),6vw)}
+.hx-txt{column-gap:clamp(32px,4.2vw,80px)!important}
+.hx h1{font-size:clamp(2.4rem,min(5.3vw,10.5svh),6.6rem)!important}
+.hx-side{max-width:none!important}
+.hx-side .hx-sub{max-width:30rem!important}
+.hx-act{flex-wrap:nowrap;gap:clamp(16px,1.8vw,30px)}
+.hx-act .hx-steps{gap:7px!important}
+.hx-act .hx-steps button[data-s] i{width:14px}
+.hx-act .hx-steps button[data-s].on i{width:24px}
+@media(max-width:1100px){.hx-act{flex-wrap:wrap}}
+.hx-act .btn{flex:none;white-space:nowrap}
+.hx-act .hx-steps{flex:none}
+.hx-act .hx-steps button[data-s] span{white-space:nowrap}
 /* ---------- conheça nosso trabalho ---------- */
 .wk{position:relative;height:200vh}
 .wk-pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.6vh,44px);padding-top:82px}
@@ -1422,17 +1444,20 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
     <h1 aria-label="Toda marca tem forças que ainda não aprendeu a usar."><span class="w"><i style="--i:0">Toda</i></span> <span class="w"><i style="--i:1">marca</i></span> <span class="w"><i style="--i:2">tem</i></span> <br class="lb"><span class="w"><i style="--i:3">forças</i></span> <span class="w"><i style="--i:4">que</i></span> <span class="w"><i style="--i:5">ainda</i></span> <span class="w"><i style="--i:6">não</i></span> <br class="lb"><span class="w"><i style="--i:7">aprendeu</i></span> <span class="w"><i style="--i:8">a</i></span> <span class="w"><i style="--i:9">usar.</i></span></h1>
     <div class="hx-side">
     <p class="hx-sub">Entendemos seu negócio, seu mercado e as pessoas que você quer alcançar. Identificamos oportunidades, construímos direções e transformamos estratégia em ações que fazem sua marca avançar.</p>
+    <div class="hx-act">
     <a class="btn" href="#trabalho">Conheça nosso trabalho <span aria-hidden="true">↗</span></a>
-    </div>
-  </div>
-  <div class="hx-lab" id="hxl" aria-hidden="true"></div>
-  <div class="hx-steps" id="hxsteps" aria-label="Etapas do diagrama">
+      <div class="hx-steps" id="hxsteps" aria-label="Etapas do diagrama">
     <button type="button" data-s="0" class="on"><b>01</b><span>Compreender</span><i><u></u></i></button>
     <button type="button" data-s="1"><b>02</b><span>Encontrar a direção</span><i><u></u></i></button>
     <button type="button" data-s="2"><b>03</b><span>Dar forma</span><i><u></u></i></button>
     <button type="button" data-s="3"><b>04</b><span>Evoluir</span><i><u></u></i></button>
     <button type="button" class="hx-pz" id="hxz" aria-label="Pausar animação"><svg viewBox="0 0 12 12" aria-hidden="true"><path class="ic-pa" d="M3 2v8M9 2v8"/><path class="ic-pl" d="M3 1.5v9l7.5-4.5z"/></svg></button>
   </div>
+    </div>
+    </div>
+  </div>
+  <div class="hx-lab" id="hxl" aria-hidden="true"></div>
+
 </section>
 
 <!-- SEÇÃO 2: tese + sistema -->
@@ -1656,7 +1681,7 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
   var hxC=$('#hxc'),hxSec=$('#topo'),hxZ=$('#hxz'),hxB=$$('#hxsteps button[data-s]'),hcur=-1;
   function hxLay(W,H){
     if(W<700){var tt=hxSec.querySelector('.hx-txt').offsetTop,top0=80,av=tt-24-top0,tg=Math.min(W*.62,av*1.05);hxSec.style.setProperty('--hxst',(top0+av-24)+'px');return {x:W/2,y:top0+av*.5,s:(8*H/(.536*tg))/15.5}}
-    if(W<1000){var tg3=Math.min(W*.78,H*.62);hxSec.style.setProperty('--sty',(H*.32+tg3*.28)+'px');return {x:W*.5,y:H*.32,s:(8*H/(.536*tg3))/15.5}}var tg2=Math.min(W*.68,H*.82);hxSec.style.setProperty('--sty',(H*.3+tg2*.25)+'px');return {x:W*.5,y:H*.3,s:(8*H/(.536*tg2))/15.5};
+    if(W<1000){var tg3=Math.min(W*.78,H*.62);hxSec.style.setProperty('--sty',(H*.32+tg3*.28)+'px');return {x:W*.5,y:H*.32,s:(8*H/(.536*tg3))/15.5}}var tg2=Math.min(W*.64,H*.74);hxSec.style.setProperty('--sty',(H*.3+tg2*.25)+'px');return {x:W*.5,y:H*.29,s:(8*H/(.536*tg2))/15.5};
   }
   function hxStage(s,u){if(s!==hcur){hcur=s;hxB.forEach(function(b,i){b.classList.toggle('on',i===s);b.classList.toggle('done',i<s)})}hxB[s].style.setProperty('--p',u.toFixed(3))}
   var orb=w.RzCampo3D?w.RzCampo3D(hxC,{section:hxSec,labels:$('#hxl'),layout:hxLay,onStage:hxStage}):null;

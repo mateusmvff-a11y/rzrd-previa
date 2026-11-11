@@ -86,7 +86,7 @@
     function tgt(st,i,Tm){return st===0?orb(i,Tm,.28,1):st===1?orb(i,Tm,0,.8):st===2?shape(i,Tm):hubPos(i,Tm)}
 
     /* câmera por ato: inclinação do plano, distância */
-    var CAM=[{tilt:.5,dist:15.5},{tilt:.95,dist:13.6},{tilt:.62,dist:14.4},{tilt:.46,dist:16.6}];
+    var CAM=[{tilt:.5,dist:15.5},{tilt:.78,dist:15.2},{tilt:.6,dist:15},{tilt:.46,dist:16.6}];
     var el=rm?HD*.62:0,last=0,paused=rm,visible=true,yaw=0,X=new Float32Array(NP),Z=new Float32Array(NP),Y=new Float32Array(NP),init=false,v3=new T.Vector3();
     new IntersectionObserver(function(es){visible=es[0].isIntersecting},{rootMargin:'60px'}).observe(cv);
 
