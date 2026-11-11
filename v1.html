@@ -1437,6 +1437,24 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
   .tz-s{font-size:clamp(2.4rem,4.3vw,5rem)!important;line-height:1.04!important;max-width:15em!important}
   .pr-h{font-size:clamp(2.6rem,min(5.9vw,11svh),7.4rem)!important;line-height:1!important}
 }
+
+/* ---------- V1.15: auditoria seção por seção ---------- */
+/* por trás: a frase entra inteira, como na tese (antes aparecia cortada no meio) */
+.px-s .wd>span{opacity:1!important;transform:none!important}
+/* ecossistema: parágrafos com peso proporcional ao título */
+@media(min-width:981px){.sis-head>div p{font-size:clamp(1.1rem,1.45vw,1.4rem)!important;line-height:1.42!important}}
+/* produtos: nome e descrição legíveis */
+@media(min-width:981px){
+  .cf-info .tg{font-size:clamp(1.6rem,2.3vw,2.5rem)!important}
+  .cf-info .ds{font-size:clamp(1rem,1.25vw,1.22rem)!important;line-height:1.5!important}
+}
+/* trabalho: nome do cliente numa linha só no celular */
+.wk-stage .wk-c figcaption b{white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:700px){.wk-stage .wk-c figcaption{left:12px;right:12px;bottom:12px;gap:8px}.wk-stage .wk-c figcaption b{font-size:12px;padding:6px 10px 6px 9px}}
+/* conversa: a segunda frase estava escura sobre fundo escuro; cores da paleta azul */
+.ct-panel{color:#E7F1F4!important}
+.ct .ct-panel h2,.ct-txt p:first-child{color:#E7F1F4!important}
+.ct-txt p{color:rgba(231,241,244,.62)!important}
 /* ---------- LAB ---------- */
 .fx-grain{position:absolute;inset:0;z-index:0;pointer-events:none;background-size:150px 150px;mix-blend-mode:multiply;opacity:.075}
 </style>
@@ -1955,12 +1973,12 @@ html.js .rv{transition:opacity 1.5s var(--ease),transform 1.6s var(--ease),filte
   function pxScrub(){
     var r=pxS.getBoundingClientRect(),vh=w.innerHeight;if(r.bottom<-vh*.2||r.top>vh*1.2)return;
     var p=cl(-r.top/(r.height-vh),0,1);
-    var si=[0,1,2].map(function(i){return rm?1:cl(p*3-i,0,1)});
+    var si=[0,1,2].map(function(i){return rm?1:cl(p*3-i,0,1)}),qi=rm?1:cl((vh*.95-r.top)/(vh*.95),0,1);
     var A=function(e,v){if(e)e.style.setProperty('--a',cl(v,0,1).toFixed(3))};
     pxWords.forEach(function(ws,i){var q=cl(si[i]/.5,0,1)*(ws.length+1);ws.forEach(function(e,j){var a=cl(q-j,0,1);e.style.opacity=a.toFixed(3);e.style.transform='translateY('+((1-a)*105).toFixed(1)+'%)'})});
-    pxRw.forEach(function(e,k){A(e,(si[0]-.2-.1*k)/.24)});
-    A(pxPa,(si[1]-.18)/.36);A(pxPb,(si[1]-.42)/.32);
-    pxVc.forEach(function(e,k){var a=(si[2]-.15-.14*k)/.34;A(e,a);A(pxVl[k],a)});
+    pxRw.forEach(function(e,k){A(e,(qi*1.4-.2-.11*k)/.3)});
+    A(pxPa,(si[1]-.02)/.22);A(pxPb,(si[1]-.14)/.22);
+    pxVc.forEach(function(e,k){var a=(si[2]-.02-.08*k)/.22;A(e,a);A(pxVl[k],a)});
   }
   w.addEventListener('scroll',pxScrub,{passive:true});w.addEventListener('resize',pxScrub);pxScrub();
 
