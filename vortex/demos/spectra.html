@@ -1,0 +1,443 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><style>.rzrd-spectra {
+  container: rzrd-spectra / inline-size;
+  background: var(--paper);
+  line-height: 1.4;
+  font-size: 16px;
+  color: var(--ink);
+  font-family: var(--body);
+  --paper: #f4f1e8;
+  --ink: #222b2b;
+  --muted: #485657;
+  --violet: #58358f;
+  --light-violet: #d5c3ff;
+  --cyan: #a2dfda;
+  --dark: #202628;
+  --panel: #252d2f;
+  --stroke: #485455;
+  --quiet: #b7c0bd;
+  --ui: "Space Grotesk", Inter, sans-serif;
+  --body: Inter, system-ui, sans-serif;
+}
+.rzrd-spectra, :where(.rzrd-spectra) *, :where(.rzrd-spectra) *::before, :where(.rzrd-spectra) *::after { box-sizing: border-box; }
+:where(.rzrd-spectra) [hidden] { display: none !important; }
+:where(.rzrd-spectra) button, :where(.rzrd-spectra) a { -webkit-tap-highlight-color: transparent; }
+:where(.rzrd-spectra) button { font: inherit; cursor: pointer; text-transform: none; letter-spacing: normal; }
+:where(.rzrd-spectra) a { color: inherit; }
+:where(.rzrd-spectra) :focus-visible { outline: 2px solid var(--violet); outline-offset: 4px; }
+:where(.rzrd-spectra) .spectra-player :focus-visible { outline-color: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-feature { width: min(1280px, calc(100% - 112px)); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr); gap: clamp(30px, 4cqi, 65px); align-items: center; padding-block: clamp(46px, 7.25vh, 97px); }
+:where(.rzrd-spectra) .spectra-intro { padding-bottom: 26px; }
+:where(.rzrd-spectra) .spectra-eyebrow { display: flex; align-items: center; gap: 9px; color: var(--violet); font: 700 11px/1.4 var(--ui); text-transform: uppercase; letter-spacing: .14em; margin: 0 0 24px; }
+:where(.rzrd-spectra) .spectra-eyebrow span { color: #8068a2; }
+:where(.rzrd-spectra) .spectra-focus-mark { display: inline-block; width: 19px; height: 11px; flex: none; position: relative; color: inherit; }
+:where(.rzrd-spectra) .spectra-focus-mark::before, :where(.rzrd-spectra) .spectra-focus-mark::after { content: ""; position: absolute; height: 1.5px; background: currentColor; transform-origin: left center; }
+:where(.rzrd-spectra) .spectra-focus-mark::before { width: 17px; left: 1px; top: 3px; transform: rotate(-13deg); }
+:where(.rzrd-spectra) .spectra-focus-mark::after { width: 11px; left: 3px; top: 6px; transform: rotate(15deg); }
+:where(.rzrd-spectra) .spectra-title { font: 400 clamp(43px, 4.25cqi, 69px)/.99 Georgia, "Times New Roman", serif; letter-spacing: -.065em; margin: 0; max-width: 10ch; }
+:where(.rzrd-spectra) .spectra-title em { font-weight: 400; color: var(--violet); }
+:where(.rzrd-spectra) .spectra-lede { font-size: 14px; line-height: 1.75; max-width: 40ch; color: var(--muted); margin: 24px 0 25px; }
+:where(.rzrd-spectra) .spectra-cta { min-height: 48px; display: inline-flex; align-items: center; gap: 29px; color: #fff; background: var(--violet); text-decoration: none; padding: 0 15px; border-radius: 6px; font: 700 14px/1 var(--ui); transition: background 160ms; }
+:where(.rzrd-spectra) .spectra-cta:hover { background: #432369; }
+:where(.rzrd-spectra) .spectra-cta span { font-size: 17px; font-weight: 400; }
+
+:where(.rzrd-spectra) .spectra-demo { min-width: 0; scroll-margin-top: 22px; }
+:where(.rzrd-spectra) .spectra-player { border: 1px solid #374344; overflow: hidden; border-radius: 14px; color: var(--paper); background: var(--dark); box-shadow: 0 20px 45px -28px #1823238a; }
+:where(.rzrd-spectra) .spectra-player-header { min-height: 53px; padding-inline: 20px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px solid #3e4a4b; }
+:where(.rzrd-spectra) .spectra-player-name { display: flex; align-items: center; gap: 7px; font: 700 15px/1 var(--ui); }
+:where(.rzrd-spectra) .spectra-player-name i { color: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-live-note { color: var(--quiet); font-size: 11px; white-space: nowrap; display: flex; align-items: center; gap: 7px; }
+:where(.rzrd-spectra) .spectra-live-note span { width: 6px; height: 6px; border-radius: 50%; background: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-stage { position: relative; isolation: isolate; display: grid; align-items: center; padding: 27px 33px; min-height: 410px; background: radial-gradient(ellipse at 58% 26%, #344244 0%, #283234 44%, #22292b 80%); overflow: hidden; }
+:where(.rzrd-spectra) .spectra-optics { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background-image: linear-gradient(#c1dedb12 1px, transparent 1px), linear-gradient(90deg, #c1dedb12 1px, transparent 1px); background-size: 29px 29px; }
+:where(.rzrd-spectra) .spectra-optics i { position: absolute; height: 1px; width: 110%; top: 50%; left: -5%; opacity: .38; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+:where(.rzrd-spectra) .spectra-optics i:nth-child(1) { transform: rotate(16deg); }
+:where(.rzrd-spectra) .spectra-optics i:nth-child(2) { transform: rotate(-16deg); }
+:where(.rzrd-spectra) .spectra-optics i:nth-child(3) { transform: rotate(0deg); opacity: .2; }
+:where(.rzrd-spectra) .spectra-optics b { position: absolute; top: 50%; left: 50%; width: 390px; height: 390px; transform: translate(-50%,-50%); border: 1px solid #a2dfda30; border-radius: 50%; box-shadow: 0 0 0 28px #a2dfda09, 0 0 0 58px #a2dfda06; }
+:where(.rzrd-spectra) .spectra-scene { width: 100%; max-width: 570px; margin-inline: auto; animation: rzrd-spectra-enter 360ms cubic-bezier(.2,.72,.24,1) both; }
+@keyframes rzrd-spectra-enter { from { opacity: 0; transform: translateY(9px) scale(.985); } to { opacity: 1; transform: none; } }
+:where(.rzrd-spectra) .spectra-workbench { overflow: hidden; border: 1px solid #647070; border-radius: 10px; background: var(--dark); box-shadow: 0 16px 38px #12161687; }
+:where(.rzrd-spectra) .spectra-app-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 15px; border-bottom: 1px solid var(--stroke); color: var(--quiet); font-size: 10px; }
+:where(.rzrd-spectra) .spectra-app-head b { display: flex; gap: 6px; align-items: center; color: var(--paper); font: 700 13px/1 var(--ui); }
+:where(.rzrd-spectra) .spectra-app-head .spectra-focus-mark { color: var(--cyan); }
+:where(.rzrd-spectra) .spectra-overview-content, :where(.rzrd-spectra) .spectra-evidence-content, :where(.rzrd-spectra) .spectra-notebook-content { padding: 16px; }
+:where(.rzrd-spectra) .spectra-overview-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 13px; }
+:where(.rzrd-spectra) .spectra-app-label { font: 700 9px/1.4 var(--ui); color: var(--quiet); margin: 0 0 4px; letter-spacing: .13em; text-transform: uppercase; }
+:where(.rzrd-spectra) .spectra-scene h3 { font: 400 24px/1.06 Georgia, serif; letter-spacing: -.035em; margin: 0; }
+:where(.rzrd-spectra) .spectra-neutral-chip { white-space: nowrap; color: var(--quiet); font-size: 10px; padding: 5px 7px; border: 1px solid #546162; border-radius: 4px; }
+:where(.rzrd-spectra) .spectra-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0 0 10px; }
+:where(.rzrd-spectra) .spectra-kpis > div { border: 1px solid var(--stroke); border-radius: 5px; background: var(--panel); padding: 7px 8px; }
+:where(.rzrd-spectra) .spectra-kpis > .spectra-kpi-focus { border-color: #8e78ae; background: #3a334a; }
+:where(.rzrd-spectra) .spectra-kpis dt { color: var(--quiet); font-size: 9px; line-height: 1.25; }
+:where(.rzrd-spectra) .spectra-kpis dd { margin: 4px 0 0; font: 700 17px/1.2 var(--ui); font-variant-numeric: tabular-nums; }
+:where(.rzrd-spectra) .spectra-kpis dd span { font: 650 9px/1.3 var(--body); color: var(--light-violet); display: inline-block; }
+:where(.rzrd-spectra) .spectra-weekly-chart { margin: 0; padding: 8px 9px 6px; border: 1px solid var(--stroke); border-radius: 5px; }
+:where(.rzrd-spectra) .spectra-weekly-chart figcaption { color: var(--quiet); font-size: 10px; margin-bottom: 7px; }
+:where(.rzrd-spectra) .spectra-chart-grid { display: grid; grid-template-columns: 21px 1fr; min-height: 72px; }
+:where(.rzrd-spectra) .spectra-chart-axis { display: flex; flex-direction: column; justify-content: space-between; font: 500 9px/1 var(--ui); color: var(--quiet); }
+:where(.rzrd-spectra) .spectra-chart-series { display: grid; grid-template-columns: repeat(2, 1fr); background: linear-gradient(var(--stroke), var(--stroke)) top/100% 1px no-repeat, linear-gradient(var(--stroke), var(--stroke)) center/100% 1px no-repeat, linear-gradient(var(--stroke), var(--stroke)) bottom/100% 1px no-repeat; }
+:where(.rzrd-spectra) .spectra-chart-series > span { display: flex; position: relative; flex-direction: column; justify-content: flex-end; align-items: center; }
+:where(.rzrd-spectra) .spectra-chart-series i { width: min(66%, 100px); height: 80%; border-radius: 3px 3px 0 0; background: #647577; transform-origin: bottom; animation: rzrd-spectra-column 550ms 120ms both; }
+:where(.rzrd-spectra) .spectra-chart-series > span:nth-child(2) i { height: 100%; background: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-chart-series b { position: absolute; bottom: 4px; font: 700 11px/1 var(--ui); }
+:where(.rzrd-spectra) .spectra-chart-series > span:nth-child(2) b { color: #25193b; }
+@keyframes rzrd-spectra-column { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+:where(.rzrd-spectra) .spectra-chart-periods { padding-left: 21px; display: grid; grid-template-columns: repeat(2, 1fr); text-align: center; font-size: 9px; color: var(--quiet); margin-top: 4px; }
+:where(.rzrd-spectra) .spectra-overview-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+:where(.rzrd-spectra) .spectra-overview-actions p { margin: 0; }
+:where(.rzrd-spectra) .spectra-evidence-label, :where(.rzrd-spectra) .spectra-evidence-button { color: var(--cyan); }
+:where(.rzrd-spectra) .spectra-app-description { font-size: 11px; line-height: 1.5; color: var(--quiet); margin: 7px 0 0; }
+:where(.rzrd-spectra) .spectra-bars { display: grid; gap: 9px; border-top: 1px solid var(--stroke); border-bottom: 1px solid var(--stroke); margin-top: 12px; padding-block: 12px; }
+:where(.rzrd-spectra) .spectra-bars > div { display: grid; grid-template-columns: 68px 1fr 25px; align-items: center; gap: 8px; font-size: 11px; font-variant-numeric: tabular-nums; }
+:where(.rzrd-spectra) .spectra-bars > div > i { height: 7px; width: 100%; border-radius: 2px; background: var(--cyan); transform-origin: left; animation: rzrd-spectra-bar 550ms 120ms both; }
+:where(.rzrd-spectra) .spectra-bars > div:nth-child(2) i { width: 57.9%; background: #7d8d8c; }
+@keyframes rzrd-spectra-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+:where(.rzrd-spectra) .spectra-measure-actions { display: flex; justify-content: space-between; gap: 5px; margin-top: 8px; }
+:where(.rzrd-spectra) .spectra-evidence-button, :where(.rzrd-spectra) .spectra-mini-action { min-height: 44px; display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--stroke); border-radius: 5px; padding: 4px 8px; font-size: 10px; font-weight: 650; background: var(--panel); }
+:where(.rzrd-spectra) .spectra-evidence-button:hover, :where(.rzrd-spectra) .spectra-evidence-button[aria-expanded="true"] { border-color: var(--cyan); color: var(--cyan); }
+:where(.rzrd-spectra) .spectra-evidence-button .spectra-focus-mark { width: 17px; }
+:where(.rzrd-spectra) .spectra-mini-action { color: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-mini-action:hover { border-color: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-measure-detail { font-size: 10px; line-height: 1.35; margin-top: 8px; background: #293b3b; border-left: 2px solid var(--cyan); border-radius: 2px; padding: 6px 9px; animation: rzrd-spectra-enter 160ms both; }
+:where(.rzrd-spectra) .spectra-measure-detail p { margin: 3px 0; }
+:where(.rzrd-spectra) .spectra-measure-detail strong { color: var(--cyan); margin-right: 4px; }
+:where(.rzrd-spectra) .spectra-measure-detail p:nth-child(3) { color: var(--quiet); }
+:where(.rzrd-spectra) .spectra-decision { margin: 13px 0 9px; border-top: 1px solid var(--stroke); }
+:where(.rzrd-spectra) .spectra-decision > div { display: grid; grid-template-columns: minmax(78px, .85fr) minmax(0, 2fr); gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--stroke); font-size: 11px; }
+:where(.rzrd-spectra) .spectra-decision dt { font-weight: 700; color: var(--quiet); }
+:where(.rzrd-spectra) .spectra-decision dd { margin: 0; }
+:where(.rzrd-spectra) .spectra-notebook-actions { display: flex; justify-content: space-between; gap: 5px; }
+:where(.rzrd-spectra) .spectra-primary-mini { color: #25193b; background: var(--light-violet); border-color: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-primary-mini:hover { background: #e6dbff; }
+:where(.rzrd-spectra) .spectra-save-status { margin: 8px 0 0; min-height: 24px; font-size: 11px; }
+:where(.rzrd-spectra) .spectra-save-status:not(:empty) { color: #9de1b6; background: #203b31; border-radius: 4px; padding: 4px 7px; animation: rzrd-spectra-enter 250ms both; }
+
+:where(.rzrd-spectra) .spectra-player-footer { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 11px; padding: 10px 16px; min-height: 61px; border-top: 1px solid #3e4a4b; }
+:where(.rzrd-spectra) .spectra-play { color: var(--paper); width: 44px; height: 44px; border-radius: 50%; border: 1px solid #596667; background: #303a3c; font-size: 12px; }
+:where(.rzrd-spectra) .spectra-play:hover { color: var(--light-violet); border-color: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-player-footer p { font-size: 12px; font-weight: 650; margin: 0; line-height: 1.4; }
+:where(.rzrd-spectra) [data-spectra-timer] { font-size: 10px; color: var(--quiet); font-variant-numeric: tabular-nums; white-space: nowrap; }
+:where(.rzrd-spectra) .spectra-progress-track { height: 2px; background: #3e4a4b; }
+:where(.rzrd-spectra) [data-spectra-progress] { height: 100%; width: 100%; transform: scaleX(0); transform-origin: left; background: var(--light-violet); }
+:where(.rzrd-spectra) .spectra-scene-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 13px; border-bottom: 1px solid #c1c6bd; }
+:where(.rzrd-spectra) .spectra-scene-tabs button { position: relative; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 0; background: transparent; color: var(--muted); font: 650 13px/1 var(--ui); }
+:where(.rzrd-spectra) .spectra-scene-tabs button > span { color: #64736f; font-size: 10px; font-variant-numeric: tabular-nums; }
+:where(.rzrd-spectra) .spectra-scene-tabs button[aria-selected="true"] { color: var(--violet); font-weight: 700; background: #eae2ef; border-radius: 5px 5px 0 0; }
+:where(.rzrd-spectra) .spectra-scene-tabs button[aria-selected="true"] > span { color: var(--violet); }
+:where(.rzrd-spectra) .spectra-scene-tabs button[aria-selected="true"]::after { content: ""; position: absolute; inset: auto 0 -1px; height: 2px; background: var(--violet); }
+:where(.rzrd-spectra) .spectra-scene-tabs button:hover { color: var(--violet); }
+:where(.rzrd-spectra) .spectra-demo-note { text-align: right; font-size: 10px; line-height: 1.35; color: var(--muted); margin: 10px 0 0; }
+
+@container rzrd-spectra (min-width: 1450px) {
+  :where(.rzrd-spectra) .spectra-stage { min-height: 440px; }
+}
+@container rzrd-spectra (max-width: 1070px) {
+  :where(.rzrd-spectra) .spectra-feature { width: calc(100% - 64px); }
+  :where(.rzrd-spectra) .spectra-feature { gap: 27px; }
+  :where(.rzrd-spectra) .spectra-stage { padding-inline: 20px; }
+  :where(.rzrd-spectra) .spectra-title { font-size: clamp(40px, 5cqi, 56px); }
+}
+@container rzrd-spectra (max-width: 760px) {
+  :where(.rzrd-spectra) .spectra-feature { width: calc(100% - 40px); }
+  :where(.rzrd-spectra) .spectra-feature { grid-template-columns: minmax(0,1fr); padding-block: 34px 42px; gap: 32px; }
+  :where(.rzrd-spectra) .spectra-intro { padding: 0; }
+  :where(.rzrd-spectra) .spectra-eyebrow { margin-bottom: 13px; }
+  :where(.rzrd-spectra) .spectra-title { font-size: clamp(37px, 8cqi, 56px); max-width: 15ch; }
+  :where(.rzrd-spectra) .spectra-lede { margin: 15px 0 17px; max-width: 55ch; }
+  :where(.rzrd-spectra) .spectra-stage { min-height: 365px; padding: 18px 12px; }
+}
+@container rzrd-spectra (max-width: 410px) {
+  :where(.rzrd-spectra) .spectra-feature { width: calc(100% - 28px); }
+  :where(.rzrd-spectra) .spectra-stage { padding-inline: 8px; }
+  :where(.rzrd-spectra) .spectra-overview-content, :where(.rzrd-spectra) .spectra-evidence-content, :where(.rzrd-spectra) .spectra-notebook-content { padding: 10px; }
+  :where(.rzrd-spectra) .spectra-player-header { padding-inline: 12px; }
+  :where(.rzrd-spectra) .spectra-player-footer { padding-inline: 10px; }
+  :where(.rzrd-spectra) .spectra-scene-tabs button { font-size: 12px; gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.rzrd-spectra) *, :where(.rzrd-spectra) *::before, :where(.rzrd-spectra) *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+
+html,body{margin:0;padding:0;background:#f4f1e8;overflow-x:hidden;}
+.rzrd-spectra .spectra-feature{display:block!important;width:100%!important;max-width:100%!important;padding:0!important;margin:0!important;}
+.rzrd-spectra .spectra-demo{max-width:100%;margin:0!important;}
+.rzrd-spectra .spectra-stage{min-height:355px;}
+@media(max-width:600px){.rzrd-spectra .spectra-stage{min-height:360px;padding:10px!important;}}
+</style></head><body><section class="rzrd-spectra" data-spectra-section aria-label="Demonstração Spectra"><a href="#rzrd-spectra-jornada" data-spectra-start-tour hidden>Iniciar</a><div class="spectra-feature"><div aria-label="Demonstração interativa da Spectra" class="spectra-demo" data-spectra-demo="" id="rzrd-spectra-jornada" tabindex="-1">
+<div class="spectra-player">
+<div class="spectra-player-header">
+<div class="spectra-player-name"><i aria-hidden="true" class="spectra-focus-mark"></i> Spectra</div>
+<span class="spectra-live-note"><span aria-hidden="true"></span> Demonstração</span>
+</div>
+<div class="spectra-stage">
+<div aria-hidden="true" class="spectra-optics"><i></i><i></i><i></i><b></b></div>
+<section aria-labelledby="rzrd-spectra-tab-overview" class="spectra-scene" id="rzrd-spectra-scene-overview" role="tabpanel">
+<div class="spectra-workbench">
+<div class="spectra-app-head"><b><i aria-hidden="true" class="spectra-focus-mark"></i> Spectra</b><span>Visão geral</span></div>
+<div class="spectra-overview-content">
+<div class="spectra-overview-heading">
+<div><p class="spectra-app-label">Leitura da semana</p><h3>Mais salvamentos por publicação</h3></div>
+<span class="spectra-neutral-chip">Estúdio Lume</span>
+</div>
+<dl class="spectra-kpis">
+<div class="spectra-kpi-focus"><dt>Média por post</dt><dd>30 <span>+25%</span></dd></div>
+<div><dt>Salvamentos</dt><dd>180</dd></div>
+<div><dt>Posts medidos</dt><dd>6 de 6</dd></div>
+</dl>
+<figure class="spectra-weekly-chart">
+<figcaption>Salvamentos por publicação</figcaption>
+<div aria-label="Média de 24 entre 26 de outubro e 1 de novembro, e de 30 entre 2 e 8 de novembro." class="spectra-chart-grid" role="img">
+<span aria-hidden="true" class="spectra-chart-axis"><span>30</span><span>15</span><span>0</span></span>
+<div aria-hidden="true" class="spectra-chart-series"><span><i></i><b>24</b></span><span><i></i><b>30</b></span></div>
+</div>
+<div aria-hidden="true" class="spectra-chart-periods"><span>26 out. a 1 nov.</span><span>2 a 8 nov.</span></div>
+</figure>
+<div class="spectra-overview-actions">
+<p class="spectra-app-description">Instagram · Medição aos 7 dias</p>
+<button class="spectra-mini-action spectra-primary-mini" data-open-evidence="" type="button">Investigar sinal <span aria-hidden="true">↗</span></button>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="rzrd-spectra-tab-evidence" class="spectra-scene spectra-evidence-scene" hidden="" id="rzrd-spectra-scene-evidence" role="tabpanel">
+<div class="spectra-workbench">
+<div class="spectra-app-head"><b><i aria-hidden="true" class="spectra-focus-mark"></i> Spectra</b><span>Análises</span></div>
+<div class="spectra-evidence-content">
+<div>
+<p class="spectra-app-label spectra-evidence-label">Salvamentos por publicação</p>
+<h3>Carrosséis ficaram à frente.</h3>
+<p class="spectra-app-description">Na semana de 2 a 8 de novembro, os carrosséis tiveram mais salvamentos por post.</p>
+</div>
+<div aria-label="Médias: 38 salvamentos por carrossel e 22 por Reel." class="spectra-bars" role="group">
+<div><span>Carrosséis</span><i></i><b>38</b></div>
+<div><span>Reels</span><i></i><b>22</b></div>
+</div>
+<div class="spectra-measure-actions">
+<button aria-controls="rzrd-spectra-measure-detail" aria-expanded="false" class="spectra-evidence-button" type="button"><i aria-hidden="true" class="spectra-focus-mark"></i> E01 <span>Ver evidência</span></button>
+<button class="spectra-mini-action" data-open-notebook="" type="button">Registrar decisão <span aria-hidden="true">↗</span></button>
+</div>
+<div class="spectra-measure-detail" data-spectra-measure-detail="" hidden="" id="rzrd-spectra-measure-detail">
+<p><strong>E01</strong> <span>Instagram · 26 out. a 8 nov. 2026</span></p>
+<p>4 de 4 posts na semana anterior e 6 de 6 na atual, medidos aos 7 dias.</p>
+<p>Na semana atual, foram 3 carrosséis e 3 Reels. A amostra orienta um teste de formato.</p>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="rzrd-spectra-tab-notebook" class="spectra-scene" hidden="" id="rzrd-spectra-scene-notebook" role="tabpanel">
+<div class="spectra-workbench">
+<div class="spectra-app-head"><b><i aria-hidden="true" class="spectra-focus-mark"></i> Spectra</b><span>Caderno do perfil</span></div>
+<div class="spectra-notebook-content">
+<p class="spectra-app-label">Decisão editorial</p>
+<h3>Comparar formatos no mesmo tema</h3>
+<dl class="spectra-decision">
+<div><dt>O que fazer</dt><dd>Publicar um carrossel e um Reel sobre o mesmo tema em condições semelhantes.</dd></div>
+<div><dt>O que medir</dt><dd>Salvamentos por publicação.</dd></div>
+<div><dt>Quando conferir</dt><dd>Sete dias após cada publicação.</dd></div>
+</dl>
+<div class="spectra-notebook-actions">
+<button class="spectra-evidence-button" data-spectra-review-evidence="" type="button"><i aria-hidden="true" class="spectra-focus-mark"></i> E01 <span>Ver evidência</span></button>
+<button class="spectra-mini-action spectra-primary-mini" data-spectra-save="" type="button">Salvar no Caderno <span aria-hidden="true">↗</span></button>
+</div>
+<p class="spectra-save-status" data-spectra-save-status="" role="status" tabindex="-1"></p>
+</div>
+</div>
+</section>
+</div>
+<div class="spectra-player-footer">
+<button aria-label="Reproduzir demonstração de 30 segundos" class="spectra-play" data-spectra-play="" title="Reproduzir" type="button"><span aria-hidden="true">▶</span></button>
+<p data-spectra-caption="">Veja o que mudou na semana.</p>
+<span aria-hidden="true" data-spectra-timer="">0:00 / 0:30</span>
+</div>
+<div aria-hidden="true" class="spectra-progress-track"><div data-spectra-progress=""></div></div>
+</div>
+<div aria-label="Cenas da demonstração" class="spectra-scene-tabs" role="tablist">
+<button aria-controls="rzrd-spectra-scene-overview" aria-selected="true" id="rzrd-spectra-tab-overview" role="tab" type="button"><span>01</span> Leitura da semana</button>
+<button aria-controls="rzrd-spectra-scene-evidence" aria-selected="false" id="rzrd-spectra-tab-evidence" role="tab" tabindex="-1" type="button"><span>02</span> Evidência</button>
+<button aria-controls="rzrd-spectra-scene-notebook" aria-selected="false" id="rzrd-spectra-tab-notebook" role="tab" tabindex="-1" type="button"><span>03</span> Caderno</button>
+</div>
+<p class="spectra-demo-note">Painel inspirado no Looker. Dados fictícios.</p>
+</div></div></section><script>(() => {
+  const section = document.querySelector("[data-spectra-section]");
+  if (!section) return;
+
+  const boundaries = [0, 8_000, 20_000, 30_000];
+  const captions = [
+    "Veja o que mudou na semana.",
+    "Confira o que sustenta o achado.",
+    "Registre o próximo teste e como medir seu resultado.",
+  ];
+  const panels = [...section.querySelectorAll(".spectra-scene")];
+  const tabs = [...section.querySelectorAll('[role="tab"]')];
+  const demo = section.querySelector("[data-spectra-demo]");
+  const play = section.querySelector("[data-spectra-play]");
+  const caption = section.querySelector("[data-spectra-caption]");
+  const timeLabel = section.querySelector("[data-spectra-timer]");
+  const progress = section.querySelector("[data-spectra-progress]");
+  const evidence = section.querySelector(".spectra-evidence-button");
+  const detail = section.querySelector("[data-spectra-measure-detail]");
+  const save = section.querySelector("[data-spectra-save]");
+  const saveStatus = section.querySelector("[data-spectra-save-status]");
+
+  let scene = 0;
+  let elapsed = 0;
+  let startedAt = null;
+  let animationFrame = 0;
+
+  function setEvidence(open) {
+    detail.hidden = !open;
+    evidence.setAttribute("aria-expanded", String(open));
+  }
+
+  function setSaved(saved) {
+    save.setAttribute("aria-disabled", String(saved));
+    saveStatus.textContent = saved ? "Decisão salva no Caderno." : "";
+  }
+
+  function showScene(index) {
+    if (scene === index) return;
+    scene = index;
+    panels.forEach((panel, position) => {
+      panel.hidden = position !== index;
+    });
+    tabs.forEach((tab, position) => {
+      tab.setAttribute("aria-selected", String(position === index));
+      tab.tabIndex = position === index ? 0 : -1;
+    });
+    caption.textContent = captions[index];
+  }
+
+  function updateClock() {
+    progress.style.transform = `scaleX(${elapsed / boundaries[3]})`;
+    timeLabel.textContent = `0:${String(Math.floor(elapsed / 1_000)).padStart(2, "0")} / 0:30`;
+  }
+
+  function updatePlayButton() {
+    const playing = startedAt !== null;
+    const finished = elapsed === boundaries[3];
+    const label = playing ? "Pausar demonstração" : finished ? "Repetir demonstração" : "Reproduzir demonstração de 30 segundos";
+    play.setAttribute("aria-label", label);
+    play.title = label;
+    play.firstElementChild.textContent = playing ? "Ⅱ" : finished ? "↻" : "▶";
+  }
+
+  function pause() {
+    startedAt = null;
+    cancelAnimationFrame(animationFrame);
+    updatePlayButton();
+  }
+
+  function tick(now) {
+    elapsed = Math.min(now - startedAt, boundaries[3]);
+    const next = elapsed >= boundaries[2] ? 2 : elapsed >= boundaries[1] ? 1 : 0;
+    showScene(next);
+
+    if (next === 1 && detail.hidden === (elapsed >= 12_000)) {
+      setEvidence(elapsed >= 12_000);
+    }
+    if (next === 2 && elapsed >= 25_000 && !saveStatus.textContent) {
+      setSaved(true);
+    }
+
+    updateClock();
+    if (elapsed < boundaries[3]) {
+      animationFrame = requestAnimationFrame(tick);
+    } else {
+      pause();
+    }
+  }
+
+  function start() {
+    if (startedAt !== null) return;
+    if (elapsed === boundaries[3]) {
+      elapsed = 0;
+    }
+    if (elapsed === 0) {
+      setEvidence(false);
+      setSaved(false);
+      showScene(0);
+      updateClock();
+    }
+    startedAt = performance.now() - elapsed;
+    updatePlayButton();
+    animationFrame = requestAnimationFrame(tick);
+  }
+
+  function select(index, focusTab = false) {
+    pause();
+    elapsed = boundaries[index];
+    setEvidence(false);
+    showScene(index);
+    updateClock();
+    updatePlayButton();
+    if (focusTab) tabs[index].focus();
+  }
+
+  play.addEventListener("click", () => {
+    if (startedAt === null) start();
+    else pause();
+  });
+
+  section.querySelector("[data-spectra-start-tour]").addEventListener("click", event => {
+    event.preventDefault();
+    select(0);
+    demo.focus({ preventScroll: true });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    demo.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
+    start();
+  });
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => select(index));
+    tab.addEventListener("keydown", event => {
+      const move = {
+        ArrowRight: (index + 1) % tabs.length,
+        ArrowLeft: (index + tabs.length - 1) % tabs.length,
+        Home: 0,
+        End: tabs.length - 1,
+      };
+      if (!Object.hasOwn(move, event.key)) return;
+      event.preventDefault();
+      select(move[event.key], true);
+    });
+  });
+
+  section.querySelector("[data-open-evidence]").addEventListener("click", () => {
+    select(1);
+    setEvidence(true);
+    evidence.focus();
+  });
+
+  evidence.addEventListener("click", () => {
+    pause();
+    setEvidence(detail.hidden);
+  });
+
+  section.querySelector("[data-open-notebook]").addEventListener("click", () => {
+    select(2);
+    (saveStatus.textContent ? saveStatus : save).focus();
+  });
+
+  section.querySelector("[data-spectra-review-evidence]").addEventListener("click", () => {
+    select(1);
+    setEvidence(true);
+    evidence.focus();
+  });
+
+  save.addEventListener("click", () => {
+    if (saveStatus.textContent) return;
+    pause();
+    setSaved(true);
+    saveStatus.focus();
+  });
+
+  demo.addEventListener("focusin", event => {
+    if (event.target.closest(".spectra-scene") && startedAt !== null) pause();
+  });
+})();
+</script>
+<script>
+(()=>{let last=0;function measure(){const h=Math.ceil(document.body.getBoundingClientRect().height)+8;if(Math.abs(h-last)>2){last=h;parent.postMessage({kind:'rzrd-product-demo-height',height:h},'*')}}
+addEventListener('load',measure);if(typeof ResizeObserver!=='undefined')new ResizeObserver(measure).observe(document.body);setTimeout(measure,100);})();
+</script>
+</body></html>
