@@ -242,15 +242,20 @@ main > .sec header.sh,main > .sec header.bh,main > .sec header.hh,#evolucao .seq
 #trabalhos .card:hover .play i,#trabalhos .play:focus-visible i{transform:none;opacity:1}
 #trabalhos [data-r]{opacity:0;transform:translateY(24px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
 #trabalhos [data-r].in{opacity:1;transform:none}
-#trabalhos .vA .stage{height:min(88svh,58vw);margin-inline:0}
-#trabalhos .vA .st-words{left:max(5cqw,calc((100cqw - var(--max))/2 + var(--pad)))}
-#trabalhos .vA .st-btn{right:max(16px,3cqw,calc((100cqw - var(--max))/2 + var(--pad)))}
-#trabalhos .vA .under{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);padding-top:clamp(26px,3vw,44px);padding-bottom:clamp(80px,9vw,150px)}
-#trabalhos .vA .under .name{grid-column:1/span 4}
-#trabalhos .vA .under .txt{grid-column:5/-1;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));column-gap:var(--gap);row-gap:clamp(20px,2.4vw,36px);align-items:end}
-#trabalhos .vA .under .h3{grid-column:1/-1;margin-top:-.1em}
-#trabalhos .vA .under .copy{grid-column:1/span 5}
-#trabalhos .vA .under .link{grid-column:6/-1;justify-self:end}
+#trabalhos .vA .feat{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:center;margin-bottom:clamp(64px,7vw,120px)}
+#trabalhos .vA .fl{grid-column:1/span 7}
+#trabalhos .vA .stage{aspect-ratio:4/3.1;border-radius:16px;box-shadow:0 50px 90px -60px rgba(17,18,16,.7)}
+#trabalhos .vA .st-words{left:7cqw;bottom:10cqw;font-size:11.5cqw}
+#trabalhos .vA .st-btn{right:4cqw;bottom:4cqw}
+#trabalhos .vA .st-tag{position:absolute;left:7cqw;top:6cqw;z-index:2;font:600 12.5px/1 var(--sans);letter-spacing:.08em;color:#F2EFE9;padding:3px 0 3px 12px;border-left:2px solid var(--vortex)}
+#trabalhos .vA .st-lab{position:absolute;left:7cqw;bottom:5.2cqw;z-index:2;font:500 11px/1 var(--mono);letter-spacing:.14em;color:rgba(242,239,233,.72)}
+#trabalhos .vA .st-media{position:absolute;inset:0;z-index:-3}
+#trabalhos .vA .st-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%;opacity:0;transform:scale(1.08);transition:opacity 1.6s ease,transform 7s linear}
+#trabalhos .vA .st-media img.on{opacity:1;transform:scale(1)}
+#trabalhos .vA .st-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,15,.9),rgba(17,17,15,.5) 55%,rgba(17,17,15,.2)),linear-gradient(0deg,rgba(17,17,15,.7),transparent 45%)}
+#trabalhos .vA .st-media:not(:empty)~.st-tl{opacity:0}
+#trabalhos .vA .txt{grid-column:9/-1;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+#trabalhos .vA .txt .h3{font-size:clamp(34px,3.6vw,64px)}
 #trabalhos .vA .reels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 #trabalhos .vA .media{aspect-ratio:4/5;border-radius:4px}
 #trabalhos .vA .card .meta{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
@@ -317,11 +322,13 @@ main > .sec header.sh,main > .sec header.bh,main > .sec header.hh,#evolucao .seq
 #trabalhos .sh{grid-template-columns:1fr;row-gap:22px}
 #trabalhos .sh h2,#trabalhos .sh p{grid-column:1/-1}
 #trabalhos .sh h2{font-size:clamp(42px,12vw,80px)}
-#trabalhos .vA .stage{height:auto;aspect-ratio:4/5}
+#trabalhos .vA .feat{grid-template-columns:minmax(0,1fr);row-gap:28px}
+#trabalhos .vA .fl,#trabalhos .vA .txt{grid-column:1/-1}
+#trabalhos .vA .stage{aspect-ratio:4/5;border-radius:12px}
 #trabalhos .vA .st-btn{top:16px;bottom:auto;right:16px}
+#trabalhos .vA .st-tag{display:none}
+#trabalhos .vA .st-lab{left:18px}
 #trabalhos .vA .st-words{font-size:16cqw}
-#trabalhos .vA .under,#trabalhos .vA .under .txt{grid-template-columns:1fr;row-gap:18px}
-#trabalhos .vA .under .name,#trabalhos .vA .under .txt,#trabalhos .vA .under .h3,#trabalhos .vA .under .copy,#trabalhos .vA .under .link{grid-column:1/-1;justify-self:start}
 #trabalhos .vA .reels,#trabalhos .vB .reels,#trabalhos .vD .phones{grid-template-columns:1fr;row-gap:48px}
 #trabalhos .vB .feat,#trabalhos .vD .feat{grid-template-columns:1fr;row-gap:28px}
 #trabalhos .vB .stage,#trabalhos .vB .txt,#trabalhos .vD .player,#trabalhos .vD .txt{grid-column:1/-1}
@@ -642,10 +649,9 @@ main > .sec header.sh,main > .sec header.bh,main > .sec header.hh,#evolucao .seq
 #sites .hint{opacity:1;transform:none}
 }
 @media(prefers-reduced-motion:reduce){#sites [data-r]{opacity:1!important;transform:none!important;transition:none!important}}
-/* ===== entregas · 06-entregas2.html · vD ===== */
+/* ===== entregas · 06-colagem.html · vK ===== */
 #entregas{
-  --paper:#F2EFE9;--ink:#111210;--body:#34342F;--muted:#6A6862;--line:rgba(17,18,16,.16);
-  --night:#11110F;--on:#F2EFE9;--on-2:#C9C5BB;--line-n:rgba(242,239,233,.14);
+  --paper:#F2EFE9;--ink:#111210;--body:#34342F;--muted:#6A6862;--line:rgba(17,18,16,.14);
   --vortex:#B86A4B;--vortex-dark:#8E4B35;--soft:#E3AD92;
   --sans:Geist,Inter,system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,Menlo,monospace;
   --pad:clamp(18px,2vw,36px);--max:1760px;--gap:clamp(16px,1.7vw,28px);--ease:cubic-bezier(.16,1,.3,1);
@@ -653,179 +659,150 @@ main > .sec header.sh,main > .sec header.bh,main > .sec header.hh,#evolucao .seq
 }
 #entregas *,#entregas *::before,#entregas *::after{box-sizing:border-box}
 #entregas{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
-#entregas h2,#entregas h3,#entregas p{margin:0}
-#entregas video{display:block}
+#entregas h2,#entregas h3,#entregas p,#entregas figure{margin:0}
 #entregas .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);width:100%}
 #entregas .v{padding-block:var(--sec)}
-#entregas .v+.v{border-top:6px solid #2140C4}
-#entregas .hh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;border-top:1px solid var(--line);padding-top:clamp(40px,5vw,80px);margin-bottom:clamp(48px,5.6vw,96px)}
+#entregas .hh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;margin-bottom:clamp(40px,4.6vw,80px)}
 #entregas .hh h2{grid-column:1/span 7;font-weight:500;letter-spacing:-.058em;line-height:.92;font-size:clamp(46px,6vw,116px)}
 #entregas .hh p{grid-column:9/-1;font-size:clamp(16px,1.15vw,18px);line-height:1.6;color:var(--body);padding-bottom:.4em}
-#entregas .fine{font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:28px}
-#entregas .cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-#entregas .col{border-left:1px solid var(--line);padding:22px clamp(14px,1.4vw,24px) 0}
-#entregas .col .n{display:block;font-weight:300;letter-spacing:-.06em;line-height:.85;font-size:clamp(52px,5vw,92px);color:var(--vortex);margin-bottom:clamp(22px,2.4vw,40px)}
-#entregas .col h3{font-weight:500;letter-spacing:-.035em;line-height:1.12;font-size:clamp(18px,1.45vw,24px)}
-#entregas .col p{font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:10px}
+#entregas .lay{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:center}
+#entregas .col{grid-column:1/span 7;position:relative;aspect-ratio:1/.9;margin-right:clamp(10px,2vw,40px)}
+#entregas .slot{position:absolute;transform:translateY(calc(var(--p,0) * var(--drift))) rotate(var(--rot));transition:z-index 0s}
+#entregas .slot.a{left:0;top:5%;width:53%;height:72%;--rot:-4deg;--drift:-26px;z-index:1}
+#entregas .slot.b{right:0;top:0;width:45%;height:58%;--rot:4deg;--drift:-60px;z-index:2}
+#entregas .slot.c{right:3%;bottom:0;width:53%;height:43%;--rot:-2deg;--drift:-12px;z-index:3}
+#entregas .slot:hover{z-index:5}
+#entregas .fc{position:relative;width:100%;height:100%;border-radius:14px;overflow:hidden;container-type:inline-size;box-shadow:0 2px 0 rgba(17,18,16,.04),0 50px 80px -46px rgba(17,18,16,.55);
+  opacity:0;transform:translate(var(--fx),var(--fy)) rotate(var(--fr)) scale(.92);transition:opacity .9s var(--ease),transform 1.5s cubic-bezier(.2,.9,.25,1),box-shadow .6s}
+#entregas .a .fc{--fx:28%;--fy:26%;--fr:6deg}
+#entregas .b .fc{--fx:-30%;--fy:30%;--fr:-8deg;transition-delay:.12s}
+#entregas .c .fc{--fx:-6%;--fy:-34%;--fr:4deg;transition-delay:.24s}
+#entregas .col.in .fc{opacity:1;transform:none}
+#entregas .slot:hover .fc{transform:translateY(-10px) rotate(calc(var(--rot) * -1)) scale(1.02);transition-delay:0s;transition-duration:.9s;box-shadow:0 2px 0 rgba(17,18,16,.04),0 60px 90px -44px rgba(17,18,16,.6)}
+#entregas .fc video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:filter .8s var(--ease),opacity .8s}
+#entregas .fc::after{content:"";position:absolute;inset:0;pointer-events:none}
+#entregas .a .fc{background:#E4D4C4;color:#2B211B}
+#entregas .a .fc video{mix-blend-mode:multiply;opacity:.7}
+#entregas .a .fc::after{background:linear-gradient(180deg,rgba(228,212,196,.15),transparent 34%,rgba(228,212,196,.78) 66%,rgba(228,212,196,.97))}
+#entregas .b .fc{background:#B86A4B;color:#FFF7F1}
+#entregas .b .fc video{mix-blend-mode:multiply;opacity:.85}
+#entregas .b .fc::after{background:linear-gradient(180deg,rgba(184,106,75,.2),transparent 36%,rgba(160,86,58,.7) 72%,rgba(150,80,54,.96))}
+#entregas .c .fc{background:#1C2121;color:#F2EFE9}
+#entregas .c .fc video{opacity:.62}
+#entregas .c .fc::after{background:linear-gradient(90deg,rgba(20,24,24,.95),rgba(20,24,24,.55) 55%,rgba(20,24,24,.2))}
+#entregas .slot:hover .fc video{filter:grayscale(0) contrast(1)}
+#entregas .a:hover .fc video,#entregas .b:hover .fc video{mix-blend-mode:normal;opacity:1}
+#entregas .fc .tx{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(16px,7cqw,30px)}
+#entregas .fc .top{font:500 clamp(8.5px,2.8cqw,11px)/1 var(--mono);letter-spacing:.14em}
+#entregas .fc strong{display:block;font-weight:600;letter-spacing:-.065em;line-height:.86;font-size:clamp(18px,13.5cqw,66px)}
+#entregas .c .fc strong{font-size:clamp(17px,10cqw,54px)}
+#entregas .fc .bot{display:block;font:500 clamp(8px,2.6cqw,10.5px)/1.3 var(--mono);letter-spacing:.12em;margin-top:clamp(12px,4cqw,20px);opacity:.82}
+#entregas .orbit{position:absolute;left:50%;top:40%;width:44cqw;aspect-ratio:1;translate:-50% -50%;z-index:1;display:grid;place-items:center}
+#entregas .orbit i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,247,241,.55);animation:pulse__entregas 3.2s var(--ease) infinite}
+#entregas .orbit i:nth-child(2){animation-delay:1.06s}
+#entregas .orbit i:nth-child(3){animation-delay:2.12s}
+@keyframes pulse__entregas{0%{transform:scale(.45);opacity:0}30%{opacity:.9}100%{transform:scale(1.15);opacity:0}}
+#entregas .orbit b{display:grid;place-items:center;width:42%;aspect-ratio:1;border-radius:50%;background:rgba(255,247,241,.16);border:1px solid rgba(255,247,241,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff}
+#entregas .orbit b svg{width:30%;margin-left:6%}
+#entregas .caps{grid-column:8/-1}
+#entregas .cap{display:grid;grid-template-columns:clamp(34px,3.4vw,60px) minmax(0,1fr);padding:clamp(16px,1.5vw,24px) 0;border-top:1px solid var(--line)}
+#entregas .cap .n{font:500 13px/1.9 var(--sans);color:var(--vortex-dark)}
+#entregas .cap h3{font-weight:500;letter-spacing:-.035em;line-height:1.1;font-size:clamp(20px,1.7vw,28px)}
+#entregas .cap p{font-size:15px;line-height:1.55;color:var(--muted);margin-top:6px;max-width:36em}
+#entregas .fine{font-size:13.5px;line-height:1.55;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
 #entregas [data-r]{opacity:0;transform:translateY(24px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
 #entregas [data-r].in{opacity:1;transform:none}
-#entregas .vA .posters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-bottom:clamp(64px,7vw,120px)}
-#entregas .vA .pst{aspect-ratio:4/5;border-radius:6px;padding:clamp(20px,2.2vw,36px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-#entregas .vA .pst span{font:500 11px/1 var(--mono);letter-spacing:.12em;opacity:.7}
-#entregas .vA .pst strong{font-weight:600;letter-spacing:-.065em;line-height:.88;font-size:clamp(40px,4.4vw,84px)}
-#entregas .vA .p1{background:#E2D2C4;color:#2B1F19}
-#entregas .vA .p2{background:#B86A4B;color:#FFF6EE}
-#entregas .vA .p3{background:#111210;color:#F2EFE9}
-#entregas .vA .pst strong span{all:unset;display:block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
-#entregas .vA .pst.in strong span{transform:none}
-#entregas .vA .pst strong .ln{display:block;overflow:hidden}
-#entregas .vA .pst strong .ln:nth-child(2) span{transition-delay:.08s}
-#entregas .vA .pst strong .ln:nth-child(3) span{transition-delay:.16s}
-#entregas .vA .pst strong .ln:nth-child(4) span{transition-delay:.24s}
-#entregas .vB .belt{border-block:1px solid var(--line);padding-block:clamp(22px,2.4vw,40px);margin-bottom:clamp(64px,7vw,120px);overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-#entregas .vB .lane{display:flex;width:max-content;animation:lane__entregas 46s linear infinite}
-#entregas .vB .lane span{display:flex;align-items:center;gap:clamp(24px,3vw,56px);padding-right:clamp(24px,3vw,56px);white-space:nowrap;font-weight:500;letter-spacing:-.06em;line-height:1;font-size:clamp(48px,6.4vw,124px)}
-#entregas .vB .lane span i{width:.32em;height:.32em;border-radius:50%;background:var(--vortex);flex:none}
-#entregas .vB .lane span em{font-style:normal;color:var(--vortex)}
-@keyframes lane__entregas{to{transform:translateX(-50%)}}
-#entregas .vB .rows{border-top:1px solid var(--ink)}
-#entregas .vB .row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:baseline;padding:clamp(22px,2.2vw,36px) 0;border-bottom:1px solid var(--line)}
-#entregas .vB .row .n{grid-column:span 1;font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--vortex-dark)}
-#entregas .vB .row h3{grid-column:span 6;font-weight:500;letter-spacing:-.05em;line-height:1;font-size:clamp(30px,3.2vw,58px)}
-#entregas .vB .row p{grid-column:8/-1;font-size:16px;line-height:1.5;color:var(--body)}
-#entregas .vC .stage{position:relative;background:var(--night);color:var(--on);height:min(80svh,52vw);overflow:hidden;isolation:isolate}
-#entregas .vC .stage::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60vw 60vw at 75% 30%,rgba(184,106,75,.42),transparent 60%)}
-#entregas .vC .fmt{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(28px,3vw,52px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end}
-#entregas .vC .fmt .lbl{grid-column:1/span 3;font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--soft);align-self:start;position:absolute;top:calc(-1 * min(80svh,52vw) + clamp(56px,6vw,96px))}
-#entregas .vC .say{grid-column:1/-1;position:relative;height:calc(2.7 * clamp(56px,8vw,160px))}
-#entregas .vC .say div{position:absolute;left:0;bottom:0;font-weight:600;letter-spacing:-.07em;line-height:.86;font-size:clamp(56px,8vw,160px)}
-#entregas .vC .say div .ln{display:block;overflow:hidden;padding-bottom:.04em}
-#entregas .vC .say div .ln b{display:block;font-weight:600;transform:translateY(105%);transition:transform 1s var(--ease)}
-#entregas .vC .say div.on .ln b{transform:none}
-#entregas .vC .say div.out .ln b{transform:translateY(-105%)}
-#entregas .vC .say div .ln:nth-child(2) b{transition-delay:.07s}
-#entregas .vC .say div .ln:nth-child(3) b{transition-delay:.14s}
-#entregas .vC .say div .ln:nth-child(4) b{transition-delay:.21s}
-#entregas .vC .tabs{position:absolute;right:var(--pad);top:clamp(24px,2.6vw,44px);display:flex;gap:8px}
-#entregas .vC .tabs i{display:block;width:44px;height:2px;background:rgba(242,239,233,.2);position:relative;overflow:hidden}
-#entregas .vC .tabs i b{position:absolute;inset:0;background:var(--on);transform-origin:left;transform:scaleX(0)}
-#entregas .vC .tabs i.on b{animation:fill__entregas 3.6s linear forwards}
-@keyframes fill__entregas{to{transform:scaleX(1)}}
-#entregas .vC .tag{position:absolute;left:var(--pad);top:clamp(24px,2.6vw,44px);font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--soft)}
-#entregas .vC .below{padding-top:clamp(56px,6vw,100px)}
-#entregas .vD .reels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-bottom:clamp(64px,7vw,120px)}
-#entregas .vD .rv{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#111}
-#entregas .vD .rv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#entregas .vD .rv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 26%,transparent 38%,rgba(12,11,10,.72) 62%,rgba(12,11,10,.94) 100%)}
-#entregas .vD .rv span{position:absolute;z-index:1;left:clamp(18px,1.8vw,28px);top:clamp(18px,1.8vw,28px);font:500 11px/1 var(--mono);letter-spacing:.12em;color:#fff}
-#entregas .vD .rv strong{position:absolute;z-index:1;left:clamp(18px,1.8vw,28px);right:clamp(18px,1.8vw,28px);bottom:clamp(18px,1.8vw,28px);font-weight:600;letter-spacing:-.065em;line-height:.88;color:#fff;font-size:clamp(34px,3.4vw,64px)}
-
-
-
+#entregas .cap[data-r]:nth-child(2){transition-delay:.06s}
+#entregas .cap[data-r]:nth-child(3){transition-delay:.12s}
+#entregas .cap[data-r]:nth-child(4){transition-delay:.18s}
+#entregas .cap[data-r]:nth-child(5){transition-delay:.24s}
 @media(max-width:900px){#entregas{--sec:96px}
-#entregas .hh{grid-template-columns:1fr;row-gap:22px}
-#entregas .hh h2,#entregas .hh p{grid-column:1/-1}
+#entregas .hh,#entregas .lay{grid-template-columns:minmax(0,1fr);row-gap:22px}
+#entregas .hh h2,#entregas .hh p,#entregas .col,#entregas .caps{grid-column:1/-1}
 #entregas .hh h2{font-size:clamp(42px,12vw,80px)}
-#entregas .cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);row-gap:28px}
-#entregas .vA .posters,#entregas .vD .reels{grid-template-columns:minmax(0,1fr);row-gap:14px}
-#entregas .vA .pst,#entregas .vD .rv{aspect-ratio:5/4}
-#entregas .vB .row{grid-template-columns:34px minmax(0,1fr)}
-#entregas .vB .row .n{grid-column:1;grid-row:1/span 2}
-#entregas .vB .row h3,#entregas .vB .row p{grid-column:2}
-#entregas .vB .row p{margin-top:10px}
-#entregas .vC .stage{height:72svh}
-}
-@media(prefers-reduced-motion:reduce){#entregas [data-r]{opacity:1!important;transform:none!important;transition:none!important}
-#entregas .vB .lane{animation:none}}
+#entregas .col{aspect-ratio:1/1.02;margin:0 4px 24px}
+#entregas .fc{border-radius:10px}}
+@media(prefers-reduced-motion:reduce){#entregas [data-r],#entregas .fc{opacity:1!important;transform:none!important;transition:none!important}
+#entregas .slot{transform:rotate(var(--rot))!important}
+#entregas .orbit i{animation:none;opacity:.5;transform:scale(.9)}}
 /* ===== funcionamento · 07-fases.html · vT ===== */
 #funcionamento{
   --paper:#F8F6F1;--ink:#111210;--body:#34342F;--muted:#6A6862;--line:rgba(17,18,16,.14);
   --vortex:#B86A4B;--vortex-dark:#8E4B35;--soft:#E3AD92;
-  --p1:#EFE0D5;--p1-2:#E6D0C1;--p2:#1F2A2A;--p2-2:#2B3838;--on:#F2F4EF;--on-2:#AEB9B6;
+  --p1:#EFE0D5;--p1-2:#E3CBBB;--p2:#1F2A2A;--p2-2:#2D3A3A;--on:#F2F4EF;--on-2:#AEB9B6;
   --sans:Geist,Inter,system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,Menlo,monospace;
   --pad:clamp(18px,2vw,36px);--max:1760px;--gap:clamp(16px,1.7vw,28px);--ease:cubic-bezier(.16,1,.3,1);
   --sec:clamp(110px,12vw,200px);
 }
 #funcionamento *,#funcionamento *::before,#funcionamento *::after{box-sizing:border-box}
 #funcionamento{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
-#funcionamento h2,#funcionamento h3,#funcionamento h4,#funcionamento p,#funcionamento ol,#funcionamento ul{margin:0}
-#funcionamento ol,#funcionamento ul{padding:0;list-style:none}
-#funcionamento button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+#funcionamento h2,#funcionamento h3,#funcionamento h4,#funcionamento p,#funcionamento ul{margin:0}
+#funcionamento ul{padding:0;list-style:none}
 #funcionamento svg{display:block}
 #funcionamento :focus-visible{outline:2px solid var(--vortex);outline-offset:4px}
 #funcionamento .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);width:100%}
 #funcionamento .v{padding-block:var(--sec)}
-#funcionamento .hh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;margin-bottom:clamp(48px,5.4vw,96px)}
+#funcionamento .hh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;margin-bottom:clamp(44px,5vw,88px)}
 #funcionamento .hh h2{grid-column:1/span 7;font-weight:500;letter-spacing:-.058em;line-height:.92;font-size:clamp(46px,6vw,116px)}
 #funcionamento .hh p{grid-column:9/-1;font-size:clamp(16px,1.15vw,18px);line-height:1.6;color:var(--body);padding-bottom:.4em}
-#funcionamento .tl{--n:8}
-#funcionamento .bands{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-#funcionamento .band{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;column-gap:16px;padding:18px clamp(16px,1.6vw,26px);border-radius:6px 2px 2px 6px;background:var(--p1);clip-path:inset(0 100% 0 0 round 6px);transition:clip-path 1.2s var(--ease)}
-#funcionamento .band.b2{background:var(--p2);color:var(--on);border-radius:2px 6px 6px 2px;transition-delay:.35s}
-#funcionamento .tl.go .band{clip-path:inset(0 0 0 0 round 6px)}
-#funcionamento .band span{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--vortex-dark)}
-#funcionamento .band.b2 span{color:var(--soft)}
-#funcionamento .band strong{font-weight:500;letter-spacing:-.035em;font-size:clamp(19px,1.5vw,26px);line-height:1.1}
-#funcionamento .band small{font-size:14px;color:var(--muted);text-align:right}
-#funcionamento .band.b2 small{color:var(--on-2)}
-#funcionamento .master{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));padding-top:clamp(26px,2.6vw,40px)}
-#funcionamento .master .rail{position:absolute;left:6.25%;right:6.25%;top:calc(clamp(26px,2.6vw,40px) + 19px);height:2px;background:var(--line)}
-#funcionamento .master .rail b{position:absolute;inset:0;background:linear-gradient(90deg,var(--vortex) 0 50%,var(--p2) 50% 100%);transform-origin:left;transform:scaleX(0);transition:transform 2.6s cubic-bezier(.65,0,.35,1) .5s}
-#funcionamento .tl.go .master .rail b{transform:none}
-#funcionamento .master li{display:flex;justify-content:center}
-#funcionamento .nd{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
-#funcionamento .nd i{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font:500 14px/1 var(--sans);font-style:normal;background:var(--paper);border:1.5px solid var(--line);color:var(--muted);transform:scale(.6);opacity:0;transition:transform .7s cubic-bezier(.34,1.56,.64,1),opacity .4s,background .45s,color .45s,border-color .45s,box-shadow .45s}
-#funcionamento .nd i::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid currentColor;opacity:0;transform:scale(.7);transition:opacity .45s,transform .6s var(--ease)}
-#funcionamento .tl.go .nd i{transform:none;opacity:1;transition-delay:calc(.5s + var(--k) * .3s),calc(.5s + var(--k) * .3s),0s,0s,0s,0s}
-#funcionamento .nd.p1 i{border-color:var(--vortex);color:var(--vortex-dark)}
-#funcionamento .nd.p2 i{background:var(--p2);border-color:var(--p2);color:var(--on)}
-#funcionamento .nd span{font-size:14.5px;font-weight:500;letter-spacing:-.02em;color:var(--muted);transition:color .45s}
-#funcionamento .nd.on span{color:var(--ink)}
-#funcionamento .nd.p1.on i{background:var(--vortex);color:#fff}
-#funcionamento .nd.p2.on i{background:var(--soft);border-color:var(--soft);color:var(--p2)}
-#funcionamento .nd.on i::after{opacity:.5;transform:none}
-#funcionamento .nd.p1.on i::after{color:var(--vortex)}
-#funcionamento .nd.p2.on i::after{color:var(--p2)}
-#funcionamento .nd:hover i{transform:scale(1.08)}
-#funcionamento .cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.2vw,20px);margin-top:clamp(34px,3.6vw,60px)}
-#funcionamento .card{border-radius:6px;padding:clamp(22px,2.4vw,40px);display:grid;grid-template-rows:auto 1fr;gap:clamp(18px,2vw,30px);background:var(--p1);overflow:hidden}
-#funcionamento .card.c2{background:var(--p2);color:var(--on)}
-#funcionamento .vis{position:relative;height:clamp(190px,15vw,250px)}
-#funcionamento .vis svg{width:100%;height:100%;overflow:visible}
-#funcionamento .stair .base{fill:none;stroke:rgba(142,75,53,.22);stroke-width:1.5;stroke-dasharray:2 6;stroke-linecap:round}
-#funcionamento .stair .run{fill:none;stroke:var(--vortex);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 1.1s var(--ease)}
-#funcionamento .stair .pt circle{fill:var(--p1);stroke:var(--vortex);stroke-width:1.5;transition:fill .45s,r .45s}
-#funcionamento .stair .pt text{font:500 12px var(--sans);fill:var(--vortex-dark);transition:fill .45s}
-#funcionamento .stair .pt .w{font:500 13.5px var(--sans);fill:var(--muted);letter-spacing:-.01em}
-#funcionamento .stair .pt.done circle{fill:var(--p1-2)}
-#funcionamento .stair .pt.on circle{fill:var(--vortex)}
-#funcionamento .stair .pt.on text.n{fill:#fff}
-#funcionamento .stair .pt.on .w{fill:var(--ink)}
-#funcionamento .stair .halo{fill:none;stroke:var(--vortex);stroke-width:1;opacity:.45;transition:transform 1.1s var(--ease)}
-#funcionamento .stair .pt{cursor:pointer}
-#funcionamento .cyc .orb{fill:none;stroke:var(--soft);stroke-width:1.6;stroke-dasharray:7 8;opacity:.7;animation:cycleline__funcionamento 30s linear infinite}
+#funcionamento .flow{display:grid;grid-template-columns:1fr 1fr}
+#funcionamento .ph{position:relative;display:grid;grid-template-rows:auto auto 1fr;padding:clamp(22px,2.4vw,40px);background:var(--p1);border-radius:8px 0 0 8px;clip-path:inset(0 100% 0 0 round 8px 0 0 8px);transition:clip-path 1.3s var(--ease)}
+#funcionamento .ph.p2{background:var(--p2);color:var(--on);border-radius:0 8px 8px 0;clip-path:inset(0 100% 0 0 round 0 8px 8px 0);transition-delay:.45s}
+#funcionamento .flow.go .ph.p1{clip-path:inset(0 0 0 0 round 8px 0 0 8px)}
+#funcionamento .flow.go .ph.p2{clip-path:inset(0 0 0 0 round 0 8px 8px 0)}
+#funcionamento .ph header{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:16px;row-gap:4px}
+#funcionamento .ph header span{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--vortex-dark)}
+#funcionamento .p2 header span{color:var(--soft)}
+#funcionamento .ph header strong{font-weight:500;letter-spacing:-.04em;font-size:clamp(22px,1.9vw,32px);line-height:1.05}
+#funcionamento .ph header small{flex-basis:100%;font-size:14.5px;color:var(--muted);margin-top:4px}
+#funcionamento .p2 header small{color:var(--on-2)}
+#funcionamento .vis{margin:clamp(14px,1.6vw,26px) calc(clamp(22px,2.4vw,40px)*-1) 0}
+#funcionamento .vis svg{width:100%;height:auto;overflow:visible}
+#funcionamento .p1 .vis{margin-right:calc(clamp(22px,2.4vw,40px)*-1)}
+#funcionamento .base{fill:none;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:2 7}
+#funcionamento .p1 .base{stroke:rgba(142,75,53,.3)}
+#funcionamento .p2 .base{stroke:rgba(227,173,146,.32)}
+#funcionamento .run{fill:none;stroke:var(--vortex);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#funcionamento .p2 .run{stroke:var(--soft)}
+#funcionamento .orb{fill:none;stroke:var(--soft);stroke-width:1.5;stroke-dasharray:7 8;opacity:.75;animation:cycleline__funcionamento 30s linear infinite}
 @keyframes cycleline__funcionamento{to{stroke-dashoffset:-600}}
-#funcionamento .cyc .trail{fill:none;stroke:var(--soft);stroke-width:2.6;stroke-linecap:round}
-#funcionamento .cyc .comet{fill:var(--soft)}
-#funcionamento .cyc .c1{font:600 15px var(--sans);letter-spacing:.2em;fill:var(--on)}
-#funcionamento .cyc .c2{font:500 9.5px var(--mono);letter-spacing:.16em;fill:var(--on-2)}
-#funcionamento .cyc .pt{cursor:pointer}
-#funcionamento .cyc .pt circle{fill:var(--p2-2);stroke:rgba(242,244,239,.35);stroke-width:1.2;transition:fill .45s,stroke .45s}
-#funcionamento .cyc .pt text{font:500 12px var(--sans);fill:var(--on);transition:fill .45s}
-#funcionamento .cyc .pt .w{font:500 13.5px var(--sans);fill:var(--on-2)}
-#funcionamento .cyc .pt.on circle{fill:var(--soft);stroke:var(--soft)}
-#funcionamento .cyc .pt.on text.n{fill:var(--p2)}
-#funcionamento .cyc .pt.on .w{fill:var(--on)}
-#funcionamento .det{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(16px,1.6vw,28px);align-items:start;border-top:1px solid rgba(142,75,53,.25);padding-top:clamp(18px,1.8vw,26px)}
-#funcionamento .c2 .det{border-color:rgba(242,244,239,.16)}
-#funcionamento .det .num{font-weight:300;letter-spacing:-.06em;line-height:.8;font-size:clamp(64px,5.6vw,104px);color:var(--vortex);min-width:.9em}
-#funcionamento .c2 .det .num{color:var(--soft)}
-#funcionamento .det h4{font-weight:500;letter-spacing:-.045em;line-height:1;font-size:clamp(28px,2.4vw,42px)}
-#funcionamento .det ul{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(14px,1.4vw,24px);margin-top:clamp(16px,1.6vw,24px)}
-#funcionamento .det li{display:flex;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid rgba(142,75,53,.22);font-size:15px}
-#funcionamento .c2 .det li{border-color:rgba(242,244,239,.14)}
+#funcionamento .dot{fill:var(--vortex);transition:opacity .35s}
+#funcionamento .p2 .dot{fill:var(--soft)}
+#funcionamento .glow{opacity:.22}
+#funcionamento .c1{font:600 17px var(--sans);letter-spacing:.22em;fill:var(--on)}
+#funcionamento .c2{font:500 10px var(--mono);letter-spacing:.16em;fill:var(--on-2)}
+#funcionamento .pt{cursor:pointer}
+#funcionamento .pt circle.n{stroke-width:1.5;transition:fill .45s,stroke .45s}
+#funcionamento .pt text{transition:fill .45s}
+#funcionamento .pt .num{font:500 13px var(--sans)}
+#funcionamento .pt .w{font:500 14.5px var(--sans);letter-spacing:-.01em}
+#funcionamento .p1 .pt circle.n{fill:var(--p1);stroke:var(--vortex)}
+#funcionamento .p1 .pt .num{fill:var(--vortex-dark)}
+#funcionamento .p1 .pt .w{fill:var(--muted)}
+#funcionamento .p1 .pt.done circle.n{fill:var(--p1-2)}
+#funcionamento .p1 .pt.on circle.n{fill:var(--vortex)}
+#funcionamento .p1 .pt.on .num{fill:#fff}
+#funcionamento .p1 .pt.on .w{fill:var(--ink)}
+#funcionamento .p2 .pt circle.n{fill:var(--p2-2);stroke:rgba(242,244,239,.35)}
+#funcionamento .p2 .pt .num{fill:var(--on)}
+#funcionamento .p2 .pt .w{fill:var(--on-2)}
+#funcionamento .p2 .pt.on circle.n{fill:var(--soft);stroke:var(--soft)}
+#funcionamento .p2 .pt.on .num{fill:var(--p2)}
+#funcionamento .p2 .pt.on .w{fill:var(--on)}
+#funcionamento .pt .halo{fill:none;stroke-width:1;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.6);transition:opacity .45s,transform .7s var(--ease)}
+#funcionamento .p1 .pt .halo{stroke:var(--vortex)}
+#funcionamento .p2 .pt .halo{stroke:var(--soft)}
+#funcionamento .pt.on .halo{opacity:.55;transform:none}
+#funcionamento .det{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(16px,1.6vw,28px);align-items:start;border-top:1px solid rgba(142,75,53,.25);padding-top:clamp(18px,1.8vw,26px);margin-top:clamp(10px,1.2vw,18px)}
+#funcionamento .p2 .det{border-color:rgba(242,244,239,.16)}
+#funcionamento .det .big{font-weight:300;letter-spacing:-.06em;line-height:.8;font-size:clamp(60px,5.2vw,98px);color:var(--vortex);min-width:.9em}
+#funcionamento .p2 .det .big{color:var(--soft)}
+#funcionamento .det h4{font-weight:500;letter-spacing:-.045em;line-height:1;font-size:clamp(26px,2.2vw,40px)}
+#funcionamento .det ul{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(14px,1.4vw,24px);margin-top:clamp(14px,1.4vw,22px)}
+#funcionamento .det li{display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(142,75,53,.22);font-size:15px}
+#funcionamento .p2 .det li{border-color:rgba(242,244,239,.14)}
 #funcionamento .det li i{font:500 10.5px/1 var(--mono);font-style:normal;color:var(--vortex-dark);min-width:14px}
-#funcionamento .c2 .det li i{color:var(--soft)}
+#funcionamento .p2 .det li i{color:var(--soft)}
 #funcionamento .det .sw{transition:opacity .35s var(--ease),transform .5s var(--ease)}
 #funcionamento .det.out .sw{opacity:0;transform:translateY(8px)}
 #funcionamento .det li.sw:nth-child(2){transition-delay:.04s}
@@ -837,21 +814,22 @@ main > .sec header.sh,main > .sec header.bh,main > .sec header.hh,#evolucao .seq
 #funcionamento .hh{grid-template-columns:1fr;row-gap:22px}
 #funcionamento .hh h2,#funcionamento .hh p{grid-column:1/-1}
 #funcionamento .hh h2{font-size:clamp(42px,12vw,80px)}
-#funcionamento .band{grid-template-columns:1fr;row-gap:6px;padding:14px}
-#funcionamento .band small{text-align:left;font-size:12.5px}
-#funcionamento .band strong{font-size:17px}
-#funcionamento .nd span{display:none}
-#funcionamento .nd i{width:32px;height:32px;font-size:12.5px}
-#funcionamento .master .rail{top:calc(clamp(26px,2.6vw,40px) + 15px)}
-#funcionamento .cards{grid-template-columns:minmax(0,1fr)}
-#funcionamento .card{padding:22px 18px}
-#funcionamento .vis{height:150px}
-#funcionamento .stair .pt .w{display:none}
-#funcionamento .det .num{font-size:60px}
-#funcionamento .det ul{grid-template-columns:minmax(0,1fr)}}
+#funcionamento .flow{grid-template-columns:minmax(0,1fr);row-gap:4px}
+#funcionamento .ph,#funcionamento .ph.p2{border-radius:8px;padding:22px 18px}
+#funcionamento .ph.p1{border-radius:8px 8px 2px 2px}
+#funcionamento .ph.p2{border-radius:2px 2px 8px 8px}
+#funcionamento .flow.go .ph.p1,#funcionamento .flow.go .ph.p2,#funcionamento .ph,#funcionamento .ph.p2{clip-path:none}
+#funcionamento .vis,#funcionamento .p1 .vis{margin-inline:-6px}
+#funcionamento .edge{display:none}
+#funcionamento .pt .w{font-size:21px}
+#funcionamento .pt .num{font-size:17px}
+#funcionamento .c1{font-size:21px}
+#funcionamento .c2{font-size:13px}
+#funcionamento .det ul{grid-template-columns:minmax(0,1fr)}
+#funcionamento .det .big{font-size:60px}}
 @media(prefers-reduced-motion:reduce){#funcionamento [data-r]{opacity:1!important;transform:none!important;transition:none!important}
-#funcionamento .band,#funcionamento .nd i,#funcionamento .master .rail b{transition:none!important}
-#funcionamento .cyc .orb{animation:none}}
+#funcionamento .ph{clip-path:none!important;transition:none!important}
+#funcionamento .orb{animation:none}}
 /* ===== evolucao · 08-evolucao2.html · v4 ===== */
 #evolucao{
   --paper:#F2EFE9;--ink:#111210;--body:#34342F;--muted:#6A6862;--line:rgba(17,18,16,.16);
@@ -1337,13 +1315,10 @@ html.sb{scrollbar-width:thin;scrollbar-color:rgba(17,18,16,.34) #F2EFE9}
 <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mName"><div class="sheet"><div class="left" id="mLeft"></div><div class="right"><button class="x" id="mX" aria-label="Fechar projeto">×</button><div class="tag" id="mCat"></div><h2 id="mName"></h2><p class="tt" id="mTitle"></p><div class="seq"><div><strong>Direção</strong><p id="mDir"></p></div><div><strong>Execução</strong><p id="mExe"></p></div><div><strong>Objetivo de negócio</strong><p id="mObj"></p></div></div><a class="btn" id="mLink" href="#" target="_blank" rel="noopener">Visitar site ↗</a></div></div></div>
 </div>
 <div class="sec" id="entregas">
-<section class="v vA" id="vA"><div class="wrap"><!--HH--><div class="posters"><!--POST--></div><!--COLS--><!--FINE--></div></section>
-<section class="v vB" id="vB"><div class="wrap"><!--HH--></div><div class="belt" data-r><div class="lane"><!--LANE--><!--LANE--></div></div><div class="wrap"><!--ROWS--><!--FINE--></div></section>
-<section class="v vC" id="vC"><div class="wrap"><!--HH--></div><div class="stage" id="stageC"><span class="tag" id="tagC">CARROSSÉIS</span><div class="tabs" aria-hidden="true"><i class="on"><b></b></i><i><b></b></i><i><b></b></i></div><div class="fmt"><div class="say" id="sayC"><!--SAY--></div></div></div><div class="wrap below"><!--COLS--><!--FINE--></div></section>
-<section class="v vD" id="vD"><div class="wrap"><!--HH--><div class="reels"><!--REELS--></div><!--COLS--><!--FINE--></div></section>
+<section class="v vK" id="vK"><div class="wrap"><!--HH--><!--LAY--></div></section>
 </div>
 <div class="sec" id="funcionamento">
-<section class="v vT" id="vT"><div class="wrap"><!--HH--><!--TL--></div></section>
+<section class="v vT" id="vT"><div class="wrap"><!--HH--><!--FLOW--></div></section>
 </div>
 <div class="sec" id="evolucao">
 <section class="v" id="v1"><div class="wrap"><div class="clk"><!--TXT--><div class="dial" data-dial><svg viewBox="-260 -260 520 520" aria-hidden="true"></svg><!--VERBS--></div></div></div></section>
@@ -1546,7 +1521,9 @@ const VNAME={tidelli:'Tidelli · Praça 01',sofia:'Dra. Sofia Oliva · Protocolo
 const media=(r,auto)=>`<div class="media"><img alt="${r.alt}" loading="lazy" src="${B+r.file}.jpg"/><video muted playsinline loop preload="none" ${auto?'data-auto':''} data-src="${B+r.file}.mp4"></video><button class="play" aria-label="${r.aria}" data-video="${r.k}"><i aria-hidden="true"></i><span>Assistir vídeo</span></button></div>`;
 const meta=r=>`<div class="meta">${r.name} <span>· ${r.cat}</span></div>`;
 
-const A=`${STAGE}<div class="wrap"><div class="under" data-r>${NAME}<div class="txt">${H3}${COPY}${LINK}</div></div>
+const LMEDIA=`<div class="st-media" aria-hidden="true">${[1,2,3,4,5].map(n=>`<img alt="" ${n>1?'loading="lazy"':''} src="shots/lacombe-${n}.jpg"${n===1?' class="on"':''}/>`).join('')}</div>`;
+const LSTAGE=STAGE.replace('<div class="st-glow"></div>',LMEDIA+'<div class="st-glow"></div>').replace('<span class="st-words"','<span class="st-tag">LUÍS ERNESTO LACOMBE</span><span class="st-words"').replace('<button class="st-btn"','<span class="st-lab">YOUTUBE / EDIÇÃO + ARTES</span><button class="st-btn"');
+const A=`<div class="wrap"><div class="feat"><div class="fl" data-r>${LSTAGE}</div><div class="txt" data-r>${NAME}${H3}${COPY}${LINK}</div></div>
   <div class="reels">${R.map(r=>`<article class="card" data-r>${media(r)}${meta(r)}<strong class="rt">${r.t}</strong><p class="rp">${r.p}</p></article>`).join('')}</div></div>`;
 const Bv=`<div class="feat"><div style="grid-column:1/span 7" data-r>${STAGE.replace('class="stage"','class="stage" style="aspect-ratio:4/3;border-radius:6px"')}</div><div class="txt" data-r>${NAME}${H3}${COPY}${LINK}</div></div>
   <div class="reels">${R.map(r=>`<article class="card" data-r>${media(r)}<div>${meta(r)}<strong class="rt">${r.t}</strong><p class="rp">${r.p}</p></div></article>`).join('')}</div>`;
@@ -1587,7 +1564,10 @@ document.getElementById('vdlgX').addEventListener('click',close);dlg.addEventLis
 /* ---------- entrada ---------- */
 const rs=[...document.querySelectorAll('[data-r]')];
 const kick=()=>rs.forEach(el=>{if(el.classList.contains('in'))return;const r=el.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){el.classList.add('in');el.querySelectorAll('[data-stage]').forEach(s=>s.classList.add('in'))}});
-document.querySelectorAll('.vA > [data-stage]').forEach(s=>{const k=()=>{const r=s.getBoundingClientRect();if(r.top<innerHeight*.75)s.classList.add('in')};addEventListener('scroll',k,{passive:true});k()});
+document.querySelectorAll('.vA .st-media').forEach(m=>{const im=[...m.querySelectorAll('img')];if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;let i=0,vis=false;
+  new IntersectionObserver(es=>es.forEach(e=>vis=e.isIntersecting),{threshold:.2}).observe(m);
+  setInterval(()=>{if(!vis||document.hidden)return;im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on')},4200)});
+document.querySelectorAll('.vA [data-stage]').forEach(s=>{const k=()=>{const r=s.getBoundingClientRect();if(r.top<innerHeight*.75)s.classList.add('in')};addEventListener('scroll',k,{passive:true});k()});
 requestAnimationFrame(kick);setTimeout(kick,400);addEventListener('scroll',kick,{passive:true});
 
 /* ---------- painel de revisão ---------- */
@@ -1624,7 +1604,7 @@ const S=[
  {id:'academia',mono:'AL',name:'Academia Lendária',cat:'COMUNIDADE DE IA',title:'Conhecimento com presença.',desc:'Conhecimento e ideias traduzidos em ritmo, linguagem editorial e conteúdo audiovisual.',scope:'',c:'#3C3A47'},
  {id:'lambda',mono:'LL',name:'Lambda Labs',cat:'IA DE VENDAS',title:'Repertório em movimento.',desc:'Uma peça audiovisual que combina ritmo de edição, referências visuais e linguagem de campanha.',scope:'Conteúdo audiovisual.',img:B+'lambdalabs-reels-nike.jpg',video:B+'lambdalabs-reels-nike.mp4',alt:'Peça de Lambda Labs',c:'#2A2A27'}
 ];
-const EXTRA={lacombe:{id:'lacombe',mono:'LE',name:'Luís Ernesto Lacombe',cat:'YOUTUBE / EDIÇÃO + ARTES',title:'Uma voz que alcança milhões.',desc:'Edição de vídeos, thumbnails e direção visual para um canal de publicação recorrente, com ritmo jornalístico, identidade reconhecível e audiência expressiva.',scope:'Edição de vídeos, thumbnails e direção visual do canal.',c:'#3A2A22'}};
+const EXTRA={lacombe:{id:'lacombe',mono:'LE',name:'Luís Ernesto Lacombe',cat:'YOUTUBE / EDIÇÃO + ARTES',title:'Uma voz que alcança milhões.',desc:'Edição de vídeos, thumbnails e direção visual para um canal de publicação recorrente, com ritmo jornalístico, identidade reconhecível e audiência expressiva.',scope:'Edição de vídeos, thumbnails e direção visual do canal.',c:'#3A2A22',img:'shots/lacombe-4.jpg',alt:'Luís Ernesto Lacombe no estúdio'}};
 const aria=s=>`Abrir história de ${s.aria||s.name}: ${s.title}`;
 const tile=(s,withImg=true)=>`<span class="tile" style="--c:${s.c};${s.k?'--k:'+s.k:''}"><span class="mono">${s.mono}</span>${withImg&&s.img?`<img alt="${s.alt}" loading="lazy" draggable="false" src="${s.img}"/>`:''}</span>`;
 const HEAD=(arrows)=>`<header class="bh" data-r><div><h3>Mais histórias.</h3><p>Outras marcas, diferentes desafios e maneiras próprias de criar.</p></div>${arrows?`<div class="arrows"><button aria-label="Ver histórias anteriores" class="arrow" id="prev">←</button><button aria-label="Ver próximas histórias" class="arrow" id="next">→</button></div>`:''}</header>`;
@@ -1659,7 +1639,7 @@ if(fine){document.querySelectorAll('[data-peek]').forEach(r=>{r.addEventListener
 /* ---------- modal ---------- */
 const modal=document.getElementById('modal');let back=null;
 function open(id){const s=S.find(x=>x.id===id)||EXTRA[id];if(!s)return;back=document.activeElement;
-  document.getElementById('mLeft').innerHTML=s.video?`<video src="${s.video}" poster="${s.img}" muted loop playsinline autoplay controls></video>`:tile(s,false);
+  document.getElementById('mLeft').innerHTML=s.video?`<video src="${s.video}" poster="${s.img}" muted loop playsinline autoplay controls></video>`:tile(s,s.id==='lacombe');
   document.getElementById('mCat').textContent=s.cat;document.getElementById('mName').textContent=s.name;document.getElementById('mTitle').textContent=s.title;document.getElementById('mDesc').textContent=s.desc;
   document.getElementById('mScope').textContent=s.scope;document.getElementById('mScopeBox').hidden=!s.scope;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.getElementById('mX').focus()}
 function close(){document.getElementById('mLeft').innerHTML='';modal.classList.remove('open');modal.setAttribute('aria-hidden','true');if(back)back.focus()}
@@ -1803,7 +1783,7 @@ addEventListener('keydown',e=>{const i=['1','2','3','4'].indexOf(e.key);if(i>-1&
 })(scopeDoc(root),safeRAF);
 root.querySelectorAll('section.v').forEach(s=>{if(s.id!=='vA')s.remove()});
 })();
-/* ===== entregas · 06-entregas2.html · vD ===== */
+/* ===== entregas · 06-colagem.html · vK ===== */
 (function(){const root=document.getElementById('entregas');
 (function(document,requestAnimationFrame){
 
@@ -1812,35 +1792,30 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const B='https://mateusmvff-a11y.github.io/rzrd-previa/assets/cases/';
 const HH=`<header class="hh" data-r><h2>Uma equipe. Muitas formas de criar.</h2><p>Planejamento, design, escrita, vídeo e gestão conectados aos objetivos de comunicação e às prioridades do negócio.</p></header>`;
 const FINE=`<p class="fine">Canais, entregas e volumes são definidos de acordo com os objetivos e a cadência de cada marca.</p>`;
-const F=[['CARROSSÉIS',['BOAS','IDEIAS','GANHAM','FORMA.']],['REELS',['REELS','EM','MOVIMENTO.']],['YOUTUBE',['CONTEÚDO','QUE GANHA','ESCALA.']]];
+const F=[['a','CARROSSÉIS',['BOAS','IDEIAS','GANHAM','FORMA.'],'CONTEÚDO EM SEQUÊNCIA →','grupolibertas-reels-sistemaemaiorqueesforco'],
+         ['b','REELS',['REELS','EM','MOVIMENTO.'],'ROTEIRO · EDIÇÃO · RITMO','lambdalabs-reels-nike'],
+         ['c','YOUTUBE',['CONTEÚDO','QUE GANHA','ESCALA.'],'CAPAS + EDIÇÃO + RITMO','tidelli-reels-praca-01']];
 const CAPS=[['1','Direção editorial','Territórios de conteúdo, pautas, calendário e critérios criativos para cada canal.'],['2','Design e imagem','Carrosséis, peças gráficas, conteúdos visuais, tratamento e composição de imagens.'],['3','Vídeo e narrativa','Reels, vídeos curtos, roteiros, edição e adaptações para plataformas como Instagram, TikTok e YouTube.'],['4','Texto e linguagem','Legendas, chamadas, copy e roteiros com uma voz reconhecível.'],['5','Organização e publicação','Portal do cliente para calendário e aprovações, programação, publicação e ajustes em perfis, como bio e destaques, conforme escopo.']];
-const COLS=`<div class="cols">${CAPS.map(c=>`<div class="col" data-r><span class="n">${c[0]}</span><h3>${c[1]}</h3><p>${c[2]}</p></div>`).join('')}</div>`;
-const POST=F.map((f,i)=>`<div class="pst p${i+1}" data-r><span>${f[0]}</span><strong>${f[1].map(w=>`<span class="ln"><span>${w}</span></span>`).join('')}</strong></div>`).join('');
-const LANE=F.map(f=>`<span><i></i>${f[1].join(' ').replace(/(FORMA\.|MOVIMENTO\.|ESCALA\.)/,'<em>$1</em>')}</span>`).join('');
-const ROWS=`<div class="rows">${CAPS.map(c=>`<div class="row" data-r><span class="n">${c[0]}</span><h3>${c[1]}</h3><p>${c[2]}</p></div>`).join('')}</div>`;
-const SAY=F.map((f,i)=>`<div class="${i?'':'on'}">${f[1].map(w=>`<span class="ln"><b>${w}</b></span>`).join('')}</div>`).join('');
-const VIDS=[['grupolibertas-reels-sistemaemaiorqueesforco'],['lambdalabs-reels-nike'],['tidelli-reels-praca-01']];
-const REELS=F.map((f,i)=>`<div class="rv" data-r><video muted playsinline loop preload="none" data-src="${B+VIDS[i]}.mp4" poster="${B+VIDS[i]}.jpg"></video><span>${f[0]}</span><strong>${f[1].join('<br/>')}</strong></div>`).join('');
-document.body.innerHTML=document.body.innerHTML.replaceAll('<!--HH-->',HH).replaceAll('<!--FINE-->',FINE).replaceAll('<!--COLS-->',COLS).replace('<!--POST-->',POST).replaceAll('<!--LANE-->',LANE).replace('<!--ROWS-->',ROWS).replace('<!--SAY-->',SAY).replace('<!--REELS-->',REELS);
+const play=`<svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 10 6 0 12z" fill="currentColor"/></svg>`;
+const card=f=>`<figure class="slot ${f[0]}"><div class="fc"><video muted playsinline loop preload="none" data-src="${B+f[4]}.mp4" poster="${B+f[4]}.jpg"></video>${f[0]==='b'?`<div class="orbit" aria-hidden="true"><i></i><i></i><i></i><b>${play}</b></div>`:''}<div class="tx"><span class="top">${f[1]}</span><div><strong>${f[2].join('<br/>')}</strong><span class="bot">${f[3]}</span></div></div></div></figure>`;
+const LAY=`<div class="lay"><div class="col" aria-label="Formatos produzidos no Vortex">${F.map(card).join('')}</div><div class="caps">${CAPS.map(c=>`<div class="cap" data-r><span class="n">${c[0]}</span><div><h3>${c[1]}</h3><p>${c[2]}</p></div></div>`).join('')}${FINE}</div></div>`;
+document.body.innerHTML=document.body.innerHTML.replace('<!--HH-->',HH).replace('<!--LAY-->',LAY);
 
-/* C: as frases trocam no palco */
-(function(){const says=[...document.querySelectorAll('#sayC>div')],tabs=[...document.querySelectorAll('#stageC .tabs i')],tag=document.getElementById('tagC');let i=0;
-  setInterval(()=>{if(reduce)return;const prev=says[i];prev.classList.remove('on');prev.classList.add('out');setTimeout(()=>prev.classList.remove('out'),1100);
-    i=(i+1)%3;says[i].classList.add('on');tag.textContent=F[i][0];tabs.forEach((t,j)=>{t.classList.remove('on');void t.offsetWidth;if(j===i)t.classList.add('on')})},3600)})();
-/* D: vídeos tocam quando aparecem */
-document.querySelectorAll('.vD video').forEach(v=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!reduce){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()}),{threshold:.3}).observe(v));
+const col=document.querySelector('.col');
+/* os cartões chegam juntos e se espalham para os lugares da colagem */
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)col.classList.add('in')}),{threshold:.2}).observe(col);
+/* vídeos só tocam quando aparecem */
+document.querySelectorAll('.col video').forEach(v=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!reduce){if(!v.src)v.src=v.dataset.src;v.play().catch(()=>{})}else v.pause()}),{threshold:.2}).observe(v));
+/* leve profundidade ao rolar: cada cartão anda num ritmo */
+if(!reduce){let q=0;const f=()=>{q=0;const r=col.getBoundingClientRect();const p=Math.max(-1,Math.min(1,(innerHeight/2-(r.top+r.height/2))/innerHeight));col.style.setProperty('--p',p.toFixed(3))};addEventListener('scroll',()=>{if(!q)q=requestAnimationFrame(f)},{passive:true});f()}
 
 const rs=[...document.querySelectorAll('[data-r]')];
-const kick=()=>rs.forEach((el,k)=>{if(el.classList.contains('in'))return;const r=el.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){el.style.transitionDelay=(el.classList.contains('col')||el.classList.contains('pst')||el.classList.contains('rv')?(k%5)*90:0)+'ms';el.classList.add('in')}});
+const kick=()=>rs.forEach(el=>{if(el.classList.contains('in'))return;const r=el.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)el.classList.add('in')});
 requestAnimationFrame(kick);setTimeout(kick,400);addEventListener('scroll',kick,{passive:true});
-const btns=[...document.querySelectorAll('.lab button')],vs=[...document.querySelectorAll('.v')];
-btns.forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.go).scrollIntoView({behavior:reduce?'auto':'smooth'})));
-vs.forEach(v=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)btns.forEach(b=>b.classList.toggle('on',b.dataset.go===e.target.id))}),{rootMargin:'-50% 0px -50% 0px'}).observe(v));
-addEventListener('keydown',e=>{const i=['1','2','3','4'].indexOf(e.key);if(i>-1&&!e.metaKey&&!e.ctrlKey)btns[i]&&btns[i].click()});
 })();
 
 })(scopeDoc(root),safeRAF);
-root.querySelectorAll('section.v').forEach(s=>{if(s.id!=='vD')s.remove()});
+root.querySelectorAll('section.v').forEach(s=>{if(s.id!=='vK')s.remove()});
 })();
 /* ===== funcionamento · 07-fases.html · vT ===== */
 (function(){const root=document.getElementById('funcionamento');
@@ -1848,95 +1823,121 @@ root.querySelectorAll('section.v').forEach(s=>{if(s.id!=='vD')s.remove()});
 
 (function(){'use strict';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mob=()=>innerWidth<=900;
 const HH=`<header class="hh" data-r><h2>Da direção à presença em movimento.</h2><p>A implantação define o posicionamento do perfil, as frentes de conteúdo e a direção visual. Depois, a operação avança em ciclos de criação, publicação e aprendizado.</p></header>`;
 const ST=[['Entender',['Objetivos','Público','Presença atual','Oportunidades']],['Direcionar',['Posicionamento','Frentes editoriais','Tom de voz','Critérios']],['Dar forma',['Direção visual','Referências','Formatos','Peças-piloto']],['Implantar',['Portal Atlas','Aprovações','Calendário','Fluxo de trabalho']],
           ['Planejar',['Pautas','Calendário','Roteiros','Prioridades']],['Produzir',['Cards','Carrosséis','Vídeos','Textos']],['Publicar',['Revisão','Aprovação','Publicação','Histórico']],['Aprender',['Indicadores','Padrões','Aprendizados','Testes']]];
 
-/* degraus da fase 1 (unidades do desenho; proporção fixa, então comprimentos são exatos) */
-const SP=[[50,170],[210,126],[370,82],[530,38]];
-const stairPath=`M${SP[0][0]} ${SP[0][1]} H130 V${SP[1][1]} H290 V${SP[2][1]} H450 V${SP[3][1]} H${SP[3][0]}`;
-const segL=[0,80+44+80,80+44+80+80+44+80,3*80+3*44+3*80];
-const LT=segL[3];
-const stair=`<svg class="stair" viewBox="0 0 580 215" preserveAspectRatio="xMidYMid meet" aria-hidden="false" role="group" aria-label="Implantação em quatro etapas">
-  <path class="base" d="${stairPath}"/><path class="run" d="${stairPath}" style="stroke-dasharray:${LT};stroke-dashoffset:${LT}"/>
-  ${SP.map((p,i)=>`<g class="pt" data-i="${i}" tabindex="0" role="button" aria-label="${i+1}. ${ST[i][0]}"><circle class="halo" cx="${p[0]}" cy="${p[1]}" r="22" style="transform-origin:${p[0]}px ${p[1]}px;transform:scale(0)"/><circle cx="${p[0]}" cy="${p[1]}" r="13"/><text class="n" x="${p[0]}" y="${p[1]+4.5}" text-anchor="middle">${i+1}</text><text class="w" x="${p[0]}" y="${p[1]+38}" text-anchor="middle">${ST[i][0]}</text></g>`).join('')}
+/* Os dois desenhos têm a mesma caixa (600 × 270) e o mesmo tamanho na tela,
+   então a linha sai do painel claro e entra no escuro na mesma altura (Y). */
+const W=600,H=270,Y=128;
+const SN=[[70,224],[205,192],[340,160],[475,Y]];
+const stairD=`M${SN[0][0]} ${SN[0][1]} H137 V${SN[1][1]} H272 V${SN[2][1]} H407 V${Y} H${SN[3][0]}`;
+const exitD=`M${SN[3][0]} ${Y} H${W}`;
+const CX=330,RX=180,RY=88;
+const entryD=`M0 ${Y} H${CX-RX}`;
+const loopD=`M${CX-RX} ${Y} A${RX} ${RY} 0 1 1 ${CX+RX} ${Y} A${RX} ${RY} 0 1 1 ${CX-RX} ${Y}`;
+const CN=[[CX-RX,Y],[CX,Y-RY],[CX+RX,Y],[CX,Y+RY]];
+const CL=[[-22,-20,'end'],[0,-27,'middle'],[24,5,'start'],[0,38,'middle']];
+
+const node=(p,i,lab)=>`<g class="pt" data-i="${i}" tabindex="0" role="button" aria-label="${i+1}. ${ST[i][0]}"><circle class="halo" cx="${p[0]}" cy="${p[1]}" r="23"/><circle class="n" cx="${p[0]}" cy="${p[1]}" r="14"/><text class="num" x="${p[0]}" y="${p[1]+4.5}" text-anchor="middle">${i+1}</text><text class="w" x="${p[0]+lab[0]}" y="${p[1]+lab[1]}" text-anchor="${lab[2]||'middle'}">${ST[i][0]}</text></g>`;
+const svg1=`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Implantação em quatro etapas">
+  <path class="base" d="${stairD}"/><path class="base edge" d="${exitD}"/>
+  <path class="run" id="run1" d="${stairD}"/><path class="run edge" id="run1x" d="${exitD}"/>
+  ${SN.map((p,i)=>node(p,i,[0,38])).join('')}
+  <circle class="dot glow" id="g1" r="13"/><circle class="dot" id="d1" r="5.5"/>
 </svg>`;
-
-/* ciclo da fase 2 */
-const CX=200,CY=112,RX=128,RY=74;
-const ANG=[-Math.PI/2,0,Math.PI/2,Math.PI];
-const P=a=>[CX+RX*Math.cos(a),CY+RY*Math.sin(a)];
-const lbl=[[0,-30,'middle'],[30,4.5,'start'],[0,40,'middle'],[-30,4.5,'end']];
-const cyc=`<svg class="cyc" viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Operação contínua em ciclo">
-  <ellipse class="orb" cx="${CX}" cy="${CY}" rx="${RX}" ry="${RY}"/>
-  <path class="trail" d=""/><circle class="comet" r="5" cx="${P(ANG[0])[0]}" cy="${P(ANG[0])[1]}"/>
-  <text class="c1" x="${CX}" y="${CY-2}" text-anchor="middle">VORTEX</text><text class="c2" x="${CX}" y="${CY+17}" text-anchor="middle">EM MOVIMENTO</text>
-  ${ANG.map((a,i)=>{const p=P(a),l=lbl[i];return `<g class="pt" data-i="${i+4}" tabindex="0" role="button" aria-label="${i+5}. ${ST[i+4][0]}"><circle cx="${p[0]}" cy="${p[1]}" r="15"/><text class="n" x="${p[0]}" y="${p[1]+4.5}" text-anchor="middle">${i+5}</text><text class="w" x="${p[0]+l[0]}" y="${p[1]+l[1]}" text-anchor="${l[2]}">${ST[i+4][0]}</text></g>`}).join('')}
+const svg2=`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Operação contínua em ciclo">
+  <path class="base edge" d="${entryD}"/><path class="run edge" id="run2x" d="${entryD}"/>
+  <path class="orb" d="${loopD}"/><path id="loop" d="${loopD}" fill="none" stroke="none"/>
+  <text class="c1" x="${CX}" y="${Y-2}" text-anchor="middle">VORTEX</text><text class="c2" x="${CX}" y="${Y+19}" text-anchor="middle">EM MOVIMENTO</text>
+  ${CN.map((p,k)=>node(p,k+4,CL[k])).join('')}
+  <circle class="dot glow" id="g2" r="13"/><circle class="dot" id="d2" r="5.5"/>
 </svg>`;
+const det=`<div class="det" aria-live="polite"><b class="big sw"></b><div><h4 class="sw"></h4><ul>${[0,1,2,3].map(k=>`<li class="sw"><i>${k+1}</i><span></span></li>`).join('')}</ul></div></div>`;
+const FLOW=`<div class="flow" data-r>
+  <article class="ph p1"><header><span>FASE 1</span><strong>Implantação</strong><small>Direção editorial e visual</small></header><div class="vis">${svg1}</div>${det}</article>
+  <article class="ph p2"><header><span>FASE 2</span><strong>Operação contínua</strong><small>Criação, publicação e evolução</small></header><div class="vis">${svg2}</div>${det}</article>
+</div>`;
+document.body.innerHTML=document.body.innerHTML.replace('<!--HH-->',HH).replace('<!--FLOW-->',FLOW);
 
-const det=(c)=>`<div class="det" aria-live="polite"><b class="num sw"></b><div><h4 class="sw"></h4><ul>${[0,1,2,3].map(k=>`<li class="sw"><i>${k+1}</i><span></span></li>`).join('')}</ul></div></div>`;
-const TL=`<div class="tl" data-r>
-  <div class="bands"><div class="band b1"><span>FASE 1</span><strong>Implantação</strong><small>Direção editorial e visual</small></div><div class="band b2"><span>FASE 2</span><strong>Operação contínua</strong><small>Criação, publicação e evolução</small></div></div>
-  <ol class="master" aria-label="Etapas do Vortex"><span class="rail" aria-hidden="true"><b></b></span>${ST.map((s,i)=>`<li><button class="nd ${i<4?'p1':'p2'}" data-i="${i}" style="--k:${i}" aria-label="${i+1}. ${s[0]}"><i>${i+1}</i><span>${s[0]}</span></button></li>`).join('')}</ol>
-</div>
-<div class="cards"><article class="card c1" data-r><div class="vis">${stair}</div>${det()}</article><article class="card c2" data-r><div class="vis">${cyc}</div>${det()}</article></div>`;
-document.body.innerHTML=document.body.innerHTML.replace('<!--HH-->',HH).replace('<!--TL-->',TL);
+const $=s=>document.querySelector(s);
+const flow=$('.flow'),panels=[$('.ph.p1'),$('.ph.p2')];
+const run1=$('#run1'),run1x=$('#run1x'),run2x=$('#run2x'),loop=$('#loop');
+const d1=$('#d1'),g1=$('#g1'),d2=$('#d2'),g2=$('#g2');
+const pts=[...document.querySelectorAll('.pt')].sort((a,b)=>a.dataset.i-b.dataset.i);
 
-const tl=document.querySelector('.tl'),nds=[...document.querySelectorAll('.nd')];
-const cards=[...document.querySelectorAll('.card')];
-const run=document.querySelector('.stair .run');
-const sPts=[...document.querySelectorAll('.stair .pt')],cPts=[...document.querySelectorAll('.cyc .pt')];
-const trail=document.querySelector('.cyc .trail'),comet=document.querySelector('.cyc .comet');
-const state=[-1,-1];
+/* comprimentos: caixas com proporção fixa, então as medidas do desenho valem na tela */
+const L1=run1.getTotalLength(),LX=run1x.getTotalLength(),LE=run2x.getTotalLength(),LL=loop.getTotalLength();
+const near=(path,tot,p)=>{let best=0,bd=1e9;for(let k=0;k<=600;k++){const l=tot*k/600,q=path.getPointAtLength(l),d=(q.x-p[0])**2+(q.y-p[1])**2;if(d<bd){bd=d;best=l}}return best};
+const SL=SN.map(p=>near(run1,L1,p));
+const CLn=CN.map((p,k)=>k===0?0:near(loop,LL,p));
+[run1,run1x,run2x].forEach(p=>{const l=p.getTotalLength();p.style.strokeDasharray=l;p.style.strokeDashoffset=l});
 
-function fill(card,i){
-  const d=card.querySelector('.det');
-  const put=()=>{d.querySelector('.num').textContent=i+1;d.querySelector('h4').textContent=ST[i][0];d.querySelectorAll('li span').forEach((s,k)=>s.textContent=ST[i][1][k])};
-  if(reduce||!d.querySelector('h4').textContent){put();return}
-  d.classList.add('out');setTimeout(()=>{put();d.classList.remove('out')},260);
-}
-/* fase 1: o trilho cresce até a etapa */
-function setA(i){
-  if(state[0]===i)return;state[0]=i;fill(cards[0],i);
-  run.style.strokeDashoffset=LT-segL[i];
-  sPts.forEach((p,k)=>{p.classList.toggle('on',k===i);p.classList.toggle('done',k<i);p.querySelector('.halo').style.transform=k===i?'scale(1)':'scale(0)'});
-  nds.forEach((n,k)=>{if(k<4)n.classList.toggle('on',k===i)});
-}
-/* fase 2: o cometa percorre a elipse até a etapa */
-let th=ANG[0],anim=0;
-function drawComet(a){
-  const p=P(a);comet.setAttribute('cx',p[0]);comet.setAttribute('cy',p[1]);
-  let d='';for(let k=0;k<=22;k++){const q=P(a-.75*k/22);d+=(k?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)}
-  trail.setAttribute('d',d);trail.style.opacity=.9;
-}
-function setB(i){
-  if(state[1]===i)return;const prev=state[1];state[1]=i;fill(cards[1],i);
-  cPts.forEach(p=>p.classList.toggle('on',+p.dataset.i===i));
-  nds.forEach((n,k)=>{if(k>3)n.classList.toggle('on',k===i)});
-  let to=ANG[i-4];while(to<=th+1e-6&&prev!==-1)to+=Math.PI*2;if(prev===-1){th=to;drawComet(th);return}
-  if(reduce){th=to;drawComet(th);return}
-  const from=th,t0=performance.now(),dur=1100,id=++anim;
-  const step=t=>{if(id!==anim)return;let k=Math.min(1,(t-t0)/dur);k=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;th=from+(to-from)*k;drawComet(th);if(k<1)requestAnimationFrame(step);else th=to%(Math.PI*2)};
-  requestAnimationFrame(step);
-}
-setA(0);setB(4);
+const put=(d,g,path,l)=>{const q=path.getPointAtLength(l);d.setAttribute('cx',q.x);d.setAttribute('cy',q.y);g.setAttribute('cx',q.x);g.setAttribute('cy',q.y)};
+const show=(k,on)=>{[[d1,g1],[d2,g2]][k].forEach(e=>e.style.opacity=on?'':0)};
 
-/* entrada: faixas abrem, linha mestra corre, depois as fases ganham vida */
-let started=false,hold=[0,0],t1,t2;
-const vis={on:false};
-function start(){
-  if(started)return;started=true;tl.classList.add('go');
-  if(reduce)return;
-  t1=setTimeout(function a(){if(Date.now()>hold[0]&&vis.on&&state[0]<3)setA(state[0]+1);if(state[0]<3)t1=setTimeout(a,1900)},3200);
-  t2=setTimeout(function b(){if(Date.now()>hold[1]&&vis.on)setB(state[1]===7?4:state[1]+1);t2=setTimeout(b,2400)},3600);
+const cur=[-1,-1];
+function fill(k,i){
+  const d=panels[k].querySelector('.det');
+  const w=()=>{d.querySelector('.big').textContent=i+1;d.querySelector('h4').textContent=ST[i][0];d.querySelectorAll('li span').forEach((s,j)=>s.textContent=ST[i][1][j])};
+  if(reduce||!d.querySelector('h4').textContent){w();return}
+  d.classList.add('out');setTimeout(()=>{w();d.classList.remove('out')},260);
 }
-new IntersectionObserver(es=>es.forEach(e=>{vis.on=e.isIntersecting;if(e.isIntersecting)start()}),{threshold:.25}).observe(tl.parentNode);
+function mark(i){
+  const k=i<4?0:1;if(cur[k]===i)return;cur[k]=i;fill(k,i);
+  pts.forEach((p,j)=>{if((j<4)===(k===0)){p.classList.toggle('on',j===i);p.classList.toggle('done',k===0&&j<i)}});
+}
+/* animação de um trecho de caminho */
+let tok=0;
+function tween(dur,fn){return new Promise(res=>{const id=tok,t0=performance.now();const st=t=>{if(id!==tok)return res(false);let k=Math.min(1,(t-t0)/dur);k=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;fn(k);if(k<1)requestAnimationFrame(st);else res(true)};requestAnimationFrame(st)})}
+const wait=ms=>new Promise(r=>{const id=tok;setTimeout(()=>r(id===tok),ms)});
+const reveal=(p,tot,l)=>{p.style.strokeDashoffset=Math.max(0,tot-l)};
 
-/* escolha manual: pausa o automático daquela fase por um tempo */
-const pick=i=>{if(i<4){hold[0]=Date.now()+9000;setA(i)}else{hold[1]=Date.now()+9000;setB(i)}};
-const bind=(el,i)=>{el.addEventListener('click',()=>pick(i));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}})};
-nds.forEach((n,i)=>bind(n,i));sPts.forEach((p,i)=>bind(p,i));cPts.forEach(p=>bind(p,+p.dataset.i));
-cards.forEach((c,k)=>c.addEventListener('mouseenter',()=>{hold[k]=Date.now()+6000}));
+/* estado inicial: ponto no 1, nada desenhado */
+function reset(){reveal(run1,L1,0);reveal(run1x,LX,0);reveal(run2x,LE,0);put(d1,g1,run1,0);show(0,true);put(d2,g2,loop,0);show(1,false);mark(0);mark(4)}
+function finalState(){reveal(run1,L1,L1);reveal(run1x,LX,LX);reveal(run2x,LE,LE);put(d1,g1,run1,L1);show(0,false);put(d2,g2,loop,0);show(1,true);mark(3);mark(4)}
+
+/* percurso: sobe os quatro degraus uma vez, atravessa e gira o ciclo; depois recomeça */
+async function tour(){
+  const my=++tok;
+  reset();if(!(await wait(900)))return;
+  for(let i=0;i<3;i++){
+    const a=SL[i],b=SL[i+1];
+    if(!(await tween(1150,k=>{const l=a+(b-a)*k;put(d1,g1,run1,l);reveal(run1,L1,l)})))return;
+    mark(i+1);if(!(await wait(1500)))return;
+  }
+  /* travessia para a operação */
+  if(!mob()){
+    if(!(await tween(600,k=>{reveal(run1,L1,L1);const l=LX*k;const q=run1x.getPointAtLength(l);d1.setAttribute('cx',q.x);d1.setAttribute('cy',q.y);g1.setAttribute('cx',q.x);g1.setAttribute('cy',q.y);reveal(run1x,LX,l)})))return;
+    show(0,false);show(1,true);
+    if(!(await tween(650,k=>{const q=run2x.getPointAtLength(LE*k);d2.setAttribute('cx',q.x);d2.setAttribute('cy',q.y);g2.setAttribute('cx',q.x);g2.setAttribute('cy',q.y);reveal(run2x,LE,LE*k)})))return;
+  }else{reveal(run1,L1,L1);show(0,false);put(d2,g2,loop,0);show(1,true)}
+  mark(4);if(!(await wait(1500)))return;
+  for(let lap=0;lap<3;lap++){
+    for(let j=0;j<4;j++){
+      const a=CLn[j],b=j===3?LL:CLn[j+1];
+      if(!(await tween(1200,k=>put(d2,g2,loop,a+(b-a)*k))))return;
+      mark(4+((j+1)%4));if(!(await wait(1600)))return;
+    }
+  }
+  if(!(await wait(800)))return;
+  if(my===tok)tour();
+}
+
+/* entrada: os dois painéis abrem e o percurso começa */
+let started=false,vis=false,resume;
+new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(vis&&!started){started=true;flow.classList.add('go');if(reduce)finalState();else setTimeout(tour,1500)}}),{threshold:.3}).observe(flow);
+if(reduce)finalState();else reset();
+
+/* clique numa etapa: o ponto vai até ela e o percurso volta sozinho depois */
+function pick(i){
+  tok++;clearTimeout(resume);
+  if(i<4){const l=SL[i];put(d1,g1,run1,l);reveal(run1,L1,l);reveal(run1x,LX,0);reveal(run2x,LE,0);show(0,true);show(1,false);mark(i);mark(4)}
+  else{reveal(run1,L1,L1);reveal(run1x,LX,LX);reveal(run2x,LE,LE);show(0,false);show(1,true);put(d2,g2,loop,CLn[i-4]);mark(3);mark(i)}
+  if(!reduce)resume=setTimeout(()=>{if(vis)tour()},9000);
+}
+pts.forEach(p=>{const i=+p.dataset.i;p.addEventListener('click',()=>pick(i));p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}})});
 
 /* entrada geral */
 const rs=[...document.querySelectorAll('[data-r]')];
