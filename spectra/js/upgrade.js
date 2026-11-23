@@ -166,6 +166,23 @@
   /* capacidades abrem só no clique ou no teclado; passar o mouse não troca mais de cartão */
   const rail = $('.v10-cap-rail');
   if (rail) rail.addEventListener('pointerenter', e => { if (e.target !== rail) e.stopPropagation(); }, true);
+  const caps = $$('.insights .v10-cap');
+  caps.forEach(card => {
+    const body = $('.v10-cap-body', card); if (!body) return;
+    const more = document.createElement('div'), inner = document.createElement('div');
+    more.className = 'sx-more';
+    [...body.children].filter(el => el.tagName !== 'H3').forEach(el => inner.appendChild(el));
+    more.appendChild(inner); body.appendChild(more);
+  });
+  /* a pergunta fica sempre visível; só a explicação é escondida dos leitores de tela */
+  const syncCaps = () => caps.forEach(card => {
+    const body = $('.v10-cap-body', card), more = $('.sx-more', card), on = card.classList.contains('active');
+    if (body) body.setAttribute('aria-hidden', 'false');
+    if (more) more.setAttribute('aria-hidden', String(!on));
+  });
+  const capObs = new MutationObserver(syncCaps);
+  caps.forEach(c => capObs.observe(c, { attributes: true, attributeFilter: ['class'] }));
+  syncCaps();
 
   /* ------------------------------------------------------------ números contam até o valor */
   const counted = new WeakSet();

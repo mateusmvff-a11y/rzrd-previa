@@ -218,15 +218,39 @@ html.sx-js [data-sx="shell"]{transform:translateY(44px)}
 .case-end button{transition:letter-spacing .4s var(--sx-ease)}
 .case-end button:hover{letter-spacing:.01em}
 
-/* ---------------------------------------------------------------- capacidades */
-/* o número já identifica o cartão; o nome aparece uma vez só */
+/* ---------------------------------------------------------------- sistema de perguntas: título fixo e as seis perguntas em lista */
+/* o número identifica a linha; o nome do tema fica pequeno, em cima da pergunta */
 .v10-cap-index{font-size:0!important;letter-spacing:0;min-width:0!important}
 .v10-cap-index:before{content:attr(data-number);font-size:12px;color:var(--violet);font-weight:720}
-.v10-cap{transition:flex .6s cubic-bezier(.4,0,.2,1),background .35s,border-color .35s}
-.v10-cap-body{transition:opacity .2s,max-height .5s cubic-bezier(.4,0,.2,1)}
-.v10-cap.active .v10-cap-body{transition:opacity .45s .28s,max-height .5s cubic-bezier(.4,0,.2,1)}
-.v10-cap:focus-within{outline:0}
-.v10-cap-trigger:focus-visible{outline:2px solid #8D6EBD;outline-offset:-4px;border-radius:14px}
+.insights .v10-cap-rail{flex-direction:column;gap:0;min-height:0;border-top:1px solid #C6CAC1}
+.insights .v10-cap,.insights .v10-cap.active{flex:none;min-height:0;display:block;position:relative;background:transparent;border:0;border-bottom:1px solid #C6CAC1;border-radius:0;padding:26px 60px 28px 62px;transition:none;box-shadow:none}
+.insights .v10-cap .v10-cap-trigger{position:absolute;inset:0;z-index:1;min-height:0!important;padding:0!important;display:block}
+.insights .v10-cap .v10-cap-index{position:absolute;left:4px;top:27px;min-height:0}
+.insights .v10-cap .v10-cap-short{position:absolute;left:62px;top:27px;writing-mode:horizontal-tb!important;transform:none!important;font-size:11px!important;letter-spacing:.13em!important;text-transform:uppercase;color:var(--violet);font-weight:700;line-height:1.2!important;white-space:nowrap}
+.insights .v10-cap .v10-cap-indicator,.insights .v10-cap.active .v10-cap-indicator{position:absolute;left:auto!important;bottom:auto!important;right:8px!important;top:22px!important;margin:0;font-size:26px;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.insights .v10-cap .v10-cap-body,.insights .v10-cap.active .v10-cap-body{max-height:none;opacity:1;overflow:visible;padding:24px 0 0;transition:none;pointer-events:auto}
+.insights .v10-cap-body h3{font-size:clamp(25px,2.6vw,40px);max-width:18em;margin:0;color:#8A938D;transition:color .4s}
+.insights .v10-cap:hover .v10-cap-body h3,.insights .v10-cap.active .v10-cap-body h3{color:var(--ink)}
+/* a explicação abre deslizando a altura, sem pular a lista */
+.insights .sx-more{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s cubic-bezier(.4,0,.2,1),opacity .2s}
+.insights .sx-more>div{overflow:hidden;min-height:0}
+.insights .v10-cap.active .sx-more{grid-template-rows:1fr;opacity:1;transition:grid-template-rows .5s cubic-bezier(.4,0,.2,1),opacity .35s .15s}
+.insights .sx-more p{margin:16px 0 14px;max-width:52ch}
+.insights .sx-more .v10-cap-ref{border-top:0;padding-top:0}
+.v10-cap-trigger:focus-visible{outline:2px solid #8D6EBD;outline-offset:-2px;border-radius:4px}
+@media(min-width:951px){
+  .insights .wrap{display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30px,5vw,96px);align-items:start}
+  .insights .insights-head{position:sticky;top:120px;margin:0}
+  .insights .insights-head h2{font-size:clamp(38px,4.3vw,70px)}
+}
+@media(max-width:950px){
+  .insights .v10-cap,.insights .v10-cap.active{padding:22px 44px 22px 40px}
+  .insights .v10-cap .v10-cap-index{top:23px}
+  .insights .v10-cap .v10-cap-short{left:40px;top:23px}
+  .insights .v10-cap .v10-cap-indicator,.insights .v10-cap.active .v10-cap-indicator{top:16px!important;right:2px!important}
+  .insights .v10-cap .v10-cap-body,.insights .v10-cap.active .v10-cap-body{padding-top:22px}
+  .insights .v10-cap-body h3{font-size:clamp(23px,6.4vw,30px)}
+}
 
 /* ---------------------------------------------------------------- memória */
 .memory-item{position:relative;overflow:hidden;transition:transform .6s var(--sx-ease),border-color .4s,box-shadow .5s}
@@ -291,3 +315,11 @@ html.sx-js [data-sx="shell"]{transform:translateY(44px)}
 .v5-strategy-tab::after,.v5-editorial-tab::after,.case-tab::after{display:none}
 @media(min-width:901px){.v5-strategy-tab:hover,.v5-strategy-tab[aria-selected="true"]{padding-left:0}}
 .memory-item:hover{transform:none;box-shadow:none}
+
+/* ---------------------------------------------------------------- revisão do cliente (v11) */
+#v10-scene-0 .v5-dash-questions p strong{color:#F4F1E8;font-weight:700}
+#v10-scene-1 .v5-lens-callout p{max-width:55ch}
+#v10-scene-2 .v10-panel-heading h3{max-width:26ch}
+@media(max-width:650px){#v10-scene-2 .v10-panel-heading h3{max-width:none}}
+/* a investigação tem fundo claro: o texto não herda a cor clara de um palco escuro */
+.v10-scene.v10-case{color:var(--ink)}

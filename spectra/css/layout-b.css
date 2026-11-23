@@ -57,25 +57,6 @@
 .v10-arrow:hover{background:#3A3554;border-color:#8E72C4}
 .v10-demo-count{color:#D5C3FF}
 
-/* ---------------------------------------------------------------- sistema de perguntas: título fixo à esquerda, as seis perguntas em lista */
-@media(min-width:951px){
-  .insights .wrap{display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30px,5vw,96px);align-items:start}
-  .insights .insights-head{position:sticky;top:120px;margin:0}
-  .insights .insights-head h2{font-size:clamp(38px,4.3vw,70px)}
-  .insights .v10-cap-rail{flex-direction:column;gap:0;min-height:0;border-top:1px solid #C6CAC1}
-  .insights .v10-cap,.insights .v10-cap.active{flex:none;min-height:0;display:block;position:relative;background:transparent;border:0;border-bottom:1px solid #C6CAC1;border-radius:0;padding:26px 60px 28px 62px;transition:none}
-  .insights .v10-cap .v10-cap-trigger{position:absolute;inset:0;z-index:1;min-height:0!important;padding:0!important;display:block}
-  .insights .v10-cap .v10-cap-index{position:absolute;left:4px;top:27px;min-height:0}
-  .insights .v10-cap .v10-cap-short{position:absolute;left:62px;top:27px;writing-mode:horizontal-tb!important;transform:none!important;font-size:11px!important;letter-spacing:.13em!important;text-transform:uppercase;color:var(--violet);font-weight:700;line-height:1.2!important;white-space:nowrap}
-  .insights .v10-cap .v10-cap-indicator{position:absolute;left:auto!important;bottom:auto!important;right:8px!important;top:22px!important;font-size:26px}
-  .insights .v10-cap .v10-cap-body{max-height:none;opacity:1;overflow:visible;padding:24px 0 0;transition:none}
-  .insights .v10-cap-body h3{font-size:clamp(25px,2.6vw,40px);max-width:18em;margin:0;color:#8A938D;transition:color .35s}
-  .insights .v10-cap:hover .v10-cap-body h3,.insights .v10-cap.active .v10-cap-body h3{color:var(--ink)}
-  .insights .v10-cap-body p,.insights .v10-cap-ref{display:none}
-  .insights .v10-cap.active .v10-cap-body p{display:block;margin:16px 0 16px;animation:sx-rise .5s var(--sx-ease) both}
-  .insights .v10-cap.active .v10-cap-ref{display:block;border-top:0;padding-top:0;animation:sx-rise .5s var(--sx-ease) both .06s}
-}
-
 /* ---------------------------------------------------------------- memória: título e texto lado a lado, quatro passos em linha */
 @media(min-width:901px){
   .memory-grid{grid-template-columns:1fr;gap:clamp(40px,5vw,76px)}
