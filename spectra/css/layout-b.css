@@ -1,0 +1,94 @@
+/* Spectra · versão B: mesmo conteúdo da versão A, com outro layout.
+   Carregado só em spectra/b/, depois de base.css e upgrade.css. */
+
+/* ---------------------------------------------------------------- topo: palco centralizado, laptop grande embaixo */
+.hero{min-height:0;display:block;padding:clamp(54px,6vw,100px) 0 0;text-align:center}
+.hero-grid{grid-template-columns:1fr;gap:0;justify-items:center}
+.hero h1{font-size:clamp(52px,8.4vw,150px);line-height:.94;max-width:10.5em;margin:0 auto 30px}
+.hero .lead{max-width:35em;margin-inline:auto}
+.hero-actions{justify-content:center}
+.hero-foot{justify-content:center;margin-top:34px}
+.hero-foot:before{display:none}
+.concept{width:min(1260px,calc(100% + var(--pad)));margin:clamp(16px,2.6vw,40px) 0 -2.5%;justify-self:center}
+.sx-photo{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 6%,#000 92%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 6%,#000 92%,transparent 100%)}
+
+/* ---------------------------------------------------------------- ponto de partida: uma frase só, no centro */
+.thesis-grid{grid-template-columns:1fr;gap:clamp(26px,3vw,46px);text-align:center;justify-items:center}
+.thesis h2{font-size:clamp(44px,7vw,126px);max-width:11.5em;margin-inline:auto;line-height:.98}
+.thesis p{max-width:33em}
+.thesis:after{right:50%;top:-34vw;transform:translateX(50%)}
+
+/* ---------------------------------------------------------------- estratégia: três botões em linha e um painel largo */
+.v5-strategy-stage{grid-template-columns:1fr;gap:20px}
+.v5-strategy-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:0}
+.v5-strategy-tab{border:1px solid var(--line);border-radius:18px;padding:20px 24px;font-size:clamp(17px,1.5vw,21px);transition:background .35s,color .35s,border-color .35s}
+.v5-strategy-tab:last-child{border-right:1px solid var(--line)}
+.v5-strategy-tab[aria-selected="true"],.v5-strategy-tab[aria-selected="true"]:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.v5-strategy-tab[aria-selected="true"] span{color:#B9C8C2}
+@media(min-width:901px){
+  .v5-strategy-panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+  .v5-strategy-panel-top{flex-direction:column;justify-content:space-between;gap:48px;padding:clamp(30px,3.6vw,56px)}
+  .v5-strategy-panel h3{font-size:clamp(36px,4.3vw,68px);max-width:9em}
+  .v5-profile-token{flex-direction:row;align-items:center;text-align:left;max-width:none}
+  .v5-strategy-detail{grid-template-columns:1fr;gap:38px;align-content:center}
+  .v5-strategy-detail strong{font-size:clamp(22px,2.2vw,32px)}
+  .v5-strategy-detail p{max-width:44ch}
+  .v5-strategy-foot{grid-column:1/-1}
+}
+.v5-strategy-nav .v5-strategy-tab:hover,.v5-strategy-nav .v5-strategy-tab[aria-selected="true"]{padding-left:24px}
+@media(max-width:650px){.v5-strategy-nav{grid-template-columns:1fr;gap:8px}.v5-strategy-nav .v5-strategy-tab,.v5-strategy-nav .v5-strategy-tab:hover,.v5-strategy-nav .v5-strategy-tab[aria-selected="true"]{padding:14px 18px}}
+
+/* ---------------------------------------------------------------- inteligência em ação: palco escuro para o tablet */
+.v10-showcase{background:#151B1D;color:#F4F3ED}
+.v10-showcase-head{text-align:center;justify-items:center}
+.v10-showcase-head h2{color:#F4F3ED;margin-inline:auto}
+.v10-showcase-head .eyebrow{color:#D5C3FF}
+.v10-demo-nav{background:#1E2628;border-color:#34423F;max-width:1020px;margin-inline:auto}
+.v10-demo-tab{border-right-color:#34423F;color:#9FB0AC}
+.v10-demo-tab.active,.v10-demo-tab:hover{background:#2A3436;color:#fff}
+.v10-demo-tab .v10-step{border-color:#4A5B5D;color:#D5C3FF}
+.v10-demo-tab.active .v10-step{background:#D5C3FF;border-color:#D5C3FF;color:#20292A}
+.v10-tab-copy small{color:#8FA39E}
+.v10-demo-tab.active .v10-tab-copy small{color:#B9C8C2}
+.v10-demo-tab.active:after{background:#D5C3FF}
+.v10-showcase-content{box-shadow:inset 0 0 0 1.5px #4D5558,0 0 0 1px #050606,0 90px 120px -70px #000}
+.v10-bottom-hint{color:#9FB0AC}
+.v10-arrow{background:#1E2628;border-color:#42514F;color:#F4F3ED}
+.v10-arrow:hover{background:#3A3554;border-color:#8E72C4}
+.v10-demo-count{color:#D5C3FF}
+
+/* ---------------------------------------------------------------- sistema de perguntas: título fixo à esquerda, as seis perguntas em lista */
+@media(min-width:951px){
+  .insights .wrap{display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:clamp(30px,5vw,96px);align-items:start}
+  .insights .insights-head{position:sticky;top:120px;margin:0}
+  .insights .insights-head h2{font-size:clamp(38px,4.3vw,70px)}
+  .insights .v10-cap-rail{flex-direction:column;gap:0;min-height:0;border-top:1px solid #C6CAC1}
+  .insights .v10-cap,.insights .v10-cap.active{flex:none;min-height:0;display:block;position:relative;background:transparent;border:0;border-bottom:1px solid #C6CAC1;border-radius:0;padding:26px 60px 28px 62px;transition:none}
+  .insights .v10-cap .v10-cap-trigger{position:absolute;inset:0;z-index:1;min-height:0!important;padding:0!important;display:block}
+  .insights .v10-cap .v10-cap-index{position:absolute;left:4px;top:27px;min-height:0}
+  .insights .v10-cap .v10-cap-short{position:absolute;left:62px;top:27px;writing-mode:horizontal-tb!important;transform:none!important;font-size:11px!important;letter-spacing:.13em!important;text-transform:uppercase;color:var(--violet);font-weight:700;line-height:1.2!important;white-space:nowrap}
+  .insights .v10-cap .v10-cap-indicator{position:absolute;left:auto!important;bottom:auto!important;right:8px!important;top:22px!important;font-size:26px}
+  .insights .v10-cap .v10-cap-body{max-height:none;opacity:1;overflow:visible;padding:24px 0 0;transition:none}
+  .insights .v10-cap-body h3{font-size:clamp(25px,2.6vw,40px);max-width:18em;margin:0;color:#8A938D;transition:color .35s}
+  .insights .v10-cap:hover .v10-cap-body h3,.insights .v10-cap.active .v10-cap-body h3{color:var(--ink)}
+  .insights .v10-cap-body p,.insights .v10-cap-ref{display:none}
+  .insights .v10-cap.active .v10-cap-body p{display:block;margin:16px 0 16px;animation:sx-rise .5s var(--sx-ease) both}
+  .insights .v10-cap.active .v10-cap-ref{display:block;border-top:0;padding-top:0;animation:sx-rise .5s var(--sx-ease) both .06s}
+}
+
+/* ---------------------------------------------------------------- memória: título e texto lado a lado, quatro passos em linha */
+@media(min-width:901px){
+  .memory-grid{grid-template-columns:1fr;gap:clamp(40px,5vw,76px)}
+  .memory-grid>div:first-child{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);column-gap:6vw;align-items:end}
+  .memory-grid>div:first-child .eyebrow{grid-column:1/-1}
+  .memory h2{margin:19px 0 0;font-size:clamp(43px,5.7vw,94px)}
+  .memory-track{grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid #CFD1C6;border-radius:20px;overflow:hidden;background:#F6F4EC}
+  .memory-item{border:0;border-right:1px solid #CFD1C6;border-radius:0;min-height:250px;padding:28px 26px;display:flex;flex-direction:column}
+  .memory-item:last-child{border-right:0}
+  .memory-item small{margin-bottom:auto}
+  .memory-item strong{margin-top:56px}
+}
+
+/* ---------------------------------------------------------------- telas menores */
+@media(max-width:1100px){.concept{width:calc(100% + var(--pad));margin:26px 0 -2.5%}}
+@media(max-width:760px){.sx-photo{-webkit-mask-image:none;mask-image:none}.hero{text-align:left;padding-top:44px;padding-bottom:60px}.hero h1{margin-inline:0}.hero .lead{margin-inline:0}.hero-actions,.hero-foot{justify-content:flex-start}.concept{width:100%;margin:26px 0 0;justify-self:stretch}.thesis-grid{text-align:left;justify-items:start}.thesis h2{margin-inline:0}.thesis:after{right:-18vw;top:-21vw;transform:none}}

@@ -172,7 +172,7 @@
   const cio = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting || counted.has(e.target)) return;
     counted.add(e.target); cio.unobserve(e.target);
-    if (e.target.closest('.sx-lid') && !RM && innerWidth > 760) { const el = e.target, full = el.textContent; el.textContent = full.replace(/\d[\d.,]*/, '0'); setTimeout(() => { el.textContent = full; count(el); }, 1900); } else count(e.target);
+    if (e.target.closest('.sx-lid') && !RM && innerWidth > 760) { const el = e.target, full = el.textContent; el.textContent = full.replace(/\d[\d.,]*/, '0'); setTimeout(() => { el.textContent = full; count(el); }, Math.max(0, 2000 - performance.now())); } else count(e.target);
   }), { threshold: .6 });
   function count(el) {
     const full = el.textContent.trim();
