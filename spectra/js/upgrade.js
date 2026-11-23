@@ -39,21 +39,7 @@
   const header = $('.header');
   const onScrollHeader = () => header && header.classList.toggle('sx-scrolled', scrollY > 30);
 
-  /* ------------------------------------------------------------ topo: luz, órbitas, minigráficos, inclinação */
-  const plot = $('.sx-plot');
-  if (plot) {
-    const A = [100, 102, 108, 111, 121, 125, 133, 134], B = [100, 102, 98, 96, 96, 92, 93, 89];
-    const W = 400, H = Math.max(60, Math.round(400 * plot.clientHeight / (plot.clientWidth || 400))) - 12, mid = H * .62, y = v => mid - (v - 100) * (mid - 6) / 36, x = i => i * W / 7;
-    const la = smooth(A.map((v, i) => [x(i), y(v)]), .7), lb = smooth(B.map((v, i) => [x(i), y(v)]), .7);
-    const c = svg(`<defs>
-        <linearGradient id="sxha" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A2DFDA" stop-opacity=".3"/><stop offset="1" stop-color="#A2DFDA" stop-opacity="0"/></linearGradient>
-        <linearGradient id="sxhb" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#D5C3FF" stop-opacity=".26"/><stop offset="1" stop-color="#D5C3FF" stop-opacity="0"/></linearGradient></defs>
-      <path class="g" d="M0 ${mid}H400"/>
-      <path class="a" fill="url(#sxha)" d="${la} L400 ${mid} L0 ${mid} Z"/><path class="a" fill="url(#sxhb)" d="${lb} L400 ${mid} L0 ${mid} Z"/>
-      <path class="l" pathLength="1" stroke="#A2DFDA" d="${la}"/><path class="l b" pathLength="1" stroke="#D5C3FF" d="${lb}"/>`, '', `0 0 ${W} ${H}`);
-    plot.appendChild(c);
-  }
-
+  
   /* ------------------------------------------------------------ curvas suaves */
   function smooth(p, t = .8) {
     let d = `M${p[0][0].toFixed(1)} ${p[0][1].toFixed(1)}`;
