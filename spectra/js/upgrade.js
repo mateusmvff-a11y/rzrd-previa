@@ -15,33 +15,6 @@
   };
   document.documentElement.classList.add('sx-js');
 
-  /* ------------------------------------------------------------ títulos palavra a palavra */
-  function splitWords(el) {
-    let i = 0;
-    const walk = node => {
-      [...node.childNodes].forEach(n => {
-        if (n.nodeType === 3) {
-          const parts = n.textContent.split(/(\s+)/);
-          const frag = document.createDocumentFragment();
-          parts.forEach(p => {
-            if (!p) return;
-            if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(' ')); return; }
-            const s = document.createElement('span');
-            s.className = 'sx-w';
-            s.style.setProperty('--i', i++);
-            s.textContent = p;
-            frag.appendChild(s);
-          });
-          n.replaceWith(frag);
-        } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
-      });
-    };
-    el.setAttribute('aria-label', el.textContent.trim());
-    walk(el);
-  }
-  const heroTitle = $('.hero h1');
-  if (heroTitle && !RM) splitWords(heroTitle);
-
   /* ------------------------------------------------------------ entradas ao rolar */
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
@@ -55,12 +28,10 @@
       seen.set(p, n + 1);
       el.setAttribute('data-sx', type || 'up');
       el.style.setProperty('--sx-d', n);
-      if (type === 'words' && !RM) splitWords(el);
       io.observe(el);
     });
   }
-  reveal('.thesis h2, .v5-section-head h2, .v10-showcase-head h2, .insights-head h2, .memory h2, .cta h2', 'words');
-  reveal('.thesis .eyebrow, .thesis-grid > p, .v5-section-head .eyebrow, .v10-showcase-head .eyebrow, .insights-head .eyebrow, .memory-grid > div:first-child > .eyebrow, .memory-grid > div:first-child > p, .cta .eyebrow, .cta p, .cta .action');
+  reveal('.thesis-grid > *, .v5-section-head > div, .v10-showcase-head, .insights-head > div, .memory-grid > div:first-child, .cta .wrap > *');
   reveal('.v5-strategy-nav, .v5-strategy-panel, .v10-cap, .memory-item');
   reveal('.v10-showcase-shell', 'shell');
 
@@ -69,46 +40,18 @@
   const onScrollHeader = () => header && header.classList.toggle('sx-scrolled', scrollY > 30);
 
   /* ------------------------------------------------------------ topo: luz, órbitas, minigráficos, inclinação */
-  const hero = $('.hero'), concept = $('.concept'), shell = $('.concept-shell');
-  if (hero) {
-    const glow = document.createElement('div');
-    glow.className = 'sx-glow';
-    glow.setAttribute('aria-hidden', 'true');
-    glow.innerHTML = '<i></i><i></i>';
-    hero.prepend(glow);
-  }
-  if (concept) {
-    concept.prepend(svg(`
-      <defs>
-        <linearGradient id="sxo1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6342A1"/><stop offset="1" stop-color="#A2DFDA"/></linearGradient>
-      </defs>
-      <circle class="r draw" pathLength="1" cx="300" cy="300" r="214" opacity=".55"/>
-      <circle class="r" cx="300" cy="300" r="268" opacity=".2"/>
-      <g class="spin"><circle class="r" cx="300" cy="300" r="296" opacity=".3" stroke-dasharray="2 9"/>
-        <circle cx="300" cy="4" r="4" fill="#6342A1"/></g>
-      <g class="spin b"><path class="r" d="M300 86 A214 214 0 0 1 514 300" stroke="url(#sxo1)" style="stroke:url(#sxo1);stroke-width:2.4" stroke-linecap="round"/>
-        <circle cx="514" cy="300" r="5" fill="#A2DFDA"/></g>
-      <g class="spin c"><circle class="r" cx="300" cy="300" r="160" opacity=".3" stroke-dasharray="1 7"/>
-        <circle cx="140" cy="300" r="3.5" fill="#B9A6DD"/></g>`, 'sx-orbit', '0 0 600 600'));
-  }
-  const sparks = [[100, 102, 108, 111, 121, 125, 133, 134], [100, 102, 98, 96, 96, 92, 93, 89], [100, 101, 100, 103, 102, 104, 105, 106]];
-  $$('.v5-hero-signals > div').forEach((card, k) => {
-    const d = sparks[k]; if (!d) return;
-    const min = Math.min(...d), max = Math.max(...d), W = 80, H = 24;
-    const pts = d.map((v, i) => [i * W / (d.length - 1), H - 2 - (v - min) / (max - min || 1) * (H - 4)]);
-    const last = pts[pts.length - 1];
-    card.appendChild(svg(`<path pathLength="1" d="${smooth(pts)}"/><circle cx="${last[0]}" cy="${last[1].toFixed(1)}" r="2.6"/>`, 'sx-spark', `0 0 ${W} ${H}`));
-  });
-  if (concept && shell && !RM && matchMedia('(hover:hover) and (min-width:1101px)').matches) {
-    concept.addEventListener('pointermove', e => {
-      const r = shell.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      shell.style.setProperty('--ry', ((x - .5) * 5).toFixed(2) + 'deg');
-      shell.style.setProperty('--rx', ((.5 - y) * 4).toFixed(2) + 'deg');
-      shell.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
-      shell.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-    });
-    concept.addEventListener('pointerleave', () => { shell.style.setProperty('--ry', '0deg'); shell.style.setProperty('--rx', '0deg'); });
+  const plot = $('.sx-plot');
+  if (plot) {
+    const A = [100, 102, 108, 111, 121, 125, 133, 134], B = [100, 102, 98, 96, 96, 92, 93, 89];
+    const W = 400, H = Math.max(60, Math.round(400 * plot.clientHeight / (plot.clientWidth || 400))) - 12, mid = H * .62, y = v => mid - (v - 100) * (mid - 6) / 36, x = i => i * W / 7;
+    const la = smooth(A.map((v, i) => [x(i), y(v)]), .7), lb = smooth(B.map((v, i) => [x(i), y(v)]), .7);
+    const c = svg(`<defs>
+        <linearGradient id="sxha" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A2DFDA" stop-opacity=".3"/><stop offset="1" stop-color="#A2DFDA" stop-opacity="0"/></linearGradient>
+        <linearGradient id="sxhb" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#D5C3FF" stop-opacity=".26"/><stop offset="1" stop-color="#D5C3FF" stop-opacity="0"/></linearGradient></defs>
+      <path class="g" d="M0 ${mid}H400"/>
+      <path class="a" fill="url(#sxha)" d="${la} L400 ${mid} L0 ${mid} Z"/><path class="a" fill="url(#sxhb)" d="${lb} L400 ${mid} L0 ${mid} Z"/>
+      <path class="l" pathLength="1" stroke="#A2DFDA" d="${la}"/><path class="l b" pathLength="1" stroke="#D5C3FF" d="${lb}"/>`, '', `0 0 ${W} ${H}`);
+    plot.appendChild(c);
   }
 
   /* ------------------------------------------------------------ curvas suaves */
@@ -119,16 +62,6 @@
       d += ` C${(b[0] + (c[0] - a[0]) / 6 * t).toFixed(1)} ${(b[1] + (c[1] - a[1]) / 6 * t).toFixed(1)} ${(c[0] - (e[0] - b[0]) / 6 * t).toFixed(1)} ${(c[1] - (e[1] - b[1]) / 6 * t).toFixed(1)} ${c[0].toFixed(1)} ${c[1].toFixed(1)}`;
     }
     return d;
-  }
-
-  /* ------------------------------------------------------------ ponto de partida: anéis */
-  const thesis = $('.thesis');
-  if (thesis) {
-    thesis.appendChild(svg(`
-      <circle cx="300" cy="300" r="298"/>
-      <circle cx="300" cy="300" r="262" opacity=".45"/>
-      <g class="spin"><circle cx="300" cy="300" r="226" stroke-dasharray="2 10" opacity=".8"/><circle class="dot" cx="300" cy="74" r="2.6"/></g>
-      <g class="spin b"><path class="lav" fill="none" d="M38 300 A262 262 0 0 0 300 562" stroke-width="1.6" opacity=".7"/><circle class="dot" cx="38" cy="300" r="3.2"/></g>`, 'sx-rings', '0 0 600 600'));
   }
 
   /* ------------------------------------------------------------ estratégia: desenho por objetivo e troca animada */
@@ -263,25 +196,11 @@
     };
     requestAnimationFrame(step);
   }
-  $$('.v5-hero-signals strong, .v5-dash-counters strong, .case-metric strong, .barcompare b, .v5-bar-item b').forEach(el => cio.observe(el));
+  $$('.sx-kpis strong, .v5-dash-counters strong, .case-metric strong, .barcompare b, .v5-bar-item b').forEach(el => cio.observe(el));
 
   /* ------------------------------------------------------------ seções em vista (dispara barras e mapa) */
   const vio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('sx-inview'); vio.unobserve(e.target); } }), { threshold: .18 });
   $$('.v10-showcase').forEach(s => vio.observe(s));
-
-  /* ------------------------------------------------------------ chamada final: o símbolo em faixas */
-  const cta = $('.cta');
-  if (cta) {
-    let bars = '';
-    const R = 200;
-    [-150, -100, -50, 0, 50, 100, 150].forEach((y, n) => {
-      const half = Math.sqrt(R * R - y * y) - 6;
-      bars += `<rect class="bar" style="--n:${n}" x="${(300 - half).toFixed(1)}" y="${300 + y - 13}" width="${(half * 2).toFixed(1)}" height="26" rx="13"/>`;
-    });
-    cta.prepend(svg(`${bars}
-      <circle class="ring" cx="300" cy="300" r="236"/>
-      <g class="spin"><circle class="ring" cx="300" cy="300" r="282" stroke-dasharray="2 9"/><circle cx="300" cy="18" r="3.4" fill="#6342A1" opacity=".7"/></g>`, 'sx-cta-art', '0 0 600 600'));
-  }
 
   /* ------------------------------------------------------------ ranking: formato na miniatura, coluna ativa, troca animada */
   const formats = ['Card', 'Reels', 'Carrossel', 'Reels', 'Carrossel'];
@@ -300,7 +219,6 @@
 
   /* ------------------------------------------------------------ rolagem: faixas que abrem e anéis que giram */
   const bands = $$('.thesis, .cta'); bands.forEach(b => b.classList.add('sx-band'));
-  const rings = $('.sx-rings');
   let q = 0;
   const frame = () => {
     q = 0; onScrollHeader();
@@ -313,12 +231,10 @@
       const m = (Math.min(40, innerWidth * .026) * (1 - k)).toFixed(1), R = ((1 - k) * 34).toFixed(1);
       b.style.clipPath = `inset(0 ${m}px 0 ${m}px round ${R}px ${R}px 0 0)`;
     });
-    if (rings && thesis && !RM) {
-      const r = thesis.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < H) rings.style.transform = `rotate(${((H - r.top) / (H + r.height) * 40 - 20).toFixed(2)}deg)`;
-    }
   };
   addEventListener('scroll', () => { if (!q) q = requestAnimationFrame(frame); }, { passive: true });
   addEventListener('resize', frame);
   frame();
 })();
+
+  
