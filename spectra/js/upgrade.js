@@ -32,12 +32,18 @@
     });
   }
   reveal('.thesis-grid > *, .v5-section-head > div, .v10-showcase-head, .insights-head > div, .memory-grid > div:first-child, .cta .wrap > *');
-  reveal('.v5-strategy-nav, .v5-strategy-panel, .v10-cap, .memory-item');
+  reveal('.v5-strategy-nav, .v5-strategy-panel, .v10-cap-rail, .memory-item');
   reveal('.v10-showcase-shell', 'shell');
 
   /* ------------------------------------------------------------ cabeçalho */
   const header = $('.header');
-  const onScrollHeader = () => header && header.classList.toggle('sx-scrolled', scrollY > 30);
+  const heroEl = $('.hero');
+  const onScrollHeader = () => {
+    if (!header) return;
+    header.classList.toggle('sx-scrolled', scrollY > 30);
+    /* o cabeçalho só aparece depois da primeira seção */
+    header.classList.toggle('sx-away', !!heroEl && scrollY < heroEl.offsetHeight - 140);
+  };
 
   
   /* ------------------------------------------------------------ curvas suaves */
@@ -157,11 +163,16 @@
     }
   }
 
+  /* capacidades abrem só no clique ou no teclado; passar o mouse não troca mais de cartão */
+  const rail = $('.v10-cap-rail');
+  if (rail) rail.addEventListener('pointerenter', e => { if (e.target !== rail) e.stopPropagation(); }, true);
+
   /* ------------------------------------------------------------ números contam até o valor */
   const counted = new WeakSet();
   const cio = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting || counted.has(e.target)) return;
-    counted.add(e.target); cio.unobserve(e.target); count(e.target);
+    counted.add(e.target); cio.unobserve(e.target);
+    if (e.target.closest('.sx-lid') && !RM && innerWidth > 760) { const el = e.target, full = el.textContent; el.textContent = full.replace(/\d[\d.,]*/, '0'); setTimeout(() => { el.textContent = full; count(el); }, 1900); } else count(e.target);
   }), { threshold: .6 });
   function count(el) {
     const full = el.textContent.trim();

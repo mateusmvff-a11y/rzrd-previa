@@ -17,7 +17,9 @@ p{text-wrap:pretty}
 
 
 /* ---------------------------------------------------------------- cabeçalho */
-.header{transition:box-shadow .5s var(--sx-ease),background .5s var(--sx-ease)}
+.header{transition:box-shadow .5s var(--sx-ease),background .5s var(--sx-ease),transform .6s var(--sx-ease)}
+html.sx-js .header.sx-away{transform:translateY(-102%)}
+html.sx-js .header.sx-away+.mobile-menu{display:none}
 .header.sx-scrolled{box-shadow:0 14px 34px -28px rgba(16,27,27,.55)}
 .nav a:not(.action){position:relative}
 .nav a:not(.action)::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--sx-ease)}
@@ -30,9 +32,9 @@ p{text-wrap:pretty}
 
 /* ---------------------------------------------------------------- topo */
 /* título à esquerda; à direita, a foto de um laptop com a tela da Spectra montada ao vivo dentro dela */
-.hero{padding-bottom:clamp(60px,6vw,96px);background:#F2EEE4}
+.hero{padding:clamp(40px,4.5vw,70px) 0 clamp(40px,4.5vw,70px);background:#F2EEE4}
 .hero-grid{grid-template-columns:minmax(0,.72fr) minmax(0,1fr);gap:clamp(8px,1.5vw,28px)}
-.hero h1{font-size:clamp(52px,5.7vw,94px);max-width:none;line-height:1;margin:22px 0 26px}
+.hero h1{font-size:clamp(54px,6vw,100px);max-width:none;line-height:1;margin:0 0 26px}
 .hero .lead{max-width:25em}
 .hero-foot{margin-top:48px}
 .hero .eyebrow,.hero h1,.hero .lead,.hero-actions,.hero-foot{animation:sx-rise .9s var(--sx-ease) both}
@@ -41,10 +43,17 @@ p{text-wrap:pretty}
 @keyframes sx-line{from{transform:scaleX(0)}}
 @keyframes sx-draw{to{stroke-dashoffset:0}}
 @keyframes sx-fadein{to{opacity:1}}
-.concept{max-width:none;justify-self:stretch;width:calc(100% + var(--pad) + 13vw);margin-left:-2vw;animation:sx-rise 1.3s var(--sx-ease) both .15s}
+.concept{max-width:none;justify-self:stretch;width:calc(100% + var(--pad) + 13vw);margin-left:-2vw}
 .concept:before{display:none}
 .sx-photo{position:relative;aspect-ratio:1210/860;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 100%),linear-gradient(180deg,transparent 0,#000 6%,#000 92%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 100%),linear-gradient(180deg,transparent 0,#000 6%,#000 92%,transparent 100%);mask-composite:intersect}
+.sx-photo{perspective:1700px;perspective-origin:50% 80%}
 .sx-photo-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+/* a foto é dividida na dobradiça: a base fica parada e a tampa abre */
+.sx-deck{position:absolute;inset:0;background:url(../img/laptop.jpg) center/100% 100% no-repeat;clip-path:inset(74.4% 0 0 0)}
+.sx-lid{position:absolute;inset:0;clip-path:inset(0 0 25.6% 0);transform-origin:50% 74.4%;animation:sx-open 1.7s cubic-bezier(.3,.6,.15,1) both .3s;will-change:transform}
+@keyframes sx-open{from{transform:rotateX(-87deg)}}
+.sx-app{animation:sx-on 1s ease both 1.75s}
+@keyframes sx-on{from{opacity:0}}
 /* a tela: posição medida na foto */
 .sx-screen{position:absolute;left:12.15%;top:9.65%;width:71.16%;height:63.49%;border-radius:.55% / .9%;overflow:hidden;background:#1D2527;container-type:inline-size;--u:1.13cqw}
 .sx-screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,.02) 26%,transparent 44%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.6)}
@@ -210,13 +219,14 @@ html.sx-js [data-sx="shell"]{transform:translateY(44px)}
 .case-end button:hover{letter-spacing:.01em}
 
 /* ---------------------------------------------------------------- capacidades */
-.v10-cap{transition:flex .7s var(--sx-ease),background .4s,border-color .4s,box-shadow .5s}
-.v10-cap.active{box-shadow:0 34px 60px -48px rgba(74,48,128,.55)}
-.v10-cap.active .v10-cap-body>*{animation:sx-rise .8s var(--sx-ease) both .12s}
-.v10-cap.active .v10-cap-body>*:nth-child(2){animation-delay:.2s}
-.v10-cap.active .v10-cap-body>*:nth-child(3){animation-delay:.28s}
-.v10-cap::before{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--violet);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--sx-ease)}
-.v10-cap.active::before{transform:scaleX(1)}
+/* o número já identifica o cartão; o nome aparece uma vez só */
+.v10-cap-index{font-size:0!important;letter-spacing:0;min-width:0!important}
+.v10-cap-index:before{content:attr(data-number);font-size:12px;color:var(--violet);font-weight:720}
+.v10-cap{transition:flex .6s cubic-bezier(.4,0,.2,1),background .35s,border-color .35s}
+.v10-cap-body{transition:opacity .2s,max-height .5s cubic-bezier(.4,0,.2,1)}
+.v10-cap.active .v10-cap-body{transition:opacity .45s .28s,max-height .5s cubic-bezier(.4,0,.2,1)}
+.v10-cap:focus-within{outline:0}
+.v10-cap-trigger:focus-visible{outline:2px solid #8D6EBD;outline-offset:-4px;border-radius:14px}
 
 /* ---------------------------------------------------------------- memória */
 .memory-item{position:relative;overflow:hidden;transition:transform .6s var(--sx-ease),border-color .4s,box-shadow .5s}
@@ -248,7 +258,7 @@ html.sx-js [data-sx="shell"]{transform:translateY(44px)}
 @media(max-width:1100px){.hero-grid{grid-template-columns:1fr}.concept{width:calc(100% + var(--pad) + 6vw);margin:20px 0 0 -4vw;justify-self:start}}
 /* no celular a tela não cabe legível dentro do laptop: ela vira o cartão do protótipo, sem a foto */
 @media(max-width:760px){.hero h1{font-size:clamp(50px,13.4vw,74px)}.concept{width:100%;margin:26px 0 0}
-  .sx-photo{aspect-ratio:auto;-webkit-mask-image:none;mask-image:none}.sx-photo-img{display:none}
+  .sx-photo{aspect-ratio:auto;-webkit-mask-image:none;mask-image:none;perspective:none}.sx-photo-img,.sx-deck{display:none}.sx-lid{position:relative;clip-path:none;animation:none}.sx-app{animation:none}
   .sx-screen{position:relative;left:0;top:0;width:100%;height:auto;border-radius:20px;border:1px solid #334345;box-shadow:0 35px 75px -40px #101B1B91;--u:2.75cqw}
   .sx-screen::after{display:none}.sx-row{grid-template-columns:1fr;gap:calc(var(--u)*2.2)}.sx-body{gap:calc(var(--u)*2)}.sx-bar em{display:none}
   .sx-kpis>div{grid-template-columns:1fr;padding-inline:calc(var(--u)*1.1)}.sx-kpis strong{font-size:calc(var(--u)*3.3)}.sx-kpis span{min-height:calc(var(--u)*5)}.sx-flow span{font-size:calc(var(--u)*1.05)}
@@ -265,3 +275,19 @@ html.sx-js [data-sx="shell"]{transform:translateY(44px)}
   .sx-glyph .g1 path.l{stroke-dashoffset:0}
 }
 
+
+/* ---------------------------------------------------------------- auditoria: menos vícios */
+/* sem linha em cima de cada frase: o espaço já separa */
+.v5-strategy-detail>div,.v5-dash-counters>div,.v5-signal-contrast>div,.v5-anatomy-step{border-top:0;padding-top:0}
+.v5-anatomy-track>div{border-top:0;padding-top:0}
+.v5-strategy-detail>div::before,.v5-dash-counters>div::before,.memory-item::before,.v5-lens.active .v5-anatomy-track>div::before{display:none}
+.v5-strategy-detail{gap:clamp(28px,4vw,56px)}
+/* caixas de destaque sem a barrinha colorida na lateral */
+.v5-lens-callout,.v5-dash-questions,.sx-resp{border-left:0;border-radius:12px}
+.sx-resp{border-radius:calc(var(--u)*1.1)}
+.interim>div{border-left:0;border-radius:12px;padding:16px 18px}
+.v5-insight-list div{border-left:0;padding-left:0}
+/* as abas marcam a escolha só pela cor do texto, sem traço correndo embaixo */
+.v5-strategy-tab::after,.v5-editorial-tab::after,.case-tab::after{display:none}
+@media(min-width:901px){.v5-strategy-tab:hover,.v5-strategy-tab[aria-selected="true"]{padding-left:0}}
+.memory-item:hover{transform:none;box-shadow:none}
