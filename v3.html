@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#f4ede1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Rzrd. — Direção antes de presença</title>
+<meta name="description" content="A Rzrd. conecta direção de marca, produção contínua de conteúdo e inteligência aplicada para transformar escolhas estratégicas em trabalho concreto." />
+<!-- Home V3: proposta nova publicada dentro da prévia; ativos locais em assets/. -->
+<style>
+@font-face{font-family:Geist;src:url('assets/fonts/geist-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+ --paper:#f4ede1; --paper2:#f8f2e8; --paperdeep:#eadfce; --ink:#2b231d; --ink2:#171717;
+ --muted:#6d675f; --soft:#b5aa99; --line:rgba(50,39,30,.18);--green:#789748; --orange:#b76143;--violet:#8275b6;
+ --radius:24px;--radiusLg:36px;--max:1500px; --edge:clamp(22px,5.2vw,88px); --ease:cubic-bezier(.16,1,.3,1)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:94px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Geist,Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;letter-spacing:-.021em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+img,video,svg{max-width:100%}svg{display:block}img{display:block}::selection{background:#bcb59f;color:var(--ink)}
+.container{width:min(100%,var(--max));margin-inline:auto;padding-inline:var(--edge)}
+.section-flag{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.11em;font-size:11px;font-weight:650;color:var(--muted)}
+.section-flag::before{content:"";display:block;width:18px;height:1px;background:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:19px;border:1px solid transparent;border-radius:999px;font-size:13px;letter-spacing:-.015em;font-weight:650;padding:15px 19px;min-height:51px;white-space:nowrap;background:var(--ink);color:var(--paper2);transition:background .3s,transform .3s,border-color .3s;cursor:pointer}
+.btn:hover{transform:translateY(-2px);background:#4a3829}
+.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}.btn.secondary:hover{background:rgba(43,35,29,.06)}
+.btn svg{width:17px;height:17px;stroke:currentColor;stroke-width:1.5;fill:none}
+.wordmark{display:block;position:relative;width:110px;flex:0 0 auto}
+.wordmark img{display:block;width:100%;height:auto;filter:brightness(0);min-height:23px}
+.wordmark .fallback{position:absolute;inset:0;font-size:29px;letter-spacing:-.09em;line-height:1;font-weight:800;display:none}
+.wordmark img:not([src]),.wordmark img.error{display:none}.wordmark img.error+.fallback{display:block}
+/* Navigation */
+.site-header{position:fixed;z-index:100;left:0;right:0;top:0;height:82px;transition:background .35s,box-shadow .35s}
+.site-header.scrolled,.site-header.open{background:rgba(244,237,225,.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(60,43,30,.08)}
+.header-inner{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+.main-links{display:flex;align-items:center;gap:clamp(16px,2vw,34px)}
+.main-links a{font-size:13px;font-weight:550;transition:opacity .25s}.main-links a:hover{opacity:.5}
+.header-actions{justify-self:end;display:flex;align-items:center;gap:14px}.header-actions .btn{min-height:43px;padding:12px 17px;font-size:12px}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.menu-btn span{width:17px;height:1px;background:var(--ink);transition:transform .25s}
+.site-header.open .menu-btn span:first-child{transform:translateY(3px) rotate(45deg)}.site-header.open .menu-btn span:last-child{transform:translateY(-3px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:82px 0 auto;background:var(--paper);padding:32px var(--edge) 48px;display:none;z-index:99;box-shadow:0 28px 50px rgba(20,12,3,.12)}
+.mobile-menu a{display:block;padding:11px 0;font-size:30px;font-weight:550;letter-spacing:-.06em}.mobile-menu small{display:block;color:var(--muted);font-size:12px;margin:18px 0 4px}
+/* Hero */
+.hero{min-height:790px;height:100svh;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--paper);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 74% 48%,rgba(233,187,143,.13),transparent 42%);z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--paper) 4%,rgba(244,237,225,.94) 23%,rgba(244,237,225,.3) 52%,transparent 79%);z-index:-1}
+.hero-canvas,.hero-fallback{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-canvas{z-index:-2}.hero-fallback{z-index:-3;display:flex;justify-content:flex-end;align-items:center;padding-right:clamp(30px,7vw,125px);opacity:.65}
+.hero-fallback svg{width:min(58vw,760px);height:auto;animation:gentleRotate 95s linear infinite}
+@keyframes gentleRotate{to{transform:rotate(360deg)}}
+.hero-inner{position:relative;padding-top:83px;padding-bottom:120px;display:flex;align-items:center;min-height:100%;width:100%}
+.hero-copy{max-width:700px;width:57%;position:relative;z-index:3;padding-top:50px}
+.hero-eyebrow{font-size:13px;font-weight:650;letter-spacing:.035em;margin:0 0 26px}.hero-eyebrow span{color:var(--orange);margin-left:8px}
+.hero h1{font-weight:525;font-size:clamp(3.1rem,5.45vw,6.65rem);letter-spacing:-.077em;line-height:1.035;max-width:11em;margin:0;text-wrap:balance}
+.hero h1 em{font-style:normal;position:relative}.hero h1 em::after{content:"";position:absolute;bottom:-.045em;height:.065em;background:var(--orange);left:0;width:100%;transform-origin:left;transform:scaleX(.9)}
+.hero-sub{font-size:clamp(1rem,1.15vw,1.18rem);line-height:1.58;letter-spacing:-.022em;color:#575048;max-width:490px;margin:26px 0 29px}
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hero-bottom{position:absolute;bottom:36px;left:0;right:0;display:flex;align-items:end;justify-content:space-between;z-index:4}
+.hero-progress{display:flex;align-items:center;gap:14px;min-width:260px;font-size:11px;letter-spacing:.025em;font-weight:620}
+.hero-progress .number{color:var(--orange);font-size:14px}.hero-progress .rule{height:1px;width:76px;background:rgba(43,35,29,.2);position:relative;overflow:hidden}
+.hero-progress .rule b{display:block;width:25%;height:100%;background:var(--orange);transition:width .3s}
+.hero-bottom .scroll{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.hero-bottom .scroll svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none;animation:softBob 2s ease-in-out infinite}
+@keyframes softBob{50%{transform:translateY(4px)}}
+.motion-switch{position:absolute;right:var(--edge);top:118px;z-index:8;border:1px solid var(--line);border-radius:50%;width:35px;height:35px;background:rgba(244,237,225,.64);color:var(--ink);font-size:11px;line-height:1}
+/* Thesis */
+.thesis{padding:clamp(115px,12vw,190px) 0 clamp(110px,11vw,170px);background:#e9decc;border-top:1px solid rgba(50,39,30,.06)}
+.thesis-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,9vw,150px);align-items:start}
+.thesis h2{font-size:clamp(3.25rem,6vw,7.5rem);line-height:1.01;letter-spacing:-.072em;font-weight:500;margin:22px 0 0;max-width:8.5em}
+.thesis h2 .light{color:#a39380}
+.thesis-right{padding-top:clamp(12px,5vw,90px)}
+.thesis-lead{font-size:clamp(1.35rem,2.1vw,2rem);line-height:1.28;letter-spacing:-.044em;font-weight:480;margin:0;max-width:570px}
+.thesis-body{margin-top:23px;font-size:15px;color:var(--muted);line-height:1.65;max-width:480px}
+.thesis-steps{margin-top:48px;border-top:1px solid var(--line)}
+.thesis-step{display:grid;grid-template-columns:33px 1fr auto;gap:17px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);transition:padding-left .3s}
+.thesis-step:hover{padding-left:8px}.thesis-step strong{font-size:20px;font-weight:500;letter-spacing:-.045em}.thesis-step .index{font-size:11px;color:var(--orange);font-weight:650}.thesis-step .small{font-size:12px;color:var(--muted);max-width:158px;text-align:right}
+/* Capabilities */
+.capabilities{padding:clamp(108px,10vw,155px) 0 clamp(110px,11vw,170px);background:var(--paper2)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:44px;margin-bottom:53px}
+.section-head h2{font-size:clamp(2.6rem,4.85vw,5.9rem);line-height:1.03;letter-spacing:-.065em;font-weight:500;margin:17px 0 0;max-width:830px}
+.section-head p{max-width:336px;color:var(--muted);font-size:15px;line-height:1.65;margin:0 0 5px}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.product{position:relative;display:flex;flex-direction:column;min-height:620px;border:1px solid rgba(30,24,20,.04);background:#eee8d9;border-radius:29px;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.product:hover{transform:translateY(-7px);box-shadow:0 26px 50px -30px rgba(24,19,15,.28)}
+.product::after{content:"";position:absolute;top:18px;right:18px;width:25px;height:25px;border:1px solid rgba(40,28,20,.3);border-radius:50%;background:transparent;pointer-events:none}
+.product .p-num{position:absolute;top:22px;left:27px;z-index:3;font-size:11px;font-weight:650;letter-spacing:.09em;opacity:.75}
+.p-art{height:338px;position:relative;display:grid;place-items:center;overflow:hidden;flex:none}
+.p-art svg{width:100%;height:100%;display:block}
+.product.aether{background:#e5edcf}.product.vortex{background:#f2d7c6}.product.spectra{background:#e7e1f4}
+.p-info{padding:15px 27px 29px;flex:1;display:flex;flex-direction:column}
+.p-kicker{font-size:10px;font-weight:670;text-transform:uppercase;letter-spacing:.12em;opacity:.65}
+.p-info h3{font-size:clamp(2.6rem,3.75vw,4.7rem);font-weight:540;letter-spacing:-.09em;line-height:1;margin:9px 0 7px}
+.p-title{font-size:16px;font-weight:600;margin:0}.p-description{font-size:13px;line-height:1.65;margin:14px 0 26px;max-width:35ch;color:#4f4942}
+.p-bottom{margin-top:auto;border-top:1px solid rgba(50,39,30,.16);padding-top:20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:650}
+.p-bottom svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;transition:transform .35s}.product:hover .p-bottom svg{transform:translate(4px,-4px)}
+/* aether diagram motion */
+.a-orbit{transform-origin:50% 50%;animation:spin 55s linear infinite}.a-orbit.reverse{animation-direction:reverse;animation-duration:78s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.a-cursor{animation:fadePulse 4s ease-in-out infinite}@keyframes fadePulse{50%{opacity:.33}}
+.vortex-film{position:absolute;top:70px;width:31%;height:208px;border-radius:10px;overflow:hidden;border:5px solid #f6e8da;box-shadow:0 12px 24px -11px rgba(54,19,6,.3);transform-origin:center;transition:transform .6s var(--ease)}
+.vortex-film img{width:100%;height:100%;object-fit:cover}
+.vortex-film.f1{left:12%;transform:rotate(-13deg) translateY(10px)}.vortex-film.f2{left:35%;z-index:2;transform:rotate(0)}.vortex-film.f3{right:12%;transform:rotate(13deg) translateY(10px)}
+.product.vortex:hover .f1{transform:rotate(-19deg) translate(-5px,7px)}.product.vortex:hover .f2{transform:translateY(-9px)}.product.vortex:hover .f3{transform:rotate(19deg) translate(5px,7px)}
+.spectra-chart{padding:57px 25px 19px 25px}.spectra-chart text{font-family:Geist,Arial,sans-serif}
+/* Work */
+.work{background:#22201f;color:#f3eadc;padding:clamp(110px,10.5vw,170px) 0 clamp(115px,10vw,165px)}
+.work .section-flag{color:#b9aa9b}.work .section-head h2{max-width:780px}.work .section-head p{color:#b8afa5}
+.work-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;grid-template-rows:270px 270px}
+.work-card{position:relative;border-radius:26px;overflow:hidden;cursor:pointer;border:0;text-align:left;padding:0;color:inherit;background:#333;min-width:0;isolation:isolate}
+.work-card.feature{grid-row:span 2;background:#506354}
+.work-card:nth-child(2){background:#ac705c}.work-card:nth-child(3){background:#686572}
+.work-card .preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:transform 1s var(--ease),opacity .7s}
+.work-card.feature .preview{object-position:50% 45%;opacity:.38}
+.work-card:nth-child(2) .preview{object-position:50% 42%}
+.work-card:nth-child(3) .preview{object-position:50% 35%}
+.work-card:hover .preview{transform:scale(1.075);opacity:.64}
+.work-card:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 72%);z-index:1}
+.work-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 75%);z-index:1}
+.work-card .work-tag{position:absolute;z-index:2;top:25px;left:26px;border:1px solid rgba(255,255,255,.47);padding:7px 10px;border-radius:999px;text-transform:uppercase;font-size:9px;letter-spacing:.09em;font-weight:700}
+.work-card .play-pill{position:absolute;z-index:2;right:24px;top:23px;display:grid;place-items:center;width:49px;height:49px;background:rgba(250,242,227,.95);border-radius:50%;color:#26201b;transition:transform .35s}
+.work-card:hover .play-pill{transform:scale(1.09)}.play-pill svg{width:17px;fill:currentColor}
+.work-copy{position:absolute;z-index:2;bottom:29px;left:29px;right:22px}.work-copy small{display:block;font-size:11px;opacity:.85;margin-bottom:10px;letter-spacing:.04em}
+.work-copy strong{display:block;font-size:clamp(1.75rem,2.65vw,3rem);line-height:1.08;letter-spacing:-.065em;font-weight:520;max-width:14em}
+.work-card.feature .work-copy strong{font-size:clamp(3rem,4.35vw,5.4rem);max-width:9em}
+.work-note{display:flex;align-items:start;gap:11px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.22);padding-top:22px;margin-top:28px;color:#b7ada1;font-size:12px}
+.work-note p{margin:0;max-width:570px;line-height:1.5}.work-note span{white-space:nowrap;font-weight:600;color:#f3eadc}
+/* About */
+.about{padding:clamp(120px,11vw,185px) 0;background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,9vw,150px)}
+.about h2{font-size:clamp(3.3rem,5.5vw,6.9rem);line-height:1.01;letter-spacing:-.071em;max-width:9em;font-weight:500;margin:21px 0 0}
+.about .about-right{padding-top:clamp(0px,4vw,67px)}
+.about-right >p{font-size:clamp(1.15rem,1.7vw,1.65rem);line-height:1.43;letter-spacing:-.035em;margin:0 0 20px;max-width:530px}
+.about-right >p+p{font-size:15px;line-height:1.65;letter-spacing:-.016em;color:var(--muted)}
+.people{border-top:1px solid var(--line);margin-top:45px}
+.person{display:grid;grid-template-columns:42px 1fr auto;gap:18px;align-items:center;border-bottom:1px solid var(--line);padding:20px 0}
+.person .monogram{display:grid;place-items:center;border-radius:50%;background:#e5d9c5;width:38px;height:38px;font-size:11px;font-weight:650}
+.person .name{font-size:15px;font-weight:650}.person .role{font-size:12px;color:var(--muted);text-align:right}
+.about-quote{margin-top:54px;padding:26px 0 0;border-top:1px solid var(--line);font-size:14px;font-weight:550;color:#595147;max-width:550px}
+/* CTA */
+.contact{background:#1d1a19;padding:24px var(--edge) 0}
+.contact-inner{isolation:isolate;position:relative;max-width:1590px;margin:0 auto;overflow:hidden;border-radius:32px;background:#a45b42;min-height:500px;padding:clamp(42px,6.3vw,94px);display:flex;flex-direction:column;justify-content:space-between;color:#fff3e8}
+.contact-glow{position:absolute;z-index:-1;width:55%;aspect-ratio:1;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none;animation:float1 17s ease-in-out infinite alternate}
+.contact-glow.g1{top:-58%;right:-12%;background:#dec286}.contact-glow.g2{bottom:-93%;left:21%;background:#633a57;animation-delay:-7s}
+@keyframes float1{to{transform:translate(-12%,24%)}}
+.contact .section-flag{color:#ffe5d1}.contact .section-flag::before{background:#ffe5d1}
+.contact h2{font-size:clamp(3.1rem,6vw,7.5rem);letter-spacing:-.075em;line-height:.99;font-weight:520;max-width:11em;margin:26px 0 50px}
+.contact-bottom{display:flex;justify-content:space-between;align-items:end;gap:25px}
+.contact-bottom p{font-size:clamp(1rem,1.35vw,1.25rem);line-height:1.4;margin:0;max-width:340px;opacity:.88}
+.contact-bottom .btn{color:var(--ink);background:#fff3e8;min-width:240px;font-size:13px}.contact-bottom .btn:hover{background:white}
+.footer{background:#1d1a19;color:#ece2d5;padding:65px 0 26px}.footer-top{display:flex;justify-content:space-between;align-items:center;gap:36px}.footer .wordmark img{filter:brightness(0) invert(1)}
+.footer-small{color:#afa59d;font-size:12px}.footer-links{display:flex;gap:24px;font-size:12px}.footer-links a:hover{color:white;text-decoration:underline}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:56px;padding-top:25px;display:flex;justify-content:space-between;color:#8d8881;font-size:11px;gap:24px}
+/* Modals */
+.overlay{position:fixed;inset:0;background:rgba(19,16,13,.76);backdrop-filter:blur(8px);z-index:220;display:none;align-items:center;justify-content:center;padding:22px}.overlay.show{display:flex}
+.modal{position:relative;max-width:590px;width:100%;max-height:calc(100svh - 44px);overflow-y:auto;background:var(--paper2);color:var(--ink);border-radius:25px;padding:clamp(25px,4vw,48px);box-shadow:0 30px 100px rgba(0,0,0,.27)}
+.modal h2{font-size:clamp(1.9rem,3.5vw,3.2rem);font-weight:550;letter-spacing:-.06em;line-height:1.04;margin:12px 0 14px}.modal p{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:27px}
+.modal .close{position:absolute;right:20px;top:20px;width:35px;height:35px;border-radius:50%;background:transparent;border:1px solid var(--line);font-size:21px;line-height:1}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.form-field.full{grid-column:span 2}
+.form-field label{font-size:12px;font-weight:650}.form-field input,.form-field textarea{background:#fffaf2;width:100%;border-radius:11px;border:1px solid #cec2b0;padding:13px 14px;font-size:14px;outline:none}.form-field textarea{min-height:96px;resize:vertical}.form-field input:focus,.form-field textarea:focus{border-color:var(--orange)}
+.form-actions{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:16px}.form-actions span{font-size:11px;color:var(--muted);max-width:220px;line-height:1.5}.form-actions .btn{min-width:180px}
+.video-modal{background:#171717;color:#fff;max-width:580px;padding:16px;border-radius:19px;overflow:visible}
+.video-modal .close{position:absolute;right:-12px;top:-12px;z-index:10;background:#f7efe4;color:#1f1b18}
+.video-modal video{display:block;width:100%;max-height:72svh;object-fit:contain;background:#000;border-radius:12px}
+.video-caption{padding:13px 3px 2px;font-size:12px;color:#d8d4cc}
+.toast{position:fixed;z-index:250;bottom:23px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:var(--paper);font-size:12px;padding:14px 21px;max-width:min(440px,calc(100vw - 35px));line-height:1.5;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.15)}.toast.show{opacity:1;transform:translate(-50%,0)}
+/* Progressive enhancement */
+.js .reveal{opacity:0;transform:translateY(29px);filter:blur(7px);transition:opacity .8s var(--ease),transform 1s var(--ease),filter .8s var(--ease)}.js .reveal.visible{opacity:1;transform:none;filter:none}
+@media(max-width:1160px){.hero h1{font-size:clamp(3.1rem,5.75vw,5.4rem)}.product{min-height:600px}.p-art{height:295px}.p-info{padding-inline:21px}.vortex-film{height:185px;top:67px}.work-card.feature .work-copy strong{font-size:4rem}}
+@media(max-width:920px){:root{--edge:clamp(22px,5vw,52px)}.hero{min-height:710px}.hero-copy{width:62%}.hero h1{font-size:clamp(3rem,6.1vw,5rem)}.hero-sub{font-size:15px}.thesis-layout,.about-grid{grid-template-columns:1fr;gap:44px}.thesis h2,.about h2{max-width:12em}.thesis-right,.about .about-right{padding:0}.products{grid-template-columns:1fr;gap:16px}.product{min-height:0;display:grid;grid-template-columns:43% 57%}.product .p-art{height:auto;min-height:330px;grid-column:1}.product .p-info{grid-column:2;padding:52px 28px 30px}.product .p-num{top:21px;left:24px}.p-description{max-width:50ch}.product.vortex .vortex-film{height:182px;top:75px}.product .p-info h3{font-size:clamp(3.3rem,6vw,5.4rem)}.work-grid{grid-template-columns:1fr 1fr;grid-template-rows:510px 320px}.work-card.feature{grid-column:span 2;grid-row:auto}.work-note{flex-wrap:wrap}}
+@media(max-width:690px){html{scroll-padding-top:70px}.site-header{height:72px}.site-header .container{padding-inline:19px}.header-inner{grid-template-columns:1fr auto}.main-links{display:none}.header-inner .logo-header{grid-column:1;grid-row:1;justify-self:start}.header-actions{grid-column:2;grid-row:1}.header-actions .btn{display:none}.menu-btn{display:flex}.mobile-menu{top:72px}.hero{min-height:780px;height:100svh;max-height:1000px;align-items:stretch}.hero::after{background:linear-gradient(0deg,var(--paper) 5%,var(--paper) 34%,rgba(244,237,225,.93) 47%,rgba(244,237,225,.06) 80%)}.hero-fallback{padding:0;justify-content:center;align-items:flex-start;padding-top:82px;opacity:.4}.hero-fallback svg{width:93vw}.hero-inner{padding-top:70px;padding-bottom:100px;display:flex;align-items:end}.hero-copy{width:100%;max-width:530px;padding-top:0}.hero-eyebrow{font-size:11px;margin-bottom:15px}.hero h1{font-size:clamp(2.75rem,10vw,4.7rem);line-height:1.03;letter-spacing:-.075em;max-width:9.5em}.hero-sub{font-size:14px;line-height:1.5;margin:20px 0 23px;max-width:470px}.hero-actions .btn{font-size:12px;min-height:46px;padding:12px 15px}.hero-bottom{bottom:23px}.hero-bottom .scroll{display:none}.motion-switch{top:92px;right:22px}.thesis{padding:88px 0 94px}.thesis-layout{gap:33px}.thesis h2{font-size:clamp(3.15rem,13vw,5.4rem);max-width:8em;margin-top:13px}.thesis-lead{font-size:21px}.thesis-right .thesis-body{font-size:14px}.thesis-steps{margin-top:30px}.thesis-step{gap:12px;padding:16px 0;grid-template-columns:24px 1fr}.thesis-step strong{font-size:20px}.thesis-step .small{grid-column:2;text-align:left;margin-top:-10px}.capabilities,.work,.about{padding-top:90px;padding-bottom:100px}.section-head{display:block;margin-bottom:31px}.section-head h2{font-size:clamp(2.75rem,10.4vw,4.6rem)}.section-head p{margin:20px 0 0;font-size:14px}.products{gap:13px}.product{display:flex;min-height:0}.product .p-art{height:280px;min-height:0;grid-column:auto}.product .p-info{padding:0 25px 25px;grid-column:auto}.product .p-info h3{font-size:3.4rem}.product .p-description{margin-bottom:22px}.product.vortex .vortex-film{height:165px;top:59px}.p-kicker{margin-top:4px}.work-grid{display:grid;grid-template-columns:1fr;grid-template-rows:none}.work-card.feature,.work-card{grid-column:auto;grid-row:auto;min-height:330px}.work-card.feature{min-height:450px}.work-card.feature .work-copy strong{font-size:clamp(3.05rem,11vw,4.2rem)}.work-card .work-copy strong{font-size:2.35rem}.work-card .preview{object-fit:cover}.work-note{margin-top:24px}.work-note span{white-space:normal}.about h2{font-size:clamp(3.3rem,11.5vw,5.7rem)}.about-grid{gap:34px}.about-right >p{font-size:20px}.about-right>p+p{font-size:14px}.about .about-quote{font-size:13px;margin-top:30px}.person{grid-template-columns:40px 1fr;gap:14px}.person .role{grid-column:2;text-align:left;margin-top:-10px}.contact{padding:13px 13px 0}.contact-inner{min-height:515px;padding:39px 25px;border-radius:23px}.contact h2{font-size:clamp(3.15rem,11.7vw,5.15rem);line-height:1.01}.contact-bottom{display:flex;align-items:start;flex-direction:column}.contact-bottom .btn{min-width:0;width:100%}.footer{padding-top:55px}.footer-top{flex-direction:column;align-items:start}.footer-bottom{margin-top:35px;flex-direction:column;gap:9px}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:span 1}.modal{padding:29px 22px}.form-actions{align-items:start;flex-direction:column}.form-actions .btn{width:100%}}
+@media(max-width:390px){.hero h1{font-size:2.6rem}.hero-actions{gap:7px}.hero-actions .btn{padding-inline:12px}.hero-progress .rule{width:48px}.p-art{height:240px!important}.vortex-film{height:150px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-fallback svg,.a-orbit,.a-cursor,.contact-glow,.hero-bottom .scroll svg{animation:none!important}.js .reveal{opacity:1!important;transform:none!important;filter:none!important}.product,.work-card .preview,.btn{transition:none}}
+
+/* v3: reconhecimento do perfil sem transformar os produtos em questionário */
+.p-description{margin-bottom:13px;max-width:36ch}
+.p-audience{font-size:12px;line-height:1.55;letter-spacing:-.015em;color:rgba(43,35,29,.68);margin:0 0 23px;max-width:38ch}
+.p-audience em{font-style:normal;font-weight:570;color:rgba(43,35,29,.83)}
+/* Aether: campo cartográfico com sinais que se encontram e indicam direção, não rotação decorativa */
+.aether-scene{padding:9px 6px 3px}
+.ae-route{stroke-dasharray:4 5;animation:aetherFlow 9s linear infinite}
+.ae-route-2{animation-direction:reverse}.ae-route-3{animation-delay:-2s}.ae-route-4{animation-delay:-4s}
+@keyframes aetherFlow{to{stroke-dashoffset:-90}}
+.ae-focus{transform-box:fill-box;transform-origin:center;animation:aetherFocus 8s cubic-bezier(.4,0,.25,1) infinite}
+@keyframes aetherFocus{0%,16%,95%,100%{transform:scale(.9)}42%,74%{transform:scale(1)}}
+.ae-bearing{stroke-dasharray:65;stroke-dashoffset:65;animation:aetherBearing 8s cubic-bezier(.16,1,.3,1) infinite}
+@keyframes aetherBearing{0%,32%{stroke-dashoffset:65;opacity:.3}57%,88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:65;opacity:0}}
+.ae-ripple{transform-box:fill-box;transform-origin:center;animation:aetherRipple 8s ease-in-out infinite}
+@keyframes aetherRipple{0%,32%{opacity:0;transform:scale(.7)}62%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.12)}}
+.spectra-chart{padding:36px 17px 15px}
+.sp-line{stroke-dasharray:470;stroke-dashoffset:470;animation:spectraTrace 7.5s cubic-bezier(.25,.9,.2,1) infinite}
+.sp-line-value{animation-delay:.4s}
+@keyframes spectraTrace{0%,8%{stroke-dashoffset:470}60%,87%{stroke-dashoffset:0}100%{stroke-dashoffset:-50}}
+@media(max-width:920px){.p-audience{max-width:48ch}}
+@media(max-width:690px){.p-description{margin-bottom:12px}.p-audience{margin-bottom:22px}}
+@media(prefers-reduced-motion:reduce){.ae-route,.ae-focus,.ae-bearing,.ae-ripple,.sp-line{animation:none!important}.ae-bearing,.sp-line{stroke-dashoffset:0!important}.ae-ripple{opacity:.6!important}.ae-travel{display:none}}
+
+/* ajustes da publicação: barra de etapas alinhada às margens; texto do vídeo fora do título no card 2 */
+.hero-bottom{left:var(--edge)!important;right:var(--edge)!important}
+.work-card:nth-child(2) .preview{object-position:50% 78%}
+@media(max-width:690px){.work-card:nth-child(2) .preview{object-position:50% 100%}}
+</style>
+</head>
+<body>
+<header class="site-header" id="header">
+ <div class="container header-inner">
+  <nav class="main-links" aria-label="Navegação principal"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="#sobre">Sobre nós</a></nav>
+  <a class="wordmark logo-header" href="#topo" aria-label="Rzrd. — Início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a>
+  <div class="header-actions"><a href="#conversa" class="btn" data-open-contact>Conversar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></a><button class="menu-btn" type="button" id="menu-button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span></button></div>
+ </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Navegação móvel"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="#sobre">Sobre nós</a><a href="#conversa" data-open-contact>Conversar</a><small>PRODUTOS</small><a href="#atuacao" data-highlight="aether" style="font-size:20px;padding:7px 0">.aether</a><a href="#atuacao" data-highlight="vortex" style="font-size:20px;padding:7px 0">.vortex</a><a href="#atuacao" data-highlight="spectra" style="font-size:20px;padding:7px 0">.spectra</a></nav>
+<main>
+<!-- 01 / TOPO: visual do Campo de Força reutilizado da prévia original. -->
+<section class="hero" id="topo" aria-labelledby="hero-title">
+ <div class="hero-fallback" aria-hidden="true"><svg viewBox="0 0 620 620"><defs><radialGradient id="hg"><stop offset="0" stop-color="#cc6d4c" stop-opacity=".2"/><stop offset="1" stop-color="#cc6d4c" stop-opacity="0"/></radialGradient></defs><circle cx="310" cy="310" r="280" fill="url(#hg)"/><g fill="none" stroke="#ba8b6c" stroke-opacity=".42" stroke-width="1"><circle cx="310" cy="310" r="85"/><circle cx="310" cy="310" r="121"/><circle cx="310" cy="310" r="161"/><circle cx="310" cy="310" r="205"/><circle cx="310" cy="310" r="250"/></g><g fill="#b76646" opacity=".6"><circle cx="310" cy="60" r="4"/><circle cx="487" cy="133" r="3"/><circle cx="560" cy="310" r="4"/><circle cx="487" cy="487" r="3"/><circle cx="310" cy="560" r="3"/><circle cx="133" cy="487" r="3"/><circle cx="60" cy="310" r="4"/><circle cx="133" cy="133" r="3"/></g></svg></div>
+ <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+ <div class="container hero-inner"><div class="hero-copy">
+  <p class="hero-eyebrow">Rzrd. <span>direção & execução</span></p>
+  <h1 id="hero-title">Toda marca tem forças que ainda não aprendeu a <em>usar.</em></h1>
+  <p class="hero-sub">Investigamos negócios, mercados e pessoas para identificar oportunidades e fazer escolhas. Depois, transformamos essas escolhas em posicionamento, conteúdo e ações concretas.</p>
+  <div class="hero-actions"><a href="#atuacao" class="btn">Explorar nossa atuação <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></a><a href="#trabalhos" class="btn secondary">Ver trabalhos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></a></div>
+ </div><div class="hero-bottom"><div class="hero-progress" aria-live="off"><span class="number" id="stage-num">01</span><span id="stage-name">Compreender</span><span class="rule" aria-hidden="true"><b id="stage-bar"></b></span></div><span class="scroll">Desça para explorar <svg viewBox="0 0 24 24"><path d="M12 3v17m-6-6 6 6 6-6"/></svg></span></div></div>
+ <button class="motion-switch" id="motion-switch" type="button" aria-label="Pausar animação" title="Pausar ou reproduzir animação">Ⅱ</button>
+</section>
+<!-- 02 / PENSAMENTO: a tese condensada do site anterior. -->
+<section class="thesis" aria-labelledby="thesis-title"><div class="container thesis-layout">
+ <div class="reveal"><span class="section-flag">O ponto de partida</span><h2 id="thesis-title">Presença é <span class="light">consequência.</span></h2></div>
+ <div class="thesis-right reveal"><p class="thesis-lead">Antes do formato, vem a escolha: o que dizer, para quem e por que isso importa.</p>
+ <p class="thesis-body">É essa escolha que orienta o posicionamento, a criação e a execução. E permite reconhecer a mesma marca em diferentes pontos de contato.</p>
+ <div class="thesis-steps" aria-label="Nossa lógica de atuação"><div class="thesis-step"><span class="index">01</span><strong>Entender</strong><span class="small">Negócio, mercado e pessoas</span></div><div class="thesis-step"><span class="index">02</span><strong>Escolher</strong><span class="small">Critérios e prioridades</span></div><div class="thesis-step"><span class="index">03</span><strong>Construir</strong><span class="small">Comunicação, execução e aprendizado</span></div></div>
+ </div>
+</div></section>
+<!-- 03 / PRODUTOS: cada um com uma expressão visual distinta, sem forçar pacote. -->
+<section class="capabilities" id="atuacao" aria-labelledby="cap-title"><div class="container">
+ <div class="section-head reveal"><div><span class="section-flag">O que fazemos</span><h2 id="cap-title">O desafio define a atuação.<br/>Não o contrário.</h2></div><p>Três especialidades independentes e complementares. O ponto de partida é sempre a necessidade da marca.</p></div>
+ <div class="products">
+  <a class="product aether reveal" href="#atuacao" data-product-link="aether" aria-label="Conhecer o Aether — direção de mercado e marca"><span class="p-num">01 / DIREÇÃO</span>
+   <div class="p-art">
+   <svg class="aether-scene" viewBox="0 0 460 338" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cartografia estratégica: sinais de negócio, mercado e público convergem para uma direção">
+    <defs>
+     <pattern id="aether-paper-grid" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M23 0H0V23" fill="none" stroke="#668346" stroke-opacity=".17" stroke-width=".7"/></pattern>
+     <radialGradient id="aether-halo"><stop offset="0" stop-color="#9cbd6d" stop-opacity=".42"/><stop offset=".63" stop-color="#a4c478" stop-opacity=".08"/><stop offset="1" stop-color="#a4c478" stop-opacity="0"/></radialGradient>
+     <marker id="aether-direction-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#496331" stroke-width="1.5"/></marker>
+    </defs>
+    <rect width="460" height="338" fill="url(#aether-paper-grid)"/>
+    <circle cx="230" cy="166" r="154" fill="url(#aether-halo)"/>
+    <g fill="none" stroke="#6e8b4b" stroke-width=".9"><circle cx="230" cy="166" r="118" stroke-opacity=".22"/><circle cx="230" cy="166" r="84" stroke-opacity=".33" stroke-dasharray="2 9"/><circle cx="230" cy="166" r="49" stroke-opacity=".35"/></g>
+    <g fill="none" stroke="#597443" stroke-width="1.25" stroke-opacity=".55">
+      <path class="ae-route ae-route-1" d="M104 72 Q162 95 230 166"/>
+      <path class="ae-route ae-route-2" d="M356 72 Q292 95 230 166"/>
+      <path class="ae-route ae-route-3" d="M99 264 Q170 224 230 166"/>
+      <path class="ae-route ae-route-4" d="M361 261 Q296 220 230 166"/>
+    </g>
+    <g fill="#6c874c" stroke="#e5edcf" stroke-width="4"><circle cx="104" cy="72" r="5"/><circle cx="356" cy="72" r="5"/><circle cx="99" cy="264" r="5"/><circle cx="361" cy="261" r="5"/></g>
+    <g class="ae-travel" fill="#e0f0bb" stroke="#5a7a39" stroke-width="1.5">
+      <circle r="4"><animateMotion dur="8s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M104 72 Q162 95 230 166"/></circle>
+      <circle r="4"><animateMotion dur="8s" begin="-.9s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M356 72 Q292 95 230 166"/></circle>
+      <circle r="4"><animateMotion dur="8s" begin="-1.8s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M99 264 Q170 224 230 166"/></circle>
+      <circle r="4"><animateMotion dur="8s" begin="-2.7s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M361 261 Q296 220 230 166"/></circle>
+    </g>
+    <g font-family="Geist,Arial,sans-serif" fill="#597145" font-size="10" font-weight="600" letter-spacing="1.1">
+      <text x="57" y="54">NEGÓCIO</text><text x="334" y="54">MERCADO</text><text x="59" y="287">PESSOAS</text><text x="326" y="286">CONTEXTO</text>
+    </g>
+    <g class="ae-focus"><circle cx="230" cy="166" r="37" fill="#54713a"/><circle cx="230" cy="166" r="28" fill="#d7e7bb"/><path d="M230 146l9 26-9-6-9 6z" fill="#54713a"/></g>
+    <path class="ae-bearing" d="M230 166 L291 166" fill="none" stroke="#47652c" stroke-width="1.6" marker-end="url(#aether-direction-arrow)"/>
+    <g font-family="Geist,Arial,sans-serif" fill="#4c6734" font-size="9.5" font-weight="650" letter-spacing="1.6"><text x="280" y="152">DIREÇÃO</text></g>
+    <g class="ae-ripple" fill="none" stroke="#759452" stroke-opacity=".43" stroke-width="1"><circle cx="230" cy="166" r="53"/><circle cx="230" cy="166" r="72"/></g>
+   </svg>
+  </div>
+   <div class="p-info"><span class="p-kicker">O invisível que move tudo</span><h3>.aether</h3><p class="p-title">Direção de mercado e marca</p><p class="p-description">Investigação do negócio, do mercado e das pessoas para orientar posicionamento, proposta de valor e expressão da marca.</p><p class="p-audience">Para empresas que precisam <em>definir seu posicionamento e suas escolhas de crescimento.</em></p><div class="p-bottom"><span>Conhecer o Aether</span><svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+  </a>
+  <a class="product vortex reveal" href="#atuacao" data-product-link="vortex" aria-label="Conhecer o Vortex — presença contínua"><span class="p-num">02 / PRESENÇA</span>
+   <div class="p-art"><svg viewBox="0 0 460 338" style="position:absolute;inset:0"><g fill="none" stroke="#be7256" stroke-opacity=".42"><circle cx="230" cy="168" r="113" stroke-width="1.4"/><circle cx="230" cy="168" r="143" stroke-width="1" stroke-dasharray="3 8"/></g><circle cx="230" cy="25" r="5" fill="#b96546"/><circle cx="345" cy="244" r="4" fill="#b96546"/><path d="m227 16 6 9-9 5m124 207-3 10-11-1" fill="none" stroke="#a4553a" stroke-width="1.7"/></svg>
+    <div class="vortex-film f1"><img src="assets/cases/enocultura-reels-dionisio.jpg" loading="lazy" alt="Amostra de trabalho para Eno Cultura"/></div><div class="vortex-film f2"><img src="assets/cases/tidelli-reels-praca-01.jpg" loading="lazy" alt="Amostra de trabalho para Tidelli"/></div><div class="vortex-film f3"><img src="assets/cases/drasofiaoliva-reels-protocolodasnoivas.jpg" loading="lazy" alt="Amostra de trabalho para Dra. Sofia Oliva"/></div>
+   </div>
+   <div class="p-info"><span class="p-kicker">Campo de força criativa em ação</span><h3>.vortex</h3><p class="p-title">Presença contínua</p><p class="p-description">Planejamento, criação, produção e gestão contínua de conteúdo, com direção criativa e acompanhamento.</p><p class="p-audience">Para marcas que precisam <em>de consistência na comunicação e qualidade na execução.</em></p><div class="p-bottom"><span>Conhecer o Vortex</span><svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+  </a>
+  <a class="product spectra reveal" href="#atuacao" data-product-link="spectra" aria-label="Conhecer a Spectra — inteligência aplicada"><span class="p-num">03 / INTELIGÊNCIA</span>
+   <div class="p-art">
+    <svg class="spectra-chart" viewBox="0 0 460 338" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Investigação editorial: comparação entre alcance e engajamento de valor evidencia padrões distintos">
+     <defs><pattern id="spectra-grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#76669f" stroke-opacity=".16" stroke-width="1"/></pattern><linearGradient id="spectra-fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#806ab9" stop-opacity=".17"/><stop offset="1" stop-color="#806ab9" stop-opacity="0"/></linearGradient></defs>
+     <rect x="33" y="26" width="394" height="249" rx="14" fill="#ece7f6" opacity=".78"/>
+     <rect x="48" y="73" width="364" height="165" fill="url(#spectra-grid)"/>
+     <g font-family="Geist,Arial,sans-serif" letter-spacing=".65" font-size="10.5" fill="#675888"><text x="51" y="48">INVESTIGAÇÃO EDITORIAL</text></g>
+     <path d="M51 215 C92 209 117 175 148 184 S205 149 237 158 S309 110 351 123 S391 93 410 87 L410 241 L51 241 Z" fill="url(#spectra-fill)"/>
+     <path class="sp-line sp-line-reach" d="M51 215 C92 209 117 175 148 184 S205 149 237 158 S309 110 351 123 S391 93 410 87" fill="none" stroke="#7360a7" stroke-width="3" stroke-linecap="round"/>
+     <path class="sp-line sp-line-value" d="M51 121 C92 139 117 159 148 151 S210 177 237 182 S309 204 351 194 S390 211 410 219" fill="none" stroke="#be8067" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="6 6"/>
+     <g fill="#7360a7" stroke="#ece7f6" stroke-width="3"><circle cx="148" cy="184" r="5"/><circle cx="237" cy="158" r="5"/><circle cx="351" cy="123" r="5"/></g>
+     <g fill="#be8067" stroke="#ece7f6" stroke-width="3"><circle cx="148" cy="151" r="5"/><circle cx="237" cy="182" r="5"/><circle cx="351" cy="194" r="5"/></g>
+     <path d="M300 124V194" stroke="#65568c" stroke-width="1" stroke-opacity=".45" stroke-dasharray="3 5"/>
+     <g font-family="Geist,Arial,sans-serif" font-size="10.5" font-weight="550" fill="#625483"><circle cx="60" cy="263" r="4" fill="#7360a7"/><text x="70" y="267">Alcance</text><circle cx="160" cy="263" r="4" fill="#be8067"/><text x="170" y="267">Engajamento de valor</text></g>
+     <g font-family="Geist,Arial,sans-serif" font-size="9.5" font-weight="650" fill="#6d5b98" letter-spacing="1.1"><text x="51" y="307">TEMAS / FORMATOS / NARRATIVAS</text></g>
+    </svg>
+   </div>
+   <div class="p-info"><span class="p-kicker">Clareza a partir dos dados</span><h3>.spectra</h3><p class="p-title">Inteligência aplicada</p><p class="p-description">Investigamos a relação entre indicadores, temas, formatos e narrativas para orientar o próximo ciclo de conteúdo.</p><p class="p-audience">Para marcas que querem <em>entender o que seus conteúdos revelam — e por quê.</em></p><div class="p-bottom"><span>Conhecer a Spectra</span><svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+  </a>
+ </div>
+</div></section>
+<!-- 04 / TRABALHOS: peças originais do acervo público, sem atribuir resultados não verificados. -->
+<section class="work" id="trabalhos" aria-labelledby="work-title"><div class="container">
+ <div class="section-head reveal"><div><span class="section-flag">Trabalhos selecionados</span><h2 id="work-title">O pensamento aparece no trabalho.</h2></div><p>Um recorte da produção audiovisual da Rzrd., em projetos com públicos e linguagens diferentes.</p></div>
+ <div class="work-grid">
+  <button type="button" class="work-card feature reveal" data-video="assets/cases/tidelli-reels-praca-01.mp4" data-title="Tidelli — amostra de conteúdo audiovisual" aria-label="Assistir vídeo de trabalho para a Tidelli"><img class="preview" src="assets/cases/tidelli-reels-praca-01.jpg" alt="Frame de conteúdo audiovisual produzido para Tidelli" loading="lazy"/><span class="work-tag">Tidelli / conteúdo audiovisual</span><span class="play-pill" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 3 11 7-11 7z"/></svg></span><span class="work-copy"><small>01 / TRABALHO EM MOVIMENTO</small><strong>Forma, luz e espaço.</strong></span></button>
+  <button type="button" class="work-card reveal" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura — amostra de conteúdo audiovisual" aria-label="Assistir vídeo de trabalho para Eno Cultura"><img class="preview" src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de conteúdo audiovisual para Eno Cultura" loading="lazy"/><span class="work-tag">Eno Cultura / conteúdo</span><span class="play-pill" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 3 11 7-11 7z"/></svg></span><span class="work-copy"><small>02 / TRABALHO EM MOVIMENTO</small><strong>Dionísio em movimento.</strong></span></button>
+  <button type="button" class="work-card reveal" data-video="assets/cases/drasofiaoliva-reels-protocolodasnoivas.mp4" data-title="Dra. Sofia Oliva — amostra de conteúdo audiovisual" aria-label="Assistir vídeo de trabalho para Dra. Sofia Oliva"><img class="preview" src="assets/cases/drasofiaoliva-reels-protocolodasnoivas.jpg" alt="Frame de conteúdo audiovisual para Dra. Sofia Oliva" loading="lazy"/><span class="work-tag">Dra. Sofia Oliva / conteúdo</span><span class="play-pill" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 3 11 7-11 7z"/></svg></span><span class="work-copy"><small>03 / TRABALHO EM MOVIMENTO</small><strong>Comunicação com precisão.</strong></span></button>
+ </div>
+</div></section>
+<!-- 05 / SOBRE: autoridade sem currículos longos ou fotos fictícias. -->
+<section class="about" id="sobre" aria-labelledby="about-title"><div class="container about-grid">
+ <div class="reveal"><span class="section-flag">Por trás da Rzrd.</span><h2 id="about-title">Pensamento estratégico. Envolvimento direto.</h2></div>
+ <div class="about-right reveal"><p>A Rzrd. aproxima estratégia, direção criativa e execução para que decisões importantes não se percam entre uma etapa e outra.</p><p>Geórgia e William participam das decisões centrais, trabalhando junto à equipe e aos clientes para manter coerência entre o que se pretende construir e o que é entregue.</p>
+ <div class="people"><div class="person"><span class="monogram">GR</span><span class="name">Geórgia Rizzardi</span><span class="role">Fundadora · Direção criativa</span></div><div class="person"><span class="monogram">WC</span><span class="name">William Cabral</span><span class="role">Cofundador · Estratégia e operação</span></div></div>
+ <div class="about-quote">Direção próxima do negócio. Responsabilidade também sobre o que chega ao público.</div>
+ </div>
+</div></section>
+<!-- 06 / CONTATO -->
+<section class="contact" id="conversa" aria-labelledby="contact-title"><div class="contact-inner">
+ <span class="contact-glow g1" aria-hidden="true"></span><span class="contact-glow g2" aria-hidden="true"></span>
+ <div><span class="section-flag">Começa por uma conversa</span><h2 id="contact-title">O que sua marca precisa construir agora?</h2></div>
+ <div class="contact-bottom"><p>Uma conversa para entender o momento do seu negócio, as oportunidades e onde podemos contribuir.</p><a href="#conversa" data-open-contact class="btn">Iniciar conversa <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></a></div>
+</div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-top"><a class="wordmark" href="#topo" aria-label="Voltar ao início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a><span class="footer-small">Estratégia · Direção criativa · Execução</span><nav class="footer-links" aria-label="Rodapé"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="mailto:contato@rzrd.com.br">E-mail</a></nav></div><div class="footer-bottom"><span>© Rzrd. — Direção antes de presença.</span><span>Prévia conceitual · V3 · 2026</span></div></div></footer>
+<!-- Modais de vídeo e formulário. -->
+<div class="overlay" id="contact-overlay" aria-hidden="true"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button type="button" class="close" data-close="contact-overlay" aria-label="Fechar">×</button><span class="section-flag">Vamos conversar</span><h2 id="modal-title">Conte o que você precisa construir ou resolver.</h2><p>Este formulário de prévia prepara uma mensagem no seu aplicativo de e-mail; ainda não está conectado a um CRM ou backend.</p><form id="contact-form"><div class="form-grid"><div class="form-field"><label for="c-name">Seu nome *</label><input id="c-name" name="name" required autocomplete="name"/></div><div class="form-field"><label for="c-email">Seu e-mail *</label><input id="c-email" type="email" name="email" required autocomplete="email"/></div><div class="form-field full"><label for="c-company">Empresa ou site</label><input id="c-company" name="company" autocomplete="organization"/></div><div class="form-field full"><label for="c-brief">O que você gostaria de construir ou resolver? *</label><textarea id="c-brief" name="brief" required></textarea></div></div><div class="form-actions"><span>Sem envio automático nesta prévia. A mensagem é preparada no seu e-mail.</span><button type="submit" class="btn">Preparar e-mail <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></button></div></form></section></div>
+<div class="overlay" id="video-overlay" aria-hidden="true"><section class="modal video-modal" role="dialog" aria-modal="true" aria-label="Reprodução de trabalho audiovisual"><button type="button" class="close" data-close="video-overlay" aria-label="Fechar vídeo">×</button><video id="portfolio-video" controls playsinline preload="none"></video><div class="video-caption" id="video-caption"></div></section></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/rz-campo.js" defer></script>
+<script>
+(function(){
+'use strict';
+document.documentElement.classList.add('js');
+const $=(s,root=document)=>root.querySelector(s);const $$=(s,root=document)=>Array.from(root.querySelectorAll(s));
+const header=$('#header'),menu=$('#mobile-menu'),menuBtn=$('#menu-button');
+function updateHeader(){header.classList.toggle('scrolled',window.scrollY>20)}
+window.addEventListener('scroll',updateHeader,{passive:true});updateHeader();
+function setMenu(on){header.classList.toggle('open',on);menu.style.display=on?'block':'none';menuBtn.setAttribute('aria-expanded',String(on));menuBtn.setAttribute('aria-label',on?'Fechar menu':'Abrir menu');document.body.classList.toggle('lock',on)}
+menuBtn.addEventListener('click',()=>setMenu(!header.classList.contains('open')));
+$$('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+window.addEventListener('resize',()=>{if(innerWidth>690&&header.classList.contains('open'))setMenu(false)});
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.06,rootMargin:'0px 0px 35px 0px'});$$('.reveal').forEach(el=>observer.observe(el))}else{$$('.reveal').forEach(el=>el.classList.add('visible'))}
+// Campo de força: usa a animação original da Rzrd. sempre que o script externo estiver disponível.
+const stages=['Compreender','Identificar potencial','Construir direção','Materializar'];let campo=null;
+function initCampo(){if(typeof window.RzCampo!=='function')return;try{
+  campo=window.RzCampo($('#hero-canvas'),{
+    section:$('.hero'),colors:{bg:'244,237,225',line:'112,83,63',acc:'183,94,62',text:'70,51,39',fam0:'116,147,63',fam1:'183,98,64',fam2:'127,113,181'},
+    layout:function(w,h){return w<690?{cx:w*.50,cy:h*.31,R:Math.min(w*.35,h*.25)}:{cx:w*.77,cy:h*.52,R:Math.min(w*.29,h*.37)}},
+    onStage:function(i,progress){$('#stage-num').textContent=String(i+1).padStart(2,'0');$('#stage-name').textContent=stages[i]||stages[0];$('#stage-bar').style.width=(progress*100).toFixed(1)+'%'}
+  });
+  $('.hero-fallback').style.opacity='0';
+}catch(err){console.warn('Campo de força indisponível na prévia:',err)}}
+window.addEventListener('load',initCampo,{once:true});
+$('#motion-switch').addEventListener('click',function(){if(!campo){showToast('A animação original depende de conexão com os ativos da prévia.');return}const next=!campo.paused();campo.pause(next);this.textContent=next?'▶':'Ⅱ';this.setAttribute('aria-label',next?'Reproduzir animação':'Pausar animação')});
+const toast=$('#toast');let toastTimer;
+function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),4300)}
+// Destinos dos produtos devem ser conectados às páginas finais na publicação.
+const PRODUCT_URLS={aether:'aether/',vortex:'vortex/',spectra:'spectra/'};
+$$('[data-product-link]').forEach(a=>a.addEventListener('click',e=>{const p=a.dataset.productLink;if(PRODUCT_URLS[p]){e.preventDefault();window.location.href=PRODUCT_URLS[p]}else{e.preventDefault();showToast('Na versão publicada, este link abrirá a página completa do '+p.charAt(0).toUpperCase()+p.slice(1)+'.')}}));
+$$('[data-highlight]').forEach(a=>a.addEventListener('click',()=>{const target=$('.product.'+a.dataset.highlight);if(target){setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'center'}),200)}}));
+const contactOverlay=$('#contact-overlay'),videoOverlay=$('#video-overlay'),video=$('#portfolio-video');let prevFocus=null;
+function showOverlay(el){prevFocus=document.activeElement;el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.classList.add('lock');const focus=el.querySelector('input,button');if(focus)setTimeout(()=>focus.focus(),25)}
+function hideOverlay(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.classList.remove('lock');if(el===videoOverlay){video.pause();video.removeAttribute('src');video.load()}if(prevFocus&&typeof prevFocus.focus==='function')prevFocus.focus()}
+$$('[data-open-contact]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();setMenu(false);showOverlay(contactOverlay)}));
+$$('[data-video]').forEach(el=>el.addEventListener('click',()=>{$('#video-caption').textContent=el.dataset.title;video.src=el.dataset.video;showOverlay(videoOverlay);video.play().catch(()=>{})}));
+$$('[data-close]').forEach(el=>el.addEventListener('click',()=>hideOverlay($('#'+el.dataset.close))));
+$$('.overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===el)hideOverlay(el)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.overlay.show').forEach(hideOverlay);if(header.classList.contains('open'))setMenu(false)}});
+$('#contact-form').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;if(!f.reportValidity())return;
+ const fd=new FormData(f);const name=(fd.get('name')||'').trim(),email=(fd.get('email')||'').trim(),company=(fd.get('company')||'').trim(),brief=(fd.get('brief')||'').trim();
+ const subject='Conversa sobre a marca — '+(company||name);const body='Olá, equipe Rzrd.\n\n'+brief+'\n\nNome: '+name+'\nE-mail: '+email+'\nEmpresa: '+(company||'Não informada')+'\n\nEnviado a partir da prévia da home.';
+ const url='mailto:contato@rzrd.com.br?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+ window.location.href=url;showToast('O seu aplicativo de e-mail será aberto com a mensagem preparada.');
+});
+})();
+</script>
+</body>
+</html>
