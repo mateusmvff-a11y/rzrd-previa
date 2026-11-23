@@ -1522,7 +1522,7 @@ const media=(r,auto)=>`<div class="media"><img alt="${r.alt}" loading="lazy" src
 const meta=r=>`<div class="meta">${r.name} <span>· ${r.cat}</span></div>`;
 
 const LMEDIA=`<div class="st-media" aria-hidden="true">${[1,2,3,4,5].map(n=>`<img alt="" ${n>1?'loading="lazy"':''} src="shots/lacombe-${n}.jpg"${n===1?' class="on"':''}/>`).join('')}</div>`;
-const LSTAGE=STAGE.replace('<div class="st-glow"></div>',LMEDIA+'<div class="st-glow"></div>').replace('<span class="st-words"','<span class="st-tag">LUÍS ERNESTO LACOMBE</span><span class="st-words"').replace('<button class="st-btn"','<span class="st-lab">YOUTUBE / EDIÇÃO + ARTES</span><button class="st-btn"');
+const LSTAGE=STAGE.replace('<div class="st-glow"></div>',LMEDIA+'<div class="st-glow"></div>').replace('<button class="st-btn"','<span class="st-lab">YOUTUBE / EDIÇÃO + ARTES</span><button class="st-btn"');
 const A=`<div class="wrap"><div class="feat"><div class="fl" data-r>${LSTAGE}</div><div class="txt" data-r>${NAME}${H3}${COPY}${LINK}</div></div>
   <div class="reels">${R.map(r=>`<article class="card" data-r>${media(r)}${meta(r)}<strong class="rt">${r.t}</strong><p class="rp">${r.p}</p></article>`).join('')}</div></div>`;
 const Bv=`<div class="feat"><div style="grid-column:1/span 7" data-r>${STAGE.replace('class="stage"','class="stage" style="aspect-ratio:4/3;border-radius:6px"')}</div><div class="txt" data-r>${NAME}${H3}${COPY}${LINK}</div></div>
