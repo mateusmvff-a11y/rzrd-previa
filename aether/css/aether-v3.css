@@ -20,7 +20,7 @@
 .decisions .decision-grid{display:block!important;border-top:1px solid var(--r-ink);counter-reset:dec}
 .decisions .decision{counter-increment:dec;position:relative;display:grid!important;grid-template-columns:64px minmax(0,1.3fr) minmax(0,1fr);column-gap:clamp(20px,3vw,56px);row-gap:12px;align-items:start;
   padding:clamp(28px,3vw,44px) 0!important;border:0!important;border-bottom:1px solid var(--r-line)!important;background:none!important;box-shadow:none!important;border-radius:0!important;transition:padding .6s var(--r-ease)}
-.decisions .decision::before{content:counter(dec,decimal-leading-zero);grid-row:1/span 2;font-size:clamp(15px,1.1vw,17px);font-weight:500;color:var(--r-green);letter-spacing:.02em;padding-top:.7em}
+.decisions .decision::before{content:counter(dec);grid-row:1/span 2;font-size:clamp(15px,1.1vw,17px);font-weight:500;color:var(--r-green);letter-spacing:.02em;padding-top:.7em}
 .decisions .decision>svg{display:none!important}
 .decisions .decision h3{grid-column:2;grid-row:1/span 2;margin:0!important;font-size:clamp(30px,3.2vw,52px)!important;line-height:1.02!important;letter-spacing:-.05em!important;font-weight:500!important;transition:transform .7s var(--r-ease),color .5s}
 .decisions .decision h3 br{display:none}
@@ -72,25 +72,43 @@
 .ipad .diagram-note{font-size:12.5px!important;color:#6A7166!important;border-top:1px solid #E2E3DA!important;padding-top:12px!important;margin-top:18px!important}
 .ipad-screen .method-figure>*:last-child{margin-bottom:0!important}
 
-/* ---------- INNAP: um caso, com presença ---------- */
-.v35case-teaser{padding-block:clamp(70px,8vw,120px)!important;background:#E9E6DD!important;border:0!important}
-.v35case-teaser-inner{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"img copy" "img btn";column-gap:clamp(30px,6vw,110px);row-gap:28px;align-items:end;border:0!important;padding:0!important}
-.v35case-teaser-image{grid-area:img;width:auto!important;height:auto!important;aspect-ratio:4/3.2;overflow:hidden;border-radius:4px;background:#DCD8CC}
-.v35case-teaser-image img{width:100%!important;height:100%!important;object-fit:cover;transition:transform 1.6s var(--r-ease)}
-.v35case-teaser:hover .v35case-teaser-image img{transform:scale(1.04)}
-.v35case-teaser-copy{grid-area:copy;align-self:end}
-.v35case-teaser-copy h2{font-size:clamp(36px,4vw,64px)!important;line-height:1.02!important;letter-spacing:-.052em!important;font-weight:500!important;margin:14px 0 18px!important}
-.v35case-teaser-copy p{font-size:clamp(16px,1.2vw,19px)!important;line-height:1.6!important;max-width:28em}
-.v35case-open{grid-area:btn;justify-self:start;align-self:start;display:inline-flex!important;align-items:center;gap:16px;padding:8px 8px 8px 24px!important;border:1px solid var(--r-ink)!important;border-radius:99px!important;background:var(--r-ink)!important;color:#F7F6F1!important;font-size:14.5px!important;font-weight:500!important;transition:background .5s var(--r-ease)}
-.v35case-open-symbol{display:grid!important;place-items:center;width:40px;height:40px;border-radius:50%;background:#F7F6F1;color:var(--r-ink);font-size:18px!important;transition:transform .6s var(--r-ease)}
-.v35case-open:hover{background:var(--r-deep)!important}
-.v35case-open:hover .v35case-open-symbol{transform:rotate(90deg)}
+/* ---------- INNAP: o caso na identidade da própria INNAP ---------- */
+.innap-case{--in-green:#0C6B5E;--in-ink:#1F2626;--in-gold:#C08A2E;--in-rose:#E5D2C0;--in-ivory:#F2EEE7;
+  position:relative;overflow:hidden;isolation:isolate;background:var(--in-green)!important;color:var(--in-ivory);padding-block:clamp(84px,10vw,150px)!important;border:0!important}
+.innap-lines{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.innap-lines svg{position:absolute;inset:0;width:100%;height:100%}
+.innap-lines path{fill:none;stroke:var(--in-ivory);stroke-width:1.1;opacity:.16;stroke-linecap:round;stroke-linejoin:round}
+.innap-lines circle{fill:var(--in-ivory);opacity:.28}
+.innap-case .v35case-teaser-inner{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:"mark mark" "copy btn";column-gap:clamp(30px,6vw,110px);row-gap:clamp(40px,5vw,70px);align-items:end;border:0!important;padding:0!important;background:none!important}
+.innap-mark{grid-area:mark;color:var(--in-ivory)}
+.innap-logo{display:block;height:clamp(30px,3vw,44px);width:auto}
+.innap-case .v35case-teaser-copy{grid-area:copy}
+.innap-case .v35case-eyebrow{color:var(--in-gold)!important;font-size:14px!important;font-weight:600!important;text-transform:none!important;letter-spacing:0!important;filter:brightness(1.35)}
+.innap-case h2{color:var(--in-ivory)!important;font-size:clamp(40px,5vw,84px)!important;line-height:.98!important;letter-spacing:-.058em!important;font-weight:500!important;margin:16px 0 22px!important;max-width:11.5em}
+.innap-case .v35case-teaser-copy p:not(.v35case-eyebrow){color:rgba(242,238,231,.78)!important;font-size:clamp(16px,1.25vw,19px)!important;line-height:1.6!important;max-width:30em}
+.innap-case .v35case-open{grid-area:btn;justify-self:end;align-self:end;display:inline-flex!important;align-items:center;gap:16px;padding:8px 8px 8px 26px!important;border:1px solid var(--in-ivory)!important;border-radius:99px!important;background:var(--in-ivory)!important;color:var(--in-ink)!important;font-size:15px!important;font-weight:550!important;transition:background .5s var(--r-ease),color .5s var(--r-ease)}
+.innap-case .v35case-open-symbol{display:grid!important;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--in-green)!important;color:var(--in-ivory)!important;font-size:19px!important;transition:transform .6s var(--r-ease)}
+.innap-case .v35case-open:hover{background:var(--in-gold)!important;border-color:var(--in-gold)!important;color:#fff!important}
+.innap-case .v35case-open:hover .v35case-open-symbol{transform:rotate(90deg)}
+/* galeria: aplicações da marca em colagem */
+.innap-gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,250px);gap:clamp(10px,1.1vw,16px);margin-top:clamp(56px,6vw,96px)}
+.innap-gallery figure{position:relative;margin:0;overflow:hidden;border-radius:6px;background:#0A5A4F}
+.innap-gallery img{display:block;width:100%;height:115%;object-fit:cover;transform:translateY(var(--py,0px)) scale(1.02);transition:scale 1.6s var(--r-ease);will-change:transform}
+.innap-gallery figure:hover img{scale:1.04}
+.g-fachada{grid-column:1/8;grid-row:1/3}
+.g-sacola{grid-column:8/11;grid-row:1/3}
+.g-cracha{grid-column:11/13;grid-row:1/2}
+.g-certificado{grid-column:11/13;grid-row:2/3}
+.g-livros{grid-column:1/5;grid-row:3/4}
+.g-sinalizacao{grid-column:5/13;grid-row:3/4}
+.g-sacola img,.g-cracha img{object-position:50% 40%}
+.g-certificado img{object-position:50% 45%}
 
 /* ---------- Entregas: a lista rola, o iPad acompanha ---------- */
 .delivery-composition{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:clamp(36px,6vw,110px)!important;align-items:start!important}
 .delivery-list{counter-reset:del;border-top:1px solid var(--r-ink)}
 .delivery-list li{counter-increment:del;display:grid!important;grid-template-columns:56px 1fr;column-gap:10px;padding:clamp(26px,3vw,40px) 0!important;border:0!important;border-bottom:1px solid var(--r-line)!important;background:none!important}
-.delivery-list li::before{content:counter(del,decimal-leading-zero);grid-row:1/span 2;font-size:14px;font-weight:500;color:var(--r-green);padding-top:.55em}
+.delivery-list li::before{content:counter(del);grid-row:1/span 2;font-size:14px;font-weight:500;color:var(--r-green);padding-top:.55em}
 .delivery-list li h3{font-size:clamp(26px,2.4vw,38px)!important;line-height:1.05!important;letter-spacing:-.045em!important;font-weight:500!important;margin:0 0 10px!important}
 .delivery-list li p{font-size:16px!important;line-height:1.6!important;color:var(--r-muted)!important;margin:0!important}
 .delivery-composition>.ipad{position:sticky;top:120px}
@@ -132,12 +150,16 @@
   .decisions .decision p,.decisions .decision .outcome{grid-column:2}
   .decisions .premise,.adaptive-note,.revision-strip,.delivery-composition{grid-template-columns:1fr!important}
   .delivery-composition>.ipad{position:relative;top:auto}
-  .v35case-teaser-inner{grid-template-columns:1fr;grid-template-areas:"img" "copy" "btn"}
+  .innap-case .v35case-teaser-inner{grid-template-columns:1fr;grid-template-areas:"mark" "copy" "btn"}
+  .innap-case .v35case-open{justify-self:start}
   .method .method-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:760px){
   .decisions .business-examples{grid-template-columns:1fr}
-  .v35case-teaser-image{display:block!important;width:100%!important}
+  .innap-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scrollbar-width:none}
+  .innap-gallery::-webkit-scrollbar{display:none}
+  .innap-gallery figure{flex:0 0 78%;height:300px;scroll-snap-align:start}
+  .innap-gallery figure.g-sacola,.innap-gallery figure.g-cracha{flex-basis:62%}
   .ax-status{height:24px;padding:0 14px;font-size:11px}
   .ipad .demo-label{margin-bottom:16px!important}
   .method .method-tabs button{padding-right:10px!important;font-size:15px!important}
@@ -146,3 +168,98 @@
   .rv,.rv-line>span{opacity:1!important;transform:none!important;transition:none!important}
   .method .method-panel .method-copy,.method .method-panel .ipad{animation:none!important}
 }
+
+.innap-gallery .v35case-teaser-image{display:block!important;width:auto!important;height:auto!important;aspect-ratio:auto!important;border-radius:6px}
+.innap-gallery .v35case-teaser-image img{width:100%!important;height:115%!important}
+.innap-lines path{stroke-dasharray:var(--len,2000);stroke-dashoffset:var(--len,2000);transition:stroke-dashoffset 3.2s var(--r-ease)}
+.innap-case.drawn .innap-lines path{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.innap-lines path{stroke-dashoffset:0!important;transition:none!important}.innap-gallery img{transform:none!important}}
+
+/* =====================================================================
+   Diagramas redesenhados (telas dentro dos iPads)
+   Mesmo conteúdo e mesmas interações do v36; outra linguagem visual:
+   superfícies brancas, controles segmentados, hierarquia tipográfica.
+   ===================================================================== */
+.ipad{--ui-bg:#F6F5F0;--ui-surface:#FFFFFF;--ui-ink:#17201A;--ui-muted:#697066;--ui-line:#E4E5DC;--ui-green:#1F4A35;--ui-leaf:#BED69C;--ui-soft:#EEF3E6;--ui-ochre:#A8733F;--ui-ochre-soft:#F5ECE0}
+.ipad .method-figure{color:var(--ui-ink)}
+
+/* --- controles segmentados (abas internas e alternâncias) --- */
+.ipad .v35carto-tabs,.ipad .v35mcp-mode,.ipad .v35mac-mobile-switch{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px!important;padding:4px;background:#E9E8E0!important;border:0!important;border-radius:12px!important}
+.ipad .v35carto-tabs button,.ipad .v35mcp-mode button,.ipad .v35mac-mobile-switch button{border:0!important;border-radius:9px!important;background:transparent!important;color:var(--ui-muted)!important;padding:10px 14px!important;min-height:0!important;transition:background .35s,color .35s}
+.ipad .v35carto-tabs button span{color:inherit!important;opacity:.8}
+.ipad .v35carto-tabs button[aria-selected="true"],.ipad .v35mcp-mode button[aria-pressed="true"],.ipad .v35mac-mobile-switch button[aria-pressed="true"]{background:var(--ui-surface)!important;color:var(--ui-ink)!important;box-shadow:0 1px 2px rgba(20,30,20,.08),0 4px 14px -6px rgba(20,30,20,.18)!important}
+.ipad .v35mcp-mode{display:inline-grid;width:auto}
+
+/* --- MAC: comparação lado a lado, sem fluxograma --- */
+.ipad .v35mac-root::after,.ipad .v35mac-contexts::before,.ipad .v35mac-context::before,.ipad .v35mac-families::before,.ipad .v35mac-families::after,.ipad .v35mac-family::before,.ipad .v35mac-family li::before{display:none!important}
+.ipad .v35mac-root{border-radius:14px!important}
+@media (min-width:761px){
+  .ipad .v35mac-root{display:flex!important;align-items:center;justify-content:center;gap:10px;width:max-content;margin:0 auto 26px!important;padding:9px 18px!important;border-radius:99px!important;background:var(--ui-green)!important}
+  .ipad .v35mac-root small{margin:0!important;font-size:13px!important;color:#C9DBB6!important}
+  .ipad .v35mac-root small::after{content:"·";margin-left:10px;opacity:.6}
+  .ipad .v35mac-root strong{font-size:15.5px!important;font-weight:550!important}
+  .ipad .v35mac-contexts{grid-template-columns:1fr 1fr!important;gap:14px!important}
+}
+.ipad .v35mac-context{background:var(--ui-surface);border-radius:14px;padding:clamp(18px,2vw,26px)!important;border-top:3px solid #7FA35A}
+.ipad .v35mac-context--1{border-top-color:#C08A4E}
+.ipad .v35mac-context-head{border:0!important;background:none!important;padding:0!important;min-height:0!important;text-align:left!important}
+.ipad .v35mac-context-label{font-size:12.5px!important;color:var(--ui-muted)!important;margin-bottom:6px!important}
+.ipad .v35mac-context-head h4{font-size:clamp(20px,1.9vw,26px)!important;letter-spacing:-.035em!important;font-weight:550!important;color:var(--ui-ink)!important;margin-bottom:6px!important}
+.ipad .v35mac-context-head>p:last-child{margin:0!important;font-size:14px!important;color:var(--ui-muted)!important}
+.ipad .v35mac-families{grid-template-columns:1fr 1fr!important;gap:18px!important;margin:20px 0 0!important;padding-top:16px;border-top:1px solid var(--ui-line)}
+.ipad .v35mac-family h5{display:flex!important;align-items:center;gap:8px;text-align:left!important;padding:0!important;border:0!important;background:none!important;font-size:12.5px!important;font-weight:600!important;color:var(--ui-green)!important;margin-bottom:6px!important}
+.ipad .v35mac-family h5::before{content:"";width:7px;height:7px;border-radius:50%;background:#7FA35A}
+.ipad .v35mac-family--criteria h5{color:var(--ui-ochre)!important}
+.ipad .v35mac-family--criteria h5::before{background:#C08A4E}
+.ipad .v35mac-family ul{margin:0!important;padding:0!important;border:0!important;gap:0!important}
+.ipad .v35mac-family li{padding:9px 0!important;border-bottom:1px solid var(--ui-line);font-size:14.5px!important;color:var(--ui-ink)!important}
+.ipad .v35mac-family li:last-child{border-bottom:0}
+
+/* --- Cartografia: mapa limpo, leitura como painel lateral --- */
+.ipad .v35carto-tabs{margin-bottom:18px!important}
+.ipad .v35carto-tabs button{text-align:left}
+.ipad .v35carto-lens{gap:clamp(20px,2.4vw,34px)!important}
+.ipad .v35carto-plot{border:0!important;border-radius:10px;background-color:#FAFAF6!important;background-image:radial-gradient(#D3D7C8 1.1px,transparent 1.3px)!important;background-size:28px 28px!important;box-shadow:inset 0 0 0 1px var(--ui-line)!important}
+.ipad .v35carto-plot::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#AFC09E;border-radius:2px}
+.ipad .v35carto-plot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#AFC09E;border-radius:2px}
+@media (min-width:761px){.ipad .v35carto-agent{width:28px!important;height:28px!important;background:var(--ui-surface)!important;border:1px solid #C9CFBF!important;color:var(--ui-muted)!important;font-size:12px!important;box-shadow:0 2px 6px -2px rgba(20,30,20,.18)!important}}
+.ipad .v35carto-agent{background:var(--ui-surface)!important;border-color:#C9CFBF!important}
+.ipad .v35carto-now{width:16px!important;height:16px!important;background:var(--ui-green)!important;outline:0!important;border:3px solid #fff!important;box-shadow:0 0 0 1px var(--ui-green),0 0 0 9px rgba(31,74,53,.12)!important}
+.ipad .v35carto-target{width:16px!important;height:16px!important;background:#fff!important;border:2px solid var(--ui-ochre)!important;box-shadow:0 0 0 8px rgba(168,115,63,.12)!important}
+.ipad .v35carto-now>span,.ipad .v35carto-target>span{font-size:12.5px!important}
+.ipad .v35carto-target>span{color:var(--ui-ochre)!important}
+.ipad .v35carto-y-title strong,.ipad .v35carto-x-title{font-size:13px!important;color:var(--ui-ink)!important;font-weight:550!important}
+.ipad .v35carto-y-title span,.ipad .v35carto-x-extremes{font-size:12px!important;color:var(--ui-muted)!important}
+.ipad .v35carto-reading{border-left:1px solid var(--ui-line);padding-left:clamp(18px,2vw,28px)}
+.ipad .v35carto-reading h4,.ipad .v35carto-reading strong{letter-spacing:-.03em}
+.ipad .v35carto-decision{background:var(--ui-soft);border:0!important;border-radius:10px;padding:14px 16px!important}
+.ipad .v35carto-legend{gap:8px 18px!important}
+
+/* --- MVE: ofertas como opções selecionáveis, números em destaque --- */
+.ipad .v35mve-scenario{border:1px solid var(--ui-line)!important;border-radius:14px!important;background:var(--ui-surface)!important;color:var(--ui-ink)!important;transition:border-color .35s,background .35s,transform .5s var(--r-ease)}
+.ipad .v35mve-scenario:hover{border-color:#B9C6AA!important;transform:translateY(-2px)}
+.ipad .v35mve-scenario.is-current{background:var(--ui-green)!important;border-color:var(--ui-green)!important;color:#F4F7EE!important}
+.ipad .v35mve-bar{border-radius:99px;overflow:hidden}
+.ipad .v35mve-bar>i{border-radius:99px}
+.ipad .v35mve-control input[type=range]{accent-color:var(--ui-green)}
+.ipad .v35mve-flow-shell{background:var(--ui-surface);border-radius:14px;padding:clamp(16px,2vw,26px)!important;border:0!important}
+.ipad .v35mve-metrics{border:0!important}
+.ipad .v35mve-conclusion{background:var(--ui-soft)!important;border:0!important;border-radius:12px!important;padding:16px 18px!important}
+.ipad .v35mve-assumptions summary{font-size:14px!important}
+
+/* --- MCP: estrutura sem grade e sem marcas de corte --- */
+.ipad .v35mcp-visual{border-radius:14px!important;overflow:hidden;background:#1B352B!important}
+.ipad .v35mcp-diagram>rect{fill:#1B352B}
+.ipad .v35mcp-diagram>g[opacity=".20"],.ipad .v35mcp-diagram>path[opacity=".5"]{display:none}
+.ipad .v35mcp-phase{font-size:12px!important;letter-spacing:0!important;text-transform:none!important;color:#BED69C!important}
+.ipad .v35mcp-dimensions{display:grid!important;grid-template-columns:1fr 1fr;gap:6px!important}
+.ipad .v35mcp-dimensions button{border:1px solid var(--ui-line)!important;border-radius:10px!important;background:var(--ui-surface)!important;color:var(--ui-ink)!important;padding:12px 14px!important;text-align:left;transition:background .35s,color .35s,border-color .35s}
+.ipad .v35mcp-dimensions button[aria-pressed="true"]{background:var(--ui-green)!important;border-color:var(--ui-green)!important;color:#F4F7EE!important}
+.ipad .v35mcp-detail small{font-size:12.5px!important;color:var(--ui-muted)!important;text-transform:none!important;letter-spacing:0!important}
+.ipad .v35mcp-detail h4{font-size:clamp(22px,2vw,28px)!important;letter-spacing:-.04em!important;font-weight:550!important;line-height:1.15!important}
+.ipad .v35mcp-output{background:var(--ui-soft)!important;border:0!important;border-radius:10px!important;padding:14px 16px!important}
+.ipad .v35mcp-caption,.ipad .v35mve-footnote{font-size:12.5px!important;color:var(--ui-muted)!important}
+@media (min-width:761px){.ipad .v35mac-mobile-switch{display:none!important}}
+.ipad .v35mve-topline,.ipad .v35mcp-topline{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #E2E3DA;padding-bottom:14px;margin-bottom:22px!important}
+.ipad .v35mve-topline .demo-label,.ipad .v35mcp-topline .demo-label{border:0!important;padding:0!important;margin:0!important}
+.ipad .v35mve-topline>p:not(.demo-label){margin:0!important;font-size:13px!important;color:#697066!important}

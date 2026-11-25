@@ -27,3 +27,31 @@
   /* segurança: quem já está na tela ao carregar entra de imediato */
   requestAnimationFrame(()=>els.forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)e.classList.add('in')}));
 })();
+
+/* INNAP: padrão de linhas da marca, desenhado ao entrar; galeria com leve paralaxe */
+(function(){
+  const sec=document.querySelector('.innap-case');
+  if(!sec) return;
+  const box=sec.querySelector('.innap-lines');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* traçados ortogonais de cantos arredondados, como no padrão da identidade */
+  const W=1600,H=1000,R=26;
+  const paths=[
+    [[0,180],[420,180],[420,330],[760,330],[760,90],[1180,90],[1180,260],[1600,260]],
+    [[160,0],[160,420],[560,420],[560,610],[980,610],[980,470],[1380,470],[1380,0]],
+    [[0,720],[300,720],[300,540],[640,540],[640,880],[1120,880],[1120,700],[1600,700]],
+    [[860,1000],[860,760],[1240,760],[1240,560],[1600,560]],
+    [[0,940],[460,940],[460,1000]],
+    [[1460,1000],[1460,860],[1600,860]]
+  ];
+  const round=pts=>{let d=`M${pts[0][0]} ${pts[0][1]}`;for(let i=1;i<pts.length-1;i++){const [px,py]=pts[i-1],[x,y]=pts[i],[nx,ny]=pts[i+1];const ax=Math.sign(x-px),ay=Math.sign(y-py),bx=Math.sign(nx-x),by=Math.sign(ny-y);d+=` L${x-ax*R} ${y-ay*R} Q${x} ${y} ${x+bx*R} ${y+by*R}`}const l=pts[pts.length-1];return d+` L${l[0]} ${l[1]}`};
+  const nodes=[[420,180],[760,330],[560,420],[980,610],[300,720],[1120,880],[1240,760],[1380,470]];
+  box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">${paths.map(p=>`<path d="${round(p)}"/>`).join('')}${nodes.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="4"/>`).join('')}</svg>`;
+  box.querySelectorAll('path').forEach(p=>p.style.setProperty('--len',Math.ceil(p.getTotalLength())));
+  if(reduce){sec.classList.add('drawn');return}
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){sec.classList.add('drawn');o.disconnect()}}),{threshold:.15}).observe(sec);
+  const figs=[...sec.querySelectorAll('.innap-gallery figure')];
+  let ticking=false;
+  const par=()=>{ticking=false;const vh=innerHeight;figs.forEach((f,i)=>{const r=f.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;const k=((r.top+r.height/2)-vh/2)/vh;f.querySelector('img').style.setProperty('--py',(k*-(i%2?26:40)-18).toFixed(1)+'px')})};
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(par)}},{passive:true});par();
+})();
