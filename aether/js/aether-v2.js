@@ -75,9 +75,15 @@
   const t1=el('text',{y:4,'text-anchor':'middle','font-size':'26','font-weight':'600','letter-spacing':'-.6',fill:'#F4F6EE'},core);t1.textContent='Direção';
   const t2=el('text',{y:29,'text-anchor':'middle','font-size':'11','font-weight':'500','letter-spacing':'3',fill:'#B7CFA5'},core);t2.textContent='AETHER';
 
+  /* opções de figura do topo (?topo=a..e): troca só o desenho; os cartões seguem os pontos da opção */
+  const topoKey=new URLSearchParams(location.search).get('topo');
+  const V=topoKey&&window.AX_TOPO&&window.AX_TOPO[topoKey]?window.AX_TOPO[topoKey]({svg,el,f,NODES}):null;
+  if(V){[...svg.children].forEach(c=>{if(c.tagName!=='defs'&&!V.keep.includes(c))c.remove()})}
+
   const pt=(o,ang,th)=>{const r=th*Math.PI/180,x=o.rx*Math.cos(ang),y=o.ry*Math.sin(ang);return[x*Math.cos(r)-y*Math.sin(r),x*Math.sin(r)+y*Math.cos(r)]};
 
   function tick(t){
+    if(V){const P=V.tick(t);NODES.forEach((n,i)=>{if(!n.card||!P[i])return;const [x,y]=P[i];n.card.style.left=f((Math.min(x,maxCx[i])+500)/10)+'%';n.card.style.top=f((y+(n.up?-34:34)+500)/10)+'%'});return}
     rings.forEach((r,i)=>r.setAttribute('r',f(110+i*58+Math.sin(t*.6-i*.7)*5)));
     ORB.forEach(o=>{o.th=o.a+t*o.s;o.e.setAttribute('transform',`rotate(${f(o.th)})`)});
     NODES.forEach((n,i)=>{
