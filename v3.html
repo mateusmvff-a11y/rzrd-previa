@@ -56,7 +56,7 @@ DESIGN: foco na pergunta e descoberta — evitar cards de métricas, barras deco
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#f4ede1" id="theme-color" />
+<meta name="theme-color" content="#19292d" id="theme-color" />
 <link rel="icon" href="vortex/favicon.svg" type="image/svg+xml" />
 <meta name="rzrd-preview-version" content="v8" />
 <meta name="robots" content="noindex,nofollow" />
@@ -115,13 +115,7 @@ MAPA DOS BLOCOS EDITÁVEIS: [AI-EDIT:THESIS], [AI-EDIT:PRODUCTS],
 ===============================================================================
 -->
 <!-- Prévia standalone. Ativos visuais públicos carregados do protótipo hospedado no GitHub Pages. -->
-<script>
-/* Prévia de cor de fundo: ?fundo=bege | azul | claro. Só para decidir a cor; remover na versão final. */
-(function(){var ok={bege:1,azul:1,claro:1},f=null;try{f=new URLSearchParams(location.search).get('fundo')}catch(e){}
- if(!ok[f]){try{f=localStorage.getItem('rzrd-fundo')}catch(e){}}
- if(!ok[f])f='bege';try{localStorage.setItem('rzrd-fundo',f)}catch(e){}
- document.documentElement.setAttribute('data-fundo',f);})();
-</script>
+<script>document.documentElement.setAttribute("data-fundo","azul");</script>
 <style>
 @font-face{font-family:Geist;src:url('assets/fonts/geist-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 :root{
@@ -821,6 +815,95 @@ html[data-fundo="azul"] .contact-inner,html[data-fundo="claro"] .contact-inner{c
   html[data-fundo="azul"] .hero::after{background:linear-gradient(0deg,#19292d 0,#19292d 50%,rgba(25,41,45,.86) 61%,rgba(25,41,45,0) 76%)!important}
   html[data-fundo="claro"] .hero::after{background:linear-gradient(0deg,#eef2f2 0,#eef2f2 50%,rgba(238,242,242,.86) 61%,rgba(238,242,242,0) 76%)!important}
 }
+
+/* ===== Azul fixo: seção de produtos sem caixas (colunas editoriais) ===== */
+.capabilities{background:#19292d!important}
+.products{gap:0!important;border-top:1px solid rgba(231,241,244,.14);border-bottom:1px solid rgba(231,241,244,.14)}
+html .products .product{--ink:#e7f1f4;--muted:#9fb6bc;--line:rgba(231,241,244,.14);color:#e7f1f4;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;min-height:0!important;transform:none!important;transition:background .6s var(--ease)}
+html .products .product+.product{border-left:1px solid rgba(231,241,244,.14)!important}
+.product.aether{--pc:181,212,127}.product.vortex{--pc:233,162,131}.product.spectra{--pc:179,166,240}
+html .products .product:hover{background:radial-gradient(120% 55% at 50% 0%,rgba(var(--pc),.11),transparent 72%)!important}
+.products .product::after{display:none!important}
+.products .product .p-num{top:26px!important;left:28px!important;opacity:1!important;color:rgb(var(--pc));font-size:10.5px!important;letter-spacing:.14em!important}
+.products .product .p-art{background:transparent!important}
+.products .product .p-info{padding:6px 28px 30px!important}
+.products .p-kicker{color:#8fa9b0;opacity:1}
+.products .p-info h3{color:#f2f8f9}
+.products .p-title{color:rgb(var(--pc))!important;font-weight:600}
+.products .p-description{color:#b8cbd0!important}
+.products .p-audience,.products .p-audience em{color:#93abb1!important}
+.products .p-audience em{color:#d7e5e9!important}
+.products .p-bottom{border-top-color:rgba(231,241,244,.14)!important;color:#e7f1f4}
+.products .product:hover .p-bottom{color:rgb(var(--pc))}
+.products .art-margin{color:#7f9aa1;opacity:1!important}
+/* Aether em traço claro */
+.ax-map rect{opacity:.35}
+.ax-map radialGradient stop{stop-color:#b5d47f}
+.ax-contours{stroke:#b5d47f}
+.ax-net,.ax-links{stroke:#cfe6a8}
+.ax-links{stroke-opacity:.5}
+.ax-route{stroke:#f0a27c}
+.ax-traveler{fill:#f0a27c}
+.ax-map g[fill="#4c6a47"]{fill:#b5d47f;stroke:#19292d}
+.ax-core circle:first-child{fill:#203338;stroke:#cfe6a8}
+.ax-core circle:nth-child(2){stroke:#cfe6a8}
+.ax-core circle:nth-child(3){fill:#f0a27c}
+.ax-map path[stroke="#a35f3d"]{stroke:#f0a27c}
+.ax-map text{fill:#c9dcae}
+.ax-map g[fill="#8f4f31"] text{fill:#f0a27c}
+/* Vortex em traço claro */
+.vx-reel{box-shadow:0 22px 40px -18px rgba(0,0,0,.6),0 0 0 1px rgba(231,241,244,.16)!important}
+.vx-cycle ol:before{background:rgba(231,241,244,.18)!important}
+.vx-cycle li{color:#e7f1f4!important}
+.vx-cycle li b{color:#e9a283!important}
+.vx-cycle li:before{background:#19292d!important;box-shadow:inset 0 0 0 1.5px #e9a283!important}
+.vx-cycle li:after{background:#e9a283!important}
+.vx-cycle ol:after{border-color:#e9a283!important}
+.vx-cycle ol{background:linear-gradient(#e9a283,#e9a283) no-repeat calc(100% - 16px) 10px / 7px 1.3px!important}
+/* Spectra em vidro escuro */
+.sx-sheet{background:rgba(231,241,244,.045)!important;border:1px solid rgba(179,166,240,.28)!important;box-shadow:none!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sx-head{border-bottom-color:rgba(231,241,244,.12)!important}
+.sx-head b{color:#e7f1f4!important}.sx-head span,.sx-goal span{color:#8fa9b0!important}
+.sx-goal{color:#cfdde1!important}.sx-q{color:#f2f8f9!important}.sx-l{color:#a9bec3!important}
+.sx-track{background:linear-gradient(90deg,transparent calc(30% - .5px),rgba(231,241,244,.3) calc(30% - .5px),rgba(231,241,244,.3) calc(30% + .5px),transparent calc(30% + .5px))!important}
+.sx-track i{background:#b3a6f0!important}.sx-row.neg .sx-track i{background:#f0a27c!important}
+.sx-row strong{color:#cfc5ff!important}.sx-row.neg strong{color:#f4b195!important}
+.sx-next{border-top-color:rgba(231,241,244,.12)!important;color:#b8cbd0!important}
+@media(max-width:920px){
+  .products{border-bottom:0}
+  html .products .product+.product{border-left:0!important;border-top:1px solid rgba(231,241,244,.14)!important}
+  html .products .product{display:grid!important;grid-template-columns:44% 56%}
+}
+@media(max-width:690px){
+  html .products .product{display:flex!important}
+  .products .product .p-info{padding:4px 4px 30px!important}
+  .products .product .p-num{left:4px!important}
+}
+.ax-map radialGradient stop:first-child{stop-opacity:.2}
+.products .vx-reel{top:58px!important}
+.products .vx-cycle{top:62px!important}
+/* ===== Processo do COR ===== */
+.cor-process{grid-column:1/-1;padding:clamp(34px,4vw,56px) 0 clamp(10px,2vw,24px);color:#e7f1f4}
+.cp-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 48px;align-items:end;margin-bottom:clamp(26px,3vw,40px)}
+.cp-head .section-flag{grid-column:1/-1;color:#9fb6bc}
+.cp-head h3{margin:0;font-size:clamp(2rem,3.4vw,3.6rem);line-height:1.02;letter-spacing:-.06em;font-weight:520}
+.cp-head p{margin:0;max-width:40ch;justify-self:end;font-size:15px;line-height:1.6;color:#a9bec3}
+.cp-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid rgba(231,241,244,.16)}
+.cp-steps li{position:relative;padding:20px 16px 6px 0;display:flex;flex-direction:column;gap:8px}
+.cp-steps li+li{padding-left:16px;border-left:1px solid rgba(231,241,244,.08)}
+.cp-steps li:before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#19292d;box-shadow:inset 0 0 0 1.5px #b5d47f}
+.cp-steps li+li:before{left:16px}
+.cp-steps li:nth-child(5):before{background:#b5d47f}
+.cp-steps b{font-size:11px;font-weight:650;color:#b5d47f;letter-spacing:.06em}
+.cp-steps strong{font-size:15px;line-height:1.2;font-weight:600;letter-spacing:-.025em;color:#f2f8f9}
+.cp-steps span{font-size:12.5px;line-height:1.5;color:#9fb6bc}
+@media(max-width:1100px){.cp-steps{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}.cp-steps li:nth-child(5){border-left:0;padding-left:0}.cp-steps li:nth-child(5):before{left:0}}
+@media(max-width:690px){
+  .cp-head{grid-template-columns:1fr}.cp-head p{justify-self:start}
+  .cp-steps{grid-template-columns:1fr;border-top:0;border-left:1px solid rgba(231,241,244,.16);margin-left:4px}
+  .cp-steps li,.cp-steps li+li{padding:0 0 22px 22px;border-left:0}
+  .cp-steps li:before,.cp-steps li+li:before,.cp-steps li:nth-child(5):before{top:3px;left:-4px}
+}
 /* seletor de prévia */
 .fundo-switch{position:fixed;left:16px;bottom:16px;z-index:240;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(20,20,20,.86);color:#f4f4f4;font:600 11px/1 Geist,Arial,sans-serif;letter-spacing:.02em;box-shadow:0 8px 24px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .fundo-switch span{padding:0 8px 0 9px;opacity:.7}
@@ -970,6 +1053,18 @@ Não afirmar que decisões COR foram implantadas, nem ganhos de receita, retenç
 <text x="60" y="114">EIXO</text><text x="180" y="114">NÚCLEO</text><text x="300" y="114" fill="#8f5a35">MONOGRAMA</text></g>
 </svg><span>CAMINHOS ESTRUTURAIS TESTADOS</span></div>
 </div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article>
+  <section class="cor-process reveal" aria-labelledby="cor-process-title">
+    <div class="cp-head"><span class="section-flag">Processo do COR</span><h3 id="cor-process-title">Da tese ao sistema,<br/>em sete blocos.</h3><p>O caderno de direção do COR foi construído em etapas. Cada uma responde a uma pergunta antes de passar para a forma.</p></div>
+    <ol class="cp-steps">
+      <li><b>1</b><strong>Fundamento conceitual</strong><span>No pensamento agostiniano, o coração é o centro da decisão. É daí que o COR nasce.</span></li>
+      <li><b>2</b><strong>Essência e posicionamento</strong><span>Centro, estrutura e retidão. O COR não existe para motivar. Existe para orientar.</span></li>
+      <li><b>3</b><strong>Do conceito à forma</strong><span>Critérios formais definidos antes do desenho. Eles não orientam o design, eles o limitam.</span></li>
+      <li><b>4</b><strong>Caminhos testados</strong><span>Figurativo, tipográfico e estrutural. Nem tudo que é abstrato é estrutural.</span></li>
+      <li><b>5</b><strong>A direção escolhida</strong><span>Entre eixo, núcleo e monograma, o monograma integrou os dois e se comporta como o COR.</span></li>
+      <li><b>6</b><strong>Construção do símbolo</strong><span>O C contém, o O ocupa o centro, o R sustenta o eixo.</span></li>
+      <li><b>7</b><strong>Sistema e aplicações</strong><span>Regras de permanência para o institucional e o digital. Permanência exige renúncia.</span></li>
+    </ol>
+  </section>
   <article class="case case-eno reveal"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article>
   <!-- [AI-EDIT:SPECTRA-CASE-V5]
   PORTFÓLIO = segundo exemplo, não repetir o panorama +34/-11/+6 do card.
@@ -1089,15 +1184,6 @@ Referência de produção: luz lateral natural, ambiente real de trabalho, roupa
      Controles nativos, sem autoplay/loop; fecha com X, fundo ou Escape.
 -->
 <div class="overlay" id="manifest-overlay" aria-hidden="true"><section class="modal manifest-video-modal" role="dialog" aria-modal="true" aria-labelledby="manifest-modal-title" tabindex="-1"><button type="button" class="close" data-close="manifest-overlay" aria-label="Fechar manifesto">×</button><h2 id="manifest-modal-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Nossa forma de pensar</h2><video id="manifest-video" controls playsinline preload="none" aria-label="Manifesto institucional da Rzrd."></video></section></div>
-<div class="fundo-switch" role="group" aria-label="Prévia da cor de fundo"><span>Fundo</span><button type="button" data-fundo="bege"><i style="background:#f4ede1"></i>Bege</button><button type="button" data-fundo="azul"><i style="background:#19292d"></i>Azul</button><button type="button" data-fundo="claro"><i style="background:#eef2f2"></i>Claro</button></div>
-<script>
-(function(){var cur=document.documentElement.getAttribute('data-fundo');
- document.querySelectorAll('.fundo-switch button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.fundo===cur));
-  b.addEventListener('click',function(){if(b.dataset.fundo===cur)return;var u=new URL(location.href);u.searchParams.set('fundo',b.dataset.fundo);u.hash='';
-   try{sessionStorage.setItem('rzrd-y',String(scrollY))}catch(e){}location.href=u.toString()})});
- try{var y=sessionStorage.getItem('rzrd-y');if(y!==null){sessionStorage.removeItem('rzrd-y');history.scrollRestoration='manual';addEventListener('load',function(){document.documentElement.style.scrollBehavior='auto';scrollTo(0,+y);document.documentElement.style.scrollBehavior=''})}}catch(e){}
-})();
-</script>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/rz-campo.js" defer></script>
 <script>
