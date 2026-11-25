@@ -708,6 +708,85 @@ html[data-fundo="azul"] .case-eno,html[data-fundo="azul"] .case-spectra,html[dat
 /* bio dos fundadores (texto do Figma da Rzrd.) */
 .people-v4>div{flex-wrap:wrap}
 .people-v4 .person-bio{flex:1 1 100%;margin:6px 0 0;font-size:14px;line-height:1.6;letter-spacing:-.015em;color:var(--muted);max-width:52ch}
+
+/* ===== Diagramas dos produtos e do COR redesenhados ===== */
+/* Aether */
+.ax{padding:10px 8px 26px!important}
+.ax .ax-map{width:100%!important;height:100%!important}
+.ax-route{stroke-dasharray:140;stroke-dashoffset:140;animation:axDraw 5.5s cubic-bezier(.16,1,.3,1) infinite}
+@keyframes axDraw{0%{stroke-dashoffset:140}45%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+.ax-core{transform-box:fill-box;transform-origin:center;animation:axCore 5.5s ease-in-out infinite}
+@keyframes axCore{0%,100%{transform:scale(1)}20%{transform:scale(1.06)}}
+.ax-contours{transform-box:view-box;transform-origin:226px 150px;animation:axBreath 14s ease-in-out infinite}
+@keyframes axBreath{50%{transform:scale(1.03) rotate(1.5deg)}}
+/* Vortex */
+.vx{background:#ecd3c4!important;display:block!important}
+.vx-reel{position:absolute;margin:0;left:8%;top:40px;bottom:46px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#80503f;box-shadow:0 18px 34px -16px rgba(81,42,28,.45),0 0 0 4px rgba(255,248,240,.75)}
+.vx-reel img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.vx-reel figcaption{position:absolute;z-index:3;left:8px;bottom:8px;padding:5px 8px;border-radius:999px;background:rgba(43,24,16,.62);color:#fbeee4;font-size:9px;font-weight:600;letter-spacing:.02em;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vx-cycle{position:absolute;right:7%;top:50px;bottom:56px;width:46%;display:flex;align-items:stretch}
+.vx-cycle ol{list-style:none;margin:0;padding:0 0 0 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.vx-cycle ol:before{content:"";position:absolute;left:4px;top:10px;bottom:10px;width:1px;background:rgba(116,65,43,.28)}
+.vx-cycle li{position:relative;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:620;letter-spacing:-.01em;color:#5a3426;opacity:.42;animation:vxStep 8s infinite;animation-delay:calc(var(--k) * 2s)}
+.vx-cycle li:before{content:"";position:absolute;left:-18px;width:9px;height:9px;border-radius:50%;background:#efd8cb;box-shadow:inset 0 0 0 1.5px #9b5a40}
+.vx-cycle li b{font-size:9px;color:#9b5a40;font-weight:700;min-width:8px}
+@keyframes vxStep{0%,24%{opacity:1}28%,100%{opacity:.42}}
+.vx-return{width:22px;flex:none;margin-left:6px}
+.vx-again{position:absolute;right:-2px;top:50%;transform:translate(50%,-50%) rotate(90deg);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#9b5a40;font-weight:650;white-space:nowrap}
+/* ponto ativo do trilho */
+.vx-cycle li:after{content:"";position:absolute;left:-16px;width:5px;height:5px;border-radius:50%;background:#9b5a40;opacity:0;animation:vxDot 8s infinite;animation-delay:calc(var(--k) * 2s)}
+@keyframes vxDot{0%,24%{opacity:1}28%,100%{opacity:0}}
+/* Spectra */
+.sx{padding:40px 20px 30px!important;display:flex!important;align-items:stretch}
+.sx-sheet{width:100%;display:flex;flex-direction:column;background:#faf8fc;border:1px solid #cfc7da;border-radius:10px;padding:14px 16px 13px;box-shadow:0 18px 30px -22px rgba(67,49,86,.35)}
+.sx-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-bottom:8px;border-bottom:1px solid #e2dcea}
+.sx-head b{font-size:11px;font-weight:700;color:#4d4460;letter-spacing:-.01em}
+.sx-head span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7a7186;font-weight:600}
+.sx-goal{margin:8px 0 0;font-size:10.5px;line-height:1.35;color:#463e52;font-weight:560}
+.sx-goal span{display:block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#857c90;font-weight:600;margin-bottom:1px}
+.sx-q{margin:9px 0 10px;font-size:clamp(16px,1.45vw,19px);line-height:1.12;letter-spacing:-.04em;font-weight:580;color:#2f2a37}
+.sx-bars{display:grid;gap:7px}
+.sx-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) 44px;align-items:center;gap:8px}
+.sx-l{font-size:9.5px;line-height:1.15;color:#5d5568;font-weight:560}
+.sx-track{position:relative;height:10px;background:linear-gradient(90deg,transparent calc(30% - .5px),#b8afc6 calc(30% - .5px),#b8afc6 calc(30% + .5px),transparent calc(30% + .5px))}
+.sx-track i{position:absolute;top:1px;bottom:1px;left:30%;width:calc(70% * var(--v) / 34);background:#7a62a3;border-radius:0 3px 3px 0;transform-origin:left center;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.16,1,.3,1) .25s}
+.sx-row.neg .sx-track i{left:auto;right:70%;width:calc(70% * var(--v) / 34);background:#b0634f;border-radius:3px 0 0 3px;transform-origin:right center}
+.sx-row:nth-child(2) .sx-track i{transition-delay:.4s}.sx-row:nth-child(3) .sx-track i{transition-delay:.55s}
+.product.visible .sx-track i,.no-js .sx-track i{transform:scaleX(1)}
+.sx-row strong{font-size:15px;font-weight:640;letter-spacing:-.05em;color:#5b4683;text-align:right}
+.sx-row.neg strong{color:#a0503d}
+.sx-next{margin:auto 0 0;padding-top:9px;border-top:1px solid #e2dcea;font-size:10px;line-height:1.35;color:#4e4559;font-weight:560}
+.sx .art-margin{bottom:9px}
+/* COR */
+.cor-paths{height:128px!important}
+.cor-paths svg{overflow:visible}
+@media(max-width:920px){.sx-q{font-size:18px}.vx-cycle li{font-size:12px}}
+@media(max-width:690px){
+  .vx-reel{left:6%;top:36px;bottom:42px}
+  .vx-cycle{right:6%;width:48%;top:44px;bottom:50px}
+  .vx-cycle li{font-size:11px}
+  .sx{padding:36px 14px 28px!important}
+  .sx-q{font-size:17px}
+  .sx-row{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 40px}
+}
+@media(prefers-reduced-motion:reduce){.ax-route{animation:none;stroke-dashoffset:0}.ax-core,.ax-contours,.vx-cycle li,.vx-cycle li:after{animation:none}.vx-cycle li{opacity:1}.ax-traveler{display:none}.sx-track i{transform:none;transition:none}}
+/* ajustes finos dos diagramas */
+.vx-reel .media-fallback{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;color:#f7e9d6;font-size:22px;line-height:.95;letter-spacing:-.06em;font-weight:500}
+.vx-reel img.media-error{display:none}
+.vx-cycle ol{padding-right:26px}
+.vx-cycle ol:after{content:"";position:absolute;right:0;top:11px;bottom:11px;width:16px;border:1.3px dashed #9b5a40;border-left:0;border-radius:0 14px 14px 0;opacity:.75}
+.vx-cycle{right:6%;width:48%}
+.vx-cycle ol{background:linear-gradient(#9b5a40,#9b5a40) no-repeat calc(100% - 16px) 10px / 7px 1.3px}
+.sx{padding:52px 18px 30px!important}
+.sx-sheet{padding:12px 14px 11px}
+.sx-goal{margin-top:6px;font-size:10px}
+.sx-goal span{display:inline;margin-right:5px}
+.sx-q{margin:7px 0 8px;font-size:clamp(15px,1.3vw,18px)}
+.sx-bars{gap:5px}
+.sx-next{padding-top:7px}
+.cor-paths span{top:-14px;bottom:auto!important}
+.cor-doc-footer{font-size:9.5px!important;letter-spacing:.04em!important}
+.cor-doc-footer i{width:3px!important;height:3px!important;border-radius:50%}
 /* seletor de prévia */
 .fundo-switch{position:fixed;left:16px;bottom:16px;z-index:240;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(20,20,20,.86);color:#f4f4f4;font:600 11px/1 Geist,Arial,sans-serif;letter-spacing:.02em;box-shadow:0 8px 24px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .fundo-switch span{padding:0 8px 0 9px;opacity:.7}
@@ -766,21 +845,43 @@ Cada produto pode atuar sozinho ou combinado. Não tratar produto como fase obri
  <div class="products">
   <!-- [AI-EDIT:PRODUCT:AETHER] Preferir cartografia autoral (nós, conexões, decisões), não setas convergentes + círculo final. -->
   <a class="product aether reveal" href="aether/" data-product-link="aether" aria-label="Conhecer o Aether: direção de mercado e marca"><span class="p-num">1 / DIREÇÃO</span>
-    <div class="p-art aether-visual"><svg class="aether-atlas" viewBox="0 0 460 338" role="img" aria-label="Cartografia conceitual da análise de negócio, público e mercado, destacando uma hipótese de posicionamento"><defs><pattern id="atlas-grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#637b55" stroke-opacity=".13" stroke-width=".7"/></pattern></defs><rect width="460" height="338" fill="url(#atlas-grid)"/>
-    <g class="atlas-contours" fill="none" stroke="#536e54" stroke-width=".95"><path d="M-30 194C71 123 106 229 197 156S343 92 490 142"/><path d="M-20 218C72 151 110 252 210 180S365 101 487 176"/><path d="M-10 244C76 181 148 273 240 204S353 140 486 202"/><path d="M-19 118C84 69 139 149 228 92S375 40 490 99"/><path d="M-8 90C69 42 130 105 240 61S370 29 478 60"/></g>
-    <g class="atlas-links" fill="none" stroke="#365c42" stroke-width="1.25" stroke-opacity=".56"><path d="M84 110L181 154L301 94L382 182L260 257L181 154L124 250L382 182"/><path d="M84 110L124 250L260 257L301 94"/></g>
-    <g fill="#526c4f" stroke="#e3e9d8" stroke-width="3"><circle cx="84" cy="110" r="5"/><circle cx="301" cy="94" r="5"/><circle cx="124" cy="250" r="5"/><circle cx="260" cy="257" r="5"/><circle cx="382" cy="182" r="5"/></g>
-    <g class="atlas-core"><circle cx="181" cy="154" r="32" fill="#ebeddc" stroke="#365c42" stroke-width="1.5"/><circle cx="181" cy="154" r="16" fill="none" stroke="#365c42" stroke-width="1" stroke-dasharray="2 5"/><circle cx="181" cy="154" r="4" fill="#a36e48"/></g>
-    <g fill="#49604c" font-family="Geist,Arial,sans-serif" font-size="10" font-weight="620" letter-spacing="1"><text x="58" y="91">NEGÓCIO</text><text x="290" y="76">MERCADO</text><text x="54" y="273">PESSOAS</text><text x="321" y="208">CULTURA</text></g>
-    <path d="M212 150L274 128" stroke="#a36e48" stroke-width="1.5" fill="none"/><path d="m270 122 8 5-4 9" fill="none" stroke="#a36e48" stroke-width="1.5"/>
-    <text x="260" y="117" fill="#8a633f" font-size="10" font-family="Geist,Arial,sans-serif" font-weight="650" letter-spacing="1">ESCOLHA</text>
-    <g stroke="#5a7652" opacity=".6"><path d="M29 24h38M29 24v38M432 304h-38M432 304v-38" fill="none"/></g></svg><span class="art-margin">CARTOGRAFIA / HIPÓTESE / DIREÇÃO</span></div>
+    <div class="p-art aether-visual ax"><svg class="ax-map" viewBox="0 0 460 300" role="img" aria-label="Cartografia: negócio, mercado, pessoas e cultura conectados numa hipótese, de onde sai uma escolha de direção">
+<defs><pattern id="ax-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#5f7a52" stroke-opacity=".10" stroke-width=".7"/></pattern>
+<radialGradient id="ax-glow"><stop offset="0" stop-color="#b9cf93" stop-opacity=".55"/><stop offset="1" stop-color="#b9cf93" stop-opacity="0"/></radialGradient></defs>
+<rect width="460" height="300" fill="url(#ax-grid)"/>
+<circle cx="226" cy="150" r="118" fill="url(#ax-glow)"/>
+<g class="ax-contours" fill="none" stroke="#56734c" stroke-width=".8">
+<path stroke-opacity=".16" d="M226 38c70 0 128 44 128 108s-52 118-126 118S96 214 96 150 156 38 226 38z"/>
+<path stroke-opacity=".20" d="M224 66c54 0 100 34 100 84s-40 90-98 90-100-38-100-88 44-86 98-86z"/>
+<path stroke-opacity=".25" d="M226 94c38 0 70 24 70 56s-30 62-70 62-70-28-70-60 32-58 70-58z"/>
+</g>
+<g class="ax-net" fill="none" stroke="#3f5d40" stroke-width="1" stroke-opacity=".32" stroke-dasharray="2 4">
+<path d="M84 84L346 66"/><path d="M84 84L104 232"/><path d="M104 232L370 216"/><path d="M346 66L370 216"/>
+</g>
+<g class="ax-links" fill="none" stroke="#3f5d40" stroke-width="1.15" stroke-opacity=".55">
+<path d="M84 84L226 150"/><path d="M346 66L226 150"/><path d="M104 232L226 150"/><path d="M370 216L226 150"/>
+</g>
+<path class="ax-route" d="M226 150C262 132 300 120 342 128" fill="none" stroke="#a35f3d" stroke-width="2" stroke-linecap="round"/>
+<circle class="ax-traveler" r="3.4" fill="#a35f3d"><animateMotion dur="5.5s" repeatCount="indefinite" keyTimes="0;.55;1" keyPoints="0;1;1" calcMode="linear" path="M226 150C262 132 300 120 342 128"/></circle>
+<g fill="#4c6a47" stroke="#e3e9d7" stroke-width="3"><circle cx="84" cy="84" r="5"/><circle cx="346" cy="66" r="5"/><circle cx="104" cy="232" r="5"/><circle cx="370" cy="216" r="5"/></g>
+<g class="ax-core"><circle cx="226" cy="150" r="26" fill="#eef1e3" stroke="#3f5d40" stroke-width="1.3"/><circle cx="226" cy="150" r="14" fill="none" stroke="#3f5d40" stroke-opacity=".55" stroke-dasharray="2 3.5"/><circle cx="226" cy="150" r="3.6" fill="#a35f3d"/></g>
+<path d="M342 128l7 0M345.5 124.5v7" stroke="#a35f3d" stroke-width="1.6" stroke-linecap="round"/>
+<g font-family="Geist,Arial,sans-serif" font-size="9.5" font-weight="650" letter-spacing="1.3" fill="#3f5a3d">
+<text x="84" y="68" text-anchor="middle">NEGÓCIO</text><text x="346" y="50" text-anchor="middle">MERCADO</text>
+<text x="104" y="254" text-anchor="middle">PESSOAS</text><text x="370" y="238" text-anchor="middle">CULTURA</text>
+<text x="226" y="196" text-anchor="middle" fill="#5d7457" font-size="8.5" letter-spacing="1.6">HIPÓTESE</text>
+</g>
+<g font-family="Geist,Arial,sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#8f4f31"><text x="356" y="132">ESCOLHA</text></g>
+</svg><span class="art-margin">CARTOGRAFIA / HIPÓTESE / DIREÇÃO</span></div>
     <div class="p-info"><span class="p-kicker">O invisível que move tudo</span><h3>.aether</h3><p class="p-title">Direção de mercado e marca</p><p class="p-description">Investigamos o negócio e seu contexto para orientar escolhas de mercado, oferta e marca.</p><p class="p-audience">Para empresas que precisam decidir o que priorizar e como construir uma posição mais forte.</p><div class="p-bottom"><span>Conhecer o Aether</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
   <!-- [AI-EDIT:PRODUCT:VORTEX] O recorte real da Eno Cultura deve ficar legível, sem três posts inclinados como mockup de agência. -->
   <a class="product vortex reveal" href="vortex/" data-product-link="vortex" aria-label="Conhecer o Vortex: presença contínua"><span class="p-num">2 / PRESENÇA</span>
-   <div class="p-art vortex-visual"><div class="vortex-reel"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" loading="lazy" alt="Frame de vídeo produzido para Eno Cultura"/></div><div class="vortex-rail"><span><b>1</b> DIREÇÃO EDITORIAL</span><span><b>2</b> PRODUÇÃO</span><span><b>3</b> PUBLICAÇÃO</span><span><b>4</b> ACOMPANHAMENTO</span></div><div class="vortex-loop" aria-hidden="true"><svg viewBox="0 0 108 108"><circle cx="54" cy="54" r="42" fill="none" stroke="#8d4e36" stroke-opacity=".26"/><path d="M17 70A41 41 0 1 1 82 84" fill="none" stroke="#8d4e36" stroke-width="1.75"/><path d="m74 81 9 4 4-9" stroke="#8d4e36" fill="none" stroke-width="1.75"/></svg></div><span class="art-margin">CRIAÇÃO EM MOVIMENTO / ACERVO REAL</span></div>
-   <div class="p-info"><span class="p-kicker">Campo de força criativa em ação</span><h3>.vortex</h3><p class="p-title">Presença contínua</p><p class="p-description">Planejamento, criação, produção, publicação e acompanhamento de conteúdo, com direção criativa.</p><p class="p-audience">Para marcas que precisam de <em>consistência editorial e qualidade de execução.</em></p><div class="p-bottom"><span>Conhecer o Vortex</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+   <div class="p-art vortex-visual vx"><figure class="vx-reel"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" loading="lazy" alt="Frame de vídeo produzido para Eno Cultura"/><figcaption>Eno Cultura · reels</figcaption></figure>
+<div class="vx-cycle" aria-label="Operação contínua: direção editorial, produção, publicação e acompanhamento, voltando ao início">
+<ol><li style="--k:0"><b>1</b>Direção editorial</li><li style="--k:1"><b>2</b>Produção</li><li style="--k:2"><b>3</b>Publicação</li><li style="--k:3"><b>4</b>Acompanhamento</li></ol>
+</div><span class="art-margin">CRIAÇÃO EM MOVIMENTO / ACERVO REAL</span></div>
+    <div class="p-info"><span class="p-kicker">Campo de força criativa em ação</span><h3>.vortex</h3><p class="p-title">Presença contínua</p><p class="p-description">Planejamento, criação, produção, publicação e acompanhamento de conteúdo, com direção criativa.</p><p class="p-audience">Para marcas que precisam de <em>consistência editorial e qualidade de execução.</em></p><div class="p-bottom"><span>Conhecer o Vortex</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
   <!-- [AI-EDIT:SPECTRA-PRODUCT-V5]
 VISUAL DE PRODUTO, NÃO CASE. Propósito: apresentar a capacidade de cruzar
@@ -794,18 +895,18 @@ não prova que o aumento de alcance causou a diminuição do engajamento.
 NÃO substituir por barras de crescimento decorativas ou gráficos fantasiosos.
 -->
   <a class="product spectra reveal" href="spectra/" data-product-link="spectra" aria-label="Conhecer a Spectra: inteligência de conteúdo"><span class="p-num">3 / INTELIGÊNCIA</span>
-   <div class="p-art spectra-visual"><div class="spectra-sheet spectra-panorama">
-     <div class="spectra-index"><b>spectra / 1</b><span>PANORAMA ESTRATÉGICO</span></div>
-     <div class="spectra-intent"><span>OBJETIVO DO PERFIL</span><strong>Consolidar relevância e consideração.</strong></div>
-     <div class="spectra-question">Mais pessoas chegaram.<br/>O interesse acompanhou?</div>
-     <div class="spectra-pulse" role="img" aria-label="Dados sintéticos: alcance mais 34 por cento; engajamento de valor por alcance menos 11 por cento; visitas ao perfil mais 6 por cento">
-       <div><span>ALCANCE</span><strong>+34%</strong></div>
-       <div><span>ENGAJAMENTO DE VALOR / ALCANCE</span><strong class="spectra-negative">−11%</strong></div>
-       <div><span>VISITAS AO PERFIL</span><strong>+6%</strong></div>
-     </div>
-     <div class="spectra-conclusion">Próxima pergunta: quais temas e formatos explicam a diferença?</div>
-   </div><span class="art-margin">VISÃO CONCEITUAL · DADOS SINTÉTICOS</span></div>
-   <div class="p-info"><span class="p-kicker">Clareza a partir dos dados</span><h3>.spectra</h3><p class="p-title">Inteligência de conteúdo</p><p class="p-description">Relacionamos estratégia, dados e conteúdos para investigar padrões e orientar decisões editoriais.</p><p class="p-audience">Para marcas que precisam <em>compreender resultados e decidir o próximo movimento.</em></p><div class="p-bottom"><span>Conhecer a Spectra</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+   <div class="p-art spectra-visual sx"><div class="sx-sheet">
+<div class="sx-head"><b>spectra / 1</b><span>panorama estratégico</span></div>
+<p class="sx-goal"><span>Objetivo do perfil</span>Consolidar relevância e consideração.</p>
+<p class="sx-q">Mais pessoas chegaram.<br/>O interesse acompanhou?</p>
+<div class="sx-bars" role="img" aria-label="Dados sintéticos: alcance mais 34 por cento; engajamento de valor por alcance menos 11 por cento; visitas ao perfil mais 6 por cento">
+<div class="sx-row"><span class="sx-l">Alcance</span><span class="sx-track"><i style="--v:34"></i></span><strong>+34%</strong></div>
+<div class="sx-row neg"><span class="sx-l">Engajamento de valor / alcance</span><span class="sx-track"><i style="--v:11"></i></span><strong>−11%</strong></div>
+<div class="sx-row"><span class="sx-l">Visitas ao perfil</span><span class="sx-track"><i style="--v:6"></i></span><strong>+6%</strong></div>
+</div>
+<p class="sx-next">Próxima pergunta: quais temas e formatos explicam a diferença?</p>
+</div><span class="art-margin">VISÃO CONCEITUAL · DADOS SINTÉTICOS</span></div>
+    <div class="p-info"><span class="p-kicker">Clareza a partir dos dados</span><h3>.spectra</h3><p class="p-title">Inteligência de conteúdo</p><p class="p-description">Relacionamos estratégia, dados e conteúdos para investigar padrões e orientar decisões editoriais.</p><p class="p-audience">Para marcas que precisam <em>compreender resultados e decidir o próximo movimento.</em></p><div class="p-bottom"><span>Conhecer a Spectra</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
  </div>
 </div></section>
@@ -824,8 +925,16 @@ Não afirmar que decisões COR foram implantadas, nem ganhos de receita, retenç
 <div class="case-cor-art" aria-hidden="true">
   <div class="cor-meta"><span>Rzrd. / Aether</span><span>ESTUDO DE DIREÇÃO</span></div>
   <div class="cor-wordmark">COR<span class="cor-period">.</span></div>
-  <div class="cor-doc"><div class="cor-doc-index">CADERNO / 1 <span>QUESTÃO INSTITUCIONAL</span></div><strong>Como preservar uma forma de educar à medida que a instituição cresce?</strong><div class="cor-doc-footer">Fundamentos <i></i> Método <i></i> Experiência <i></i> Expansão</div></div>
-  <div class="cor-map"><svg viewBox="0 0 380 155" preserveAspectRatio="xMidYMid meet"><g fill="none" stroke="#667764" stroke-opacity=".32" stroke-width="1"><path d="M5 124 C69 36 112 145 183 60 S302 65 369 15"/><path d="M5 80 C85 118 136 13 220 63 S327 137 378 105"/><path d="M35 4 C95 83 193 123 268 22"/><path d="M42 144 C120 10 250 10 347 147"/></g><g fill="#395e50"><circle cx="12" cy="11" r="1.8" opacity="0.35"/><circle cx="65" cy="55" r="2.15" opacity="0.51"/><circle cx="118" cy="113" r="2.5" opacity="0.67"/><circle cx="171" cy="60" r="1.8" opacity="0.83"/><circle cx="224" cy="21" r="2.15" opacity="0.35"/><circle cx="277" cy="121" r="2.5" opacity="0.51"/><circle cx="330" cy="110" r="1.8" opacity="0.67"/><circle cx="32" cy="113" r="2.15" opacity="0.83"/><circle cx="85" cy="130" r="2.5" opacity="0.35"/><circle cx="138" cy="36" r="1.8" opacity="0.51"/><circle cx="191" cy="81" r="2.15" opacity="0.67"/><circle cx="244" cy="15" r="2.5" opacity="0.83"/><circle cx="297" cy="88" r="1.8" opacity="0.35"/><circle cx="350" cy="50" r="2.15" opacity="0.51"/><circle cx="52" cy="26" r="2.5" opacity="0.67"/><circle cx="105" cy="16" r="1.8" opacity="0.83"/><circle cx="158" cy="20" r="2.15" opacity="0.35"/><circle cx="211" cy="38" r="2.5" opacity="0.51"/><circle cx="264" cy="70" r="1.8" opacity="0.67"/><circle cx="317" cy="116" r="2.15" opacity="0.83"/><circle cx="19" cy="51" r="2.5" opacity="0.35"/><circle cx="72" cy="125" r="1.8" opacity="0.51"/><circle cx="125" cy="88" r="2.15" opacity="0.67"/><circle cx="178" cy="65" r="2.5" opacity="0.83"/><circle cx="231" cy="56" r="1.8" opacity="0.35"/><circle cx="284" cy="61" r="2.15" opacity="0.51"/><circle cx="337" cy="80" r="2.5" opacity="0.67"/><circle cx="39" cy="113" r="1.8" opacity="0.83"/><circle cx="92" cy="35" r="2.15" opacity="0.35"/><circle cx="145" cy="96" r="2.5" opacity="0.51"/></g><circle cx="183" cy="64" r="22" fill="none" stroke="#a8794f" stroke-width="1.4"/><circle cx="183" cy="64" r="3" fill="#a8794f"/></svg><span>MAPEAMENTO DE REFERÊNCIAS / DIREÇÃO</span></div>
+  <div class="cor-doc"><div class="cor-doc-index">BLOCO 2 <span>ESSÊNCIA E POSICIONAMENTO</span></div><strong>O COR não existe para motivar. Ele existe para orientar.</strong><div class="cor-doc-footer">Centro <i></i> Estrutura <i></i> Retidão</div></div>
+  <div class="cor-map cor-paths"><svg viewBox="0 0 360 120" aria-hidden="true">
+<g fill="none" stroke="#3b5c47" stroke-width="1.4" stroke-linecap="round">
+<g opacity=".45"><path d="M60 18V92"/><path d="M48 18h24M48 92h24" stroke-width="1"/></g>
+<g opacity=".45"><circle cx="180" cy="55" r="30"/><circle cx="180" cy="55" r="8" fill="#3b5c47"/></g>
+<g class="cor-pick"><path d="M326 32A30 30 0 1 0 326 78" stroke-width="2.2"/><circle cx="300" cy="55" r="11" fill="#3b5c47" stroke="none"/><path d="M300 22V88" stroke-width="2.2"/></g>
+</g>
+<g font-family="Geist,Arial,sans-serif" font-size="8.5" font-weight="650" letter-spacing="1.5" fill="#4b6350" text-anchor="middle">
+<text x="60" y="114">EIXO</text><text x="180" y="114">NÚCLEO</text><text x="300" y="114" fill="#8f5a35">MONOGRAMA</text></g>
+</svg><span>CAMINHOS ESTRUTURAIS TESTADOS</span></div>
 </div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article>
   <article class="case case-eno reveal"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article>
   <!-- [AI-EDIT:SPECTRA-CASE-V5]
@@ -1033,7 +1142,7 @@ $('#contact-form').addEventListener('submit',e=>{e.preventDefault();const f=e.cu
 <script>
 /* [AI-EDIT:ASSET-FALLBACK-V5] Preview robustness only. Keep real image and
    video for production; the fallback shows only when image loading fails. */
-for (const img of document.querySelectorAll('.vortex-reel img, .case-video img')) {
+for (const img of document.querySelectorAll('.vortex-reel img, .vx-reel img, .case-video img')) {
   const failed = () => img.classList.add('media-error');
   img.addEventListener('error', failed);
   if (img.complete && img.naturalWidth===0) failed();
