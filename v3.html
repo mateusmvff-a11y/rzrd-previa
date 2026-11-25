@@ -882,6 +882,25 @@ html .products .product:hover{background:radial-gradient(120% 55% at 50% 0%,rgba
 .ax-map radialGradient stop:first-child{stop-opacity:.2}
 .products .vx-reel{top:58px!important}
 .products .vx-cycle{top:62px!important}
+
+/* ===== Spectra: antes e depois, sem painel ===== */
+.products .sl{padding:54px 26px 30px!important;display:flex!important;flex-direction:column;align-items:stretch}
+.sl-q{margin:0 0 6px;font-size:clamp(17px,1.5vw,21px);line-height:1.12;letter-spacing:-.04em;font-weight:560;color:#f2f8f9}
+.sl-q em{font-style:normal;color:#b3a6f0}
+.sl-chart{flex:1;width:100%;height:auto;min-height:0;overflow:visible}
+.sl-axis{stroke:rgba(231,241,244,.16)}
+.sl-t-axis{fill:#7f9aa1}
+.sl-line{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1) .2s}
+.sl-line.sl-mid{transition-delay:.35s}.sl-line.sl-down{transition-delay:.5s}
+.product.visible .sl-line,.no-js .sl-line{stroke-dashoffset:0}
+.sl-up{stroke:#b3a6f0;fill:#b3a6f0}.sl-mid{stroke:#8fa9b0;fill:#8fa9b0}.sl-down{stroke:#f0a27c;fill:#f0a27c}
+.sl-line.sl-up,.sl-line.sl-mid,.sl-line.sl-down{fill:none}
+.sl-dot{fill:#e7f1f4}
+.sl-end{stroke:#19292d;stroke-width:3}
+.sl-v{font-size:22px;font-weight:620;letter-spacing:-.04em;stroke:none}
+.sl-l{font-size:13px;fill:#a9bec3;letter-spacing:-.005em}
+@media(prefers-reduced-motion:reduce){.sl-line{transition:none;stroke-dashoffset:0}}
+@media(max-width:690px){.products .sl{padding:48px 6px 32px!important}.sl-chart{height:220px}}
 /* ===== Processo do COR ===== */
 /* ===== COR com identidade real ===== */
 .cor-logo{position:absolute;left:6%;top:15%;height:74%;width:auto;max-width:44%;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(255,255,255,.25))}
@@ -1041,17 +1060,22 @@ não prova que o aumento de alcance causou a diminuição do engajamento.
 NÃO substituir por barras de crescimento decorativas ou gráficos fantasiosos.
 -->
   <a class="product spectra reveal" href="spectra/" data-product-link="spectra" aria-label="Conhecer a Spectra: inteligência de conteúdo"><span class="p-num">3 / INTELIGÊNCIA</span>
-   <div class="p-art spectra-visual sx"><div class="sx-sheet">
-<div class="sx-head"><b>spectra / 1</b><span>panorama estratégico</span></div>
-<p class="sx-goal"><span>Objetivo do perfil</span>Consolidar relevância e consideração.</p>
-<p class="sx-q">Mais pessoas chegaram.<br/>O interesse acompanhou?</p>
-<div class="sx-bars" role="img" aria-label="Dados sintéticos: alcance mais 34 por cento; engajamento de valor por alcance menos 11 por cento; visitas ao perfil mais 6 por cento">
-<div class="sx-row"><span class="sx-l">Alcance</span><span class="sx-track"><i style="--v:34"></i></span><strong>+34%</strong></div>
-<div class="sx-row neg"><span class="sx-l">Engajamento de valor / alcance</span><span class="sx-track"><i style="--v:11"></i></span><strong>−11%</strong></div>
-<div class="sx-row"><span class="sx-l">Visitas ao perfil</span><span class="sx-track"><i style="--v:6"></i></span><strong>+6%</strong></div>
-</div>
-<p class="sx-next">Próxima pergunta: quais temas e formatos explicam a diferença?</p>
-</div><span class="art-margin">VISÃO CONCEITUAL · DADOS SINTÉTICOS</span></div>
+   <div class="p-art spectra-visual sx sl">
+<p class="sl-q">Mais pessoas chegaram.<br/><em>O interesse acompanhou?</em></p>
+<svg class="sl-chart" viewBox="0 0 400 236" role="img" aria-label="Dados sintéticos, antes e depois: alcance mais 34 por cento, visitas ao perfil mais 6 por cento, engajamento de valor por alcance menos 11 por cento">
+<g class="sl-axis" stroke-width="1"><path d="M40 22V214"/><path d="M236 22V214"/><path d="M32 160H244" stroke-dasharray="2 4"/></g>
+<g font-family="Geist,Arial,sans-serif" font-size="11" font-weight="600" letter-spacing="1.4" class="sl-t-axis"><text x="40" y="12" text-anchor="middle">ANTES</text><text x="236" y="12" text-anchor="middle">DEPOIS</text></g>
+<path class="sl-line sl-up" d="M40 160L236 54"/>
+<path class="sl-line sl-mid" d="M40 160L236 141"/>
+<path class="sl-line sl-down" d="M40 160L236 194"/>
+<circle class="sl-dot" cx="40" cy="160" r="5"/>
+<circle class="sl-end sl-up" cx="236" cy="54" r="5"/><circle class="sl-end sl-mid" cx="236" cy="141" r="5"/><circle class="sl-end sl-down" cx="236" cy="194" r="5"/>
+<g font-family="Geist,Arial,sans-serif">
+<text class="sl-v sl-up" x="252" y="56">+34%</text><text class="sl-l" x="252" y="74">alcance</text>
+<text class="sl-v sl-mid" x="252" y="138">+6%</text><text class="sl-l" x="252" y="156">visitas ao perfil</text>
+<text class="sl-v sl-down" x="252" y="194">−11%</text><text class="sl-l" x="252" y="212">engajamento</text><text class="sl-l" x="252" y="227">por alcance</text>
+</g>
+</svg><span class="art-margin">VISÃO CONCEITUAL · DADOS SINTÉTICOS</span></div>
     <div class="p-info"><span class="p-kicker">Clareza a partir dos dados</span><h3>.spectra</h3><p class="p-title">Inteligência de conteúdo</p><p class="p-description">Relacionamos estratégia, dados e conteúdos para investigar padrões e orientar decisões editoriais.</p><p class="p-audience">Para marcas que precisam <em>compreender resultados e decidir o próximo movimento.</em></p><div class="p-bottom"><span>Conhecer a Spectra</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
  </div>
@@ -1074,21 +1098,6 @@ Não afirmar que decisões COR foram implantadas, nem ganhos de receita, retenç
   <div class="cor-doc"><div class="cor-doc-index">BLOCO 2 <span>ESSÊNCIA E POSICIONAMENTO</span></div><strong>O COR não existe para motivar. Ele existe para orientar.</strong><div class="cor-doc-footer">Centro <i></i> Estrutura <i></i> Retidão</div></div>
   
 </div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article>
-  <section class="cor-process cpx reveal" aria-labelledby="cor-process-title">
-    <div class="cpx-head">
-      <figure class="cpx-origin"><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/abertura.jpg" aria-label="Ampliar a abertura da apresentação"><img src="assets/home/cor/abertura.jpg" alt="Abertura da apresentação de direção de marca do COR feita pela Rzrd." loading="lazy"/></button><figcaption>Ponto de partida · Direção de marca COR · jan 2026</figcaption></figure>
-      <div class="cpx-intro"><span class="section-flag">Processo do COR</span><h3 id="cor-process-title">De onde partimos e como chegamos à forma.</h3><p>Antes de desenhar, investigamos de onde o COR parte e o que ele precisa sustentar. Estas são telas do caderno de direção entregue à Academia COR, na ordem em que o raciocínio foi construído.</p></div>
-    </div>
-    <ol class="cpx-gallery">
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b1-fundamento.jpg" aria-label="Ampliar: O que significa COR"><img src="assets/home/cor/b1-fundamento.jpg" alt="Tela do caderno de direção do COR: O que significa COR" loading="lazy"/></button><b>1</b><strong>O que significa COR</strong><span>No pensamento agostiniano, o coração é o centro da decisão. É daí que o COR nasce.</span></li>
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b2-essencia.jpg" aria-label="Ampliar: Essência da marca"><img src="assets/home/cor/b2-essencia.jpg" alt="Tela do caderno de direção do COR: Essência da marca" loading="lazy"/></button><b>2</b><strong>Essência da marca</strong><span>Centro, estrutura e retidão: o eixo que orienta todas as escolhas seguintes.</span></li>
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b3-decisoes.jpg" aria-label="Ampliar: Da estratégia à forma"><img src="assets/home/cor/b3-decisoes.jpg" alt="Tela do caderno de direção do COR: Da estratégia à forma" loading="lazy"/></button><b>3</b><strong>Da estratégia à forma</strong><span>Cada princípio vira critério visual antes de qualquer desenho.</span></li>
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b5-monograma.jpg" aria-label="Ampliar: Por que o monograma venceu"><img src="assets/home/cor/b5-monograma.jpg" alt="Tela do caderno de direção do COR: Por que o monograma venceu" loading="lazy"/></button><b>4</b><strong>Por que o monograma venceu</strong><span>Figurativo, tipográfico e estrutural foram testados. Eixo e núcleo resolviam partes; o monograma resolveu o sistema.</span></li>
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b6-construcao.jpg" aria-label="Ampliar: Construção do símbolo"><img src="assets/home/cor/b6-construcao.jpg" alt="Tela do caderno de direção do COR: Construção do símbolo" loading="lazy"/></button><b>5</b><strong>Construção do símbolo</strong><span>Geometria que organiza sem fechar: o C contém, o O ocupa o centro, o R sustenta o eixo.</span></li>
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b7-sistema.jpg" aria-label="Ampliar: Do símbolo ao sistema"><img src="assets/home/cor/b7-sistema.jpg" alt="Tela do caderno de direção do COR: Do símbolo ao sistema" loading="lazy"/></button><b>6</b><strong>Do símbolo ao sistema</strong><span>Regras de permanência para o símbolo funcionar no institucional e no digital.</span></li>
-      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b7-aplicacao.jpg" aria-label="Ampliar: Aplicação"><img src="assets/home/cor/b7-aplicacao.jpg" alt="Tela do caderno de direção do COR: Aplicação" loading="lazy"/></button><b>7</b><strong>Aplicação</strong><span>O monograma aplicado em material da Academia.</span></li>
-    </ol>
-  </section>
   <article class="case case-eno reveal"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article>
   <!-- [AI-EDIT:SPECTRA-CASE-V5]
   PORTFÓLIO = segundo exemplo, não repetir o panorama +34/-11/+6 do card.
@@ -1208,7 +1217,6 @@ Referência de produção: luz lateral natural, ambiente real de trabalho, roupa
      Controles nativos, sem autoplay/loop; fecha com X, fundo ou Escape.
 -->
 <div class="overlay" id="manifest-overlay" aria-hidden="true"><section class="modal manifest-video-modal" role="dialog" aria-modal="true" aria-labelledby="manifest-modal-title" tabindex="-1"><button type="button" class="close" data-close="manifest-overlay" aria-label="Fechar manifesto">×</button><h2 id="manifest-modal-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Nossa forma de pensar</h2><video id="manifest-video" controls playsinline preload="none" aria-label="Manifesto institucional da Rzrd."></video></section></div>
-<div class="overlay" id="cp-overlay" aria-hidden="true"><section class="modal cpx-modal" role="dialog" aria-modal="true" aria-label="Tela do caderno do COR"><button type="button" class="close" data-close="cp-overlay" aria-label="Fechar">×</button><img id="cp-full" alt=""/></section></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/rz-campo.js" defer></script>
 <script>
@@ -1322,14 +1330,6 @@ for (const img of document.querySelectorAll('.vortex-reel img, .vx-reel img, .ca
 (function(){var box=document.getElementById('about-photo');if(!box)return;var real=new Image();
  real.onload=function(){var img=box.querySelector('img');img.src=real.src;img.alt='Geórgia Rizzardi e William Cabral, fundadores da Rzrd.';var d=box.querySelector('.photo-disclaimer');if(d)d.remove()};
  real.src='assets/home/sobre-georgia-william.jpg';})();
-</script>
-<script>
-/* Processo do COR: abre a tela do caderno em tamanho grande */
-(function(){var ov=document.getElementById('cp-overlay'),im=document.getElementById('cp-full');if(!ov)return;
- function close(){ov.classList.remove('show');ov.setAttribute('aria-hidden','true');document.body.classList.remove('lock')}
- document.querySelectorAll('[data-cp-full]').forEach(function(b){b.addEventListener('click',function(){var t=b.querySelector('img');im.src=b.dataset.cpFull;im.alt=t?t.alt:'';ov.classList.add('show');ov.setAttribute('aria-hidden','false');document.body.classList.add('lock');ov.querySelector('.close').focus()})});
- ov.querySelector('.close').addEventListener('click',close);ov.addEventListener('click',function(e){if(e.target===ov)close()});
- document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('show'))close()});})();
 </script>
 </body>
 </html>
