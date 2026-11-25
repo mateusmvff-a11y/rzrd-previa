@@ -1,13 +1,126 @@
 <!doctype html>
+<!--
+[AI-EDIT:RELEASE-V8 / 2026-11-24] PRIORIDADE SOBRE ANOTAÇÕES V3–V7
+BASE EXATA: Rzrd_Home_Nova_Proposta_v7.html. Esta V8 é uma edição pontual, não um redesenho.
+ESCOPO:
+  1. Manter hero Campo de Força e headline, navegação, produtos, COR estático, Eno em modal,
+     ambas as demonstrações Spectra (números sintéticos) e demais interações como na V7.
+  2. Bloco "Nossa perspectiva": "Entender muda o que se faz." + texto aprovado integral,
+     em parágrafo único. Palavras da régua são dimensões possíveis, NÃO etapas obrigatórias.
+  3. Aether: só descrição e texto "Para empresas..." mudaram; assinatura e arte preservadas.
+  4. Manifesto: filme institucional único (~37s), ainda NÃO disponível. NÃO publicar um
+     botão inoperante. JS testa por HEAD o URL do arquivo configurado e só revela o botão
+     após confirmação de resposta válida. Só então um clique abre modal com <video controls>.
+     Sem autoplay, sem loop, sem fundo em vídeo, sem interferir no Campo de Força.
+     PARA ATIVAR: colocar o arquivo final no caminho `assets/manifesto-rzrd-final.mp4`
+     relativo à home (ou editar MANIFEST_FILM_URL no JS) e servir via HTTP(S).
+     A checagem testa disponibilidade real; 404, erros de rede ou retorno HTML = oculto.
+     O modal existe oculto no DOM e não reserva espaço; seu vídeo só recebe src por clique.
+  5. Não substituir esta tese por discursos anti-concorrência, fórmulas ou novo manifesto.
+     Não citar senha do projeto COR nem implicar números reais na Spectra.
+NOTA: Comentários AI-EDIT antigos abaixo documentam a linhagem e não substituem estas
+instruções da V8 quando houver divergência. Não remover o estudo Spectra embutido.
+-->
+<!--
+[AI-EDIT:RELEASE-V7 / 2026-11-24]
+FONTE: Rzrd_Home_Nova_Proposta_v6.html.
+PEDIDO DO CLIENTE: simplificar o case Spectra para um público que quer saber o que fazer,
+não ler um artigo científico. Preservar a surpresa e a honestidade dos dados simulados.
+ESCOPO EXCLUSIVO: copy, hierarquia visual e modal do CASE SPECTRA na seção portfólio.
+NÃO ALTERAR: exemplo “Mais pessoas chegaram” na seção de produtos, casos COR/Eno,
+hero, sobre, contato e interações já funcionais.
+NÍVEIS DE INFORMAÇÃO:
+1) CARD (primeiro contato): regra aparente -> virada -> próxima decisão, em linguagem comum.
+2) MODAL (para interessados): situação -> descoberta -> ação editorial; sem jargão estatístico.
+3) ESTUDO COMPLETO: íntegro, acessível por ação secundária; contém base, método e limites.
+CUIDADO: os dados são SINTÉTICOS, não são casos reais de clientes nem prova de causalidade.
+Não declarar que a intenção de reconsiderar foi alcançada apenas por ações no conteúdo.
+ASSETS: os ativos remotos públicos e o estudo completo embutido seguem como na V6.
+-->
+
+<!--
+[AI-EDIT:RELEASE-V6] Rzrd Home — V6 (2026-11-24)
+ORIGEM: Rzrd_Home_Nova_Proposta_v5.html (não modificar V5).
+MUDANÇA PRINCIPAL: substituir exclusivamente o card do case Spectra no portfólio
+por “Exemplos ajudam. Em toda pauta?” baseado no estudo entregue pelo Codex.
+PRESERVAR: hero Campo de Força, tese, três produtos (especialmente “Mais pessoas chegaram”),
+COR como card estático, Eno Cultura com modal de vídeo, Sobre e contato.
+DADOS: simulação íntegra n=144; associado/observado ≠ efeito causal; recalcular antes de editar números.
+ARQUIVOS: Rzrd_Spectra_Estudo_Editorial_Completo.html é a forma editável do estudo;
+payload Base64 embutido nesta V6 reproduz esse arquivo em nova aba sem caminhos relativos.
+USO: arquivo de prévia; não publica no GitHub, não envia formulário real.
+DESIGN: foco na pergunta e descoberta — evitar cards de métricas, barras decorativas e jargão.
+-->
+
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#f4ede1" />
+<meta name="theme-color" content="#f4ede1" id="theme-color" />
+<meta name="rzrd-preview-version" content="v8" />
 <meta name="robots" content="noindex,nofollow" />
-<title>Rzrd. — Direção antes de presença</title>
-<meta name="description" content="A Rzrd. conecta direção de marca, produção contínua de conteúdo e inteligência aplicada para transformar escolhas estratégicas em trabalho concreto." />
-<!-- Home V3: proposta nova publicada dentro da prévia; ativos locais em assets/. -->
+<title>Rzrd. Direção, presença e inteligência</title>
+<meta name="description" content="Direção de marca, presença contínua e inteligência editorial. Conheça a atuação e os trabalhos da Rzrd." />
+<!--
+===============================================================================
+RZRD. HOME V5 / MASTER EDITORIAL HANDOFF — LEIA ANTES DE EDITAR
+===============================================================================
+LINHAGEM: v3.html (base) → Rzrd_Home_Nova_Proposta_v4.html (portfolio) → V5 → V6.
+Esta V5 é um refinamento DIRETO da V4, não uma reconstrução de template.
+Para reproduzir V5 a partir da v3.html, aplicar antes o handoff integral da V4. Mantidos: hero Campo de Força, navegação,
+seis grandes seções, modal de contato, modal de vídeo, tipografia e paleta.
+
+PRIORIDADES DE DIREÇÃO DE ARTE
+- Clareza sem didatismo excessivo. Evitar estética genérica de agência e “IA”.
+- Preservar 3 linguagens de produto realmente distintas; não repetir SVGs, cards,
+  glows ou ilustrações com o mesmo padrão de grade.
+- Textos específicos; evitar frases de efeito e terminologia vazia.
+- Priorizar evidências reais. COR = direção documentada; Eno Cultura = vídeo real;
+  Spectra = demonstração com dados sintéticos, claramente rotulados.
+- Foto da seção Sobre é placeholder GERADO; trocar por retrato real do time.
+- Responsividade: desktop 3 produtos; tablet/mobile empilhados.
+- Movimento sutil e contextual; respeitar prefers-reduced-motion.
+
+DEPENDÊNCIAS E PUBLICAÇÃO
+- Logo, fonte Geist, Campo de Força e vídeo da Eno Cultura vêm de ativos públicos
+  da prévia hospedada: não excluir sem substituir pelos arquivos finais.
+- Hero original precisa assets/rz-campo.js; fallback SVG local à página.
+- O documento COR é privado. Nunca publicar senha ou links que burlam login.
+- Página Aether: endereço final /aether/ a validar em staging.
+- Formulário segue mailto demonstrativo; para produção integrar CRM/backend.
+- Revisar permissão de uso e autorização editorial dos cases antes da publicação.
+- Esta página tem noindex,nofollow somente por ser PRÉVIA.
+- A V5 NÃO muda os formatos dos cases: COR permanece estático (nenhum modal
+  nem link à documentação protegida), Eno Cultura permanece vídeo em modal,
+  Spectra permanece demonstração editorial ligada à página pública.
+- As DUAS peças da Spectra mostram análises diferentes da página provisória:
+  CARD DE PRODUTO = panorama estratégico (alcance +34%, engajamento de valor /
+  alcance -11%, visitas ao perfil +6%). PORTFÓLIO = salvamentos (1.000 para
+  1.950), mediana por post (100 para 50), um outlier (1.500) em outubro.
+- Ambos são EXEMPLOS COM DADOS SINTÉTICOS, não resultados reais de clientes.
+- Nunca omitir a base comparável, a ressalva de que associação não prova
+  causalidade, ou a origem sintética. Não alegar resultados comerciais.
+- Nova opção futura a estudar com dados REAIS auditáveis: comparação de formatos
+  dentro de um mesmo tipo de conteúdo (tutorial), para evitar confundir efeito
+  de formato com diferenças de pauta. No site da Spectra há uma demonstração
+  com números sintéticos (80 vs 40 no geral; 84 vs 82 em tutoriais).
+- Uma futura análise via Codex pode reproduzir os cálculos, as comparações,
+  limites amostrais, hipóteses e recomendações; NUNCA fabricar dados reais.
+
+MAPA DOS BLOCOS EDITÁVEIS: [AI-EDIT:THESIS], [AI-EDIT:PRODUCTS],
+[AI-EDIT:PORTFOLIO], [AI-EDIT:ABOUT], [AI-EDIT:CONTACT], [AI-EDIT:CSS-V4],
+[AI-EDIT:BEHAVIOR], [AI-EDIT:SPECTRA-PRODUCT-V5] e
+[AI-EDIT:SPECTRA-CASE-V5]. Preserve IDs e data-* usados no JS.
+===============================================================================
+-->
+<!-- Prévia standalone. Ativos visuais públicos carregados do protótipo hospedado no GitHub Pages. -->
+<script>
+/* Prévia de cor de fundo: ?fundo=bege | azul | claro. Só para decidir a cor; remover na versão final. */
+(function(){var ok={bege:1,azul:1,claro:1},f=null;try{f=new URLSearchParams(location.search).get('fundo')}catch(e){}
+ if(!ok[f]){try{f=localStorage.getItem('rzrd-fundo')}catch(e){}}
+ if(!ok[f])f='bege';try{localStorage.setItem('rzrd-fundo',f)}catch(e){}
+ document.documentElement.setAttribute('data-fundo',f);})();
+</script>
 <style>
 @font-face{font-family:Geist;src:url('assets/fonts/geist-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 :root{
@@ -200,17 +313,412 @@ img,video,svg{max-width:100%}svg{display:block}img{display:block}::selection{bac
 @media(max-width:690px){.p-description{margin-bottom:12px}.p-audience{margin-bottom:22px}}
 @media(prefers-reduced-motion:reduce){.ae-route,.ae-focus,.ae-bearing,.ae-ripple,.sp-line{animation:none!important}.ae-bearing,.sp-line{stroke-dashoffset:0!important}.ae-ripple{opacity:.6!important}.ae-travel{display:none}}
 
-/* ajustes da publicação: barra de etapas alinhada às margens; texto do vídeo fora do título no card 2 */
+/* [AI-EDIT:CSS-V4] Override design layer on v3. Keeps the structural legacy CSS for safe diffing.
+   DESIGN RULE: editorial composition > rounded SaaS cards; distinctive evidence > diagrams as decoration.
+   New classes are declared below; existing classes are overridden where needed. */
+.hero h1 em::after{height:.035em;opacity:.48;bottom:-.08em}
+.hero-sub{max-width:510px}
+.thesis{padding-block:clamp(102px,10vw,155px);background:#eae0d1}
+.thesis-layout{grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,130px)}
+.thesis-right{padding-top:clamp(16px,4vw,72px)}
+.thesis-body{font-size:15px;max-width:520px}
+.thesis-footnote{display:flex;gap:12px 20px;flex-wrap:wrap;margin-top:48px;padding-top:17px;border-top:1px solid var(--line);color:#837b70;font-size:10px;letter-spacing:.065em;font-weight:620}
+.capabilities{padding-top:clamp(100px,8vw,138px);padding-bottom:clamp(100px,9vw,148px)}
+.capabilities .section-head h2{max-width:820px}
+.products{gap:12px}
+.product{border-radius:15px;min-height:595px;border:1px solid rgba(40,30,20,.1);box-shadow:none;transform:none!important}
+.product:hover{box-shadow:0 10px 35px -25px rgba(30,24,17,.2)}
+.product::after{width:17px;height:17px;right:23px;top:22px;opacity:.55}
+.product.aether{background:#e3e9d7}.product.vortex{background:#efd8cb}.product.spectra{background:#e6e2ee}
+.product .p-num{font-size:10px;opacity:.68;top:24px;left:25px}
+.product .p-art{height:312px;min-height:312px;display:block;overflow:hidden}
+.product .p-info{padding:4px 25px 26px}
+.p-info h3{font-size:clamp(2.8rem,3.8vw,4.5rem);margin:8px 0 6px}
+.p-description{font-size:13px;line-height:1.6;max-width:37ch;margin:12px 0 13px}
+.p-audience{font-size:12px;max-width:38ch;margin:0 0 23px;line-height:1.5;opacity:.94}
+.p-audience em{font-weight:590}
+.art-margin{position:absolute;bottom:13px;left:25px;font-size:9px;letter-spacing:.11em;font-weight:680;opacity:.58}
+.aether-visual{padding-top:10px}
+.aether-atlas{width:100%!important;height:94%!important}
+.atlas-contours path{stroke-dasharray:3 3;animation:atlasDrift 20s linear infinite}
+.atlas-contours path:nth-child(2n){animation-direction:reverse}
+@keyframes atlasDrift{to{stroke-dashoffset:-60}}
+.atlas-core{transform-origin:181px 154px;animation:atlasPulse 7s ease-in-out infinite}
+@keyframes atlasPulse{50%{transform:scale(1.055)}}
+.vortex-visual{background:#ecd0c0}
+.vortex-reel{position:absolute;top:58px;left:13%;width:40%;height:217px;overflow:hidden;border:5px solid rgba(255,248,234,.7);border-radius:4px;box-shadow:12px 16px 35px rgba(81,42,28,.13)}
+.vortex-reel img{height:100%;width:100%;object-fit:cover}
+.vortex-rail{position:absolute;right:5%;top:89px;width:40%;display:grid;gap:0}
+.vortex-rail span{border-top:1px solid rgba(116,65,43,.25);padding:12px 0;font-size:10px;font-weight:680;letter-spacing:.025em;white-space:nowrap}
+.vortex-rail span:last-child{border-bottom:1px solid rgba(116,65,43,.25)}
+.vortex-rail b{font-size:9px;color:#9d715f;margin-right:7px}
+.vortex-loop{position:absolute;top:206px;right:-4px;width:102px;opacity:.56;animation:rotary 25s linear infinite}
+@keyframes rotary{to{transform:rotate(360deg)}}
+.spectra-visual{padding:53px 24px 32px;display:flex!important;align-items:stretch}
+.spectra-sheet{width:100%;background:#f8f6fa;border:1px solid #c8c0d4;padding:17px 19px 14px;box-shadow:7px 9px 0 rgba(67,49,86,.05)}
+.spectra-index{display:flex;justify-content:space-between;gap:8px;font-size:8px;letter-spacing:.07em;color:#736b79}
+.spectra-index b{font-size:10px;font-weight:720;color:#524a63}
+.spectra-question{font-size:19px;font-weight:570;line-height:1.12;letter-spacing:-.045em;margin:17px 0 12px;color:#36313e}
+.spectra-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid #d4cddb;padding-top:11px}
+.spectra-metrics>div{display:grid;gap:1px}.spectra-metrics span{font-size:8px;letter-spacing:.065em;color:#766c7e}
+.spectra-metrics strong{font-size:28px;font-weight:600;letter-spacing:-.07em;color:#625078}.spectra-metrics>div+div strong{color:#a66c5c}
+.spectra-distribution{margin-top:14px}.spectra-distribution>span{font-size:8px;letter-spacing:.09em;color:#837b83}
+.distribution-line{margin-top:5px;display:flex;align-items:flex-end;gap:4px;height:27px}.distribution-line i{flex:1;height:var(--x);background:#b3a6c4;min-height:4px;transition:height 1s var(--ease)}.distribution-line .outlier{background:#9b7eab}
+.spectra-conclusion{font-size:9px;color:#5d5069;margin-top:9px;border-top:1px solid #d4cddb;padding-top:8px;font-weight:600;letter-spacing:-.008em}
+.spectra-annotation{margin-top:16px;font-size:8px;letter-spacing:.08em;font-weight:640;color:#84778a;border-top:1px solid #d4cddb;padding-top:9px}
+.spectra-conclusion{margin-top:9px}
+/* Portfolio V4 is not a generic video gallery. Each case has a different visual proof. */
+.work{background:#242322;padding-top:clamp(98px,9vw,150px);padding-bottom:clamp(98px,9vw,150px)}
+.work .section-head h2{max-width:700px}
+.portfolio-v4{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.case{border-radius:0;overflow:hidden;color:#e9e3d9;min-width:0}
+.case-cor{grid-column:1/-1;display:grid;grid-template-columns:1.18fr .82fr;min-height:505px;background:#e8e7db;color:#222b23}
+.case-illustration{overflow:hidden}
+.case-cor-art{height:100%;min-height:505px;background:#cdd6c7;position:relative;padding:31px 40px;overflow:hidden;color:#244231}
+.cor-meta{display:flex;justify-content:space-between;gap:16px;font-size:10px;letter-spacing:.1em;font-weight:650;color:#526957}
+.cor-wordmark{font-family:Georgia,serif;letter-spacing:-.12em;font-size:clamp(9rem,19vw,20rem);font-weight:400;line-height:.82;margin:30px -15px 15px;color:#31553f}
+.cor-period{color:#a37955}
+.cor-doc{position:absolute;left:45%;right:7%;top:38%;background:#f7f4eb;padding:21px 21px 17px;transform:rotate(-4deg);box-shadow:10px 14px 35px rgba(25,47,32,.14);min-height:166px;z-index:2}
+.cor-doc-index{font-size:8px;letter-spacing:.09em;color:#718371;display:flex;justify-content:space-between;gap:9px;border-bottom:1px solid #d1d7ce;padding-bottom:9px}
+.cor-doc strong{display:block;font-family:Georgia,serif;font-weight:400;font-size:clamp(16px,2.3vw,27px);line-height:1.14;letter-spacing:-.025em;color:#314d3c;margin:18px 0 17px}
+.cor-doc-footer{font-size:7px;letter-spacing:.01em;color:#718371}.cor-doc-footer i{display:inline-block;width:2px;height:2px;background:#718371;vertical-align:middle;margin-inline:2px}
+.cor-map{position:absolute;bottom:8%;left:7%;width:58%;height:137px;opacity:.85}.cor-map svg{width:100%;height:100%}.cor-map span{position:absolute;bottom:0;left:0;font-size:8px;letter-spacing:.14em;color:#4b6350}
+.case-info{padding:clamp(35px,5vw,75px);display:flex;flex-direction:column;justify-content:center;background:#e6e5da}
+.case-serial{font-size:10px;font-weight:680;letter-spacing:.09em;color:inherit;opacity:.72}
+.case-info h3{font-size:clamp(4.5rem,8vw,9rem);font-weight:490;letter-spacing:-.09em;line-height:.9;margin:35px 0 25px}
+.case-standfirst{font-size:clamp(1.4rem,2.25vw,2.6rem);line-height:1.17;letter-spacing:-.045em;max-width:20em;margin:0 0 22px;font-weight:500}
+.case-detail{font-size:14px;line-height:1.6;max-width:42ch;color:#58625a;margin:0 0 42px}
+.case-foot{margin-top:auto;border-top:1px solid #bac5b9;padding-top:19px;display:flex;justify-content:space-between;align-items:center;gap:18px;font-size:10px;letter-spacing:.02em;color:#566657}
+.case-status{letter-spacing:.08em;font-size:8px;white-space:nowrap;color:#69816c}
+.case-eno,.case-spectra{background:#302e2d;display:flex;flex-direction:column}
+.case-video{width:100%;height:345px;position:relative;overflow:hidden;background:#745345;border:none;padding:0;display:block}
+.case-video img{width:100%;height:100%;object-fit:cover;object-position:center 34%;filter:saturate(.75);transition:transform .9s var(--ease),filter .7s}
+.case-video:hover img{transform:scale(1.025);filter:saturate(1)}
+.case-play{position:absolute;right:23px;bottom:22px;width:47px;height:47px;border:1px solid rgba(255,255,255,.84);border-radius:50%;display:grid;place-items:center;color:white;font-size:14px;padding-left:2px;background:rgba(25,25,24,.1)}
+.case-secondary-copy{padding:32px 37px 39px;display:flex;flex-direction:column;min-height:232px;gap:8px}
+.case-secondary-copy h3{font-size:clamp(1.9rem,3.25vw,3.6rem);letter-spacing:-.06em;font-weight:520;line-height:1.05;margin:11px 0 4px}
+.case-secondary-copy p{font-size:14px;line-height:1.58;color:#c3bdb6;margin:0;max-width:45ch}
+.case-action{align-self:flex-start;margin-top:18px;color:#eee8dd;background:transparent;border:0;border-bottom:1px solid #afa69f;padding:0 0 7px;font-size:12px}
+.case-spectra{background:#3c3543}
+.case-spectra-panel{min-height:345px;display:flex;flex-direction:column;padding:30px 33px 26px;background:#6c5b7d;color:#f4ebf6;transition:background .4s}
+.case-spectra-panel:hover{background:#746184}
+.spectra-case-top{display:flex;justify-content:space-between;gap:14px;letter-spacing:.09em;font-size:9px;opacity:.85}
+.spectra-case-data{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;margin:31px 0 24px;padding-block:18px;border-top:1px solid rgba(255,255,255,.26);border-bottom:1px solid rgba(255,255,255,.26)}
+.spectra-case-data span{font-size:14px;color:#ebe1ed}.spectra-case-data strong{font-size:clamp(2.3rem,3.6vw,4rem);font-weight:500;line-height:1;letter-spacing:-.065em}
+.spectra-case-line{font-size:14px;line-height:1.36;max-width:30ch;color:#efe5f2}
+.spectra-case-link{margin-top:auto;align-self:flex-end;display:flex;align-items:center;gap:10px;font-size:11px}
+.spectra-case-link svg{width:17px;fill:none;stroke:currentColor;stroke-width:1.5}
+/* About photo is an explicit AI reference, NOT a truthful depiction of founders. */
+.about{padding:clamp(105px,10vw,165px) 0}
+.about-v4{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(55px,8vw,135px)}
+.about-photo{position:relative;aspect-ratio:4/5;overflow:hidden;background:#bcaa93}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:saturate(.78) contrast(.95)}
+.photo-disclaimer{position:absolute;bottom:14px;left:15px;right:15px;color:#faf4e9;background:rgba(37,31,26,.73);font-size:9px;letter-spacing:.105em;font-weight:650;padding:10px 11px;max-width:max-content}
+.about-body{padding:22px 0}.about-body h2{max-width:10em;font-size:clamp(3.2rem,5.4vw,6.2rem);margin:21px 0 27px}
+.about-body>p{font-size:clamp(1.12rem,1.65vw,1.5rem);line-height:1.43;max-width:36ch;margin:0 0 19px;letter-spacing:-.035em}
+.about-body>p.about-muted{font-size:14px;line-height:1.65;letter-spacing:-.015em;color:var(--muted);max-width:48ch}
+.people-v4{margin-top:42px;border-top:1px solid var(--line)}
+.people-v4>div{display:flex;align-items:center;gap:10px;justify-content:space-between;border-bottom:1px solid var(--line);padding:17px 0}
+.people-v4 strong{font-size:14px;font-weight:650}.people-v4 span{font-size:11px;color:var(--muted);text-align:right}
+/* CTA: editorial confidence rather than glow effects. */
+.contact-inner{background:#9e543e}.contact-glow{opacity:.12;animation:none}
+.contact h2{max-width:11em}
+/* Reveal: quiet fades, no blur-on-every-element AI-template style. */
+.js .reveal{filter:none;transform:translateY(17px);transition:opacity .75s var(--ease),transform .9s var(--ease)}
+@media(max-width:1160px){.product{min-height:610px}.vortex-rail span{font-size:9px}.vortex-reel{height:203px}.spectra-question{font-size:17px}.spectra-sheet{padding:15px 14px}.art-margin{font-size:8px}}
+@media(max-width:920px){.thesis-layout{grid-template-columns:1fr}.about-v4{grid-template-columns:1fr 1fr;gap:35px}.about-body h2{font-size:clamp(3rem,5vw,4.5rem)}.products{grid-template-columns:1fr}.product{min-height:350px;display:grid;grid-template-columns:43% 57%}.product .p-art{height:100%;min-height:352px;grid-column:1}.product .p-info{grid-column:2;padding:31px 30px}.product .p-num{top:18px}.product .p-art .art-margin{bottom:14px}.portfolio-v4{grid-template-columns:1fr 1fr}.case-cor{grid-template-columns:1fr 1fr}.case-cor-art{min-height:435px}.case-illustration{min-height:435px}.cor-doc{left:34%;right:6%}.cor-wordmark{font-size:clamp(8rem,19vw,14rem)}.case-info{padding:35px}.case-info h3{font-size:clamp(4.2rem,7vw,7rem);margin:20px 0}.case-standfirst{font-size:clamp(1.3rem,2.2vw,2rem)}.case-detail{font-size:13px}.case-video,.case-spectra-panel{min-height:310px;height:310px}.about-photo{aspect-ratio:3/4}}
+@media(max-width:690px){.thesis{padding-block:88px 95px}.thesis-footnote{margin-top:30px;font-size:9px}.capabilities{padding-block:87px 95px}.section-head h2{font-size:clamp(2.9rem,11vw,4.9rem)}.product{display:flex;min-height:0}.product .p-art{min-height:290px;height:300px}.product .p-info{padding:6px 25px 27px}.product .p-info h3{font-size:3.25rem}.p-audience{font-size:12px}.vortex-reel{height:206px;top:55px}.vortex-rail{top:85px}.art-margin{font-size:8px}.spectra-visual{padding:50px 24px 38px}.portfolio-v4{grid-template-columns:1fr;gap:12px}.case-cor{grid-template-columns:1fr;grid-column:1/-1}.case-illustration{min-height:340px}.case-cor-art{min-height:340px;padding:24px}.cor-meta{font-size:9px}.cor-wordmark{font-size:clamp(9rem,40vw,15rem);margin-top:17px}.cor-doc{left:39%;top:37%;right:5%;padding:12px;min-height:128px}.cor-doc strong{font-size:clamp(15px,5vw,21px);margin:10px 0}.cor-doc-index{font-size:7px}.cor-map{bottom:4%;height:120px;width:57%}.case-info{padding:29px 28px 32px}.case-info h3{font-size:5.5rem;margin:23px 0 15px}.case-standfirst{font-size:1.6rem}.case-detail{font-size:13px;margin-bottom:29px}.case-foot{flex-direction:column;align-items:start;gap:8px}.case-video,.case-spectra-panel{height:310px}.case-secondary-copy{padding:28px;min-height:0}.case-secondary-copy h3{font-size:2.65rem}.about-v4{display:grid;grid-template-columns:1fr;gap:33px}.about-photo{aspect-ratio:1.12}.about-body{padding-top:0}.about-body h2{font-size:clamp(3.25rem,12vw,5.2rem)}.about-body>p{font-size:20px}.people-v4>div{flex-direction:column;align-items:start;gap:4px}.people-v4 span{text-align:left}.contact h2{font-size:clamp(3.8rem,13vw,6rem)}.contact-inner{min-height:465px}}
+@media(prefers-reduced-motion:reduce){.atlas-contours path,.atlas-core,.vortex-loop{animation:none!important}}
+
+
+/* [AI-EDIT:ASSET-FALLBACK-V5] If the original Eno poster cannot load,
+   show simple typography rather than the browser broken-image glyph. */
+.vortex-reel,.case-video{isolation:isolate}
+.vortex-reel .media-fallback,.case-video .media-fallback{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;background:#80503f;color:#f7e9d6;text-align:center;line-height:.95;letter-spacing:-.07em;font-weight:500}
+.vortex-reel .media-fallback{font-size:clamp(26px,2.8vw,40px)}
+.case-video .media-fallback{font-size:clamp(45px,8vw,96px)}
+.vortex-reel img,.case-video img{position:relative;z-index:2}
+.vortex-reel img.media-error,.case-video img.media-error{display:none}
+
+/* [AI-EDIT:CSS-V5:SPECTRA-ONLY]
+   Esta camada substitui APENAS o universo visual da Spectra na V4.
+   Card = leitura estratégica de SINAIS, case = leitura da DISTRIBUIÇÃO.
+   Não duplicar estas duas demonstrações ou convertê-las em dashboards genéricos.
+   Distinguir dado sintético de cliente real no HTML, no visual e no alt-text.
+*/
+.spectra-visual{padding:50px 21px 32px!important;display:flex!important;align-items:stretch}
+.spectra-panorama{position:relative;width:100%;height:100%;padding:13px 17px 15px;background:#f9f7fb;border:1px solid #c6bed0;box-shadow:6px 8px 0 rgba(65,45,78,.045);display:flex;flex-direction:column}
+.spectra-panorama .spectra-index{padding-bottom:5px;border-bottom:1px solid #dbd5e1}
+.spectra-intent{display:flex;gap:6px;align-items:baseline;margin:6px 0 0;min-width:0}
+.spectra-intent span{font-size:8px;line-height:1.2;white-space:nowrap;letter-spacing:.06em;color:#756c7b}
+.spectra-intent strong{font-weight:570;font-size:9px;line-height:1.23;color:#484056}
+.spectra-panorama .spectra-question{font-size:clamp(15px,1.45vw,19px);line-height:1.14;margin:9px 0 8px;letter-spacing:-.038em;max-width:32ch;color:#37313f}
+.spectra-pulse{display:grid;grid-template-columns:1fr 1.14fr .85fr;gap:0;border-top:1px solid #d8d1de;border-bottom:1px solid #d8d1de}
+.spectra-pulse>div{display:flex;flex-direction:column;justify-content:space-between;gap:5px;min-width:0;padding:6px 8px 6px 0}
+.spectra-pulse>div+div{border-left:1px solid #e4dfeb;padding-left:8px}
+.spectra-pulse span{font-size:7.5px;line-height:1.21;letter-spacing:.035em;color:#696274;min-height:22px}
+.spectra-pulse strong{font-size:clamp(20px,2.05vw,27px);line-height:1.02;font-weight:610;letter-spacing:-.065em;color:#69527e}
+.spectra-pulse strong.spectra-negative{color:#a46054}
+.spectra-panorama .spectra-conclusion{margin-top:auto;padding-top:5px;border:0;font-size:9.5px;font-weight:530;line-height:1.36;letter-spacing:-.006em;color:#544a5e}
+.spectra-visual .art-margin{bottom:7px;font-size:8px}
+/* Case retains full-panel navigation and the existing static COR / Eno modal pair. */
+.spectra-investigation{padding:25px 29px 20px;gap:0;min-height:345px;background:#665774}
+.spectra-investigation:hover{background:#706080}
+.spectra-investigation .spectra-case-top{flex:none;font-size:9px;letter-spacing:.045em}
+.spectra-case-question{font-size:clamp(20px,2.3vw,31px);font-weight:540;letter-spacing:-.055em;line-height:1.09;margin:18px 0 15px;color:#fff;max-width:19ch}
+.spectra-case-question em{font-style:normal;color:#dcd0e5}
+.spectra-case-table{border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);margin-bottom:12px}
+.sc-row{display:grid;grid-template-columns:1.05fr .75fr .75fr;gap:9px;align-items:center;min-height:37px;border-top:1px solid rgba(255,255,255,.1);font-variant-numeric:tabular-nums}
+.sc-row:first-child{border-top:0}
+.sc-row span{font-size:9px;line-height:1.1;letter-spacing:.045em;color:#e5d9e7}
+.sc-row strong{font-size:16px;font-weight:560;letter-spacing:-.03em;color:#fff}
+.sc-row strong i{font-size:11px;font-style:normal;margin-left:4px}
+.sc-header{min-height:23px}.sc-header span{font-size:8px;font-weight:650;letter-spacing:.075em;opacity:.84}
+.sc-median strong:last-child,.sc-median strong i{color:#ffddd0}
+.spectra-case-finding{display:grid;grid-template-columns:108px 1fr;gap:10px;align-items:baseline}
+.spectra-case-finding>span{font-size:8px;letter-spacing:.08em;color:#e1d1e8}
+.spectra-case-finding p{margin:0;font-size:11px;line-height:1.34;color:#f5edf7}
+.spectra-case-finding strong{font-weight:700}
+.spectra-investigation .spectra-case-link{font-size:10px;margin-top:auto;padding-top:12px}
+@media (max-width:1199px){
+ .spectra-visual{padding:49px 13px 32px!important}
+ .spectra-panorama{padding:12px 11px 13px}
+ .spectra-intent{flex-wrap:wrap;gap:1px 6px}
+ .spectra-pulse span{font-size:7px;min-height:26px}
+ .spectra-pulse strong{font-size:22px}
+}
+@media (max-width:800px){
+ .spectra-visual{padding:46px 18px 30px!important}
+ .spectra-panorama{padding:14px 17px}
+ .spectra-panorama .spectra-question{font-size:clamp(18px,3vw,23px)}
+ .spectra-pulse strong{font-size:clamp(25px,4vw,33px)}
+ .spectra-case-question{font-size:clamp(21px,4vw,29px)}
+}
+@media (max-width:430px){
+ .spectra-visual{padding:44px 13px 28px!important}
+ .spectra-panorama{padding:12px 13px 11px}
+ .spectra-panorama .spectra-question{font-size:18px}
+ .spectra-pulse>div{padding-right:5px}.spectra-pulse>div+div{padding-left:6px}
+ .spectra-pulse span{font-size:7px}
+ .spectra-pulse strong{font-size:24px}
+ .spectra-investigation{padding:22px 19px 18px}
+ .spectra-case-finding{grid-template-columns:83px 1fr;gap:5px}
+}
+
+/* [AI-EDIT:CSS-V6] Início. Específico ao case Spectra e aprofundamento.
+   A composição tem densidade editorial controlada. Não reaplicar bordas redondas,
+   sombras de dashboard, três mini-KPIs ou transições automáticas.
+   As duas linhas usam escala comum 0–30 ações/1.000 de alcance.
+   Se os valores mudarem, revisar --v e aria-label no HTML. */
+.spectra-case-v6{background:#29282e!important;min-width:0}
+.spectra-case-v6 .spectra-v6-panel{display:flex;flex-direction:column;min-height:425px;padding:24px 28px 20px;background:#51495e;color:#f7f2f8;position:relative;overflow:hidden;gap:0}
+.spectra-v6-panel:after{content:"";position:absolute;top:0;right:0;width:1px;height:100%;background:rgba(255,255,255,.12);pointer-events:none}
+.spectra-v6-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:9px;font-weight:550;letter-spacing:.08em;text-transform:uppercase;color:#e7ddeb}
+.spectra-v6-meta span:last-child{font-size:8px;color:#c9b6d3;white-space:nowrap}
+.spectra-v6-panel h3{font-weight:500;font-size:clamp(28px,3vw,40px);line-height:1.0;letter-spacing:-.066em;margin:16px 0 10px;color:#fff;max-width:15ch}
+.spectra-v6-panel h3 em{font-style:normal;color:#d9c4e2}
+.spectra-v6-lede{font-size:12.5px;line-height:1.48;letter-spacing:-.012em;color:#e8dfe8;max-width:46ch;margin:0 0 18px}
+.spectra-v6-lede strong{font-weight:680;color:#fff}
+.spectra-v6-plot{padding-top:12px;border-top:1px solid rgba(255,255,255,.22)}
+.spectra-v6-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:15px;font-size:9px;color:#e2d8e6}
+.spectra-v6-legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.spectra-v6-dot{width:7px;height:7px;display:inline-block;border-radius:50%}
+.spectra-v6-dot.arg,.sv6-bar.arg{background:#b6a4c0}
+.spectra-v6-dot.ex,.sv6-bar.ex{background:#c0e7c5}
+.spectra-v6-cluster+.spectra-v6-cluster{margin-top:13px}
+.spectra-v6-cluster-head{display:flex;gap:8px;justify-content:space-between;align-items:baseline;font-size:11px;line-height:1.25;margin-bottom:5px}
+.spectra-v6-cluster-head>span{font-weight:520;color:#f4eaf3}
+.spectra-v6-cluster-head strong{font-size:12px;white-space:nowrap;color:#c8edce;font-weight:690}
+.spectra-v6-cluster-head strong small{font-size:9px;font-weight:440;opacity:.85}
+.spectra-v6-cluster-head .sv6-uncertain{font-size:10px;font-weight:500;color:#e6dce8}
+.spectra-v6-bars{display:grid;gap:4px}
+.sv6-bar{display:block;height:7px;width:var(--v);max-width:100%;border-radius:0 2px 2px 0}
+.spectra-v6-scale{margin-top:8px;color:#d2c6d7;font-size:8px;letter-spacing:.012em}
+.spectra-v6-bottom{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;gap:12px;align-items:flex-end}
+.spectra-v6-bottom p{max-width:23ch;font-size:11.5px;line-height:1.38;color:#fff;margin:0}
+.spectra-v6-bottom p span{display:block;font-size:8px;letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px;color:#d9cadf}
+.spectra-v6-bottom button{background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.65);color:#fff;padding:0 0 5px;white-space:nowrap;font-size:10.5px;font-weight:550;transition:color .2s,border-color .2s}
+.spectra-v6-bottom button:hover{color:#c0e7c5;border-color:#c0e7c5}
+.spectra-case-v6 .case-secondary-copy{min-height:186px;padding-top:23px;padding-bottom:25px}
+.spectra-case-v6 .case-secondary-copy h3{font-size:clamp(1.75rem,2.8vw,2.7rem);line-height:1.07;margin:7px 0 2px;max-width:17ch}
+.spectra-case-v6 .case-secondary-copy p{font-size:12.3px;line-height:1.45}
+.spectra-v6-secondary-note{color:#afa5b7;margin-top:9px;font-size:9px;letter-spacing:.025em}
+/* Modal editorial: explicação em três movimentos; detalhes e dados na página completa. */
+#spectra-study-overlay .spectra-v6-dialog{background:#f5f2eb;color:#202422;max-width:870px;width:calc(100vw - 30px);padding:clamp(26px,4.5vw,62px);max-height:calc(100svh - 40px);overflow-y:auto;border-radius:0;position:relative}
+#spectra-study-overlay .spectra-v6-dialog>.close{position:sticky;float:right;top:0;background:#f5f2eb;z-index:1}
+.sv6-dialog-flag{font-size:10px;letter-spacing:.11em;color:#686078;text-transform:uppercase;font-weight:620}
+.spectra-v6-dialog h2{font-size:clamp(2.8rem,6vw,5.2rem);line-height:.97;letter-spacing:-.065em;margin:20px 0 17px;font-weight:500;max-width:13ch}
+.sv6-dialog-lede{font-size:clamp(17px,2vw,22px);line-height:1.3;max-width:37ch;color:#5e5b59;margin:0 0 31px}
+.sv6-dialog-seq{display:grid;grid-template-columns:80px 1fr;gap:12px 26px;align-items:start;padding:22px 0;border-top:1px solid #cbc6bc}
+.sv6-dialog-seq>small{font-size:10px;color:#77716d;text-transform:uppercase;letter-spacing:.1em;padding-top:5px}
+.sv6-dialog-seq h3{font-size:clamp(21px,3vw,30px);font-weight:520;line-height:1.12;margin:0 0 7px;letter-spacing:-.045em}
+.sv6-dialog-seq p{font-size:14px;line-height:1.5;color:#625c60;max-width:64ch;margin:0}
+.sv6-dialog-seq strong{color:#302d30}
+.sv6-dialog-observation{display:flex;gap:15px;align-items:baseline;flex-wrap:wrap;margin:12px 0;color:#453b52}
+.sv6-dialog-observation b{font-size:clamp(24px,3vw,35px);font-weight:560;letter-spacing:-.05em}
+.sv6-dialog-observation small{color:#6d666a;font-size:12px;max-width:38ch}
+.sv6-dialog-actions{display:flex;gap:15px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.sv6-dialog-actions button{background:#282a28;color:#fff;border:0;padding:13px 20px;font-size:12px}
+.sv6-method{font-size:11px;color:#7a7473;margin:20px 0 0;line-height:1.55;max-width:78ch}
+@media(max-width:920px){.spectra-case-v6 .spectra-v6-panel{min-height:425px!important;height:auto!important}.spectra-case-v6 .case-secondary-copy{min-height:0}.spectra-v6-bottom{flex-wrap:wrap}}
+@media(max-width:690px){.spectra-case-v6 .spectra-v6-panel{min-height:420px!important;padding:22px 21px 20px}.spectra-v6-panel h3{font-size:36px}.spectra-v6-lede{font-size:12.5px}.spectra-v6-meta{font-size:8px}.spectra-v6-cluster-head{font-size:11px}.spectra-v6-bottom{align-items:flex-start}.spectra-v6-dialog h2{font-size:42px}.sv6-dialog-seq{grid-template-columns:1fr;gap:4px}.sv6-dialog-seq>small{padding-top:0}.spectra-case-v6 .case-secondary-copy h3{font-size:2.25rem}}
+@media(prefers-reduced-motion:reduce){.spectra-v6-bottom button{transition:none}}
+/* [AI-EDIT:CSS-V6] fim */
+
+/* ===========================================================================
+[AI-EDIT:CSS-SPECTRA-V7]
+Substitui a linguagem de painel estatístico da V6 por uma virada editorial legível.
+Não transformar o componente de volta num dashboard: a força está no contraste
+entre a primeira impressão e a decisão prática. A pesquisa completa permanece
+fora desta camada. Mantenha espaço claro no mobile (sem texto abaixo de 11px).
+=========================================================================== */
+.spectra-case-v6 .spectra-v7-panel{min-height:450px!important;padding:27px 30px 24px;background:#51495e}
+.spectra-v7-panel h3{font-size:clamp(32px,3.5vw,47px);line-height:1;max-width:18ch;margin:18px 0 13px;letter-spacing:-.064em}
+.spectra-v7-lede{font-size:13px;line-height:1.5;max-width:48ch;color:#efe5ef;margin:0 0 20px;letter-spacing:-.008em}
+.spectra-v7-lede strong{color:#fff;font-weight:600}
+.spectra-v7-turn{display:grid;grid-template-columns:.9fr 1.23fr;gap:21px;padding:20px 0 18px;border-top:1px solid rgba(255,255,255,.23);border-bottom:1px solid rgba(255,255,255,.23);align-items:start}
+.spectra-v7-kicker{display:block;font-size:9px;letter-spacing:.095em;text-transform:uppercase;color:#d5c5dd;margin-bottom:11px;font-weight:550}
+.spectra-v7-first{padding-right:17px;border-right:1px solid rgba(255,255,255,.2)}
+.spectra-v7-rule{display:block;max-width:17ch;font-size:clamp(18px,2.05vw,25px);line-height:1.1;letter-spacing:-.035em;color:#d3c1da;text-decoration-line:line-through;text-decoration-color:rgba(255,255,255,.55);text-decoration-thickness:1px;text-decoration-skip-ink:none}
+.spectra-v7-after{display:flex;flex-direction:column;gap:0}
+.spectra-v7-finding{display:flex;flex-direction:column;gap:3px}
+.spectra-v7-finding + .spectra-v7-finding{border-top:1px solid rgba(255,255,255,.17);margin-top:12px;padding-top:11px}
+.spectra-v7-context{color:#d7c9dd;font-size:10.5px;line-height:1.4}
+.spectra-v7-finding strong{color:#c1e8ca;font-size:clamp(15px,1.55vw,19px);font-weight:530;line-height:1.13;letter-spacing:-.035em}
+.spectra-v7-finding:last-child strong{color:#f7f1f8}
+.spectra-v7-bottom{margin-top:auto;padding-top:18px;gap:16px;align-items:end}
+.spectra-v7-bottom p{max-width:28ch;font-size:12px;line-height:1.37}
+.spectra-v7-bottom p span{color:#dccce3;font-size:9px}
+.spectra-v7-bottom button{font-size:11px}
+.spectra-v7-secondary h3{max-width:22ch;font-size:clamp(28px,3vw,41px);line-height:1.06}
+.spectra-v7-secondary p{max-width:50ch}
+.spectra-v7-dialog{max-width:760px}
+.spectra-v7-dialog h2{font-size:clamp(36px,5vw,64px);max-width:14ch;margin:18px 0}
+.spectra-v7-dialog .sv6-dialog-lede{font-size:clamp(16px,1.8vw,20px);line-height:1.4;max-width:56ch;margin-bottom:29px}
+.spectra-v7-story-step{display:grid;grid-template-columns:122px 1fr;gap:20px;padding:19px 0;border-top:1px solid #ccc6bc}
+.spectra-v7-story-number{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#766f78;padding-top:4px}
+.spectra-v7-story-step h3{font-size:clamp(22px,2.9vw,31px);line-height:1.14;letter-spacing:-.05em;margin:0 0 7px;font-weight:520}
+.spectra-v7-story-step p{margin:0;max-width:62ch;color:#565254;font-size:14px;line-height:1.55}
+.spectra-v7-story-step p strong{color:#2b272b}
+.spectra-v7-lesson{margin:22px 0 25px;padding:20px 24px;background:#e8e2ec;border-left:3px solid #8572a0}
+.spectra-v7-lesson span{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#6b5b7b}
+.spectra-v7-lesson p{margin:5px 0 0;font-size:clamp(17px,2.5vw,24px);line-height:1.21;letter-spacing:-.036em;max-width:38ch;color:#342e3a}
+.spectra-v7-dialog-actions{margin-top:0;gap:12px}
+.spectra-v7-dialog-actions button{padding:12px 17px;font-size:12px;background:#3e3645}
+.spectra-v7-dialog-actions span{color:#68616d;font-size:12px}
+@media(max-width:1080px){.spectra-v7-turn{grid-template-columns:1fr;gap:13px}.spectra-v7-first{border-right:0;padding-right:0;border-bottom:1px solid rgba(255,255,255,.17);padding-bottom:14px}.spectra-v7-rule{max-width:none}}
+@media(max-width:920px){.spectra-case-v6 .spectra-v7-panel{min-height:490px!important}}
+@media(max-width:690px){
+ .spectra-case-v6 .spectra-v7-panel{padding:23px 21px 24px;min-height:460px!important}
+ .spectra-v7-panel h3{font-size:36px;margin-top:17px}
+ .spectra-v7-lede{font-size:13px}
+ .spectra-v7-turn{padding:16px 0;gap:14px}
+ .spectra-v7-rule{font-size:21px}
+ .spectra-v7-kicker{font-size:9.5px;margin-bottom:8px}
+ .spectra-v7-context{font-size:11.5px}
+ .spectra-v7-finding strong{font-size:18px}
+ .spectra-v7-bottom{align-items:flex-start;flex-direction:column;gap:16px}
+ .spectra-v7-bottom p{font-size:12.5px;max-width:31ch}
+ .spectra-v7-bottom button{font-size:12px}
+ .spectra-v7-dialog{padding:30px 21px}
+ .spectra-v7-dialog h2{font-size:39px}
+ .spectra-v7-story-step{grid-template-columns:1fr;gap:5px}
+ .spectra-v7-lesson{padding:19px 18px}
+ .spectra-v7-dialog-actions{align-items:flex-start;flex-direction:column}
+}
+/* [AI-EDIT:CSS-SPECTRA-V7] fim */
+
+/* [AI-EDIT:CSS-THESIS-V8] Escopo estrito: bloco Nossa perspectiva e CTA condicional do filme.
+   Mantém proporções e identidade da V7; evita que parágrafo único pareça manifesto longo. */
+.thesis-v8-copy{font-size:clamp(1.27rem,1.95vw,1.9rem);line-height:1.38;letter-spacing:-.038em;font-weight:470;max-width:590px;text-wrap:pretty}
+.thesis-manifest-link{display:inline-flex;align-items:center;gap:12px;margin-top:30px;border:0;border-bottom:1px solid currentColor;background:transparent;color:var(--ink);padding:0 0 7px;font-size:13px;font-weight:620;letter-spacing:-.012em;transition:color .2s}
+.thesis-manifest-link:hover{color:var(--orange)}
+.thesis-manifest-link svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}
+/* Sem esta regra, o display:inline-flex poderia se sobrepor ao atributo HTML hidden. */
+.thesis-manifest-link[hidden]{display:none!important}
+@media(max-width:690px){.thesis-v8-copy{font-size:clamp(1.24rem,5.35vw,1.5rem);line-height:1.42;letter-spacing:-.035em}.thesis-manifest-link{margin-top:26px}}
+/* O filme manifesto usa o mesmo sistema de overlay, sem alterar o modal da Eno Cultura. */
+.manifest-video-modal{background:#151515;color:#fff;max-width:min(980px,calc(100vw - 36px));padding:14px;border-radius:17px;overflow:visible}
+.manifest-video-modal .close{right:-10px;top:-12px;z-index:2;background:var(--paper2);color:var(--ink)}
+.manifest-video-modal video{display:block;width:100%;max-height:min(76svh,750px);aspect-ratio:16/9;object-fit:contain;background:#080808;border-radius:9px}
+
+
+/* ===== Prévia de cor de fundo (azul escuro e claro). Bege = original da v8. ===== */
+html[data-fundo="azul"]{--paper:#19292d;--paper2:#1d3035;--paperdeep:#142327;--ink:#e7f1f4;--ink2:#f3f8f9;--muted:#9db4ba;--soft:#5d7880;--line:rgba(231,241,244,.16);--orange:#69d1eb}
+html[data-fundo="azul"] body{background:var(--paper)}
+html[data-fundo="azul"] .site-header.scrolled,html[data-fundo="azul"] .site-header.open{background:rgba(25,41,45,.94);box-shadow:0 1px 0 rgba(231,241,244,.08)}
+html[data-fundo="azul"] .wordmark img{filter:brightness(0) invert(1)}
+html[data-fundo="azul"] .btn{background:#e7f1f4;color:#142327}
+html[data-fundo="azul"] .btn:hover{background:#ffffff}
+html[data-fundo="azul"] .btn.secondary{background:transparent;color:#e7f1f4;border-color:rgba(231,241,244,.28)}
+html[data-fundo="azul"] .btn.secondary:hover{background:rgba(231,241,244,.08)}
+html[data-fundo="azul"] .menu-btn span{background:#e7f1f4}
+html[data-fundo="azul"] .hero::before{background:radial-gradient(ellipse at 74% 48%,rgba(105,209,235,.10),transparent 42%)}
+html[data-fundo="azul"] .hero::after{background:linear-gradient(90deg,#19292d 4%,rgba(25,41,45,.94) 23%,rgba(25,41,45,.3) 52%,transparent 79%)}
+html[data-fundo="azul"] .hero-sub{color:#b5c8cd}
+html[data-fundo="azul"] .hero-progress .rule{background:rgba(231,241,244,.2)}
+html[data-fundo="azul"] .motion-switch{background:rgba(25,41,45,.6);color:#e7f1f4}
+html[data-fundo="azul"] .thesis{background:#142327;border-top-color:rgba(231,241,244,.06)}
+html[data-fundo="azul"] .thesis h2 .light{color:#6f8c93}
+html[data-fundo="azul"] .thesis-footnote{color:#7f9aa1}
+html[data-fundo="azul"] .capabilities{background:#1d3035}
+html[data-fundo="azul"] .work{background:#0f1b1e}
+html[data-fundo="azul"] .about{background:#19292d}
+html[data-fundo="azul"] .about-quote{color:#b5c8cd}
+html[data-fundo="azul"] .contact,html[data-fundo="azul"] .footer{background:#0f1b1e}
+html[data-fundo="azul"] .contact-inner{background:#2a5560}
+html[data-fundo="azul"] .contact-glow.g1{background:#69d1eb}
+html[data-fundo="azul"] .contact-glow.g2{background:#14303a}
+html[data-fundo="azul"] .contact-bottom .btn{background:#e7f1f4;color:#142327}
+html[data-fundo="azul"] .mobile-menu{background:#19292d}
+@media(max-width:690px){html[data-fundo="azul"] .hero::after{background:linear-gradient(0deg,#19292d 5%,#19292d 34%,rgba(25,41,45,.93) 47%,rgba(25,41,45,.06) 80%)}}
+
+html[data-fundo="claro"]{--paper:#eef2f2;--paper2:#f6f8f8;--paperdeep:#e2e9ea;--ink:#142327;--ink2:#0d181b;--muted:#56696e;--soft:#9fb0b4;--line:rgba(20,35,39,.16);--orange:#2f7f94}
+html[data-fundo="claro"] body{background:var(--paper)}
+html[data-fundo="claro"] .site-header.scrolled,html[data-fundo="claro"] .site-header.open{background:rgba(238,242,242,.95);box-shadow:0 1px 0 rgba(20,35,39,.08)}
+html[data-fundo="claro"] .btn{background:#142327;color:#f6f8f8}
+html[data-fundo="claro"] .btn:hover{background:#25414a}
+html[data-fundo="claro"] .btn.secondary{background:transparent;color:#142327;border-color:rgba(20,35,39,.2)}
+html[data-fundo="claro"] .btn.secondary:hover{background:rgba(20,35,39,.05)}
+html[data-fundo="claro"] .hero::before{background:radial-gradient(ellipse at 74% 48%,rgba(105,209,235,.14),transparent 42%)}
+html[data-fundo="claro"] .hero::after{background:linear-gradient(90deg,#eef2f2 4%,rgba(238,242,242,.94) 23%,rgba(238,242,242,.3) 52%,transparent 79%)}
+html[data-fundo="claro"] .hero-sub{color:#46595e}
+html[data-fundo="claro"] .hero-progress .rule{background:rgba(20,35,39,.18)}
+html[data-fundo="claro"] .motion-switch{background:rgba(238,242,242,.7)}
+html[data-fundo="claro"] .thesis{background:#e2e9ea;border-top-color:rgba(20,35,39,.06)}
+html[data-fundo="claro"] .thesis h2 .light{color:#86a0a6}
+html[data-fundo="claro"] .thesis-footnote{color:#6c8186}
+html[data-fundo="claro"] .capabilities{background:#f6f8f8}
+html[data-fundo="claro"] .work{background:#142327}
+html[data-fundo="claro"] .about{background:#eef2f2}
+html[data-fundo="claro"] .about-quote{color:#46595e}
+html[data-fundo="claro"] .contact,html[data-fundo="claro"] .footer{background:#0f1b1e}
+html[data-fundo="claro"] .contact-inner{background:#1f3f47}
+html[data-fundo="claro"] .contact-glow.g1{background:#69d1eb}
+html[data-fundo="claro"] .contact-glow.g2{background:#7d73c8}
+html[data-fundo="claro"] .contact-bottom .btn{background:#f6f8f8;color:#142327}
+@media(max-width:690px){html[data-fundo="claro"] .hero::after{background:linear-gradient(0deg,#eef2f2 5%,#eef2f2 34%,rgba(238,242,242,.93) 47%,rgba(238,242,242,.06) 80%)}}
+
+/* cards coloridos dos produtos mantêm o texto escuro em qualquer fundo */
+html[data-fundo="azul"] .product,html[data-fundo="claro"] .product{--ink:#2b231d;--muted:#6d675f;--line:rgba(50,39,30,.18);color:#2b231d}
+/* barra de etapas do topo alinhada às margens da página */
 .hero-bottom{left:var(--edge)!important;right:var(--edge)!important}
-.work-card:nth-child(2) .preview{object-position:50% 78%}
-@media(max-width:690px){.work-card:nth-child(2) .preview{object-position:50% 100%}}
+/* cards escuros dos trabalhos acompanham o fundo escolhido */
+html[data-fundo="azul"] .case-eno,html[data-fundo="azul"] .case-spectra,html[data-fundo="claro"] .case-eno,html[data-fundo="claro"] .case-spectra{background:#1b2e33}
+/* seletor de prévia */
+.fundo-switch{position:fixed;left:16px;bottom:16px;z-index:240;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(20,20,20,.86);color:#f4f4f4;font:600 11px/1 Geist,Arial,sans-serif;letter-spacing:.02em;box-shadow:0 8px 24px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.fundo-switch span{padding:0 8px 0 9px;opacity:.7}
+.fundo-switch button{border:0;border-radius:999px;padding:8px 11px;background:transparent;color:inherit;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.fundo-switch button i{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.fundo-switch button[aria-pressed="true"]{background:#f4f4f4;color:#141414}
+@media(max-width:690px){.fundo-switch{left:10px;bottom:10px}.fundo-switch span{display:none}}
 </style>
 </head>
 <body>
 <header class="site-header" id="header">
  <div class="container header-inner">
   <nav class="main-links" aria-label="Navegação principal"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="#sobre">Sobre nós</a></nav>
-  <a class="wordmark logo-header" href="#topo" aria-label="Rzrd. — Início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a>
+  <a class="wordmark logo-header" href="#topo" aria-label="Rzrd. Início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a>
   <div class="header-actions"><a href="#conversa" class="btn" data-open-contact>Conversar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></a><button class="menu-btn" type="button" id="menu-button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span></button></div>
  </div>
 </header>
@@ -225,111 +733,225 @@ img,video,svg{max-width:100%}svg{display:block}img{display:block}::selection{bac
   <h1 id="hero-title">Toda marca tem forças que ainda não aprendeu a <em>usar.</em></h1>
   <p class="hero-sub">Investigamos negócios, mercados e pessoas para identificar oportunidades e fazer escolhas. Depois, transformamos essas escolhas em posicionamento, conteúdo e ações concretas.</p>
   <div class="hero-actions"><a href="#atuacao" class="btn">Explorar nossa atuação <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></a><a href="#trabalhos" class="btn secondary">Ver trabalhos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></a></div>
- </div><div class="hero-bottom"><div class="hero-progress" aria-live="off"><span class="number" id="stage-num">01</span><span id="stage-name">Compreender</span><span class="rule" aria-hidden="true"><b id="stage-bar"></b></span></div><span class="scroll">Desça para explorar <svg viewBox="0 0 24 24"><path d="M12 3v17m-6-6 6 6 6-6"/></svg></span></div></div>
+ </div><div class="hero-bottom"><div class="hero-progress" aria-live="off"><span class="number" id="stage-num">1</span><span id="stage-name">Compreender</span><span class="rule" aria-hidden="true"><b id="stage-bar"></b></span></div><span class="scroll">Desça para explorar <svg viewBox="0 0 24 24"><path d="M12 3v17m-6-6 6 6 6-6"/></svg></span></div></div>
  <button class="motion-switch" id="motion-switch" type="button" aria-label="Pausar animação" title="Pausar ou reproduzir animação">Ⅱ</button>
 </section>
-<!-- 02 / PENSAMENTO: a tese condensada do site anterior. -->
+<!-- [AI-EDIT:THESIS-V8]
+  Substitui SOMENTE o conteúdo do bloco existente. Uma tese, um parágrafo.
+  As três palavras de apoio nomeiam dimensões do trabalho, não um processo obrigatório.
+  O manifesto é opcional: botão só aparece quando o MP4 final está acessível.
+-->
 <section class="thesis" aria-labelledby="thesis-title"><div class="container thesis-layout">
- <div class="reveal"><span class="section-flag">O ponto de partida</span><h2 id="thesis-title">Presença é <span class="light">consequência.</span></h2></div>
- <div class="thesis-right reveal"><p class="thesis-lead">Antes do formato, vem a escolha: o que dizer, para quem e por que isso importa.</p>
- <p class="thesis-body">É essa escolha que orienta o posicionamento, a criação e a execução. E permite reconhecer a mesma marca em diferentes pontos de contato.</p>
- <div class="thesis-steps" aria-label="Nossa lógica de atuação"><div class="thesis-step"><span class="index">01</span><strong>Entender</strong><span class="small">Negócio, mercado e pessoas</span></div><div class="thesis-step"><span class="index">02</span><strong>Escolher</strong><span class="small">Critérios e prioridades</span></div><div class="thesis-step"><span class="index">03</span><strong>Construir</strong><span class="small">Comunicação, execução e aprendizado</span></div></div>
- </div>
-</div></section>
-<!-- 03 / PRODUTOS: cada um com uma expressão visual distinta, sem forçar pacote. -->
-<section class="capabilities" id="atuacao" aria-labelledby="cap-title"><div class="container">
- <div class="section-head reveal"><div><span class="section-flag">O que fazemos</span><h2 id="cap-title">O desafio define a atuação.<br/>Não o contrário.</h2></div><p>Três especialidades independentes e complementares. O ponto de partida é sempre a necessidade da marca.</p></div>
- <div class="products">
-  <a class="product aether reveal" href="#atuacao" data-product-link="aether" aria-label="Conhecer o Aether — direção de mercado e marca"><span class="p-num">01 / DIREÇÃO</span>
-   <div class="p-art">
-   <svg class="aether-scene" viewBox="0 0 460 338" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cartografia estratégica: sinais de negócio, mercado e público convergem para uma direção">
-    <defs>
-     <pattern id="aether-paper-grid" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M23 0H0V23" fill="none" stroke="#668346" stroke-opacity=".17" stroke-width=".7"/></pattern>
-     <radialGradient id="aether-halo"><stop offset="0" stop-color="#9cbd6d" stop-opacity=".42"/><stop offset=".63" stop-color="#a4c478" stop-opacity=".08"/><stop offset="1" stop-color="#a4c478" stop-opacity="0"/></radialGradient>
-     <marker id="aether-direction-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#496331" stroke-width="1.5"/></marker>
-    </defs>
-    <rect width="460" height="338" fill="url(#aether-paper-grid)"/>
-    <circle cx="230" cy="166" r="154" fill="url(#aether-halo)"/>
-    <g fill="none" stroke="#6e8b4b" stroke-width=".9"><circle cx="230" cy="166" r="118" stroke-opacity=".22"/><circle cx="230" cy="166" r="84" stroke-opacity=".33" stroke-dasharray="2 9"/><circle cx="230" cy="166" r="49" stroke-opacity=".35"/></g>
-    <g fill="none" stroke="#597443" stroke-width="1.25" stroke-opacity=".55">
-      <path class="ae-route ae-route-1" d="M104 72 Q162 95 230 166"/>
-      <path class="ae-route ae-route-2" d="M356 72 Q292 95 230 166"/>
-      <path class="ae-route ae-route-3" d="M99 264 Q170 224 230 166"/>
-      <path class="ae-route ae-route-4" d="M361 261 Q296 220 230 166"/>
-    </g>
-    <g fill="#6c874c" stroke="#e5edcf" stroke-width="4"><circle cx="104" cy="72" r="5"/><circle cx="356" cy="72" r="5"/><circle cx="99" cy="264" r="5"/><circle cx="361" cy="261" r="5"/></g>
-    <g class="ae-travel" fill="#e0f0bb" stroke="#5a7a39" stroke-width="1.5">
-      <circle r="4"><animateMotion dur="8s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M104 72 Q162 95 230 166"/></circle>
-      <circle r="4"><animateMotion dur="8s" begin="-.9s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M356 72 Q292 95 230 166"/></circle>
-      <circle r="4"><animateMotion dur="8s" begin="-1.8s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M99 264 Q170 224 230 166"/></circle>
-      <circle r="4"><animateMotion dur="8s" begin="-2.7s" repeatCount="indefinite" keyTimes="0;.18;.45;1" keyPoints="0;0;1;1" calcMode="linear" path="M361 261 Q296 220 230 166"/></circle>
-    </g>
-    <g font-family="Geist,Arial,sans-serif" fill="#597145" font-size="10" font-weight="600" letter-spacing="1.1">
-      <text x="57" y="54">NEGÓCIO</text><text x="334" y="54">MERCADO</text><text x="59" y="287">PESSOAS</text><text x="326" y="286">CONTEXTO</text>
-    </g>
-    <g class="ae-focus"><circle cx="230" cy="166" r="37" fill="#54713a"/><circle cx="230" cy="166" r="28" fill="#d7e7bb"/><path d="M230 146l9 26-9-6-9 6z" fill="#54713a"/></g>
-    <path class="ae-bearing" d="M230 166 L291 166" fill="none" stroke="#47652c" stroke-width="1.6" marker-end="url(#aether-direction-arrow)"/>
-    <g font-family="Geist,Arial,sans-serif" fill="#4c6734" font-size="9.5" font-weight="650" letter-spacing="1.6"><text x="280" y="152">DIREÇÃO</text></g>
-    <g class="ae-ripple" fill="none" stroke="#759452" stroke-opacity=".43" stroke-width="1"><circle cx="230" cy="166" r="53"/><circle cx="230" cy="166" r="72"/></g>
-   </svg>
+  <div class="reveal"><span class="section-flag">Nossa perspectiva</span><h2 id="thesis-title">Entender muda <span class="light">o que se faz.</span></h2></div>
+  <div class="thesis-right reveal"><p class="thesis-lead thesis-v8-copy">Para uma empresa, o próximo passo pode ser ampliar a presença. Para outra, rever a oferta ou construir condições para crescer. Investigamos o negócio e seus compradores para encontrar essa direção e traduzi-la em marca, conteúdo e ação.</p>
+   <div class="thesis-footnote" aria-label="Dimensões do nosso trabalho"><span>ENTENDIMENTO</span><span>DIREÇÃO</span><span>MATERIALIZAÇÃO</span></div>
+   <!-- [AI-EDIT:MANIFEST-V8] hidden por padrão. O JS só mostra após confirmar o arquivo final. -->
+   <button class="thesis-manifest-link" id="manifest-launch" type="button" hidden aria-haspopup="dialog" aria-controls="manifest-overlay">Nossa forma de pensar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l9 6-9 6z" /></svg></button>
   </div>
-   <div class="p-info"><span class="p-kicker">O invisível que move tudo</span><h3>.aether</h3><p class="p-title">Direção de mercado e marca</p><p class="p-description">Investigação do negócio, do mercado e das pessoas para orientar posicionamento, proposta de valor e expressão da marca.</p><p class="p-audience">Para empresas que precisam <em>definir seu posicionamento e suas escolhas de crescimento.</em></p><div class="p-bottom"><span>Conhecer o Aether</span><svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+</div></section>
+<!-- [AI-EDIT:PRODUCTS]
+V4 mantém a estrutura de 3 cards e a hierarquia de produto da v3.html, mas TROCA as ilustrações genéricas.
+Aether = cartografia de relações (representação conceptual, sem prometer outputs / números).
+Vortex = fragmento REAL de conteúdo de Eno Cultura + operação contínua, sem mosaico de 3 posters.
+Spectra (card de produto, V5) = panorama com alcance +34%, engajamento de valor/alcance -11% e visitas +6%.
+No portfólio fica OUTRA demonstração (total +95%, mediana -50%). Ambas vêm da página pública e têm dados sintéticos.
+Texto "Para empresas/marcas..." é discreto: nunca transforme em questionário grande, quiz ou banner destacado.
+Cada produto pode atuar sozinho ou combinado. Não tratar produto como fase obrigatória de um funil.
+-->
+<section class="capabilities" id="atuacao" aria-labelledby="cap-title"><div class="container">
+ <div class="section-head reveal"><div><span class="section-flag">O que fazemos</span><h2 id="cap-title">Direção. Presença.<br/>Inteligência.</h2></div><p>Três formas de atuar. Cada uma responde a necessidades próprias; quando faz sentido, trabalham juntas.</p></div>
+ <div class="products">
+  <!-- [AI-EDIT:PRODUCT:AETHER] Preferir cartografia autoral (nós, conexões, decisões), não setas convergentes + círculo final. -->
+  <a class="product aether reveal" href="aether/" data-product-link="aether" aria-label="Conhecer o Aether: direção de mercado e marca"><span class="p-num">1 / DIREÇÃO</span>
+    <div class="p-art aether-visual"><svg class="aether-atlas" viewBox="0 0 460 338" role="img" aria-label="Cartografia conceitual da análise de negócio, público e mercado, destacando uma hipótese de posicionamento"><defs><pattern id="atlas-grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#637b55" stroke-opacity=".13" stroke-width=".7"/></pattern></defs><rect width="460" height="338" fill="url(#atlas-grid)"/>
+    <g class="atlas-contours" fill="none" stroke="#536e54" stroke-width=".95"><path d="M-30 194C71 123 106 229 197 156S343 92 490 142"/><path d="M-20 218C72 151 110 252 210 180S365 101 487 176"/><path d="M-10 244C76 181 148 273 240 204S353 140 486 202"/><path d="M-19 118C84 69 139 149 228 92S375 40 490 99"/><path d="M-8 90C69 42 130 105 240 61S370 29 478 60"/></g>
+    <g class="atlas-links" fill="none" stroke="#365c42" stroke-width="1.25" stroke-opacity=".56"><path d="M84 110L181 154L301 94L382 182L260 257L181 154L124 250L382 182"/><path d="M84 110L124 250L260 257L301 94"/></g>
+    <g fill="#526c4f" stroke="#e3e9d8" stroke-width="3"><circle cx="84" cy="110" r="5"/><circle cx="301" cy="94" r="5"/><circle cx="124" cy="250" r="5"/><circle cx="260" cy="257" r="5"/><circle cx="382" cy="182" r="5"/></g>
+    <g class="atlas-core"><circle cx="181" cy="154" r="32" fill="#ebeddc" stroke="#365c42" stroke-width="1.5"/><circle cx="181" cy="154" r="16" fill="none" stroke="#365c42" stroke-width="1" stroke-dasharray="2 5"/><circle cx="181" cy="154" r="4" fill="#a36e48"/></g>
+    <g fill="#49604c" font-family="Geist,Arial,sans-serif" font-size="10" font-weight="620" letter-spacing="1"><text x="58" y="91">NEGÓCIO</text><text x="290" y="76">MERCADO</text><text x="54" y="273">PESSOAS</text><text x="321" y="208">CULTURA</text></g>
+    <path d="M212 150L274 128" stroke="#a36e48" stroke-width="1.5" fill="none"/><path d="m270 122 8 5-4 9" fill="none" stroke="#a36e48" stroke-width="1.5"/>
+    <text x="260" y="117" fill="#8a633f" font-size="10" font-family="Geist,Arial,sans-serif" font-weight="650" letter-spacing="1">ESCOLHA</text>
+    <g stroke="#5a7652" opacity=".6"><path d="M29 24h38M29 24v38M432 304h-38M432 304v-38" fill="none"/></g></svg><span class="art-margin">CARTOGRAFIA / HIPÓTESE / DIREÇÃO</span></div>
+    <div class="p-info"><span class="p-kicker">O invisível que move tudo</span><h3>.aether</h3><p class="p-title">Direção de mercado e marca</p><p class="p-description">Investigamos o negócio e seu contexto para orientar escolhas de mercado, oferta e marca.</p><p class="p-audience">Para empresas que precisam decidir o que priorizar e como construir uma posição mais forte.</p><div class="p-bottom"><span>Conhecer o Aether</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
-  <a class="product vortex reveal" href="#atuacao" data-product-link="vortex" aria-label="Conhecer o Vortex — presença contínua"><span class="p-num">02 / PRESENÇA</span>
-   <div class="p-art"><svg viewBox="0 0 460 338" style="position:absolute;inset:0"><g fill="none" stroke="#be7256" stroke-opacity=".42"><circle cx="230" cy="168" r="113" stroke-width="1.4"/><circle cx="230" cy="168" r="143" stroke-width="1" stroke-dasharray="3 8"/></g><circle cx="230" cy="25" r="5" fill="#b96546"/><circle cx="345" cy="244" r="4" fill="#b96546"/><path d="m227 16 6 9-9 5m124 207-3 10-11-1" fill="none" stroke="#a4553a" stroke-width="1.7"/></svg>
-    <div class="vortex-film f1"><img src="assets/cases/enocultura-reels-dionisio.jpg" loading="lazy" alt="Amostra de trabalho para Eno Cultura"/></div><div class="vortex-film f2"><img src="assets/cases/tidelli-reels-praca-01.jpg" loading="lazy" alt="Amostra de trabalho para Tidelli"/></div><div class="vortex-film f3"><img src="assets/cases/drasofiaoliva-reels-protocolodasnoivas.jpg" loading="lazy" alt="Amostra de trabalho para Dra. Sofia Oliva"/></div>
-   </div>
-   <div class="p-info"><span class="p-kicker">Campo de força criativa em ação</span><h3>.vortex</h3><p class="p-title">Presença contínua</p><p class="p-description">Planejamento, criação, produção e gestão contínua de conteúdo, com direção criativa e acompanhamento.</p><p class="p-audience">Para marcas que precisam <em>de consistência na comunicação e qualidade na execução.</em></p><div class="p-bottom"><span>Conhecer o Vortex</span><svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+  <!-- [AI-EDIT:PRODUCT:VORTEX] O recorte real da Eno Cultura deve ficar legível, sem três posts inclinados como mockup de agência. -->
+  <a class="product vortex reveal" href="vortex/" data-product-link="vortex" aria-label="Conhecer o Vortex: presença contínua"><span class="p-num">2 / PRESENÇA</span>
+   <div class="p-art vortex-visual"><div class="vortex-reel"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" loading="lazy" alt="Frame de vídeo produzido para Eno Cultura"/></div><div class="vortex-rail"><span><b>1</b> DIREÇÃO EDITORIAL</span><span><b>2</b> PRODUÇÃO</span><span><b>3</b> PUBLICAÇÃO</span><span><b>4</b> ACOMPANHAMENTO</span></div><div class="vortex-loop" aria-hidden="true"><svg viewBox="0 0 108 108"><circle cx="54" cy="54" r="42" fill="none" stroke="#8d4e36" stroke-opacity=".26"/><path d="M17 70A41 41 0 1 1 82 84" fill="none" stroke="#8d4e36" stroke-width="1.75"/><path d="m74 81 9 4 4-9" stroke="#8d4e36" fill="none" stroke-width="1.75"/></svg></div><span class="art-margin">CRIAÇÃO EM MOVIMENTO / ACERVO REAL</span></div>
+   <div class="p-info"><span class="p-kicker">Campo de força criativa em ação</span><h3>.vortex</h3><p class="p-title">Presença contínua</p><p class="p-description">Planejamento, criação, produção, publicação e acompanhamento de conteúdo, com direção criativa.</p><p class="p-audience">Para marcas que precisam de <em>consistência editorial e qualidade de execução.</em></p><div class="p-bottom"><span>Conhecer o Vortex</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
-  <a class="product spectra reveal" href="#atuacao" data-product-link="spectra" aria-label="Conhecer a Spectra — inteligência aplicada"><span class="p-num">03 / INTELIGÊNCIA</span>
-   <div class="p-art">
-    <svg class="spectra-chart" viewBox="0 0 460 338" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Investigação editorial: comparação entre alcance e engajamento de valor evidencia padrões distintos">
-     <defs><pattern id="spectra-grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#76669f" stroke-opacity=".16" stroke-width="1"/></pattern><linearGradient id="spectra-fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#806ab9" stop-opacity=".17"/><stop offset="1" stop-color="#806ab9" stop-opacity="0"/></linearGradient></defs>
-     <rect x="33" y="26" width="394" height="249" rx="14" fill="#ece7f6" opacity=".78"/>
-     <rect x="48" y="73" width="364" height="165" fill="url(#spectra-grid)"/>
-     <g font-family="Geist,Arial,sans-serif" letter-spacing=".65" font-size="10.5" fill="#675888"><text x="51" y="48">INVESTIGAÇÃO EDITORIAL</text></g>
-     <path d="M51 215 C92 209 117 175 148 184 S205 149 237 158 S309 110 351 123 S391 93 410 87 L410 241 L51 241 Z" fill="url(#spectra-fill)"/>
-     <path class="sp-line sp-line-reach" d="M51 215 C92 209 117 175 148 184 S205 149 237 158 S309 110 351 123 S391 93 410 87" fill="none" stroke="#7360a7" stroke-width="3" stroke-linecap="round"/>
-     <path class="sp-line sp-line-value" d="M51 121 C92 139 117 159 148 151 S210 177 237 182 S309 204 351 194 S390 211 410 219" fill="none" stroke="#be8067" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="6 6"/>
-     <g fill="#7360a7" stroke="#ece7f6" stroke-width="3"><circle cx="148" cy="184" r="5"/><circle cx="237" cy="158" r="5"/><circle cx="351" cy="123" r="5"/></g>
-     <g fill="#be8067" stroke="#ece7f6" stroke-width="3"><circle cx="148" cy="151" r="5"/><circle cx="237" cy="182" r="5"/><circle cx="351" cy="194" r="5"/></g>
-     <path d="M300 124V194" stroke="#65568c" stroke-width="1" stroke-opacity=".45" stroke-dasharray="3 5"/>
-     <g font-family="Geist,Arial,sans-serif" font-size="10.5" font-weight="550" fill="#625483"><circle cx="60" cy="263" r="4" fill="#7360a7"/><text x="70" y="267">Alcance</text><circle cx="160" cy="263" r="4" fill="#be8067"/><text x="170" y="267">Engajamento de valor</text></g>
-     <g font-family="Geist,Arial,sans-serif" font-size="9.5" font-weight="650" fill="#6d5b98" letter-spacing="1.1"><text x="51" y="307">TEMAS / FORMATOS / NARRATIVAS</text></g>
-    </svg>
-   </div>
-   <div class="p-info"><span class="p-kicker">Clareza a partir dos dados</span><h3>.spectra</h3><p class="p-title">Inteligência aplicada</p><p class="p-description">Investigamos a relação entre indicadores, temas, formatos e narrativas para orientar o próximo ciclo de conteúdo.</p><p class="p-audience">Para marcas que querem <em>entender o que seus conteúdos revelam — e por quê.</em></p><div class="p-bottom"><span>Conhecer a Spectra</span><svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
+  <!-- [AI-EDIT:SPECTRA-PRODUCT-V5]
+VISUAL DE PRODUTO, NÃO CASE. Propósito: apresentar a capacidade de cruzar
+indicadores segundo um objetivo estratégico, sem repetir a peça do portfólio.
+FONTE: spectra/
+A demonstração original diz: OBJETIVO = consolidar relevância/consideração;
+ALCANCE +34%; ENGAJAMENTO DE VALOR / ALCANCE -11%; VISITAS AO PERFIL +6%.
+Estes números são sintéticos. Não representam desempenho de marca ou cliente.
+Evitar alegações de causalidade: a combinação de sinais levanta uma PERGUNTA,
+não prova que o aumento de alcance causou a diminuição do engajamento.
+NÃO substituir por barras de crescimento decorativas ou gráficos fantasiosos.
+-->
+  <a class="product spectra reveal" href="spectra/" data-product-link="spectra" aria-label="Conhecer a Spectra: inteligência de conteúdo"><span class="p-num">3 / INTELIGÊNCIA</span>
+   <div class="p-art spectra-visual"><div class="spectra-sheet spectra-panorama">
+     <div class="spectra-index"><b>spectra / 1</b><span>PANORAMA ESTRATÉGICO</span></div>
+     <div class="spectra-intent"><span>OBJETIVO DO PERFIL</span><strong>Consolidar relevância e consideração.</strong></div>
+     <div class="spectra-question">Mais pessoas chegaram.<br/>O interesse acompanhou?</div>
+     <div class="spectra-pulse" role="img" aria-label="Dados sintéticos: alcance mais 34 por cento; engajamento de valor por alcance menos 11 por cento; visitas ao perfil mais 6 por cento">
+       <div><span>ALCANCE</span><strong>+34%</strong></div>
+       <div><span>ENGAJAMENTO DE VALOR / ALCANCE</span><strong class="spectra-negative">−11%</strong></div>
+       <div><span>VISITAS AO PERFIL</span><strong>+6%</strong></div>
+     </div>
+     <div class="spectra-conclusion">Próxima pergunta: quais temas e formatos explicam a diferença?</div>
+   </div><span class="art-margin">VISÃO CONCEITUAL · DADOS SINTÉTICOS</span></div>
+   <div class="p-info"><span class="p-kicker">Clareza a partir dos dados</span><h3>.spectra</h3><p class="p-title">Inteligência de conteúdo</p><p class="p-description">Relacionamos estratégia, dados e conteúdos para investigar padrões e orientar decisões editoriais.</p><p class="p-audience">Para marcas que precisam <em>compreender resultados e decidir o próximo movimento.</em></p><div class="p-bottom"><span>Conhecer a Spectra</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4h13v13"/></svg></div></div>
   </a>
  </div>
 </div></section>
-<!-- 04 / TRABALHOS: peças originais do acervo público, sem atribuir resultados não verificados. -->
+<!-- [AI-EDIT:PORTFOLIO]
+V4: o portfólio NÃO é mais um catálogo genérico de vídeos.
+COR = projeto Aether; cartografia, posicionamento, fundamentos e manual; o visual é uma interpretação editorial, não um print fiel do material protegido.
+Eno Cultura = conteúdo real do Vortex (a miniatura e MP4 são arquivos existentes no repositório público de prévia).
+Spectra = DEMONSTRAÇÃO com dados sintéticos; nunca apresentar como cliente/case nem como resultado real.
+Acesso ao dossiê COR permanece protegido: NÃO incluir código de acesso, credenciais, endpoints privados, redirecionamento direto nem fotografias de arquivos privados no HTML público.
+Não afirmar que decisões COR foram implantadas, nem ganhos de receita, retenção, resultados comerciais ou desempenho não verificados.
+-->
 <section class="work" id="trabalhos" aria-labelledby="work-title"><div class="container">
- <div class="section-head reveal"><div><span class="section-flag">Trabalhos selecionados</span><h2 id="work-title">O pensamento aparece no trabalho.</h2></div><p>Um recorte da produção audiovisual da Rzrd., em projetos com públicos e linguagens diferentes.</p></div>
- <div class="work-grid">
-  <button type="button" class="work-card feature reveal" data-video="assets/cases/tidelli-reels-praca-01.mp4" data-title="Tidelli — amostra de conteúdo audiovisual" aria-label="Assistir vídeo de trabalho para a Tidelli"><img class="preview" src="assets/cases/tidelli-reels-praca-01.jpg" alt="Frame de conteúdo audiovisual produzido para Tidelli" loading="lazy"/><span class="work-tag">Tidelli / conteúdo audiovisual</span><span class="play-pill" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 3 11 7-11 7z"/></svg></span><span class="work-copy"><small>01 / TRABALHO EM MOVIMENTO</small><strong>Forma, luz e espaço.</strong></span></button>
-  <button type="button" class="work-card reveal" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura — amostra de conteúdo audiovisual" aria-label="Assistir vídeo de trabalho para Eno Cultura"><img class="preview" src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de conteúdo audiovisual para Eno Cultura" loading="lazy"/><span class="work-tag">Eno Cultura / conteúdo</span><span class="play-pill" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 3 11 7-11 7z"/></svg></span><span class="work-copy"><small>02 / TRABALHO EM MOVIMENTO</small><strong>Dionísio em movimento.</strong></span></button>
-  <button type="button" class="work-card reveal" data-video="assets/cases/drasofiaoliva-reels-protocolodasnoivas.mp4" data-title="Dra. Sofia Oliva — amostra de conteúdo audiovisual" aria-label="Assistir vídeo de trabalho para Dra. Sofia Oliva"><img class="preview" src="assets/cases/drasofiaoliva-reels-protocolodasnoivas.jpg" alt="Frame de conteúdo audiovisual para Dra. Sofia Oliva" loading="lazy"/><span class="work-tag">Dra. Sofia Oliva / conteúdo</span><span class="play-pill" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 3 11 7-11 7z"/></svg></span><span class="work-copy"><small>03 / TRABALHO EM MOVIMENTO</small><strong>Comunicação com precisão.</strong></span></button>
+ <div class="section-head reveal"><div><span class="section-flag">Projetos e demonstrações</span><h2 id="work-title">Do pensamento<br/>ao trabalho.</h2></div><p>Três perspectivas sobre nossa atuação: direção de marca, produção contínua e investigação de resultados.</p></div>
+ <div class="portfolio-v4">
+  <article class="case case-cor reveal"><div class="case-illustration">
+<div class="case-cor-art" aria-hidden="true">
+  <div class="cor-meta"><span>Rzrd. / Aether</span><span>ESTUDO DE DIREÇÃO</span></div>
+  <div class="cor-wordmark">COR<span class="cor-period">.</span></div>
+  <div class="cor-doc"><div class="cor-doc-index">CADERNO / 1 <span>QUESTÃO INSTITUCIONAL</span></div><strong>Como preservar uma forma de educar à medida que a instituição cresce?</strong><div class="cor-doc-footer">Fundamentos <i></i> Método <i></i> Experiência <i></i> Expansão</div></div>
+  <div class="cor-map"><svg viewBox="0 0 380 155" preserveAspectRatio="xMidYMid meet"><g fill="none" stroke="#667764" stroke-opacity=".32" stroke-width="1"><path d="M5 124 C69 36 112 145 183 60 S302 65 369 15"/><path d="M5 80 C85 118 136 13 220 63 S327 137 378 105"/><path d="M35 4 C95 83 193 123 268 22"/><path d="M42 144 C120 10 250 10 347 147"/></g><g fill="#395e50"><circle cx="12" cy="11" r="1.8" opacity="0.35"/><circle cx="65" cy="55" r="2.15" opacity="0.51"/><circle cx="118" cy="113" r="2.5" opacity="0.67"/><circle cx="171" cy="60" r="1.8" opacity="0.83"/><circle cx="224" cy="21" r="2.15" opacity="0.35"/><circle cx="277" cy="121" r="2.5" opacity="0.51"/><circle cx="330" cy="110" r="1.8" opacity="0.67"/><circle cx="32" cy="113" r="2.15" opacity="0.83"/><circle cx="85" cy="130" r="2.5" opacity="0.35"/><circle cx="138" cy="36" r="1.8" opacity="0.51"/><circle cx="191" cy="81" r="2.15" opacity="0.67"/><circle cx="244" cy="15" r="2.5" opacity="0.83"/><circle cx="297" cy="88" r="1.8" opacity="0.35"/><circle cx="350" cy="50" r="2.15" opacity="0.51"/><circle cx="52" cy="26" r="2.5" opacity="0.67"/><circle cx="105" cy="16" r="1.8" opacity="0.83"/><circle cx="158" cy="20" r="2.15" opacity="0.35"/><circle cx="211" cy="38" r="2.5" opacity="0.51"/><circle cx="264" cy="70" r="1.8" opacity="0.67"/><circle cx="317" cy="116" r="2.15" opacity="0.83"/><circle cx="19" cy="51" r="2.5" opacity="0.35"/><circle cx="72" cy="125" r="1.8" opacity="0.51"/><circle cx="125" cy="88" r="2.15" opacity="0.67"/><circle cx="178" cy="65" r="2.5" opacity="0.83"/><circle cx="231" cy="56" r="1.8" opacity="0.35"/><circle cx="284" cy="61" r="2.15" opacity="0.51"/><circle cx="337" cy="80" r="2.5" opacity="0.67"/><circle cx="39" cy="113" r="1.8" opacity="0.83"/><circle cx="92" cy="35" r="2.15" opacity="0.35"/><circle cx="145" cy="96" r="2.5" opacity="0.51"/></g><circle cx="183" cy="64" r="22" fill="none" stroke="#a8794f" stroke-width="1.4"/><circle cx="183" cy="64" r="3" fill="#a8794f"/></svg><span>MAPEAMENTO DE REFERÊNCIAS / DIREÇÃO</span></div>
+</div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article>
+  <article class="case case-eno reveal"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article>
+  <!-- [AI-EDIT:SPECTRA-CASE-V5]
+  PORTFÓLIO = segundo exemplo, não repetir o panorama +34/-11/+6 do card.
+  Fonte: seção "Um caso em profundidade" do site da Spectra, dados SINTÉTICOS.
+  Setembro: 10 posts medidos aos 7 dias, total 1.000, mediana 100.
+  Outubro: 10 posts medidos aos 7 dias, total 1.950, mediana 50;
+  um post com 1.500 e os outros 9 com 50 salvamentos cada.
+  Não afirmar que setembro teve 10 posts com 100 cada; isso não está provado.
+  O insight é sobre concentração e distribuição, não crescimento de negócio.
+  CTA navega à demonstração na página pública; NÃO abrir modal genérico.
+  -->
+<!-- [AI-EDIT:SPECTRA-CASE-V6] INÍCIO — substitui SOMENTE o case "O pico não explica a rotina" da V5.
+  Decisão visual: primeiramente o agregado (+30%), depois a diferença por intenção.
+  Dados: Codex / spectra-editorial-case/data/analysis.json, simulação n=144, não resultados de cliente.
+  Taxas ponderadas por alcance: Resolver (13.2039 vs 22.6874) e Reconsiderar (14.6057 vs 12.8416) ações por mil.
+  O efeito -12% em Reconsiderar é incerto, por isso o layout NÃO chama argumento de vencedor.
+  Nunca trocar números sem regenerar data/analysis.json e rever interpretações.
+  Este componente NÃO reproduz o exemplo "Mais pessoas chegaram" da seção Produtos.
+  Botão abre explicação no próprio HTML; "Ver investigação completa" abre versão standalone incorporada nesta V6.
+  Para editar, consulte também [AI-EDIT:CSS-V6] e [AI-EDIT:STUDY-BEHAVIOR-V6].
+-->
+<!--
+[AI-EDIT:SPECTRA-CARD-V7]
+Reescrita comercial, NÃO uma nova análise. A sequência visual no card é:
+(a) regra que a média sugeria, (b) diferença que aparece ao olhar a intenção,
+(c) decisão prática que a equipe pode testar. Evitar jargão, comparação de muitos
+indicadores e conclusões causais. Manter o data-open-spectra-study do botão.
+-->
+<article aria-labelledby="spectra-case-v6-title" class="case case-spectra spectra-case-v6 reveal">
+  <div class="spectra-v6-panel spectra-v7-panel">
+    <div class="spectra-v6-meta"><span>spectra / inteligência editorial</span><span>SIMULAÇÃO</span></div>
+    <h3 id="spectra-case-v6-title">Exemplos funcionam.<br><em>Sempre?</em></h3>
+    <p class="spectra-v7-lede">Os resultados pareciam recomendar a mesma fórmula para toda publicação. <strong>Até olharmos para a intenção de cada pauta.</strong></p>
+    <div class="spectra-v7-turn" aria-label="Uma regra parecia funcionar em todos os conteúdos, mas separar por intenção revelou resultados diferentes.">
+      <div class="spectra-v7-first">
+        <span class="spectra-v7-kicker">A primeira impressão</span>
+        <span class="spectra-v7-rule">“Use exemplos em todo post.”</span>
+      </div>
+      <div class="spectra-v7-after">
+        <span class="spectra-v7-kicker">O que mudou ao investigar</span>
+        <div class="spectra-v7-finding">
+          <span class="spectra-v7-context">Para ajudar a resolver um problema</span>
+          <strong>Exemplos se destacaram.</strong>
+        </div>
+        <div class="spectra-v7-finding">
+          <span class="spectra-v7-context">Para provocar reflexão</span>
+          <strong>Sem fórmula vencedora.</strong>
+        </div>
+      </div>
+    </div>
+    <div class="spectra-v6-bottom spectra-v7-bottom">
+      <p><span>A decisão para a próxima pauta</span>Primeiro, definir o objetivo. Depois, escolher como contar.</p>
+      <button type="button" data-open-spectra-study aria-label="Entender a descoberta da Spectra">Entender a virada <span aria-hidden="true">↗</span></button>
+    </div>
+  </div>
+  <div class="case-secondary-copy spectra-v7-secondary">
+    <span class="case-serial">3 · SPECTRA / INTELIGÊNCIA EDITORIAL</span>
+    <h3>E agora, o que publicar?</h3>
+    <p>A Spectra investiga padrões e exceções para orientar a próxima pauta, não para entregar apenas mais um relatório de desempenho.</p>
+    <span class="spectra-v6-secondary-note">Demonstração com dados sintéticos · não é resultado de cliente</span>
+  </div>
+</article>
+<!-- [AI-EDIT:SPECTRA-CASE-V6] FIM -->
  </div>
 </div></section>
-<!-- 05 / SOBRE: autoridade sem currículos longos ou fotos fictícias. -->
-<section class="about" id="sobre" aria-labelledby="about-title"><div class="container about-grid">
- <div class="reveal"><span class="section-flag">Por trás da Rzrd.</span><h2 id="about-title">Pensamento estratégico. Envolvimento direto.</h2></div>
- <div class="about-right reveal"><p>A Rzrd. aproxima estratégia, direção criativa e execução para que decisões importantes não se percam entre uma etapa e outra.</p><p>Geórgia e William participam das decisões centrais, trabalhando junto à equipe e aos clientes para manter coerência entre o que se pretende construir e o que é entregue.</p>
- <div class="people"><div class="person"><span class="monogram">GR</span><span class="name">Geórgia Rizzardi</span><span class="role">Fundadora · Direção criativa</span></div><div class="person"><span class="monogram">WC</span><span class="name">William Cabral</span><span class="role">Cofundador · Estratégia e operação</span></div></div>
- <div class="about-quote">Direção próxima do negócio. Responsabilidade também sobre o que chega ao público.</div>
- </div>
+<!-- [AI-EDIT:ABOUT]
+Esta foto foi gerada por IA a pedido do cliente EXCLUSIVAMENTE como referência para uma futura sessão fotográfica.
+Não representa Geórgia ou William; o selo visível deve ser removido APENAS ao trocar por uma fotografia real.
+Referência de produção: luz lateral natural, ambiente real de trabalho, roupas simples, documentos impressos, gesto espontâneo, enquadramento horizontal 3:2, sem pose corporativa.
+-->
+<section class="about" id="sobre" aria-labelledby="about-title"><div class="container about-v4">
+ <div class="about-photo reveal" id="about-photo"><img src="assets/home/sobre-referencia.jpg" alt="Referência fotográfica ilustrativa de duas pessoas trabalhando com materiais de criação; não representa os fundadores da Rzrd." loading="lazy"/><span class="photo-disclaimer">REFERÊNCIA DE FOTOGRAFIA · IMAGEM GERADA</span></div>
+ <div class="about-body reveal"><span class="section-flag">A Rzrd. por dentro</span><h2 id="about-title">Quem dirige também acompanha.</h2><p>Estratégia e criação não acontecem em salas separadas. Na Rzrd., as decisões centrais são conduzidas de perto pelos fundadores e desdobradas com a equipe até a entrega.</p><p class="about-muted">É assim que procuramos manter uma linha entre o que o negócio precisa, o que a marca comunica e o que chega ao público.</p><div class="people-v4"><div><strong>Geórgia Rizzardi</strong><span>Fundadora · Direção criativa</span></div><div><strong>William Cabral</strong><span>Cofundador · Estratégia e operação</span></div></div></div>
 </div></section>
+<!-- [AI-EDIT:CONTACT] CTA V4 intencionalmente direta, preservar simplicidade; na produção substituir mailto por formulário com envio real. -->
 <!-- 06 / CONTATO -->
 <section class="contact" id="conversa" aria-labelledby="contact-title"><div class="contact-inner">
  <span class="contact-glow g1" aria-hidden="true"></span><span class="contact-glow g2" aria-hidden="true"></span>
- <div><span class="section-flag">Começa por uma conversa</span><h2 id="contact-title">O que sua marca precisa construir agora?</h2></div>
- <div class="contact-bottom"><p>Uma conversa para entender o momento do seu negócio, as oportunidades e onde podemos contribuir.</p><a href="#conversa" data-open-contact class="btn">Iniciar conversa <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></a></div>
+ <div><span class="section-flag">Começa por uma conversa</span><h2 id="contact-title">Vamos conversar.</h2></div>
+ <div class="contact-bottom"><p>Conte-nos o momento da sua empresa e o que você pretende resolver. O melhor ponto de partida vem depois de entender isso.</p><a href="#conversa" data-open-contact class="btn">Iniciar conversa <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></a></div>
 </div></section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-top"><a class="wordmark" href="#topo" aria-label="Voltar ao início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a><span class="footer-small">Estratégia · Direção criativa · Execução</span><nav class="footer-links" aria-label="Rodapé"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="mailto:contato@rzrd.com.br">E-mail</a></nav></div><div class="footer-bottom"><span>© Rzrd. — Direção antes de presença.</span><span>Prévia conceitual · V3 · 2026</span></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-top"><a class="wordmark" href="#topo" aria-label="Voltar ao início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a><span class="footer-small">Estratégia · Direção criativa · Execução</span><nav class="footer-links" aria-label="Rodapé"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="mailto:contato@rzrd.com.br">E-mail</a></nav></div><div class="footer-bottom"><span>© Rzrd. Direção antes de presença.</span><span>Prévia editorial · 2026</span></div></div></footer>
 <!-- Modais de vídeo e formulário. -->
+
+<!-- [AI-EDIT:SPECTRA-STORY-MODAL-V6] Modal de introdução acessível; nenhuma conclusão sobre clientes reais. -->
+<!-- [AI-EDIT:SPECTRA-MODAL-V7] Explicar primeiro a implicação prática. A metodologia está no HTML integral em ação secundária. -->
+<div class="overlay" id="spectra-study-overlay" aria-hidden="true">
+  <section class="modal spectra-v6-dialog spectra-v7-dialog" role="dialog" aria-modal="true" aria-labelledby="spectra-study-title" tabindex="-1">
+    <button type="button" class="close" data-close-spectra-study aria-label="Fechar explicação">×</button>
+    <div class="sv6-dialog-flag">Spectra / O que a análise muda · exemplo simulado</div>
+    <h2 id="spectra-study-title">Nem todo conteúdo precisa da mesma receita.</h2>
+    <p class="sv6-dialog-lede">Imagine uma equipe que percebe que posts com exemplos estão funcionando melhor. A decisão parece fácil: colocar exemplos em tudo.</p>
+    <div class="spectra-v7-story">
+      <div class="spectra-v7-story-step">
+        <span class="spectra-v7-story-number">1 / A surpresa</span>
+        <div><h3>A comparação muda quando olhamos o propósito.</h3><p>Na simulação, exemplos tiveram resposta melhor nas pautas criadas para ajudar a resolver problemas. Nas pautas feitas para estimular reflexão, <strong>não apareceu uma vantagem clara.</strong></p></div>
+      </div>
+      <div class="spectra-v7-story-step">
+        <span class="spectra-v7-story-number">2 / O que fazer</span>
+        <div><h3>Uma fórmula a menos. Uma escolha melhor.</h3><p>Em vez de usar exemplos automaticamente, a equipe define primeiro o que cada conteúdo precisa fazer, e testa abordagens diferentes quando ainda não sabe qual funciona melhor.</p></div>
+      </div>
+    </div>
+    <div class="spectra-v7-lesson"><span>O papel da Spectra</span><p>Transformar resultados em escolhas concretas para o próximo conteúdo.</p></div>
+    <div class="sv6-dialog-actions spectra-v7-dialog-actions">
+      <button type="button" data-open-full-spectra>Ver a investigação completa ↗</button>
+      <span>Para quem quiser explorar dados, método e limites</span>
+    </div>
+    <p class="sv6-method">Demonstração com dados inteiramente sintéticos. Não representa resultados de clientes nem comprova causalidade. A intenção de provocar reflexão não equivale a provar que uma opinião mudou.</p>
+  </section>
+</div>
 <div class="overlay" id="contact-overlay" aria-hidden="true"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button type="button" class="close" data-close="contact-overlay" aria-label="Fechar">×</button><span class="section-flag">Vamos conversar</span><h2 id="modal-title">Conte o que você precisa construir ou resolver.</h2><p>Este formulário de prévia prepara uma mensagem no seu aplicativo de e-mail; ainda não está conectado a um CRM ou backend.</p><form id="contact-form"><div class="form-grid"><div class="form-field"><label for="c-name">Seu nome *</label><input id="c-name" name="name" required autocomplete="name"/></div><div class="form-field"><label for="c-email">Seu e-mail *</label><input id="c-email" type="email" name="email" required autocomplete="email"/></div><div class="form-field full"><label for="c-company">Empresa ou site</label><input id="c-company" name="company" autocomplete="organization"/></div><div class="form-field full"><label for="c-brief">O que você gostaria de construir ou resolver? *</label><textarea id="c-brief" name="brief" required></textarea></div></div><div class="form-actions"><span>Sem envio automático nesta prévia. A mensagem é preparada no seu e-mail.</span><button type="submit" class="btn">Preparar e-mail <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></button></div></form></section></div>
 <div class="overlay" id="video-overlay" aria-hidden="true"><section class="modal video-modal" role="dialog" aria-modal="true" aria-label="Reprodução de trabalho audiovisual"><button type="button" class="close" data-close="video-overlay" aria-label="Fechar vídeo">×</button><video id="portfolio-video" controls playsinline preload="none"></video><div class="video-caption" id="video-caption"></div></section></div>
+<!-- [AI-EDIT:MANIFEST-MODAL-V8]
+     Filme ainda não gravado. NÃO inserir poster falso ou teaser.
+     Modal é invisível até existir MP4 e o visitante clicar no botão habilitado.
+     Controles nativos, sem autoplay/loop; fecha com X, fundo ou Escape.
+-->
+<div class="overlay" id="manifest-overlay" aria-hidden="true"><section class="modal manifest-video-modal" role="dialog" aria-modal="true" aria-labelledby="manifest-modal-title" tabindex="-1"><button type="button" class="close" data-close="manifest-overlay" aria-label="Fechar manifesto">×</button><h2 id="manifest-modal-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Nossa forma de pensar</h2><video id="manifest-video" controls playsinline preload="none" aria-label="Manifesto institucional da Rzrd."></video></section></div>
+<div class="fundo-switch" role="group" aria-label="Prévia da cor de fundo"><span>Fundo</span><button type="button" data-fundo="bege"><i style="background:#f4ede1"></i>Bege</button><button type="button" data-fundo="azul"><i style="background:#19292d"></i>Azul</button><button type="button" data-fundo="claro"><i style="background:#eef2f2"></i>Claro</button></div>
+<script>
+(function(){var cur=document.documentElement.getAttribute('data-fundo');
+ document.querySelectorAll('.fundo-switch button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.fundo===cur));
+  b.addEventListener('click',function(){if(b.dataset.fundo===cur)return;var u=new URL(location.href);u.searchParams.set('fundo',b.dataset.fundo);u.hash='';
+   try{sessionStorage.setItem('rzrd-y',String(scrollY))}catch(e){}location.href=u.toString()})});
+ try{var y=sessionStorage.getItem('rzrd-y');if(y!==null){sessionStorage.removeItem('rzrd-y');history.scrollRestoration='manual';addEventListener('load',function(){document.documentElement.style.scrollBehavior='auto';scrollTo(0,+y);document.documentElement.style.scrollBehavior=''})}}catch(e){}
+})();
+</script>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/rz-campo.js" defer></script>
 <script>
@@ -349,9 +971,9 @@ if('IntersectionObserver' in window){const observer=new IntersectionObserver(ent
 const stages=['Compreender','Identificar potencial','Construir direção','Materializar'];let campo=null;
 function initCampo(){if(typeof window.RzCampo!=='function')return;try{
   campo=window.RzCampo($('#hero-canvas'),{
-    section:$('.hero'),colors:{bg:'244,237,225',line:'112,83,63',acc:'183,94,62',text:'70,51,39',fam0:'116,147,63',fam1:'183,98,64',fam2:'127,113,181'},
+    section:$('.hero'),colors:({azul:{bg:'25,41,45',line:'157,196,206',acc:'105,209,235',text:'231,241,244',fam0:'150,190,90',fam1:'214,138,104',fam2:'166,155,232'},claro:{bg:'238,242,242',line:'60,95,104',acc:'47,127,148',text:'20,35,39',fam0:'106,140,52',fam1:'184,106,75',fam2:'125,115,200'}})[document.documentElement.getAttribute('data-fundo')]||{bg:'244,237,225',line:'112,83,63',acc:'183,94,62',text:'70,51,39',fam0:'116,147,63',fam1:'183,98,64',fam2:'127,113,181'},
     layout:function(w,h){return w<690?{cx:w*.50,cy:h*.31,R:Math.min(w*.35,h*.25)}:{cx:w*.77,cy:h*.52,R:Math.min(w*.29,h*.37)}},
-    onStage:function(i,progress){$('#stage-num').textContent=String(i+1).padStart(2,'0');$('#stage-name').textContent=stages[i]||stages[0];$('#stage-bar').style.width=(progress*100).toFixed(1)+'%'}
+    onStage:function(i,progress){$('#stage-num').textContent=String(i+1);$('#stage-name').textContent=stages[i]||stages[0];$('#stage-bar').style.width=(progress*100).toFixed(1)+'%'}
   });
   $('.hero-fallback').style.opacity='0';
 }catch(err){console.warn('Campo de força indisponível na prévia:',err)}}
@@ -359,25 +981,90 @@ window.addEventListener('load',initCampo,{once:true});
 $('#motion-switch').addEventListener('click',function(){if(!campo){showToast('A animação original depende de conexão com os ativos da prévia.');return}const next=!campo.paused();campo.pause(next);this.textContent=next?'▶':'Ⅱ';this.setAttribute('aria-label',next?'Reproduzir animação':'Pausar animação')});
 const toast=$('#toast');let toastTimer;
 function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),4300)}
+// [AI-EDIT:BEHAVIOR] Validar os URLs finais de produtos antes da publicação. Aether é URL oficial sugerida, mas página ainda precisa ser verificada.
 // Destinos dos produtos devem ser conectados às páginas finais na publicação.
 const PRODUCT_URLS={aether:'aether/',vortex:'vortex/',spectra:'spectra/'};
 $$('[data-product-link]').forEach(a=>a.addEventListener('click',e=>{const p=a.dataset.productLink;if(PRODUCT_URLS[p]){e.preventDefault();window.location.href=PRODUCT_URLS[p]}else{e.preventDefault();showToast('Na versão publicada, este link abrirá a página completa do '+p.charAt(0).toUpperCase()+p.slice(1)+'.')}}));
 $$('[data-highlight]').forEach(a=>a.addEventListener('click',()=>{const target=$('.product.'+a.dataset.highlight);if(target){setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'center'}),200)}}));
-const contactOverlay=$('#contact-overlay'),videoOverlay=$('#video-overlay'),video=$('#portfolio-video');let prevFocus=null;
+const contactOverlay=$('#contact-overlay'),videoOverlay=$('#video-overlay'),video=$('#portfolio-video'),manifestOverlay=$('#manifest-overlay'),manifestVideo=$('#manifest-video');let prevFocus=null;
 function showOverlay(el){prevFocus=document.activeElement;el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.classList.add('lock');const focus=el.querySelector('input,button');if(focus)setTimeout(()=>focus.focus(),25)}
-function hideOverlay(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.classList.remove('lock');if(el===videoOverlay){video.pause();video.removeAttribute('src');video.load()}if(prevFocus&&typeof prevFocus.focus==='function')prevFocus.focus()}
+function hideOverlay(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.classList.remove('lock');if(el===videoOverlay){video.pause();video.removeAttribute('src');video.load()}if(el===manifestOverlay){manifestVideo.pause();manifestVideo.removeAttribute('src');manifestVideo.load()}if(prevFocus&&typeof prevFocus.focus==='function')prevFocus.focus()}
 $$('[data-open-contact]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();setMenu(false);showOverlay(contactOverlay)}));
 $$('[data-video]').forEach(el=>el.addEventListener('click',()=>{$('#video-caption').textContent=el.dataset.title;video.src=el.dataset.video;showOverlay(videoOverlay);video.play().catch(()=>{})}));
+/* [AI-EDIT:MANIFEST-BEHAVIOR-V8]
+   Fonte futura configurável; NÃO exibir a ação até o MP4 existir de fato no servidor.
+   Na prévia local via file:// a verificação pode ser bloqueada: usar servidor HTTP(S).
+   Para publicação, enviar o arquivo FINAL com este nome ou alterar MANIFEST_FILM_URL.
+   HEAD retorna 404 quando ausente. Resposta HTML (fallback de SPA) também não vale.
+   Nunca iniciar vídeo na abertura da página; só atribuir src no clique e usar controls.
+*/
+const MANIFEST_FILM_URL='assets/manifesto-rzrd-final.mp4';
+const manifestLaunch=$('#manifest-launch');
+if(manifestLaunch && manifestOverlay && manifestVideo && MANIFEST_FILM_URL){
+  fetch(MANIFEST_FILM_URL,{method:'HEAD',cache:'no-store'})
+    .then(response=>{
+       const type=(response.headers.get('content-type')||'').toLowerCase();
+       const size=response.headers.get('content-length');
+       if(response.ok && !type.includes('text/html') && (size===null || Number(size)>0)){
+         manifestLaunch.hidden=false;
+         manifestLaunch.addEventListener('click',()=>{
+           manifestVideo.src=MANIFEST_FILM_URL;
+           showOverlay(manifestOverlay);
+           // NÃO usar .play() aqui: reproduzir somente quando o visitante apertar Play.
+         });
+       }
+    })
+    .catch(()=>{/* indisponível, CORS ou arquivo ainda não publicado: botão segue oculto */});
+}
 $$('[data-close]').forEach(el=>el.addEventListener('click',()=>hideOverlay($('#'+el.dataset.close))));
 $$('.overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===el)hideOverlay(el)}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.overlay.show').forEach(hideOverlay);if(header.classList.contains('open'))setMenu(false)}});
 $('#contact-form').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;if(!f.reportValidity())return;
  const fd=new FormData(f);const name=(fd.get('name')||'').trim(),email=(fd.get('email')||'').trim(),company=(fd.get('company')||'').trim(),brief=(fd.get('brief')||'').trim();
- const subject='Conversa sobre a marca — '+(company||name);const body='Olá, equipe Rzrd.\n\n'+brief+'\n\nNome: '+name+'\nE-mail: '+email+'\nEmpresa: '+(company||'Não informada')+'\n\nEnviado a partir da prévia da home.';
+ const subject='Conversa sobre a marca: '+(company||name);const body='Olá, equipe Rzrd.\n\n'+brief+'\n\nNome: '+name+'\nE-mail: '+email+'\nEmpresa: '+(company||'Não informada')+'\n\nEnviado a partir da prévia da home.';
  const url='mailto:contato@rzrd.com.br?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
  window.location.href=url;showToast('O seu aplicativo de e-mail será aberto com a mensagem preparada.');
 });
 })();
+</script>
+<script>
+/* [AI-EDIT:ASSET-FALLBACK-V5] Preview robustness only. Keep real image and
+   video for production; the fallback shows only when image loading fails. */
+for (const img of document.querySelectorAll('.vortex-reel img, .case-video img')) {
+  const failed = () => img.classList.add('media-error');
+  img.addEventListener('error', failed);
+  if (img.complete && img.naturalWidth===0) failed();
+}
+</script>
+<!-- [AI-EDIT:SPECTRA-FULL-STUDY-V6] Estudo original do Codex + caderno + dados inline, empacotado em Base64.
+      Permite abrir estudo independente a partir da V6 mesmo que só o HTML tenha sido baixado.
+      Arquivo-fonte editável separado: Rzrd_Spectra_Estudo_Editorial_Completo.html.
+      Se alterar o estudo, regenerar este payload; nunca editar a string manualmente. -->
+<script>
+// [AI-EDIT:STUDY-BEHAVIOR-V6] Modal independente; não alterar listeners do contato ou do vídeo da V5.
+(function(){'use strict';
+ const overlay=document.getElementById('spectra-study-overlay');
+ const openers=document.querySelectorAll('[data-open-spectra-study]');
+ const closer=document.querySelector('[data-close-spectra-study]');
+ const dialog=overlay.querySelector('.spectra-v6-dialog');
+ let previousFocus=null;
+ function open(){previousFocus=document.activeElement;overlay.classList.add('show');overlay.setAttribute('aria-hidden','false');document.body.classList.add('lock');closer.focus()}
+ function close(){overlay.classList.remove('show');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('lock');if(previousFocus&&previousFocus.focus)previousFocus.focus()}
+ openers.forEach(el=>el.addEventListener('click',open));closer.addEventListener('click',close);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('show')){e.stopImmediatePropagation();close()}},true);
+ dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const elements=Array.from(dialog.querySelectorAll('button,a[href],input,[tabindex]:not([tabindex="-1"])')).filter(el=>!el.disabled);if(!elements.length)return;const first=elements[0],last=elements[elements.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
+ document.querySelectorAll('[data-open-full-spectra]').forEach(el=>el.addEventListener('click',()=>{
+    window.open('assets/home/spectra-estudo.html','_blank','noopener');
+ }));
+})();
+</script>
+<script>
+/* Foto real do Sobre: quando assets/home/sobre-georgia-william.jpg existir, ela entra
+   no lugar da referência gerada e o selo "imagem gerada" some. Nada mais muda. */
+(function(){var box=document.getElementById('about-photo');if(!box)return;var real=new Image();
+ real.onload=function(){var img=box.querySelector('img');img.src=real.src;img.alt='Geórgia Rizzardi e William Cabral, fundadores da Rzrd.';var d=box.querySelector('.photo-disclaimer');if(d)d.remove()};
+ real.src='assets/home/sobre-georgia-william.jpg';})();
 </script>
 </body>
 </html>
