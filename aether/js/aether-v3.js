@@ -28,26 +28,19 @@
   requestAnimationFrame(()=>els.forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)e.classList.add('in')}));
 })();
 
-/* INNAP: as aplicações do projeto passam dentro da moldura */
+/* INNAP: as aplicações do projeto passam continuamente dentro da moldura */
 (function(){
   const box=document.querySelector('.innap-slides');
   if(!box) return;
   const imgs=[...box.querySelectorAll('img')];
-  const dots=box.querySelector('.innap-dots');
+  if(imgs.length<2) return;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DUR=4200;
-  dots.innerHTML=imgs.map((_,i)=>`<button type="button" aria-label="Imagem ${i+1}"><i></i></button>`).join('');
-  dots.removeAttribute('aria-hidden');
-  const bs=[...dots.children];
-  let cur=0,timer=null,visible=false,paused=false;
-  const show=n=>{cur=(n+imgs.length)%imgs.length;imgs.forEach((im,i)=>im.classList.toggle('on',i===cur));bs.forEach((b,i)=>{b.classList.toggle('done',i<cur);b.classList.remove('on');void b.offsetWidth;if(i===cur)b.classList.add('on')})};
-  const run=()=>{clearTimeout(timer);if(reduce||!visible||paused)return;timer=setTimeout(()=>{show(cur+1);run()},DUR)};
-  bs.forEach((b,i)=>b.addEventListener('click',()=>{show(i);run()}));
-  box.addEventListener('pointerenter',()=>{paused=true;clearTimeout(timer)});
-  box.addEventListener('pointerleave',()=>{paused=false;run()});
-  box.style.setProperty('--dur',DUR+'ms');
-  new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;run()}),{threshold:.3}).observe(box);
-  show(0);
+  let cur=0,visible=true;
+  imgs.forEach((im,i)=>{im.loading='eager';im.classList.toggle('on',i===0)});
+  const next=()=>{if(!visible||document.hidden)return;const prev=imgs[cur];cur=(cur+1)%imgs.length;const nx=imgs[cur];
+    imgs.forEach(im=>im.classList.remove('out'));prev.classList.remove('on');prev.classList.add('out');nx.classList.add('on')};
+  if(!reduce)setInterval(next,3800);
+  new IntersectionObserver(es=>es.forEach(e=>visible=e.isIntersecting)).observe(box);
 })();
 
 /* Método: abas e texto da leitura ao lado do iPad, sem subir e descer para trocar */
