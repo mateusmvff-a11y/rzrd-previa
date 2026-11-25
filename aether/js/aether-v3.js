@@ -60,7 +60,8 @@
   const screens=document.createElement('div');screens.className='mx-screens';
   tabs.before(stage);
   panels.forEach(p=>{const intro=p.firstElementChild;intro.classList.add('mx-copy');intro.dataset.for=p.id;intro.hidden=p.hidden;copies.appendChild(intro);screens.appendChild(p)});
-  stage.append(tabs,copies,screens);
+  const rail=document.createElement('div');rail.className='mx-rail';rail.append(tabs,copies);
+  stage.append(rail,screens);
   const hdr=document.querySelector('.header');
   const setH=()=>{stage.style.setProperty('--tabs-h',tabs.offsetHeight+'px');if(hdr)document.documentElement.style.setProperty('--hdr',hdr.offsetHeight+'px')};
   setH();addEventListener('resize',setH);

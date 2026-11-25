@@ -255,25 +255,26 @@
 .mx-copy{display:grid!important;grid-template-columns:1fr!important;gap:22px!important}
 .mx-copy .method-insight{margin:0!important}
 @media (min-width:1181px){
-  .mx-stage{display:grid;grid-template-columns:minmax(290px,.33fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:clamp(36px,4.4vw,72px);align-items:start}
-  .mx-stage>.method-tabs{grid-column:1;grid-row:1;position:sticky;top:104px;z-index:2;display:grid!important;grid-template-columns:1fr!important;margin:0 0 30px!important;border-left:1px solid rgba(214,225,200,.2)!important}
-  .mx-stage>.method-tabs button{border-top:0!important;padding:13px 0 13px 22px!important;font-size:clamp(16px,1.25vw,19px)!important}
-  .mx-stage>.method-tabs button::before{left:-1px;right:auto;top:0;bottom:0;width:2px;height:auto;transform:scaleY(0);transform-origin:top}
-  .mx-stage>.method-tabs button[aria-selected="true"]::before{transform:scaleY(1)}
-  .mx-copies{grid-column:1;grid-row:2;position:sticky;top:calc(134px + var(--tabs-h,240px))}
-  .mx-screens{grid-column:2;grid-row:1/3}
+  .mx-stage{display:grid;grid-template-columns:minmax(290px,.33fr) minmax(0,1fr);column-gap:clamp(36px,4.4vw,72px);align-items:start}
+  .mx-rail{grid-column:1;position:sticky;top:104px;align-self:start}
+  .mx-rail>.method-tabs{display:grid!important;grid-template-columns:1fr!important;margin:0 0 30px!important;border-left:1px solid rgba(214,225,200,.2)!important}
+  .mx-rail>.method-tabs button{border-top:0!important;padding:13px 0 13px 22px!important;font-size:clamp(16px,1.25vw,19px)!important}
+  .mx-rail>.method-tabs button::before{left:-1px;right:auto;top:0;bottom:0;width:2px;height:auto;transform:scaleY(0);transform-origin:top}
+  .mx-rail>.method-tabs button[aria-selected="true"]::before{transform:scaleY(1)}
+  .mx-screens{grid-column:2}
 }
 @media (max-width:1180px){
-  .mx-stage>.method-tabs{position:sticky;top:var(--hdr,68px);z-index:6;display:flex!important;gap:6px!important;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--pad)) 26px!important;padding:10px var(--pad)!important;background:var(--forest,#1b352b)!important;border:0!important}
-  .mx-stage>.method-tabs::-webkit-scrollbar{display:none}
-  .mx-stage>.method-tabs button{flex:0 0 auto;border:1px solid rgba(214,225,200,.25)!important;border-radius:99px!important;padding:9px 16px!important;font-size:14.5px!important;white-space:nowrap}
-  .mx-stage>.method-tabs button span{display:none!important}
-  .mx-stage>.method-tabs button::before{display:none}
-  .mx-stage>.method-tabs button[aria-selected="true"]{background:#BED69C!important;border-color:#BED69C!important;color:#14281F!important}
+  .mx-rail{display:contents}
+  .mx-stage .method-tabs{position:sticky;top:var(--hdr,68px);z-index:6;display:flex!important;gap:6px!important;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--pad)) 26px!important;padding:10px var(--pad)!important;background:var(--forest,#1b352b)!important;border:0!important}
+  .mx-stage .method-tabs::-webkit-scrollbar{display:none}
+  .mx-stage .method-tabs button{flex:0 0 auto;border:1px solid rgba(214,225,200,.25)!important;border-radius:99px!important;padding:9px 16px!important;font-size:14.5px!important;white-space:nowrap}
+  .mx-stage .method-tabs button span{display:none!important}
+  .mx-stage .method-tabs button::before{display:none}
+  .mx-stage .method-tabs button[aria-selected="true"]{background:#BED69C!important;border-color:#BED69C!important;color:#14281F!important}
   .mx-copies{margin-bottom:26px}
 }
 .innap-dots{padding:7px 9px;border-radius:99px;background:rgba(20,30,25,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .mx-stage .mx-copy h3{font-size:clamp(24px,2vw,30px)!important;line-height:1.12!important;letter-spacing:-.04em!important;max-width:none!important}
 .mx-stage .mx-copy>div>p{font-size:15.5px!important;line-height:1.6!important;margin-top:10px!important}
 .mx-stage .mx-copy .method-insight{font-size:15px!important}
-@media (max-width:1180px){.mx-stage>.method-tabs button{min-height:0!important;height:auto!important;line-height:1.2!important;padding:9px 16px!important}}
+@media (max-width:1180px){.mx-stage .method-tabs button{min-height:0!important;height:auto!important;line-height:1.2!important;padding:9px 16px!important}}
