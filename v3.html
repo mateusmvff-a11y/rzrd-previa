@@ -901,6 +901,42 @@ html .products .product:hover{background:radial-gradient(120% 55% at 50% 0%,rgba
 .sl-l{font-size:13px;fill:#a9bec3;letter-spacing:-.005em}
 @media(prefers-reduced-motion:reduce){.sl-line{transition:none;stroke-dashoffset:0}}
 @media(max-width:690px){.products .sl{padding:48px 6px 32px!important}.sl-chart{height:220px}}
+
+/* ===== Case Spectra enxuto ===== */
+.sc .sc-panel{display:flex;flex-direction:column;gap:0;padding:28px 30px 26px;background:#51495e;color:#f7f2f8;min-height:0}
+.sc-meta{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d9c9e2;font-weight:600}
+.sc .sc-panel h3{margin:22px 0 26px;font-size:clamp(34px,3.6vw,50px);line-height:.98;letter-spacing:-.065em;font-weight:500;color:#fff}
+.sc .sc-panel h3 em{font-style:normal;color:#d9c4e2}
+.sc-rule{margin:0 0 18px;display:flex;flex-direction:column;gap:6px}
+.sc-rule span,.sc-find span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#cbb9d6;font-weight:600}
+.sc-rule s{font-size:clamp(18px,1.7vw,22px);letter-spacing:-.035em;color:#cdbbd6;text-decoration-thickness:1.5px;text-decoration-color:rgba(255,255,255,.55)}
+.sc-find{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.2)}
+.sc-find li{display:flex;flex-direction:column;gap:7px;padding:16px 16px 4px 0}
+.sc-find li+li{padding-left:16px;border-left:1px solid rgba(255,255,255,.16)}
+.sc-find strong{font-size:clamp(17px,1.6vw,21px);line-height:1.12;letter-spacing:-.035em;font-weight:540;color:#c1e8ca}
+.sc-find li+li strong{color:#fff}
+.sc-btn{align-self:flex-start;margin-top:26px;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.65);color:#fff;padding:0 0 5px;font-size:13px;font-weight:560;cursor:pointer}
+.sc-btn:hover{color:#c1e8ca;border-color:#c1e8ca}
+.sc .sc-copy h3{font-size:clamp(26px,2.6vw,36px)!important;margin:8px 0 6px!important}
+.sc .sc-copy p{font-size:14px!important;line-height:1.5!important;max-width:40ch}
+@media(max-width:690px){.sc .sc-panel{padding:22px 20px}.sc-find{grid-template-columns:1fr}.sc-find li+li{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.16)}}
+
+/* ===== Contato: retângulo preenchido em duas colunas ===== */
+.contact-inner{min-height:0!important;padding:clamp(40px,5.5vw,84px) clamp(26px,5.5vw,84px)!important;display:block!important}
+html[data-fundo="azul"] .contact-glow{opacity:.32!important}
+.ct-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(30px,5vw,90px);align-items:end}
+.ct-left h2{margin:22px 0 0!important;font-size:clamp(4rem,9vw,9.6rem)!important;line-height:.9!important;letter-spacing:-.075em!important;max-width:none!important}
+.ct-right{display:flex;flex-direction:column;gap:22px}
+.ct-right p{margin:0;font-size:clamp(1.05rem,1.35vw,1.3rem);line-height:1.45;color:#e3eef1;max-width:30em}
+.ct-btn{width:100%;min-height:58px!important;font-size:14px!important}
+.ct-info{margin:6px 0 0;border-top:1px solid rgba(231,241,244,.22)}
+.ct-info>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(231,241,244,.22)}
+.ct-info dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#bcd6dd;font-weight:600}
+.ct-info dd{margin:0;display:flex;gap:18px;font-size:15px;font-weight:550}
+.ct-info a{color:#f2f8f9;border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
+.ct-info a:hover{border-color:currentColor;color:#fff}
+@media(max-width:920px){.ct-grid{grid-template-columns:1fr;align-items:start}}
+@media(max-width:690px){.ct-left h2{font-size:clamp(3.4rem,16vw,4.6rem)!important}.ct-info>div{flex-direction:column;gap:6px}.ct-info dd{gap:16px}}
 /* ===== Processo do COR ===== */
 /* ===== COR com identidade real ===== */
 .cor-logo{position:absolute;left:6%;top:15%;height:74%;width:auto;max-width:44%;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(255,255,255,.25))}
@@ -1126,38 +1162,22 @@ Reescrita comercial, NÃO uma nova análise. A sequência visual no card é:
 (c) decisão prática que a equipe pode testar. Evitar jargão, comparação de muitos
 indicadores e conclusões causais. Manter o data-open-spectra-study do botão.
 -->
-<article aria-labelledby="spectra-case-v6-title" class="case case-spectra spectra-case-v6 reveal">
-  <div class="spectra-v6-panel spectra-v7-panel">
-    <div class="spectra-v6-meta"><span>spectra / inteligência editorial</span><span>SIMULAÇÃO</span></div>
+<article aria-labelledby="spectra-case-v6-title" class="case case-spectra spectra-case-v6 sc reveal">
+  <div class="sc-panel">
+    <div class="sc-meta"><span>spectra</span><span>simulação</span></div>
     <h3 id="spectra-case-v6-title">Exemplos funcionam.<br><em>Sempre?</em></h3>
-    <p class="spectra-v7-lede">Os resultados pareciam recomendar a mesma fórmula para toda publicação. <strong>Até olharmos para a intenção de cada pauta.</strong></p>
-    <div class="spectra-v7-turn" aria-label="Uma regra parecia funcionar em todos os conteúdos, mas separar por intenção revelou resultados diferentes.">
-      <div class="spectra-v7-first">
-        <span class="spectra-v7-kicker">A primeira impressão</span>
-        <span class="spectra-v7-rule">“Use exemplos em todo post.”</span>
-      </div>
-      <div class="spectra-v7-after">
-        <span class="spectra-v7-kicker">O que mudou ao investigar</span>
-        <div class="spectra-v7-finding">
-          <span class="spectra-v7-context">Para ajudar a resolver um problema</span>
-          <strong>Exemplos se destacaram.</strong>
-        </div>
-        <div class="spectra-v7-finding">
-          <span class="spectra-v7-context">Para provocar reflexão</span>
-          <strong>Sem fórmula vencedora.</strong>
-        </div>
-      </div>
-    </div>
-    <div class="spectra-v6-bottom spectra-v7-bottom">
-      <p><span>A decisão para a próxima pauta</span>Primeiro, definir o objetivo. Depois, escolher como contar.</p>
-      <button type="button" data-open-spectra-study aria-label="Entender a descoberta da Spectra">Entender a virada <span aria-hidden="true">↗</span></button>
-    </div>
+    <p class="sc-rule"><span>A regra que parecia valer</span><s>Use exemplos em todo post.</s></p>
+    <ul class="sc-find" aria-label="Separar por intenção revelou resultados diferentes">
+      <li><span>Para resolver um problema</span><strong>Exemplos se destacaram.</strong></li>
+      <li><span>Para provocar reflexão</span><strong>Sem fórmula vencedora.</strong></li>
+    </ul>
+    <button type="button" class="sc-btn" data-open-spectra-study aria-label="Entender a descoberta da Spectra">Entender a virada <span aria-hidden="true">↗</span></button>
   </div>
-  <div class="case-secondary-copy spectra-v7-secondary">
+  <div class="case-secondary-copy sc-copy">
     <span class="case-serial">3 · SPECTRA / INTELIGÊNCIA EDITORIAL</span>
     <h3>E agora, o que publicar?</h3>
-    <p>A Spectra investiga padrões e exceções para orientar a próxima pauta, não para entregar apenas mais um relatório de desempenho.</p>
-    <span class="spectra-v6-secondary-note">Demonstração com dados sintéticos · não é resultado de cliente</span>
+    <p>Primeiro, definir o objetivo da pauta. Depois, escolher como contar.</p>
+    <span class="spectra-v6-secondary-note">Dados sintéticos · não é resultado de cliente</span>
   </div>
 </article>
 <!-- [AI-EDIT:SPECTRA-CASE-V6] FIM -->
@@ -1176,8 +1196,12 @@ Referência de produção: luz lateral natural, ambiente real de trabalho, roupa
 <!-- 06 / CONTATO -->
 <section class="contact" id="conversa" aria-labelledby="contact-title"><div class="contact-inner">
  <span class="contact-glow g1" aria-hidden="true"></span><span class="contact-glow g2" aria-hidden="true"></span>
- <div><span class="section-flag">Começa por uma conversa</span><h2 id="contact-title">Vamos conversar.</h2></div>
- <div class="contact-bottom"><p>Conte-nos o momento da sua empresa e o que você pretende resolver. O melhor ponto de partida vem depois de entender isso.</p><a href="#conversa" data-open-contact class="btn">Iniciar conversa <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></a></div>
+ <div class="ct-grid">
+  <div class="ct-left"><span class="section-flag">Começa por uma conversa</span><h2 id="contact-title">Vamos<br/>conversar.</h2></div>
+  <div class="ct-right"><p>Conte-nos o momento da sua empresa e o que você pretende resolver. O melhor ponto de partida vem depois de entender isso.</p><a href="#conversa" data-open-contact class="btn ct-btn">Iniciar conversa <svg viewBox="0 0 24 24"><path d="M4 20 20 4M7 4h13v13"/></svg></a>
+   <dl class="ct-info"><div><dt>E-mail</dt><dd><a href="mailto:contato@rzrd.com.br">contato@rzrd.com.br</a></dd></div><div><dt>Conheça antes</dt><dd><a href="aether/">.aether</a><a href="vortex/">.vortex</a><a href="spectra/">.spectra</a></dd></div></dl>
+  </div>
+ </div>
 </div></section>
 </main>
 <footer class="footer"><div class="container"><div class="footer-top"><a class="wordmark" href="#topo" aria-label="Voltar ao início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a><span class="footer-small">Estratégia · Direção criativa · Execução</span><nav class="footer-links" aria-label="Rodapé"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="mailto:contato@rzrd.com.br">E-mail</a></nav></div><div class="footer-bottom"><span>© Rzrd. Direção antes de presença.</span><span>Prévia editorial · 2026</span></div></div></footer>
