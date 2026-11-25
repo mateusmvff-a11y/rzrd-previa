@@ -28,30 +28,47 @@
   requestAnimationFrame(()=>els.forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)e.classList.add('in')}));
 })();
 
-/* INNAP: padrão de linhas da marca, desenhado ao entrar; galeria com leve paralaxe */
+/* INNAP: as aplicações do projeto passam dentro da moldura */
 (function(){
-  const sec=document.querySelector('.innap-case');
-  if(!sec) return;
-  const box=sec.querySelector('.innap-lines');
+  const box=document.querySelector('.innap-slides');
+  if(!box) return;
+  const imgs=[...box.querySelectorAll('img')];
+  const dots=box.querySelector('.innap-dots');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* traçados ortogonais de cantos arredondados, como no padrão da identidade */
-  const W=1600,H=1000,R=26;
-  const paths=[
-    [[0,180],[420,180],[420,330],[760,330],[760,90],[1180,90],[1180,260],[1600,260]],
-    [[160,0],[160,420],[560,420],[560,610],[980,610],[980,470],[1380,470],[1380,0]],
-    [[0,720],[300,720],[300,540],[640,540],[640,880],[1120,880],[1120,700],[1600,700]],
-    [[860,1000],[860,760],[1240,760],[1240,560],[1600,560]],
-    [[0,940],[460,940],[460,1000]],
-    [[1460,1000],[1460,860],[1600,860]]
-  ];
-  const round=pts=>{let d=`M${pts[0][0]} ${pts[0][1]}`;for(let i=1;i<pts.length-1;i++){const [px,py]=pts[i-1],[x,y]=pts[i],[nx,ny]=pts[i+1];const ax=Math.sign(x-px),ay=Math.sign(y-py),bx=Math.sign(nx-x),by=Math.sign(ny-y);d+=` L${x-ax*R} ${y-ay*R} Q${x} ${y} ${x+bx*R} ${y+by*R}`}const l=pts[pts.length-1];return d+` L${l[0]} ${l[1]}`};
-  const nodes=[[420,180],[760,330],[560,420],[980,610],[300,720],[1120,880],[1240,760],[1380,470]];
-  box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">${paths.map(p=>`<path d="${round(p)}"/>`).join('')}${nodes.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="4"/>`).join('')}</svg>`;
-  box.querySelectorAll('path').forEach(p=>p.style.setProperty('--len',Math.ceil(p.getTotalLength())));
-  if(reduce){sec.classList.add('drawn');return}
-  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){sec.classList.add('drawn');o.disconnect()}}),{threshold:.15}).observe(sec);
-  const figs=[...sec.querySelectorAll('.innap-gallery figure')];
-  let ticking=false;
-  const par=()=>{ticking=false;const vh=innerHeight;figs.forEach((f,i)=>{const r=f.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;const k=((r.top+r.height/2)-vh/2)/vh;f.querySelector('img').style.setProperty('--py',(k*-(i%2?26:40)-18).toFixed(1)+'px')})};
-  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(par)}},{passive:true});par();
+  const DUR=4200;
+  dots.innerHTML=imgs.map((_,i)=>`<button type="button" aria-label="Imagem ${i+1}"><i></i></button>`).join('');
+  dots.removeAttribute('aria-hidden');
+  const bs=[...dots.children];
+  let cur=0,timer=null,visible=false,paused=false;
+  const show=n=>{cur=(n+imgs.length)%imgs.length;imgs.forEach((im,i)=>im.classList.toggle('on',i===cur));bs.forEach((b,i)=>{b.classList.toggle('done',i<cur);b.classList.remove('on');void b.offsetWidth;if(i===cur)b.classList.add('on')})};
+  const run=()=>{clearTimeout(timer);if(reduce||!visible||paused)return;timer=setTimeout(()=>{show(cur+1);run()},DUR)};
+  bs.forEach((b,i)=>b.addEventListener('click',()=>{show(i);run()}));
+  box.addEventListener('pointerenter',()=>{paused=true;clearTimeout(timer)});
+  box.addEventListener('pointerleave',()=>{paused=false;run()});
+  box.style.setProperty('--dur',DUR+'ms');
+  new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;run()}),{threshold:.3}).observe(box);
+  show(0);
+})();
+
+/* Método: abas e texto da leitura ao lado do iPad, sem subir e descer para trocar */
+(function(){
+  const tabs=document.querySelector('.method .method-tabs');
+  if(!tabs) return;
+  const panels=[...document.querySelectorAll('.method .method-panel')];
+  const stage=document.createElement('div');stage.className='mx-stage';
+  const copies=document.createElement('div');copies.className='mx-copies';
+  const screens=document.createElement('div');screens.className='mx-screens';
+  tabs.before(stage);
+  panels.forEach(p=>{const intro=p.firstElementChild;intro.classList.add('mx-copy');intro.dataset.for=p.id;intro.hidden=p.hidden;copies.appendChild(intro);screens.appendChild(p)});
+  stage.append(tabs,copies,screens);
+  const hdr=document.querySelector('.header');
+  const setH=()=>{stage.style.setProperty('--tabs-h',tabs.offsetHeight+'px');if(hdr)document.documentElement.style.setProperty('--hdr',hdr.offsetHeight+'px')};
+  setH();addEventListener('resize',setH);
+  const sync=()=>panels.forEach(p=>{const c=copies.querySelector(`[data-for="${p.id}"]`);if(c&&c.hidden!==p.hidden){c.hidden=p.hidden;if(!p.hidden){c.classList.remove('mx-in');void c.offsetWidth;c.classList.add('mx-in')}}});
+  new MutationObserver(sync).observe(screens,{attributes:true,subtree:true,attributeFilter:['hidden']});
+  /* no celular, a barra de leituras rola até a ativa */
+  const center=()=>{const b=tabs.querySelector('[aria-selected="true"]');if(b&&tabs.scrollWidth>tabs.clientWidth)tabs.scrollTo({left:b.offsetLeft-(tabs.clientWidth-b.offsetWidth)/2,behavior:'smooth'})};
+  new MutationObserver(center).observe(tabs,{attributes:true,subtree:true,attributeFilter:['aria-selected']});
+  /* ao trocar de leitura com a tela já rolada para baixo, volta ao começo do iPad */
+  tabs.addEventListener('click',e=>{if(!e.target.closest('button'))return;requestAnimationFrame(()=>{const r=screens.getBoundingClientRect();const top=parseFloat(getComputedStyle(tabs).top)||0;const off=innerWidth<1181?top+tabs.offsetHeight+16:110;if(r.top<off-4||r.top>innerHeight*.6)scrollTo({top:scrollY+r.top-off,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})});
 })();

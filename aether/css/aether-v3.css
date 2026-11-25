@@ -72,37 +72,26 @@
 .ipad .diagram-note{font-size:12.5px!important;color:#6A7166!important;border-top:1px solid #E2E3DA!important;padding-top:12px!important;margin-top:18px!important}
 .ipad-screen .method-figure>*:last-child{margin-bottom:0!important}
 
-/* ---------- INNAP: o caso na identidade da própria INNAP ---------- */
-.innap-case{--in-green:#0C6B5E;--in-ink:#1F2626;--in-gold:#C08A2E;--in-rose:#E5D2C0;--in-ivory:#F2EEE7;
-  position:relative;overflow:hidden;isolation:isolate;background:var(--in-green)!important;color:var(--in-ivory);padding-block:clamp(84px,10vw,150px)!important;border:0!important}
-.innap-lines{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.innap-lines svg{position:absolute;inset:0;width:100%;height:100%}
-.innap-lines path{fill:none;stroke:var(--in-ivory);stroke-width:1.1;opacity:.16;stroke-linecap:round;stroke-linejoin:round}
-.innap-lines circle{fill:var(--in-ivory);opacity:.28}
-.innap-case .v35case-teaser-inner{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:"mark mark" "copy btn";column-gap:clamp(30px,6vw,110px);row-gap:clamp(40px,5vw,70px);align-items:end;border:0!important;padding:0!important;background:none!important}
-.innap-mark{grid-area:mark;color:var(--in-ivory)}
-.innap-logo{display:block;height:clamp(30px,3vw,44px);width:auto}
-.innap-case .v35case-teaser-copy{grid-area:copy}
-.innap-case .v35case-eyebrow{color:var(--in-gold)!important;font-size:14px!important;font-weight:600!important;text-transform:none!important;letter-spacing:0!important;filter:brightness(1.35)}
-.innap-case h2{color:var(--in-ivory)!important;font-size:clamp(40px,5vw,84px)!important;line-height:.98!important;letter-spacing:-.058em!important;font-weight:500!important;margin:16px 0 22px!important;max-width:11.5em}
-.innap-case .v35case-teaser-copy p:not(.v35case-eyebrow){color:rgba(242,238,231,.78)!important;font-size:clamp(16px,1.25vw,19px)!important;line-height:1.6!important;max-width:30em}
-.innap-case .v35case-open{grid-area:btn;justify-self:end;align-self:end;display:inline-flex!important;align-items:center;gap:16px;padding:8px 8px 8px 26px!important;border:1px solid var(--in-ivory)!important;border-radius:99px!important;background:var(--in-ivory)!important;color:var(--in-ink)!important;font-size:15px!important;font-weight:550!important;transition:background .5s var(--r-ease),color .5s var(--r-ease)}
-.innap-case .v35case-open-symbol{display:grid!important;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--in-green)!important;color:var(--in-ivory)!important;font-size:19px!important;transition:transform .6s var(--r-ease)}
-.innap-case .v35case-open:hover{background:var(--in-gold)!important;border-color:var(--in-gold)!important;color:#fff!important}
+/* ---------- INNAP: foto e texto, com as aplicações do projeto passando ---------- */
+.innap-case{padding-block:clamp(70px,8vw,120px)!important;background:#E9E6DD!important;border:0!important}
+.innap-case .v35case-teaser-inner{display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-areas:"img copy" "img btn";column-gap:clamp(30px,6vw,110px);row-gap:28px;align-items:end;border:0!important;padding:0!important;background:none!important}
+.innap-slides{grid-area:img;position:relative;display:block!important;width:auto!important;height:auto!important;aspect-ratio:4/3.3!important;overflow:hidden;border-radius:4px;background:#DCD8CC}
+.innap-slides img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.2s var(--r-ease),transform 6s linear}
+.innap-slides img.on{opacity:1;transform:scale(1)}
+.innap-dots{position:absolute;left:18px;bottom:16px;display:flex;gap:6px;z-index:2}
+.innap-dots button{width:22px;height:3px;padding:0;border:0;border-radius:2px;background:rgba(255,255,255,.5);cursor:pointer;overflow:hidden;position:relative}
+.innap-dots button i{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.innap-dots button.on i{animation:innap-dot var(--dur,4.2s) linear forwards}
+.innap-dots button.done i{transform:scaleX(1)}
+@keyframes innap-dot{to{transform:scaleX(1)}}
+.innap-case .v35case-teaser-copy{grid-area:copy;align-self:end}
+.innap-case .v35case-eyebrow{color:#0C6B5E!important;font-size:14px!important;font-weight:600!important;text-transform:none!important;letter-spacing:0!important}
+.innap-case h2{font-size:clamp(36px,4vw,64px)!important;line-height:1.02!important;letter-spacing:-.052em!important;font-weight:500!important;margin:14px 0 18px!important;color:var(--r-ink)!important}
+.innap-case .v35case-teaser-copy p:not(.v35case-eyebrow){font-size:clamp(16px,1.2vw,19px)!important;line-height:1.6!important;max-width:28em;color:var(--r-muted)!important}
+.innap-case .v35case-open{grid-area:btn;justify-self:start;align-self:start;display:inline-flex!important;align-items:center;gap:16px;padding:8px 8px 8px 24px!important;border:1px solid var(--r-ink)!important;border-radius:99px!important;background:var(--r-ink)!important;color:#F7F6F1!important;font-size:14.5px!important;font-weight:500!important;transition:background .5s var(--r-ease)}
+.innap-case .v35case-open-symbol{display:grid!important;place-items:center;width:40px;height:40px;border-radius:50%;background:#F7F6F1!important;color:var(--r-ink)!important;font-size:18px!important;transition:transform .6s var(--r-ease)}
+.innap-case .v35case-open:hover{background:#0C6B5E!important;border-color:#0C6B5E!important}
 .innap-case .v35case-open:hover .v35case-open-symbol{transform:rotate(90deg)}
-/* galeria: aplicações da marca em colagem */
-.innap-gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,250px);gap:clamp(10px,1.1vw,16px);margin-top:clamp(56px,6vw,96px)}
-.innap-gallery figure{position:relative;margin:0;overflow:hidden;border-radius:6px;background:#0A5A4F}
-.innap-gallery img{display:block;width:100%;height:115%;object-fit:cover;transform:translateY(var(--py,0px)) scale(1.02);transition:scale 1.6s var(--r-ease);will-change:transform}
-.innap-gallery figure:hover img{scale:1.04}
-.g-fachada{grid-column:1/8;grid-row:1/3}
-.g-sacola{grid-column:8/11;grid-row:1/3}
-.g-cracha{grid-column:11/13;grid-row:1/2}
-.g-certificado{grid-column:11/13;grid-row:2/3}
-.g-livros{grid-column:1/5;grid-row:3/4}
-.g-sinalizacao{grid-column:5/13;grid-row:3/4}
-.g-sacola img,.g-cracha img{object-position:50% 40%}
-.g-certificado img{object-position:50% 45%}
 
 /* ---------- Entregas: a lista rola, o iPad acompanha ---------- */
 .delivery-composition{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:clamp(36px,6vw,110px)!important;align-items:start!important}
@@ -150,16 +139,11 @@
   .decisions .decision p,.decisions .decision .outcome{grid-column:2}
   .decisions .premise,.adaptive-note,.revision-strip,.delivery-composition{grid-template-columns:1fr!important}
   .delivery-composition>.ipad{position:relative;top:auto}
-  .innap-case .v35case-teaser-inner{grid-template-columns:1fr;grid-template-areas:"mark" "copy" "btn"}
-  .innap-case .v35case-open{justify-self:start}
+  .innap-case .v35case-teaser-inner{grid-template-columns:1fr;grid-template-areas:"img" "copy" "btn"}
   .method .method-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:760px){
   .decisions .business-examples{grid-template-columns:1fr}
-  .innap-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scrollbar-width:none}
-  .innap-gallery::-webkit-scrollbar{display:none}
-  .innap-gallery figure{flex:0 0 78%;height:300px;scroll-snap-align:start}
-  .innap-gallery figure.g-sacola,.innap-gallery figure.g-cracha{flex-basis:62%}
   .ax-status{height:24px;padding:0 14px;font-size:11px}
   .ipad .demo-label{margin-bottom:16px!important}
   .method .method-tabs button{padding-right:10px!important;font-size:15px!important}
@@ -169,11 +153,6 @@
   .method .method-panel .method-copy,.method .method-panel .ipad{animation:none!important}
 }
 
-.innap-gallery .v35case-teaser-image{display:block!important;width:auto!important;height:auto!important;aspect-ratio:auto!important;border-radius:6px}
-.innap-gallery .v35case-teaser-image img{width:100%!important;height:115%!important}
-.innap-lines path{stroke-dasharray:var(--len,2000);stroke-dashoffset:var(--len,2000);transition:stroke-dashoffset 3.2s var(--r-ease)}
-.innap-case.drawn .innap-lines path{stroke-dashoffset:0}
-@media (prefers-reduced-motion:reduce){.innap-lines path{stroke-dashoffset:0!important;transition:none!important}.innap-gallery img{transform:none!important}}
 
 /* =====================================================================
    Diagramas redesenhados (telas dentro dos iPads)
@@ -263,3 +242,38 @@
 .ipad .v35mve-topline,.ipad .v35mcp-topline{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #E2E3DA;padding-bottom:14px;margin-bottom:22px!important}
 .ipad .v35mve-topline .demo-label,.ipad .v35mcp-topline .demo-label{border:0!important;padding:0!important;margin:0!important}
 .ipad .v35mve-topline>p:not(.demo-label){margin:0!important;font-size:13px!important;color:#697066!important}
+
+/* ---------- Método: coluna fixa com as leituras, iPad ao lado (telas largas) ---------- */
+.mx-stage{position:relative}
+.mx-copy[hidden]{display:none!important}
+.mx-copy.mx-in{animation:r-panel .8s var(--r-ease) both}
+.mx-screens .method-panel:not([hidden]){display:block!important;padding:0!important;min-height:0!important}
+.mx-screens .method-panel:not([hidden]) .ipad{animation:r-panel .9s var(--r-ease) both;margin:0!important;max-width:none!important}
+.mx-screens .method-future{margin-top:22px!important}
+.mx-copy h3{font-size:clamp(24px,2.1vw,32px)!important;line-height:1.1!important;letter-spacing:-.04em!important;margin-bottom:12px!important}
+.mx-copy p{font-size:15.5px!important;line-height:1.6!important}
+.mx-copy{display:grid!important;grid-template-columns:1fr!important;gap:22px!important}
+.mx-copy .method-insight{margin:0!important}
+@media (min-width:1181px){
+  .mx-stage{display:grid;grid-template-columns:minmax(290px,.33fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:clamp(36px,4.4vw,72px);align-items:start}
+  .mx-stage>.method-tabs{grid-column:1;grid-row:1;position:sticky;top:104px;z-index:2;display:grid!important;grid-template-columns:1fr!important;margin:0 0 30px!important;border-left:1px solid rgba(214,225,200,.2)!important}
+  .mx-stage>.method-tabs button{border-top:0!important;padding:13px 0 13px 22px!important;font-size:clamp(16px,1.25vw,19px)!important}
+  .mx-stage>.method-tabs button::before{left:-1px;right:auto;top:0;bottom:0;width:2px;height:auto;transform:scaleY(0);transform-origin:top}
+  .mx-stage>.method-tabs button[aria-selected="true"]::before{transform:scaleY(1)}
+  .mx-copies{grid-column:1;grid-row:2;position:sticky;top:calc(134px + var(--tabs-h,240px))}
+  .mx-screens{grid-column:2;grid-row:1/3}
+}
+@media (max-width:1180px){
+  .mx-stage>.method-tabs{position:sticky;top:var(--hdr,68px);z-index:6;display:flex!important;gap:6px!important;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--pad)) 26px!important;padding:10px var(--pad)!important;background:var(--forest,#1b352b)!important;border:0!important}
+  .mx-stage>.method-tabs::-webkit-scrollbar{display:none}
+  .mx-stage>.method-tabs button{flex:0 0 auto;border:1px solid rgba(214,225,200,.25)!important;border-radius:99px!important;padding:9px 16px!important;font-size:14.5px!important;white-space:nowrap}
+  .mx-stage>.method-tabs button span{display:none!important}
+  .mx-stage>.method-tabs button::before{display:none}
+  .mx-stage>.method-tabs button[aria-selected="true"]{background:#BED69C!important;border-color:#BED69C!important;color:#14281F!important}
+  .mx-copies{margin-bottom:26px}
+}
+.innap-dots{padding:7px 9px;border-radius:99px;background:rgba(20,30,25,.32);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.mx-stage .mx-copy h3{font-size:clamp(24px,2vw,30px)!important;line-height:1.12!important;letter-spacing:-.04em!important;max-width:none!important}
+.mx-stage .mx-copy>div>p{font-size:15.5px!important;line-height:1.6!important;margin-top:10px!important}
+.mx-stage .mx-copy .method-insight{font-size:15px!important}
+@media (max-width:1180px){.mx-stage>.method-tabs button{min-height:0!important;height:auto!important;line-height:1.2!important;padding:9px 16px!important}}
