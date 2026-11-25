@@ -57,6 +57,7 @@ DESIGN: foco na pergunta e descoberta — evitar cards de métricas, barras deco
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#f4ede1" id="theme-color" />
+<link rel="icon" href="vortex/favicon.svg" type="image/svg+xml" />
 <meta name="rzrd-preview-version" content="v8" />
 <meta name="robots" content="noindex,nofollow" />
 <title>Rzrd. Direção, presença e inteligência</title>
@@ -787,6 +788,39 @@ html[data-fundo="azul"] .case-eno,html[data-fundo="azul"] .case-spectra,html[dat
 .cor-paths span{top:-14px;bottom:auto!important}
 .cor-doc-footer{font-size:9.5px!important;letter-spacing:.04em!important}
 .cor-doc-footer i{width:3px!important;height:3px!important;border-radius:50%}
+/* ===== Auditoria: correções ===== */
+/* vortex sem faixa de outra cor, igual aos outros cards */
+.vx{background:transparent!important}
+/* Eno Cultura: mostra a taça, sem o texto estourado do vídeo */
+.case-eno .case-video{background:#1c1b1a}
+.case-video:has(img:not(.media-error)) .media-fallback,.vx-reel:has(img:not(.media-error)) .media-fallback{display:none}
+.case-eno .case-video img{object-fit:contain!important;object-position:50% 50%!important;padding:22px 0}
+html[data-fundo="azul"] .case-eno .case-video,html[data-fundo="claro"] .case-eno .case-video{background:#132428}
+/* contato sem tons quentes nas prévias azul e claro */
+html[data-fundo="azul"] .contact .section-flag,html[data-fundo="claro"] .contact .section-flag{color:#cfe9f0}
+html[data-fundo="azul"] .contact .section-flag::before,html[data-fundo="claro"] .contact .section-flag::before{background:#cfe9f0}
+html[data-fundo="azul"] .contact-inner,html[data-fundo="claro"] .contact-inner{color:#eef6f8}
+/* COR: índice da ficha numa linha */
+.cor-doc-index{white-space:nowrap}
+@media(max-width:690px){
+  /* Spectra: ficha cresce com o conteúdo e barras usam a largura toda */
+  .product .p-art.sx{height:auto!important;min-height:0!important;padding:46px 14px 36px!important}
+  .sx-sheet{height:auto}
+  .sx-row{grid-template-columns:minmax(0,1fr) 46px;grid-template-areas:"l v" "t t";row-gap:4px}
+  .sx-l{grid-area:l}.sx-row strong{grid-area:v}.sx-track{grid-area:t;height:9px}
+  .sx-bars{gap:9px}
+  .sx-next{margin-top:12px}
+  /* COR: ficha na base do quadro, caminhos só no computador */
+  .case-cor-art{min-height:380px!important}
+  .cor-doc{top:auto!important;bottom:22px;left:6%!important;right:6%!important;transform:rotate(-2deg)}
+  .cor-paths{display:none}
+}
+/* topo no celular: a faixa que protege o texto cobre só o texto, e o diagrama aparece */
+@media(max-width:690px){
+  .hero::after{background:linear-gradient(0deg,#f4ede1 0,#f4ede1 50%,rgba(244,237,225,.86) 61%,rgba(244,237,225,0) 76%)!important}
+  html[data-fundo="azul"] .hero::after{background:linear-gradient(0deg,#19292d 0,#19292d 50%,rgba(25,41,45,.86) 61%,rgba(25,41,45,0) 76%)!important}
+  html[data-fundo="claro"] .hero::after{background:linear-gradient(0deg,#eef2f2 0,#eef2f2 50%,rgba(238,242,242,.86) 61%,rgba(238,242,242,0) 76%)!important}
+}
 /* seletor de prévia */
 .fundo-switch{position:fixed;left:16px;bottom:16px;z-index:240;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(20,20,20,.86);color:#f4f4f4;font:600 11px/1 Geist,Arial,sans-serif;letter-spacing:.02em;box-shadow:0 8px 24px rgba(0,0,0,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .fundo-switch span{padding:0 8px 0 9px;opacity:.7}
@@ -1084,7 +1118,7 @@ const stages=['Compreender','Identificar potencial','Construir direção','Mater
 function initCampo(){if(typeof window.RzCampo!=='function')return;try{
   campo=window.RzCampo($('#hero-canvas'),{
     section:$('.hero'),colors:({azul:{bg:'25,41,45',line:'157,196,206',acc:'105,209,235',text:'231,241,244',fam0:'150,190,90',fam1:'214,138,104',fam2:'166,155,232'},claro:{bg:'238,242,242',line:'60,95,104',acc:'47,127,148',text:'20,35,39',fam0:'106,140,52',fam1:'184,106,75',fam2:'125,115,200'}})[document.documentElement.getAttribute('data-fundo')]||{bg:'244,237,225',line:'112,83,63',acc:'183,94,62',text:'70,51,39',fam0:'116,147,63',fam1:'183,98,64',fam2:'127,113,181'},
-    layout:function(w,h){return w<690?{cx:w*.50,cy:h*.31,R:Math.min(w*.35,h*.25)}:{cx:w*.77,cy:h*.52,R:Math.min(w*.29,h*.37)}},
+    layout:function(w,h){return w<690?{cx:w*.50,cy:h*.205,R:Math.min(w*.3,h*.16)}:{cx:w*.77,cy:h*.52,R:Math.min(w*.29,h*.37)}},
     onStage:function(i,progress){$('#stage-num').textContent=String(i+1);$('#stage-name').textContent=stages[i]||stages[0];$('#stage-bar').style.width=(progress*100).toFixed(1)+'%'}
   });
   $('.hero-fallback').style.opacity='0';
