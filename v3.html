@@ -883,6 +883,35 @@ html .products .product:hover{background:radial-gradient(120% 55% at 50% 0%,rgba
 .products .vx-reel{top:58px!important}
 .products .vx-cycle{top:62px!important}
 /* ===== Processo do COR ===== */
+/* ===== COR com identidade real ===== */
+.cor-logo{position:absolute;left:6%;top:15%;height:74%;width:auto;max-width:44%;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(255,255,255,.25))}
+@media(min-width:691px){.case-cor-art .cor-doc{left:52%!important;right:5%!important}}
+.cpx{padding-top:clamp(40px,5vw,64px)!important}
+.cpx-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;margin-bottom:clamp(28px,3.5vw,48px)}
+.cpx-origin{margin:0}
+.cpx-origin figcaption{margin-top:12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8fa9b0}
+.cpx-intro .section-flag{color:#9fb6bc}
+.cpx-intro h3{margin:16px 0 14px;font-size:clamp(2rem,3.3vw,3.4rem);line-height:1.03;letter-spacing:-.06em;font-weight:520;color:#f2f8f9;max-width:14em}
+.cpx-intro p{margin:0;max-width:44ch;font-size:15px;line-height:1.6;color:#a9bec3}
+.cpx-thumb{display:block;width:100%;padding:0;border:0;background:#e9e9e7;border-radius:12px;overflow:hidden;cursor:zoom-in;box-shadow:0 0 0 1px rgba(231,241,244,.12),0 22px 40px -28px rgba(0,0,0,.7);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.cpx-thumb img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cpx-thumb:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(181,212,127,.5),0 26px 44px -26px rgba(0,0,0,.75)}
+.cpx-gallery{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(22px,2.4vw,34px) clamp(16px,1.8vw,26px)}
+.cpx-gallery li{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cpx-gallery li .cpx-thumb{margin-bottom:8px}
+.cpx-gallery b{font-size:11px;font-weight:650;color:#b5d47f;letter-spacing:.06em}
+.cpx-gallery strong{font-size:15px;line-height:1.2;font-weight:600;letter-spacing:-.025em;color:#f2f8f9}
+.cpx-gallery span{font-size:12.5px;line-height:1.5;color:#9fb6bc}
+.cpx-modal{max-width:min(1280px,94vw)!important;padding:0!important;background:#0f1b1e!important;border-radius:14px;overflow:hidden}
+.cpx-modal img{display:block;width:100%;height:auto;max-height:86svh;object-fit:contain;background:#e9e9e7}
+.cpx-modal .close{z-index:2;background:rgba(15,27,30,.8);color:#e7f1f4;border-color:rgba(231,241,244,.3)}
+@media(max-width:920px){.cpx-head{grid-template-columns:1fr}.cpx-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:690px){
+  .cor-logo{left:50%;transform:translateX(-50%);top:9%;height:48%;max-width:70%}
+  .cpx-gallery{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+  .cpx-gallery li{scroll-snap-align:start}
+}
+
 .cor-process{grid-column:1/-1;padding:clamp(34px,4vw,56px) 0 clamp(10px,2vw,24px);color:#e7f1f4}
 .cp-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 48px;align-items:end;margin-bottom:clamp(26px,3vw,40px)}
 .cp-head .section-flag{grid-column:1/-1;color:#9fb6bc}
@@ -1041,28 +1070,23 @@ Não afirmar que decisões COR foram implantadas, nem ganhos de receita, retenç
   <article class="case case-cor reveal"><div class="case-illustration">
 <div class="case-cor-art" aria-hidden="true">
   <div class="cor-meta"><span>Rzrd. / Aether</span><span>ESTUDO DE DIREÇÃO</span></div>
-  <div class="cor-wordmark">COR<span class="cor-period">.</span></div>
+  <img class="cor-logo" src="assets/home/cor/cor-logo.png" alt="Monograma da Academia COR, desenvolvido pela Rzrd." loading="lazy"/>
   <div class="cor-doc"><div class="cor-doc-index">BLOCO 2 <span>ESSÊNCIA E POSICIONAMENTO</span></div><strong>O COR não existe para motivar. Ele existe para orientar.</strong><div class="cor-doc-footer">Centro <i></i> Estrutura <i></i> Retidão</div></div>
-  <div class="cor-map cor-paths"><svg viewBox="0 0 360 120" aria-hidden="true">
-<g fill="none" stroke="#3b5c47" stroke-width="1.4" stroke-linecap="round">
-<g opacity=".45"><path d="M60 18V92"/><path d="M48 18h24M48 92h24" stroke-width="1"/></g>
-<g opacity=".45"><circle cx="180" cy="55" r="30"/><circle cx="180" cy="55" r="8" fill="#3b5c47"/></g>
-<g class="cor-pick"><path d="M326 32A30 30 0 1 0 326 78" stroke-width="2.2"/><circle cx="300" cy="55" r="11" fill="#3b5c47" stroke="none"/><path d="M300 22V88" stroke-width="2.2"/></g>
-</g>
-<g font-family="Geist,Arial,sans-serif" font-size="8.5" font-weight="650" letter-spacing="1.5" fill="#4b6350" text-anchor="middle">
-<text x="60" y="114">EIXO</text><text x="180" y="114">NÚCLEO</text><text x="300" y="114" fill="#8f5a35">MONOGRAMA</text></g>
-</svg><span>CAMINHOS ESTRUTURAIS TESTADOS</span></div>
+  
 </div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article>
-  <section class="cor-process reveal" aria-labelledby="cor-process-title">
-    <div class="cp-head"><span class="section-flag">Processo do COR</span><h3 id="cor-process-title">Da tese ao sistema,<br/>em sete blocos.</h3><p>O caderno de direção do COR foi construído em etapas. Cada uma responde a uma pergunta antes de passar para a forma.</p></div>
-    <ol class="cp-steps">
-      <li><b>1</b><strong>Fundamento conceitual</strong><span>No pensamento agostiniano, o coração é o centro da decisão. É daí que o COR nasce.</span></li>
-      <li><b>2</b><strong>Essência e posicionamento</strong><span>Centro, estrutura e retidão. O COR não existe para motivar. Existe para orientar.</span></li>
-      <li><b>3</b><strong>Do conceito à forma</strong><span>Critérios formais definidos antes do desenho. Eles não orientam o design, eles o limitam.</span></li>
-      <li><b>4</b><strong>Caminhos testados</strong><span>Figurativo, tipográfico e estrutural. Nem tudo que é abstrato é estrutural.</span></li>
-      <li><b>5</b><strong>A direção escolhida</strong><span>Entre eixo, núcleo e monograma, o monograma integrou os dois e se comporta como o COR.</span></li>
-      <li><b>6</b><strong>Construção do símbolo</strong><span>O C contém, o O ocupa o centro, o R sustenta o eixo.</span></li>
-      <li><b>7</b><strong>Sistema e aplicações</strong><span>Regras de permanência para o institucional e o digital. Permanência exige renúncia.</span></li>
+  <section class="cor-process cpx reveal" aria-labelledby="cor-process-title">
+    <div class="cpx-head">
+      <figure class="cpx-origin"><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/abertura.jpg" aria-label="Ampliar a abertura da apresentação"><img src="assets/home/cor/abertura.jpg" alt="Abertura da apresentação de direção de marca do COR feita pela Rzrd." loading="lazy"/></button><figcaption>Ponto de partida · Direção de marca COR · jan 2026</figcaption></figure>
+      <div class="cpx-intro"><span class="section-flag">Processo do COR</span><h3 id="cor-process-title">De onde partimos e como chegamos à forma.</h3><p>Antes de desenhar, investigamos de onde o COR parte e o que ele precisa sustentar. Estas são telas do caderno de direção entregue à Academia COR, na ordem em que o raciocínio foi construído.</p></div>
+    </div>
+    <ol class="cpx-gallery">
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b1-fundamento.jpg" aria-label="Ampliar: O que significa COR"><img src="assets/home/cor/b1-fundamento.jpg" alt="Tela do caderno de direção do COR: O que significa COR" loading="lazy"/></button><b>1</b><strong>O que significa COR</strong><span>No pensamento agostiniano, o coração é o centro da decisão. É daí que o COR nasce.</span></li>
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b2-essencia.jpg" aria-label="Ampliar: Essência da marca"><img src="assets/home/cor/b2-essencia.jpg" alt="Tela do caderno de direção do COR: Essência da marca" loading="lazy"/></button><b>2</b><strong>Essência da marca</strong><span>Centro, estrutura e retidão: o eixo que orienta todas as escolhas seguintes.</span></li>
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b3-decisoes.jpg" aria-label="Ampliar: Da estratégia à forma"><img src="assets/home/cor/b3-decisoes.jpg" alt="Tela do caderno de direção do COR: Da estratégia à forma" loading="lazy"/></button><b>3</b><strong>Da estratégia à forma</strong><span>Cada princípio vira critério visual antes de qualquer desenho.</span></li>
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b5-monograma.jpg" aria-label="Ampliar: Por que o monograma venceu"><img src="assets/home/cor/b5-monograma.jpg" alt="Tela do caderno de direção do COR: Por que o monograma venceu" loading="lazy"/></button><b>4</b><strong>Por que o monograma venceu</strong><span>Figurativo, tipográfico e estrutural foram testados. Eixo e núcleo resolviam partes; o monograma resolveu o sistema.</span></li>
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b6-construcao.jpg" aria-label="Ampliar: Construção do símbolo"><img src="assets/home/cor/b6-construcao.jpg" alt="Tela do caderno de direção do COR: Construção do símbolo" loading="lazy"/></button><b>5</b><strong>Construção do símbolo</strong><span>Geometria que organiza sem fechar: o C contém, o O ocupa o centro, o R sustenta o eixo.</span></li>
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b7-sistema.jpg" aria-label="Ampliar: Do símbolo ao sistema"><img src="assets/home/cor/b7-sistema.jpg" alt="Tela do caderno de direção do COR: Do símbolo ao sistema" loading="lazy"/></button><b>6</b><strong>Do símbolo ao sistema</strong><span>Regras de permanência para o símbolo funcionar no institucional e no digital.</span></li>
+      <li><button type="button" class="cpx-thumb" data-cp-full="assets/home/cor/b7-aplicacao.jpg" aria-label="Ampliar: Aplicação"><img src="assets/home/cor/b7-aplicacao.jpg" alt="Tela do caderno de direção do COR: Aplicação" loading="lazy"/></button><b>7</b><strong>Aplicação</strong><span>O monograma aplicado em material da Academia.</span></li>
     </ol>
   </section>
   <article class="case case-eno reveal"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article>
@@ -1184,6 +1208,7 @@ Referência de produção: luz lateral natural, ambiente real de trabalho, roupa
      Controles nativos, sem autoplay/loop; fecha com X, fundo ou Escape.
 -->
 <div class="overlay" id="manifest-overlay" aria-hidden="true"><section class="modal manifest-video-modal" role="dialog" aria-modal="true" aria-labelledby="manifest-modal-title" tabindex="-1"><button type="button" class="close" data-close="manifest-overlay" aria-label="Fechar manifesto">×</button><h2 id="manifest-modal-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Nossa forma de pensar</h2><video id="manifest-video" controls playsinline preload="none" aria-label="Manifesto institucional da Rzrd."></video></section></div>
+<div class="overlay" id="cp-overlay" aria-hidden="true"><section class="modal cpx-modal" role="dialog" aria-modal="true" aria-label="Tela do caderno do COR"><button type="button" class="close" data-close="cp-overlay" aria-label="Fechar">×</button><img id="cp-full" alt=""/></section></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="assets/rz-campo.js" defer></script>
 <script>
@@ -1297,6 +1322,14 @@ for (const img of document.querySelectorAll('.vortex-reel img, .vx-reel img, .ca
 (function(){var box=document.getElementById('about-photo');if(!box)return;var real=new Image();
  real.onload=function(){var img=box.querySelector('img');img.src=real.src;img.alt='Geórgia Rizzardi e William Cabral, fundadores da Rzrd.';var d=box.querySelector('.photo-disclaimer');if(d)d.remove()};
  real.src='assets/home/sobre-georgia-william.jpg';})();
+</script>
+<script>
+/* Processo do COR: abre a tela do caderno em tamanho grande */
+(function(){var ov=document.getElementById('cp-overlay'),im=document.getElementById('cp-full');if(!ov)return;
+ function close(){ov.classList.remove('show');ov.setAttribute('aria-hidden','true');document.body.classList.remove('lock')}
+ document.querySelectorAll('[data-cp-full]').forEach(function(b){b.addEventListener('click',function(){var t=b.querySelector('img');im.src=b.dataset.cpFull;im.alt=t?t.alt:'';ov.classList.add('show');ov.setAttribute('aria-hidden','false');document.body.classList.add('lock');ov.querySelector('.close').focus()})});
+ ov.querySelector('.close').addEventListener('click',close);ov.addEventListener('click',function(e){if(e.target===ov)close()});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('show'))close()});})();
 </script>
 </body>
 </html>
