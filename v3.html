@@ -937,6 +937,42 @@ html[data-fundo="azul"] .contact-glow{opacity:.32!important}
 .ct-info a:hover{border-color:currentColor;color:#fff}
 @media(max-width:920px){.ct-grid{grid-template-columns:1fr;align-items:start}}
 @media(max-width:690px){.ct-left h2{font-size:clamp(3.4rem,16vw,4.6rem)!important}.ct-info>div{flex-direction:column;gap:6px}.ct-info dd{gap:16px}}
+
+/* ===== Clientes em blocos com logo; case completo em pop-up ===== */
+.cl-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(14px,1.6vw,24px)!important}
+.cl-tile{display:flex;flex-direction:column;gap:18px;padding:0;border:0;background:transparent;color:#e7f1f4;text-align:left;cursor:pointer;font:inherit}
+.cl-art{position:relative;display:grid;place-items:center;aspect-ratio:4/3;border-radius:18px;overflow:hidden;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.cl-tile:hover .cl-art{transform:translateY(-4px);box-shadow:0 28px 50px -30px rgba(0,0,0,.75)}
+.cl-cor{background:#cdd6c7}
+.cl-cor img{position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;height:74%;width:auto;max-width:70%;object-fit:contain}
+.cl-eno{background:#3a2a26}
+.cl-spc{background:#51495e}
+.cl-word{font-size:clamp(2.2rem,3.6vw,3.6rem);font-weight:520;letter-spacing:-.065em;color:#f6ede6;line-height:1}
+.cl-spc .cl-word{color:#f3eefa}
+.cl-tag{position:absolute;left:18px;bottom:16px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d9c9e2;font-weight:600}
+.cl-cap{display:flex;flex-direction:column;gap:6px;padding:0 2px}
+.cl-cap small{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8fa9b0;font-weight:600}
+.cl-cap strong{font-size:clamp(1.3rem,1.8vw,1.7rem);font-weight:540;letter-spacing:-.045em;line-height:1.1;color:#f2f8f9}
+.cl-cap em{font-style:normal;font-size:14px;line-height:1.5;color:#a9bec3}
+.cl-more{margin-top:6px;font-size:13px;font-weight:600;color:#e7f1f4;align-self:flex-start;border-bottom:1px solid rgba(231,241,244,.4);padding-bottom:4px;transition:color .3s,border-color .3s}
+.cl-tile:hover .cl-more{color:#b5d47f;border-color:#b5d47f}
+.cl-tile:focus-visible{outline:2px solid #69d1eb;outline-offset:6px;border-radius:18px}
+.case-modal{max-width:min(1180px,94vw)!important;width:100%;padding:0!important;background:#142327!important;max-height:92svh;overflow:auto!important;border-radius:18px!important}
+.case-modal .case{display:grid;min-height:0}
+.case-modal .case-cor{grid-template-columns:1.1fr .9fr}
+.case-modal .close{z-index:5;background:rgba(15,27,30,.72)!important;color:#e7f1f4!important;border-color:rgba(231,241,244,.3)!important}
+.case-modal .case-eno{grid-template-columns:1fr 1fr;background:#1b2e33}
+.case-modal .case-eno .case-video{height:100%!important;min-height:520px}
+.case-modal .case-eno .case-secondary-copy{justify-content:center;padding:clamp(28px,4vw,56px)!important}
+.case-modal .sc{grid-template-columns:1.2fr .8fr;background:#1e1b24}
+.case-modal .sc .sc-copy{justify-content:center;padding:clamp(28px,4vw,48px)!important}
+.case-modal .case-standfirst{font-size:clamp(1.3rem,2vw,2rem)!important;line-height:1.17!important;color:#222b23!important;margin:0 0 20px!important}
+.case-modal .case-detail{font-size:14px!important;line-height:1.6!important;color:#58625a!important;margin:0 0 34px!important}
+.case-modal .case-secondary-copy p{font-size:15px!important;line-height:1.55!important;color:#b9cbd0!important;margin:0!important}
+.case-modal .sc .sc-panel p{margin:0 0 18px!important}
+@media(max-width:920px){.cl-grid{grid-template-columns:1fr!important}.cl-art{aspect-ratio:16/9}
+  .case-modal .case-cor,.case-modal .case-eno,.case-modal .sc{grid-template-columns:1fr}
+  .case-modal .case-eno .case-video{min-height:420px}}
 /* ===== Processo do COR ===== */
 /* ===== COR com identidade real ===== */
 .cor-logo{position:absolute;left:6%;top:15%;height:74%;width:auto;max-width:44%;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(255,255,255,.25))}
@@ -1126,61 +1162,10 @@ Não afirmar que decisões COR foram implantadas, nem ganhos de receita, retenç
 -->
 <section class="work" id="trabalhos" aria-labelledby="work-title"><div class="container">
  <div class="section-head reveal"><div><span class="section-flag">Projetos e demonstrações</span><h2 id="work-title">Do pensamento<br/>ao trabalho.</h2></div><p>Três perspectivas sobre nossa atuação: direção de marca, produção contínua e investigação de resultados.</p></div>
- <div class="portfolio-v4">
-  <article class="case case-cor reveal"><div class="case-illustration">
-<div class="case-cor-art" aria-hidden="true">
-  <div class="cor-meta"><span>Rzrd. / Aether</span><span>ESTUDO DE DIREÇÃO</span></div>
-  <img class="cor-logo" src="assets/home/cor/cor-logo.png" alt="Monograma da Academia COR, desenvolvido pela Rzrd." loading="lazy"/>
-  <div class="cor-doc"><div class="cor-doc-index">BLOCO 2 <span>ESSÊNCIA E POSICIONAMENTO</span></div><strong>O COR não existe para motivar. Ele existe para orientar.</strong><div class="cor-doc-footer">Centro <i></i> Estrutura <i></i> Retidão</div></div>
-  
-</div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article>
-  <article class="case case-eno reveal"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article>
-  <!-- [AI-EDIT:SPECTRA-CASE-V5]
-  PORTFÓLIO = segundo exemplo, não repetir o panorama +34/-11/+6 do card.
-  Fonte: seção "Um caso em profundidade" do site da Spectra, dados SINTÉTICOS.
-  Setembro: 10 posts medidos aos 7 dias, total 1.000, mediana 100.
-  Outubro: 10 posts medidos aos 7 dias, total 1.950, mediana 50;
-  um post com 1.500 e os outros 9 com 50 salvamentos cada.
-  Não afirmar que setembro teve 10 posts com 100 cada; isso não está provado.
-  O insight é sobre concentração e distribuição, não crescimento de negócio.
-  CTA navega à demonstração na página pública; NÃO abrir modal genérico.
-  -->
-<!-- [AI-EDIT:SPECTRA-CASE-V6] INÍCIO — substitui SOMENTE o case "O pico não explica a rotina" da V5.
-  Decisão visual: primeiramente o agregado (+30%), depois a diferença por intenção.
-  Dados: Codex / spectra-editorial-case/data/analysis.json, simulação n=144, não resultados de cliente.
-  Taxas ponderadas por alcance: Resolver (13.2039 vs 22.6874) e Reconsiderar (14.6057 vs 12.8416) ações por mil.
-  O efeito -12% em Reconsiderar é incerto, por isso o layout NÃO chama argumento de vencedor.
-  Nunca trocar números sem regenerar data/analysis.json e rever interpretações.
-  Este componente NÃO reproduz o exemplo "Mais pessoas chegaram" da seção Produtos.
-  Botão abre explicação no próprio HTML; "Ver investigação completa" abre versão standalone incorporada nesta V6.
-  Para editar, consulte também [AI-EDIT:CSS-V6] e [AI-EDIT:STUDY-BEHAVIOR-V6].
--->
-<!--
-[AI-EDIT:SPECTRA-CARD-V7]
-Reescrita comercial, NÃO uma nova análise. A sequência visual no card é:
-(a) regra que a média sugeria, (b) diferença que aparece ao olhar a intenção,
-(c) decisão prática que a equipe pode testar. Evitar jargão, comparação de muitos
-indicadores e conclusões causais. Manter o data-open-spectra-study do botão.
--->
-<article aria-labelledby="spectra-case-v6-title" class="case case-spectra spectra-case-v6 sc reveal">
-  <div class="sc-panel">
-    <div class="sc-meta"><span>spectra</span><span>simulação</span></div>
-    <h3 id="spectra-case-v6-title">Exemplos funcionam.<br><em>Sempre?</em></h3>
-    <p class="sc-rule"><span>A regra que parecia valer</span><s>Use exemplos em todo post.</s></p>
-    <ul class="sc-find" aria-label="Separar por intenção revelou resultados diferentes">
-      <li><span>Para resolver um problema</span><strong>Exemplos se destacaram.</strong></li>
-      <li><span>Para provocar reflexão</span><strong>Sem fórmula vencedora.</strong></li>
-    </ul>
-    <button type="button" class="sc-btn" data-open-spectra-study aria-label="Entender a descoberta da Spectra">Entender a virada <span aria-hidden="true">↗</span></button>
-  </div>
-  <div class="case-secondary-copy sc-copy">
-    <span class="case-serial">3 · SPECTRA / INTELIGÊNCIA EDITORIAL</span>
-    <h3>E agora, o que publicar?</h3>
-    <p>Primeiro, definir o objetivo da pauta. Depois, escolher como contar.</p>
-    <span class="spectra-v6-secondary-note">Dados sintéticos · não é resultado de cliente</span>
-  </div>
-</article>
-<!-- [AI-EDIT:SPECTRA-CASE-V6] FIM -->
+ <div class="portfolio-v4 cl-grid">
+  <button type="button" class="cl-tile reveal" data-case="cor" aria-haspopup="dialog"><span class="cl-art cl-cor"><img src="assets/home/cor/cor-logo.png" alt="Academia COR"/></span><span class="cl-cap"><small>1 · Aether / Direção de marca</small><strong>COR</strong><em>Direção institucional, do fundamento ao símbolo.</em><span class="cl-more">Ver case <span aria-hidden="true">↗</span></span></span></button>
+  <button type="button" class="cl-tile reveal" data-case="eno" aria-haspopup="dialog"><span class="cl-art cl-eno"><span class="cl-word">Eno Cultura</span></span><span class="cl-cap"><small>2 · Vortex / Presença contínua</small><strong>Eno Cultura</strong><em>Criação e produção audiovisual em movimento.</em><span class="cl-more">Ver case <span aria-hidden="true">↗</span></span></span></button>
+  <button type="button" class="cl-tile reveal" data-case="spectra" aria-haspopup="dialog"><span class="cl-art cl-spc"><span class="cl-word">.spectra</span><span class="cl-tag">demonstração</span></span><span class="cl-cap"><small>3 · Spectra / Inteligência editorial</small><strong>Exemplos funcionam. Sempre?</strong><em>Uma investigação com dados sintéticos.</em><span class="cl-more">Ver case <span aria-hidden="true">↗</span></span></span></button>
  </div>
 </div></section>
 <!-- [AI-EDIT:ABOUT]
@@ -1205,6 +1190,33 @@ Referência de produção: luz lateral natural, ambiente real de trabalho, roupa
 </div></section>
 </main>
 <footer class="footer"><div class="container"><div class="footer-top"><a class="wordmark" href="#topo" aria-label="Voltar ao início"><img src="assets/RZRD.svg" alt="Rzrd." onerror="this.classList.add('error')"/><span class="fallback">rzrd.</span></a><span class="footer-small">Estratégia · Direção criativa · Execução</span><nav class="footer-links" aria-label="Rodapé"><a href="#atuacao">O que fazemos</a><a href="#trabalhos">Trabalhos</a><a href="mailto:contato@rzrd.com.br">E-mail</a></nav></div><div class="footer-bottom"><span>© Rzrd. Direção antes de presença.</span><span>Prévia editorial · 2026</span></div></div></footer>
+<div class="overlay case-ov" id="case-cor-ov" aria-hidden="true"><section class="modal case-modal" role="dialog" aria-modal="true" aria-label="Case COR" tabindex="-1"><button type="button" class="close" data-close="case-cor-ov" aria-label="Fechar">×</button><article class="case case-cor"><div class="case-illustration">
+<div class="case-cor-art" aria-hidden="true">
+  <div class="cor-meta"><span>Rzrd. / Aether</span><span>ESTUDO DE DIREÇÃO</span></div>
+  <img class="cor-logo" src="assets/home/cor/cor-logo.png" alt="Monograma da Academia COR, desenvolvido pela Rzrd." loading="lazy"/>
+  <div class="cor-doc"><div class="cor-doc-index">BLOCO 2 <span>ESSÊNCIA E POSICIONAMENTO</span></div><strong>O COR não existe para motivar. Ele existe para orientar.</strong><div class="cor-doc-footer">Centro <i></i> Estrutura <i></i> Retidão</div></div>
+  
+</div></div><div class="case-info"><span class="case-serial">1 · AETHER / DIREÇÃO DE MARCA</span><h3>COR</h3><p class="case-standfirst">Dar forma a uma direção institucional que possa orientar escolhas e acompanhar o crescimento.</p><p class="case-detail">Investigação de posicionamento, cartografia de referências e documentação de fundamentos, linguagem, experiência e execução.</p><div class="case-foot"><span>Investigação · Direção · Manual de execução</span><span class="case-status">ESTUDO DOCUMENTADO</span></div></div></article></section></div>
+<div class="overlay case-ov" id="case-eno-ov" aria-hidden="true"><section class="modal case-modal" role="dialog" aria-modal="true" aria-label="Case Eno Cultura" tabindex="-1"><button type="button" class="close" data-close="case-eno-ov" aria-label="Fechar">×</button><article class="case case-eno"><button class="case-video" type="button" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual" aria-label="Reproduzir vídeo da Eno Cultura"><span class="media-fallback" aria-hidden="true">ENO<br/>CULTURA</span><img src="assets/cases/enocultura-reels-dionisio.jpg" alt="Frame de vídeo da Eno Cultura produzido no Vortex" loading="lazy"/><span class="case-play" aria-hidden="true">▶</span></button><div class="case-secondary-copy"><span class="case-serial">2 · VORTEX / PRESENÇA CONTÍNUA</span><h3>Eno Cultura</h3><p>Criação e produção audiovisual para uma presença editorial em movimento.</p><button type="button" class="case-action" data-video="assets/cases/enocultura-reels-dionisio.mp4" data-title="Eno Cultura: amostra real de conteúdo audiovisual">Assistir ao recorte ↗</button></div></article></section></div>
+<div class="overlay case-ov" id="case-spectra-ov" aria-hidden="true"><section class="modal case-modal" role="dialog" aria-modal="true" aria-label="Case Spectra" tabindex="-1"><button type="button" class="close" data-close="case-spectra-ov" aria-label="Fechar">×</button><article aria-labelledby="spectra-case-v6-title" class="case case-spectra spectra-case-v6 sc">
+  <div class="sc-panel">
+    <div class="sc-meta"><span>spectra</span><span>simulação</span></div>
+    <h3 id="spectra-case-v6-title">Exemplos funcionam.<br><em>Sempre?</em></h3>
+    <p class="sc-rule"><span>A regra que parecia valer</span><s>Use exemplos em todo post.</s></p>
+    <ul class="sc-find" aria-label="Separar por intenção revelou resultados diferentes">
+      <li><span>Para resolver um problema</span><strong>Exemplos se destacaram.</strong></li>
+      <li><span>Para provocar reflexão</span><strong>Sem fórmula vencedora.</strong></li>
+    </ul>
+    <button type="button" class="sc-btn" data-open-spectra-study aria-label="Entender a descoberta da Spectra">Entender a virada <span aria-hidden="true">↗</span></button>
+  </div>
+  <div class="case-secondary-copy sc-copy">
+    <span class="case-serial">3 · SPECTRA / INTELIGÊNCIA EDITORIAL</span>
+    <h3>E agora, o que publicar?</h3>
+    <p>Primeiro, definir o objetivo da pauta. Depois, escolher como contar.</p>
+    <span class="spectra-v6-secondary-note">Dados sintéticos · não é resultado de cliente</span>
+  </div>
+</article></section></div>
+
 <!-- Modais de vídeo e formulário. -->
 
 <!-- [AI-EDIT:SPECTRA-STORY-MODAL-V6] Modal de introdução acessível; nenhuma conclusão sobre clientes reais. -->
@@ -1354,6 +1366,10 @@ for (const img of document.querySelectorAll('.vortex-reel img, .vx-reel img, .ca
 (function(){var box=document.getElementById('about-photo');if(!box)return;var real=new Image();
  real.onload=function(){var img=box.querySelector('img');img.src=real.src;img.alt='Geórgia Rizzardi e William Cabral, fundadores da Rzrd.';var d=box.querySelector('.photo-disclaimer');if(d)d.remove()};
  real.src='assets/home/sobre-georgia-william.jpg';})();
+</script>
+<script>
+/* Clientes: cada bloco abre o case completo num pop-up */
+(function(){document.querySelectorAll('[data-case]').forEach(function(b){b.addEventListener('click',function(){var ov=document.getElementById('case-'+b.dataset.case+'-ov');if(!ov)return;ov.classList.add('show');ov.setAttribute('aria-hidden','false');document.body.classList.add('lock');var c=ov.querySelector('.close');if(c)setTimeout(function(){c.focus()},30);ov.querySelectorAll('.product,.reveal').forEach(function(e){e.classList.add('visible')})})});})();
 </script>
 </body>
 </html>
