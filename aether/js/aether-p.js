@@ -94,7 +94,6 @@
 
   /* 4 · o fio entre direção e trabalho */
   const left=document.querySelector('.a54-project-left');
-  if(left&&!left.querySelector('.pj-link')){const l=document.createElement('span');l.className='pj-link';l.setAttribute('aria-hidden','true');left.appendChild(l)}
 
   /* 5 · prévia dos instrumentos num iPad */
   const foot=document.querySelector('.approach-foot');const open=document.getElementById('open-method');
@@ -267,23 +266,53 @@ document.querySelectorAll('.a54-project-examples').forEach(p=>{
   f.innerHTML='<img src="img/img-5-5cc64970.jpg" alt="" width="52" height="52"><img src="img/img-4-448280f5.jpg" alt="" width="52" height="52">';
   hp.append(f,t)})();
 
-/* projeto guiado pela rolagem (telas largas) */
+/* Uma direção → O trabalho que ela exige: fios entre as escolhas e as mudanças */
 (function(){
-  const c=document.querySelector('.a54-project-composition');if(!c||c.querySelector('.pj-stick'))return;
-  const stick=document.createElement('div');stick.className='pj-stick';
-  [...c.children].forEach(ch=>stick.appendChild(ch));c.appendChild(stick);c.classList.add('pj-scroll');
-  c.querySelectorAll('.a54-project-right .pj-item').forEach((it,i)=>it.style.setProperty('--i',i));
+  const c=document.querySelector('.a54-project-composition');if(!c)return;
+  const grid=c.querySelector('.a54-project-grid');
+  const L=[...c.querySelectorAll('.a54-project-left .pj-item')],R=[...c.querySelectorAll('.a54-project-right .pj-item')];
+  if(!grid||L.length<3||R.length<4)return;
+  // clientes → oferta, entrega · ofertas → oferta, materiais · posição → marca, materiais
+  const links=[[0,0],[0,3],[1,0],[1,2],[2,1],[2,2]];
+  [...L,...R].forEach(it=>{const d=document.createElement('span');d.className='pj-dot';d.setAttribute('aria-hidden','true');it.appendChild(d)});
+  L.forEach((it,i)=>it.style.setProperty('--d',120+i*140));
+  R.forEach((it,j)=>{const first=links.findIndex(l=>l[1]===j);it.style.setProperty('--d',700+first*160+500)});
+  const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg');
+  svg.setAttribute('class','pj-wires');svg.setAttribute('aria-hidden','true');grid.prepend(svg);
+  svg.innerHTML='<defs><linearGradient id="pjg" gradientUnits="userSpaceOnUse" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#58784A"/><stop offset=".55" stop-color="#86A372"/><stop offset="1" stop-color="#C5D9AB"/></linearGradient></defs>';
+  const grad=svg.querySelector('#pjg');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const wide=matchMedia('(min-width:901px)');
-  const hdr=document.querySelector('.site-header');
-  let tick=false;
-  const upd=()=>{tick=false;
-    if(reduce||!wide.matches){c.style.setProperty('--p',1);return}
-    const h=hdr?hdr.offsetHeight:82;document.documentElement.style.setProperty('--hdr',h+'px');
-    const r=c.getBoundingClientRect(),span=r.height-(innerHeight-h);
-    const p=Math.max(0,Math.min(1,(h-r.top)/Math.max(1,span)*1.15));
-    c.style.setProperty('--p',p.toFixed(4));
+  const paths=links.map(([a,b],k)=>{
+    const p=document.createElementNS(NS,'path');p.setAttribute('id','pjw'+k);p.setAttribute('pathLength','1');
+    p.style.transitionDelay=(700+k*160)+'ms';p.dataset.a=a;p.dataset.b=b;svg.appendChild(p);
+    if(!reduce){const ci=document.createElementNS(NS,'circle');ci.setAttribute('r','2.6');
+      const m=document.createElementNS(NS,'animateMotion');m.setAttribute('dur',(3.4+k*.35).toFixed(2)+'s');m.setAttribute('repeatCount','indefinite');m.setAttribute('begin',(k*.55).toFixed(2)+'s');
+      const mp=document.createElementNS(NS,'mpath');mp.setAttribute('href','#pjw'+k);m.appendChild(mp);ci.appendChild(m);svg.appendChild(ci)}
+    return p});
+  const draw=()=>{
+    if(innerWidth<901)return;
+    const g=grid.getBoundingClientRect();
+    const la=L[0].querySelector('.pj-dot').getBoundingClientRect(),rb=R[0].querySelector('.pj-dot').getBoundingClientRect();grad.setAttribute('x1',(la.left-g.left).toFixed(0));grad.setAttribute('x2',(rb.right-g.left).toFixed(0));
+    paths.forEach(p=>{
+      const a=L[p.dataset.a].querySelector('.pj-dot').getBoundingClientRect(),b=R[p.dataset.b].querySelector('.pj-dot').getBoundingClientRect();
+      const x1=a.left+a.width/2-g.left,y1=a.top+a.height/2-g.top,x2=b.left+b.width/2-g.left,y2=b.top+b.height/2-g.top,dx=(x2-x1)*.55;
+      p.setAttribute('d',`M${x1.toFixed(1)} ${y1.toFixed(1)}C${(x1+dx).toFixed(1)} ${y1.toFixed(1)} ${(x2-dx).toFixed(1)} ${y2.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`)});
   };
-  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
-  addEventListener('resize',upd);wide.addEventListener('change',upd);upd();
+  draw();addEventListener('resize',draw);document.fonts&&document.fonts.ready.then(draw);addEventListener('load',draw);
+  if('ResizeObserver' in window)new ResizeObserver(draw).observe(grid);
+  const burst=ms=>{const t0=performance.now();const f=()=>{draw();if(performance.now()-t0<ms)requestAnimationFrame(f)};f()};
+  c.addEventListener('transitionend',e=>{if(e.target.closest('.a54-project-grid>*')&&!e.target.classList.contains('pj-item'))draw()});
+  new MutationObserver(()=>{if(c.classList.contains('p-in')&&!c.classList.contains('p-on')){burst(3200);setTimeout(()=>c.classList.add('p-on'),2400)}}).observe(c,{attributes:true,attributeFilter:['class']});
+  document.querySelectorAll('.a54-project-grid>*').forEach(el=>new MutationObserver(()=>burst(2200)).observe(el,{attributes:true,attributeFilter:['class']}));
+  if(c.classList.contains('p-in'))c.classList.add('p-on');
+  // passar o mouse num tópico acende só os fios dele
+  const set=(side,i)=>{c.classList.add('hov');
+    const on=links.map(([a,b])=>side==='L'?a===i:b===i);
+    paths.forEach((p,k)=>p.classList.toggle('hl',on[k]));
+    L.forEach((it,a)=>it.classList.toggle('hl',side==='L'?a===i:links.some(([x,y],k)=>on[k]&&x===a)));
+    R.forEach((it,b)=>it.classList.toggle('hl',side==='R'?b===i:links.some(([x,y],k)=>on[k]&&y===b)));
+  };
+  const clr=()=>{c.classList.remove('hov');[...paths,...L,...R].forEach(e=>e.classList.remove('hl'))};
+  L.forEach((it,i)=>{it.addEventListener('mouseenter',()=>set('L',i));it.addEventListener('mouseleave',clr)});
+  R.forEach((it,i)=>{it.addEventListener('mouseenter',()=>set('R',i));it.addEventListener('mouseleave',clr)});
 })();
