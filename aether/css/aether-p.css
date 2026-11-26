@@ -333,3 +333,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
 .contact-v52 .conversation-form .form-note{margin-top:14px}
 .contact-v52 .conversation-form .field.has-count{position:relative}
 @media (min-width:901px){.contact-v52 .conversation-form .form-row{grid-template-columns:1fr 1fr!important}}
+
+/* instrumentos: só "Mesmo sem dados organizados," em tamanho e peso de título; o resto menor */
+.approach-foot .approach-caption{font-size:clamp(18px,1.45vw,24px)!important;line-height:1.4!important;letter-spacing:-.02em!important;max-width:30ch!important;color:#D8E4CD!important}
+.approach-foot .approach-caption .ac-lead{display:block;font-size:clamp(40px,4.6vw,78px);line-height:.98;letter-spacing:-.058em;font-weight:500;color:#F2F0E6;max-width:9ch;margin-bottom:clamp(18px,1.8vw,28px)}

@@ -316,3 +316,8 @@ document.querySelectorAll('.a54-project-examples').forEach(p=>{
   L.forEach((it,i)=>{it.addEventListener('mouseenter',()=>set('L',i));it.addEventListener('mouseleave',clr)});
   R.forEach((it,i)=>{it.addEventListener('mouseenter',()=>set('R',i));it.addEventListener('mouseleave',clr)});
 })();
+
+/* instrumentos: destaca a abertura da frase sem mudar o texto */
+(function(){const c=document.querySelector('.approach-caption');if(!c||c.querySelector('.ac-lead'))return;
+  const k='Mesmo sem dados organizados,';const t=c.firstChild;if(!t||t.nodeType!==3||!t.data.startsWith(k))return;
+  const s=document.createElement('span');s.className='ac-lead';s.textContent=k;t.data=t.data.slice(k.length);c.insertBefore(s,t)})();
