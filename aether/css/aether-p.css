@@ -55,3 +55,72 @@
 .a54-moment-head{display:block!important}
 .a54-moment-head>div{display:block!important}
 .a54-moment-head h2{text-align:left!important;max-width:none!important}
+
+/* =====================================================================
+   Medidas da família Rzrd. (Vortex e Spectra): conteúdo mais largo,
+   margens proporcionais e títulos na mesma escala
+   ===================================================================== */
+:root{--max:1640px;--pad:clamp(20px,4.6vw,80px)}
+.hero h1{font-size:clamp(52px,min(8vw,15.5svh),136px)!important;line-height:.96!important;letter-spacing:-.062em!important;max-width:15.5ch!important}
+.hero-lead{font-size:clamp(17px,1.3vw,21px)!important;line-height:1.55!important}
+.a54-moment-head h2,.a54-project-left h2,.a54-project-right h3,.investigation-heading h2,.people-heading h2,.conversation-head h2{
+  font-size:clamp(44px,6vw,100px)!important;line-height:.98!important;letter-spacing:-.058em!important}
+.investigation-heading h2{max-width:none!important}
+.a54-other-possibilities h3{font-size:clamp(32px,3.8vw,60px)!important}
+.a54-exhibit-copy h3{font-size:clamp(36px,4.6vw,76px)!important}
+.investigation-principle,.a54-project-definition{font-size:clamp(17px,1.35vw,22px)!important}
+
+/* =====================================================================
+   A peça: inclinação 3D com o mouse, luz que acompanha o cursor,
+   paralaxe na rolagem e entrada com aproximação
+   ===================================================================== */
+.a54-exhibit{--rx:0deg;--ry:0deg;--py:0px;--sc:1.1;--lx:62%;--ly:38%}
+.a54-exhibit .a54-art{transform:perspective(1800px) rotateX(var(--rx)) rotateY(var(--ry)) translate3d(0,var(--py),0) scale(var(--sc));transform-origin:58% 52%;transition:transform 1.6s var(--p-ease);will-change:transform}
+.a54-exhibit.p-in{--sc:1.035}
+.a54-exhibit.p-live .a54-art{transition:transform .25s linear}
+.a54-art-crop::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity 1.2s var(--p-ease);
+  background:radial-gradient(38% 46% at var(--lx) var(--ly),rgba(255,248,230,.55),rgba(255,248,230,0) 70%)}
+.a54-exhibit.p-in .a54-art-crop::after{opacity:1}
+
+/* =====================================================================
+   Entender muda o que se faz: os fios se desenham, a direção pulsa
+   e cada frente acende ao passar o mouse
+   ===================================================================== */
+.direction-art [id^="field-"] path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s var(--p-ease),stroke-opacity .5s,stroke-width .5s}
+.direction-map.p-in .direction-art [id^="field-"] path{stroke-dashoffset:0}
+.direction-map.p-in #field-marca path{transition-delay:.25s}
+.direction-map.p-in #field-oferta path{transition-delay:.5s}
+.direction-map.p-in #field-entrega path{transition-delay:.75s}
+.direction-art .field-leaders{opacity:0;transition:opacity 1.2s var(--p-ease) 1.6s}
+.direction-map.p-in .direction-art .field-leaders{opacity:1}
+.direction-art .p-pulse{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.045 .955;stroke-dashoffset:1;opacity:0;transition:opacity 1s 2.4s}
+.direction-map.p-in .direction-art .p-pulse{opacity:.95;animation:p-flow var(--d,7s) linear infinite;animation-delay:calc(2.4s + var(--o,0s))}
+@keyframes p-flow{to{stroke-dashoffset:0}}
+.direction-art circle{transform-box:fill-box;transform-origin:center}
+.direction-map.p-in .direction-art circle{animation:p-node 3.2s var(--p-ease) infinite}
+@keyframes p-node{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+.direction-core{transition:opacity 1s var(--p-ease) 1.2s,transform 1s var(--p-ease) 1.2s}
+.direction-map:not(.p-in) .direction-core{opacity:0;transform:translateY(12px)}
+/* foco por frente */
+.direction-map[data-focus] .direction-art [id^="field-"] path{stroke-opacity:.16}
+.direction-map[data-focus="base"] #field-base path,.direction-map[data-focus="marca"] #field-marca path,
+.direction-map[data-focus="oferta"] #field-oferta path,.direction-map[data-focus="entrega"] #field-entrega path{stroke-opacity:.95;stroke-width:1.9}
+.direction-map[data-focus] .direction-art .p-pulse{opacity:.2}
+.direction-map[data-focus="base"] .p-pulse[data-g="base"],.direction-map[data-focus="marca"] .p-pulse[data-g="marca"],
+.direction-map[data-focus="oferta"] .p-pulse[data-g="oferta"],.direction-map[data-focus="entrega"] .p-pulse[data-g="entrega"]{opacity:1}
+.direction-callout{cursor:default;transition:opacity .5s var(--p-ease)}
+.direction-map[data-focus] .direction-callout{opacity:.45}
+.direction-map[data-focus="base"] .direction-base,.direction-map[data-focus="oferta"] .direction-offer,.direction-map[data-focus="marca"] .direction-brand,.direction-map[data-focus="entrega"] .direction-delivery{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .a54-exhibit .a54-art{transform:none!important;transition:none!important}
+  .direction-art [id^="field-"] path{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:none!important}
+  .direction-art .field-leaders,.direction-core{opacity:1!important;transform:none!important}
+  .direction-art .p-pulse{display:none}
+  .direction-art circle{animation:none!important}
+}
+
+/* O trabalho que ela exige: o painel verde entra deslizando */
+.a54-project-ink{clip-path:inset(0 0 0 100%);transition:clip-path 1.5s var(--p-ease)}
+.a54-project-composition.p-in .a54-project-ink{clip-path:inset(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){.a54-project-ink{clip-path:none!important;transition:none!important}}
