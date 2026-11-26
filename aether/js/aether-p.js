@@ -77,3 +77,66 @@
 
 /* painel verde do projeto */
 (function(){const c=document.querySelector('.a54-project-composition');if(!c)return;if(matchMedia('(prefers-reduced-motion: reduce)').matches){c.classList.add('p-in');return}new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){c.classList.add('p-in');o.disconnect()}}),{threshold:.2}).observe(c)})();
+
+/* ===== Rodada de diagramação ===== */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 2 · Negócio. Oferta. Marca. acendem em sequência */
+  const fit=document.querySelector('.hero-fit>span:last-child');
+  if(fit&&!fit.querySelector('.hf-w')){
+    const words=fit.textContent.trim().split(/\s+/);
+    fit.innerHTML=words.map(w=>`<span class="hf-w">${w}</span>`).join(' ');
+    const ws=[...fit.querySelectorAll('.hf-w')];let k=0;
+    const step=()=>{ws.forEach((w,i)=>w.classList.toggle('on',i===k));k=(k+1)%ws.length};
+    step();if(!reduce)setInterval(step,1800);
+  }
+
+  /* 4 · o fio entre direção e trabalho */
+  const left=document.querySelector('.a54-project-left');
+  if(left&&!left.querySelector('.pj-link')){const l=document.createElement('span');l.className='pj-link';l.setAttribute('aria-hidden','true');left.appendChild(l)}
+
+  /* 5 · prévia dos instrumentos num iPad */
+  const foot=document.querySelector('.approach-foot');const open=document.getElementById('open-method');
+  if(foot&&open&&!foot.querySelector('.ap-preview')){
+    const b=document.createElement('button');b.type='button';b.className='ap-preview';b.setAttribute('aria-label','Abrir os instrumentos do Aether');
+    b.innerHTML='<img src="img/instrumentos-preview.jpg" alt="" width="1770" height="1200" loading="lazy" decoding="async">';
+    b.addEventListener('click',()=>open.click());foot.appendChild(b);
+  }
+
+  /* 6 · marcas em movimento contínuo */
+  const strip=document.querySelector('.a54-brand-strip');
+  if(strip&&!reduce&&!strip.classList.contains('mq')){
+    strip.querySelectorAll('.rv').forEach(e=>e.classList.remove('rv'));
+    const mask=document.createElement('div');mask.className='mq-mask';strip.before(mask);mask.appendChild(strip);
+    [...strip.children].forEach(c=>{const d=c.cloneNode(true);d.setAttribute('aria-hidden','true');d.removeAttribute('role');strip.appendChild(d)});
+    strip.classList.add('mq');
+  }
+
+  /* 7 · fundadores em carrossel */
+  const box=document.querySelector('.founders');
+  if(box&&!box.classList.contains('fx')){
+    const people=[...box.querySelectorAll('.founder')];
+    if(people.length>1){
+      box.classList.add('fx');
+      people.forEach(p=>p.classList.remove('rv'));
+      const stage=document.createElement('div');stage.className='fx-stage';people.forEach(p=>stage.appendChild(p));
+      const tabs=document.createElement('div');tabs.className='fx-tabs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Fundadores');
+      const DUR=8000;box.style.setProperty('--fx',DUR+'ms');
+      const btns=people.map((p,i)=>{const n=p.querySelector('h3').textContent.trim();p.id=p.id||'fundador-'+i;p.setAttribute('role','tabpanel');
+        const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-controls',p.id);b.innerHTML=`${n}<i aria-hidden="true"></i>`;tabs.appendChild(b);return b});
+      box.append(tabs,stage);
+      let cur=0,timer=null,paused=false,visible=false;
+      const show=n=>{cur=(n+people.length)%people.length;people.forEach((p,i)=>{p.classList.toggle('on',i===cur);p.setAttribute('aria-hidden',String(i!==cur))});btns.forEach((b,i)=>{b.setAttribute('aria-selected',String(i===cur));const bar=b.querySelector('i');bar.style.animation='none';void bar.offsetWidth;bar.style.animation=''})};
+      const run=()=>{clearTimeout(timer);if(reduce||paused||!visible)return;timer=setTimeout(()=>{show(cur+1);run()},DUR)};
+      btns.forEach((b,i)=>b.addEventListener('click',()=>{show(i);run()}));
+      box.addEventListener('pointerenter',()=>{paused=true;box.classList.add('paused');clearTimeout(timer)});
+      box.addEventListener('pointerleave',()=>{paused=false;box.classList.remove('paused');run()});
+      new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;run()}),{threshold:.3}).observe(box);
+      show(0);
+    }
+  }
+})();
+
+/* 3 · as perguntas numa linha só: a quebra vira espaço */
+document.querySelectorAll('.a54-other-possibilities h3 br').forEach(br=>br.replaceWith(' '));

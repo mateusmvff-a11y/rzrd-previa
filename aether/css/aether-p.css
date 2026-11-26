@@ -141,3 +141,100 @@
 /* foco visível para quem navega pelo teclado */
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #526d31;outline-offset:3px}
 @media (max-width:640px){.founder-top{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)!important;gap:16px!important}}
+
+/* =====================================================================
+   Rodada de diagramação (7 pontos)
+   ===================================================================== */
+
+/* 1 · A peça: texto maior, em duas linhas largas */
+.a54-exhibit-copy h3{font-size:clamp(40px,min(5.3vw,10svh),96px)!important;line-height:.98!important;letter-spacing:-.06em!important;max-width:9.6em!important;margin-bottom:clamp(20px,2vw,30px)!important}
+.a54-exhibit-copy p{font-size:clamp(17px,1.45vw,23px)!important;line-height:1.5!important;max-width:24ch!important;color:#E9EEE2!important}
+@media (min-width:901px){.a54-exhibit-copy{justify-content:center!important;padding-bottom:2vw}}
+
+/* 2 · Fechamento do topo: frase à esquerda, Negócio. Oferta. Marca. acendendo em sequência */
+.hero-fit{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:clamp(24px,4vw,80px);border-top:1px solid var(--line);padding-block:clamp(22px,2.6vw,34px)!important}
+.hero-fit>span:first-child{font-size:clamp(16px,1.2vw,19px)!important;line-height:1.5;color:#4F584D!important;max-width:34em}
+.hero-fit>span:last-child{display:flex!important;gap:.32em;font-size:clamp(26px,2.6vw,44px)!important;font-weight:500;letter-spacing:-.045em;line-height:1;color:#B7BFAE!important}
+.hero-fit .hf-w{transition:color .9s var(--p-ease)}
+.hero-fit .hf-w.on{color:var(--green)}
+@media (max-width:900px){.hero-fit{grid-template-columns:1fr}.hero-fit>span:last-child{display:flex!important}}
+
+/* 3 · As duas perguntas alinhadas pelo topo, com a mesma estrutura */
+.a54-other-possibilities{align-items:start!important;column-gap:clamp(40px,8vw,160px)!important}
+.a54-other-possibilities article+article{margin-top:0!important}
+.a54-other-possibilities article{border-top:1px solid #CFD3C6;padding-top:clamp(22px,2.4vw,34px)}
+.a54-other-possibilities h3{max-width:12ch}
+
+/* 4 · Uma direção → o trabalho que ela exige: causa e consequência, de cima para baixo */
+.a54-project-ink{display:none!important}
+.a54-project-grid{display:block!important;padding-block:0!important}
+.a54-project-left,.a54-project-right{display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:clamp(32px,6vw,120px);align-items:end;position:relative;padding-block:clamp(56px,7vw,110px)}
+.a54-project-left>h2,.a54-project-right>h3{grid-row:1/span 2;margin:0!important;align-self:end}
+.a54-project-left>p,.a54-project-right>p{grid-column:2}
+.a54-project-right{color:#F2F0E6}
+.a54-project-right::before{content:"";position:absolute;inset:0 calc(50% - 50vw);background:#19372B;z-index:-1}
+.a54-project-composition{overflow:clip}
+.a54-project-examples{border-top:1px solid currentColor;border-color:rgba(127,140,118,.35);padding-top:16px;margin-top:6px}
+.a54-project-right .a54-project-examples{border-color:rgba(242,240,230,.22)}
+/* o fio que liga a direção ao trabalho */
+.pj-link{position:absolute;left:0;bottom:calc(-1*clamp(56px,7vw,110px));height:calc(2*clamp(56px,7vw,110px));width:2px;z-index:2;pointer-events:none}
+.pj-link::before{content:"";position:absolute;inset:0;background:linear-gradient(#526d31,#C5D9AB);transform:scaleY(0);transform-origin:top;transition:transform 1.4s var(--p-ease)}
+.pj-link::after{content:"";position:absolute;left:50%;top:0;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#C5D9AB;box-shadow:0 0 0 6px rgba(197,217,171,.18);opacity:0;transition:top 1.4s var(--p-ease),opacity .4s}
+.a54-project-composition.p-in .pj-link::before{transform:none}
+.a54-project-composition.p-in .pj-link::after{top:100%;opacity:1}
+@media (max-width:900px){
+  .a54-project-left,.a54-project-right{grid-template-columns:1fr;row-gap:16px}
+  .a54-project-left>h2,.a54-project-right>h3{grid-row:auto}
+  .a54-project-left>p,.a54-project-right>p{grid-column:1}
+}
+
+/* 5 · Instrumentos: chamado com prévia num iPad */
+.approach-foot{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)!important;gap:clamp(30px,5vw,90px)!important;align-items:center!important;max-width:none!important;margin-top:clamp(40px,5vw,72px)!important;padding:clamp(30px,4vw,64px)!important;border:0!important;border-radius:6px;background:#1B352B;color:#EEF1E6}
+.approach-foot .approach-caption{font-size:clamp(22px,2.1vw,34px)!important;line-height:1.22!important;letter-spacing:-.035em;color:#F2F0E6!important;max-width:20ch;margin:0 0 clamp(22px,2.4vw,34px)!important}
+.approach-foot .method-entry{grid-column:1;grid-row:2}
+.approach-foot .approach-caption{grid-column:1;grid-row:1;align-self:end}
+.approach-foot #open-method{display:inline-flex;align-items:center;gap:16px;padding:7px 7px 7px 24px;border-radius:99px;background:#F2F0E6;color:#17201A;text-decoration:none;font-weight:550}
+.approach-foot #open-method::after{content:"↗";display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#1B352B;color:#F2F0E6;transition:transform .6s var(--p-ease)}
+.approach-foot #open-method:hover::after{transform:rotate(45deg)}
+.ap-preview{grid-column:2;grid-row:1/span 2;display:block;padding:clamp(8px,.8vw,12px);border:0;border-radius:clamp(22px,2vw,32px);background:#0B0C0B;box-shadow:0 0 0 2px #B9BCB6,0 0 0 3px #8E918B,0 40px 70px -30px rgba(0,0,0,.6);cursor:pointer;transform:perspective(1600px) rotateY(-8deg) rotateX(3deg);transition:transform .9s var(--p-ease)}
+.ap-preview:hover{transform:perspective(1600px) rotateY(-2deg) rotateX(1deg) translateY(-4px)}
+.ap-preview img{display:block;width:100%;height:auto;border-radius:clamp(14px,1.2vw,20px)}
+@media (max-width:900px){.approach-foot{grid-template-columns:1fr!important}.ap-preview{grid-column:1;grid-row:auto;transform:none}}
+
+/* 6 · Marcas em movimento contínuo */
+.a54-brands .a54-brand-strip.mq{display:flex!important;width:max-content;gap:clamp(56px,7vw,120px)!important;animation:mq 38s linear infinite}
+.a54-brands .mq-mask{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);padding-block:10px}
+.a54-brands .mq-mask:hover .a54-brand-strip{animation-play-state:paused}
+.a54-brands .a54-brand-strip.mq>*{flex:0 0 auto}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.a54-brands .a54-brand-strip.mq{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+
+/* 7 · Fundadores em carrossel: foto grande, texto ao lado */
+.founders.fx{display:block!important;position:relative;margin-top:clamp(40px,5vw,72px)!important}
+.fx-tabs{display:flex;gap:6px;margin-bottom:clamp(26px,3vw,40px)}
+.fx-tabs button{position:relative;overflow:hidden;border:1px solid #CFD3C6;background:transparent;border-radius:99px;padding:11px 20px;font:500 15px/1 inherit;color:#5B6358;cursor:pointer;transition:color .4s,border-color .4s,background .4s}
+.fx-tabs button[aria-selected="true"]{color:#17201A;border-color:#17201A;background:#fff}
+.fx-tabs button i{position:absolute;left:0;bottom:0;height:2px;width:100%;background:#526d31;transform:scaleX(0);transform-origin:left}
+.fx-tabs button[aria-selected="true"] i{animation:fx-bar var(--fx,8s) linear forwards}
+.founders.fx.paused .fx-tabs button i{animation-play-state:paused}
+@keyframes fx-bar{to{transform:scaleX(1)}}
+.fx-stage{display:grid}
+.founders.fx .founder{grid-area:1/1;display:grid!important;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);grid-template-rows:auto auto auto 1fr;column-gap:clamp(32px,5vw,96px);opacity:0;visibility:hidden;transition:opacity .9s var(--p-ease),visibility 0s .9s}
+.founders.fx .founder.on{opacity:1;visibility:visible;transition:opacity .9s var(--p-ease)}
+.founders.fx .founder-top{display:contents!important}
+.founders.fx .founder-top .portrait{grid-column:1;grid-row:1/span 4;width:100%!important;height:auto!important;aspect-ratio:4/4.6!important;object-position:center 22%!important;border-radius:4px;filter:none!important;transform:scale(1.04);transition:transform 1.8s var(--p-ease)}
+.founders.fx .founder.on .portrait{transform:none}
+.founders.fx .founder-top>div{grid-column:2;grid-row:1;align-self:end}
+.founders.fx .founder h3{font-size:clamp(40px,4.6vw,76px)!important;line-height:.98!important}
+.founders.fx .founder-role{font-size:clamp(16px,1.25vw,19px)!important;margin-top:12px!important}
+.founders.fx .founder-practice{grid-column:2;grid-row:2;font-size:clamp(18px,1.5vw,23px)!important;line-height:1.5!important;max-width:34ch!important;margin-top:clamp(22px,2.4vw,34px)!important}
+.founders.fx .founder-history{grid-column:2;grid-row:3;max-width:52ch}
+@media (max-width:760px){
+  .founders.fx .founder{grid-template-columns:1fr;grid-template-rows:none}
+  .founders.fx .founder-top .portrait,.founders.fx .founder-top>div,.founders.fx .founder-practice,.founders.fx .founder-history{grid-column:1;grid-row:auto}
+  .founders.fx .founder-top .portrait{aspect-ratio:4/4.2!important;margin-bottom:20px}
+}
+@media (prefers-reduced-motion:reduce){.founders.fx .founder,.founders.fx .portrait{transition:none!important}.pj-link::before,.pj-link::after{transition:none!important}}
+
+.founders.fx .founder-role{max-width:none!important}
+@media (max-width:900px){.pj-link{display:none}}
