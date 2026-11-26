@@ -188,14 +188,27 @@ document.querySelectorAll('.a54-project-examples').forEach(p=>{
       const o2=new Float32Array(a.length);
       for(let x=0;x<W;x++){let s=0;for(let y=-rad;y<=rad;y++)s+=o[Math.min(H-1,Math.max(0,y))*W+x];for(let y=0;y<H;y++){o2[y*W+x]=s/(2*rad+1);s+=o[Math.min(H-1,y+rad+1)*W+x]-o[Math.max(0,y-rad)*W+x]}}
       return o2};
+    const MW=1400,MH=Math.round(MW*src.naturalHeight/src.naturalWidth);
+    const mc=document.createElement('canvas');mc.width=MW;mc.height=MH;const mcx=mc.getContext('2d',{willReadFrequently:true});mcx.drawImage(src,0,0,MW,MH);
+    const mp=mcx.getImageData(0,0,MW,MH);const md=mp.data;
+    for(let i=0;i<MW*MH;i++){const r=md[i*4],g=md[i*4+1],b=md[i*4+2],mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=.299*r+.587*g+.114*b;
+      /* papel claro e pouco saturado; a borda ganha uma transição curta pela luminância */
+      const k=Math.max(0,Math.min(1,(lum-118)/30))*Math.max(0,Math.min(1,(60-(mx-mn))/16));md[i*4]=md[i*4+1]=md[i*4+2]=Math.round(k*255);md[i*4+3]=255}
+    /* fecha as linhas do quadriculado e reafina a borda */
+    {const k=new Float32Array(MW*MH);for(let i=0;i<MW*MH;i++)k[i]=md[i*4]/255;
+     const bl=(arr,rad)=>{const o=new Float32Array(arr.length),o2=new Float32Array(arr.length);
+       for(let y=0;y<MH;y++){let s=0;for(let x=-rad;x<=rad;x++)s+=arr[y*MW+Math.min(MW-1,Math.max(0,x))];for(let x=0;x<MW;x++){o[y*MW+x]=s/(2*rad+1);s+=arr[y*MW+Math.min(MW-1,x+rad+1)]-arr[y*MW+Math.max(0,x-rad)]}}
+       for(let x=0;x<MW;x++){let s=0;for(let y=-rad;y<=rad;y++)s+=o[Math.min(MH-1,Math.max(0,y))*MW+x];for(let y=0;y<MH;y++){o2[y*MW+x]=s/(2*rad+1);s+=o[Math.min(MH-1,y+rad+1)*MW+x]-o[Math.max(0,y-rad)*MW+x]}}
+       return o2};
+     const b=bl(k,3);for(let i=0;i<MW*MH;i++){const v=Math.max(0,Math.min(1,(b[i]-.38)/.24));md[i*4]=md[i*4+1]=md[i*4+2]=Math.round(v*255)}}
     d=blur(blur(blur(d,5),5),4);
-    const dep=new Uint8Array(W*H*4);for(let i=0;i<W*H;i++){const v=Math.round(Math.min(1,d[i])*255);dep[i*4]=dep[i*4+1]=dep[i*4+2]=v;dep[i*4+3]=255}
+    const dep=new Uint8Array(W*H*4);for(let i=0;i<W*H;i++){const v=Math.round(Math.min(1,d[i])*255);dep[i*4]=dep[i*4+2]=v;dep[i*4+1]=0;dep[i*4+3]=255}
 
     /* 2 · um canvas WebGL no lugar de cada camada da foto */
     const VS='attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;v.y=1.-v.y;gl_Position=vec4(p,0.,1.);}';
-    const FS=`precision mediump float;varying vec2 v;uniform sampler2D img,dep;uniform vec2 m;uniform float t;
+    const FS=`precision mediump float;varying vec2 v;uniform sampler2D img,dep,msk;uniform vec2 m;uniform float t;uniform float ov;
       void main(){
-        vec2 uv=(v-.5)/1.045+.5;
+        vec2 uv=v;
         float z=texture2D(dep,uv).r;
         float paper=smoothstep(.72,.95,z);
         uv-= (z-.92)*m*vec2(.034,.026);                        /* paralaxe: o papel é o pivô */
@@ -204,12 +217,12 @@ document.querySelectorAll('.a54-project-examples').forEach(p=>{
         vec3 col=texture2D(img,uv).rgb;
         float sheen=.5+.5*sin(uv.x*5.5-uv.y*2.-t*.55+m.x*2.5);
         col+=paper*.05*sheen;                                 /* brilho que corre pelo papel */
-        gl_FragColor=vec4(col,1.);
+        float a=mix(1.,smoothstep(.2,.8,texture2D(msk,uv).r),ov);gl_FragColor=vec4(col*a,a);
       }`;
     const views=imgs.map(im=>{
       const cv=document.createElement('canvas');cv.className=im.className;cv.setAttribute('aria-hidden','true');
       im.after(cv);im.style.visibility='hidden';
-      const gl=cv.getContext('webgl',{premultipliedAlpha:false,antialias:false});
+      const gl=cv.getContext('webgl',{premultipliedAlpha:true,alpha:true,antialias:false});
       const sh=(type,s)=>{const o=gl.createShader(type);gl.shaderSource(o,s);gl.compileShader(o);return o};
       const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);gl.useProgram(pr);
       const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
@@ -218,8 +231,9 @@ document.querySelectorAll('.a54-project-examples').forEach(p=>{
         gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
         gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
         if(w)gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,data);else gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,data)};
-      tex(0,src);tex(1,dep,W,H);
-      gl.uniform1i(gl.getUniformLocation(pr,'img'),0);gl.uniform1i(gl.getUniformLocation(pr,'dep'),1);
+      tex(0,src);tex(1,dep,W,H);tex(2,new Uint8Array(mp.data.buffer),MW,MH);
+      gl.uniform1i(gl.getUniformLocation(pr,'img'),0);gl.uniform1i(gl.getUniformLocation(pr,'dep'),1);gl.uniform1i(gl.getUniformLocation(pr,'msk'),2);
+      gl.uniform1f(gl.getUniformLocation(pr,'ov'),im.classList.contains('a54-paper-overflow')?1:0);
       return{cv,gl,um:gl.getUniformLocation(pr,'m'),ut:gl.getUniformLocation(pr,'t')};
     });
     ex.classList.add('gl');
@@ -252,3 +266,24 @@ document.querySelectorAll('.a54-project-examples').forEach(p=>{
   const f=document.createElement('span');f.className='hp-faces';f.setAttribute('aria-hidden','true');
   f.innerHTML='<img src="img/img-5-5cc64970.jpg" alt="" width="52" height="52"><img src="img/img-4-448280f5.jpg" alt="" width="52" height="52">';
   hp.append(f,t)})();
+
+/* projeto guiado pela rolagem (telas largas) */
+(function(){
+  const c=document.querySelector('.a54-project-composition');if(!c||c.querySelector('.pj-stick'))return;
+  const stick=document.createElement('div');stick.className='pj-stick';
+  [...c.children].forEach(ch=>stick.appendChild(ch));c.appendChild(stick);c.classList.add('pj-scroll');
+  c.querySelectorAll('.a54-project-right .pj-item').forEach((it,i)=>it.style.setProperty('--i',i));
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wide=matchMedia('(min-width:901px)');
+  const hdr=document.querySelector('.site-header');
+  let tick=false;
+  const upd=()=>{tick=false;
+    if(reduce||!wide.matches){c.style.setProperty('--p',1);return}
+    const h=hdr?hdr.offsetHeight:82;document.documentElement.style.setProperty('--hdr',h+'px');
+    const r=c.getBoundingClientRect(),span=r.height-(innerHeight-h);
+    const p=Math.max(0,Math.min(1,(h-r.top)/Math.max(1,span)*1.15));
+    c.style.setProperty('--p',p.toFixed(4));
+  };
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+  addEventListener('resize',upd);wide.addEventListener('change',upd);upd();
+})();

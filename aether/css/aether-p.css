@@ -282,3 +282,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
 .hero-people .hp-text strong{display:block;font-size:17px!important;margin-top:2px!important}
 @media (max-width:900px){.hero-people{margin-top:26px!important}}
 @media (max-width:900px){.hero-fit>span:last-child{flex-wrap:wrap;font-size:clamp(24px,7.4vw,34px)!important}}
+/* a camada do papel que vaza usa a máscara do shader, não o contorno fixo */
+.a54-exhibit canvas.a54-paper-overflow{clip-path:inset(0 0 0 0)!important}
+
+/* =====================================================================
+   Uma direção → O trabalho que ela exige, guiado pela rolagem:
+   a seção fica fixa, o painel verde entra pela diagonal e o trabalho
+   aparece item a item
+   ===================================================================== */
+@media (min-width:901px){
+  .a54-project-composition.pj-scroll{height:230vh;overflow:visible!important;--p:0}
+  .pj-scroll .pj-stick{position:sticky;top:var(--hdr,82px);height:calc(100vh - var(--hdr,82px));overflow:hidden;display:flex;align-items:center}
+  .pj-scroll .a54-project-ink{display:block!important;position:absolute;inset:0;z-index:0;background:#19372B;transform:none!important;transition:none!important;
+    clip-path:polygon(calc(100% - 49% * var(--p)) 0,100% 0,100% 100%,calc(100% - 58% * var(--p)) 100%)!important}
+  .pj-scroll .a54-project-grid{position:relative;z-index:1;display:grid!important;grid-template-columns:1fr 1fr;column-gap:clamp(60px,9vw,180px);width:100%;align-items:center}
+  .pj-scroll .a54-project-left,.pj-scroll .a54-project-right{display:block!important;padding:0!important;border:0!important}
+  .pj-scroll .a54-project-right::before{display:none!important}
+  .pj-scroll .a54-project-left{opacity:calc(1 - .28 * var(--p))}
+  .pj-scroll .a54-project-left>h2,.pj-scroll .a54-project-right>h3{margin:0 0 clamp(22px,2.4vw,34px)!important}
+  .pj-scroll .a54-project-right>*{opacity:clamp(0,(var(--p) - .42) * 5,1);transform:translateX(calc(clamp(0,(.62 - var(--p)) * 5,1) * 50px))}
+  .pj-scroll .a54-project-right .pj-item{opacity:clamp(0,(var(--p) - .62 - var(--i,0) * .07) * 9,1);transform:translateX(calc(clamp(0,(.74 + var(--i,0) * .07 - var(--p)) * 9,1) * 28px))}
+  .pj-scroll .a54-project-right .a54-project-examples{opacity:1!important;transform:none!important}
+}
+@media (prefers-reduced-motion:reduce){.a54-project-composition.pj-scroll{height:auto!important;--p:1!important}.pj-scroll .pj-stick{position:relative;top:auto;height:auto;padding-block:90px}}
+@media (min-width:901px){.a54-project{overflow:clip!important}}
