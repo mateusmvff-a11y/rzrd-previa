@@ -1,0 +1,57 @@
+/* Aether v55 — camada da Rzrd.
+   Mesmo texto e ordem do v55. Sem selos, botões em pílula com seta, entrada dos
+   blocos na rolagem e os instrumentos abrindo dentro de um iPad. */
+
+:root{--p-ease:cubic-bezier(.22,1,.36,1)}
+
+/* ---------- sem selos ("gotas") ---------- */
+.hero .eyebrow,.investigation-heading .eyebrow,.people .eyebrow,.contact .eyebrow,
+.a54-moment-head>p,.a54-moment-head>div>p:first-child,.a54-section-label{display:none!important}
+
+/* ---------- botões em pílula com a seta num círculo (como Vortex e Spectra) ---------- */
+.hero .button,.contact .button,.a54-project-cta{gap:16px!important;padding:7px 7px 7px 24px!important;min-height:0!important;border-radius:99px!important;transition:background .5s var(--p-ease),border-color .5s var(--p-ease)}
+.hero .button::after,.contact .button::after{content:"↗";display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#F7F6F1;color:#17201A;font-size:15px;transition:transform .6s var(--p-ease)}
+.hero .button:hover::after,.contact .button:hover::after{transform:rotate(45deg)}
+.hero .button:hover,.contact .button:hover{background:#1B352B!important;border-color:#1B352B!important}
+.a54-project-cta{border:1px solid currentColor;padding:12px 12px 12px 22px!important}
+.header-row>.button{border-radius:99px!important}
+
+/* ---------- topo: entrada em sequência ---------- */
+.hero h1,.hero-lead,.hero-action-group,.hero-people,.hero-fit{animation:p-rise 1.2s var(--p-ease) both}
+.hero-lead{animation-delay:.18s}
+.hero-action-group{animation-delay:.3s}
+.hero-people{animation-delay:.38s}
+.hero-fit{animation-delay:.5s}
+@keyframes p-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- blocos entram na rolagem ---------- */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--p-ease),transform 1.1s var(--p-ease);transition-delay:calc(var(--i,0)*90ms)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- marcas atendidas: discretas, ganham cor ao passar o mouse ---------- */
+.a54-brand-strip>*{opacity:.62;filter:grayscale(1);transition:opacity .5s var(--p-ease),filter .5s var(--p-ease)}
+.a54-brand-strip>*:hover{opacity:1;filter:none}
+
+/* ---------- instrumentos: abrem dentro de um iPad ---------- */
+@media (min-width:1000px){
+  .method-dialog{width:min(1200px,calc(100vw - 90px))!important;height:min(840px,calc(100dvh - 60px))!important;padding:clamp(12px,1.2vw,18px)!important;
+    border:0!important;border-radius:clamp(30px,3vw,46px)!important;background:#0B0C0B!important;overflow:visible!important;
+    box-shadow:0 0 0 2.5px #B9BCB6,0 0 0 3.5px #8E918B,0 70px 120px -40px rgba(0,0,0,.65)!important}
+  .method-dialog::before{content:"";position:absolute;top:calc(clamp(12px,1.2vw,18px)/2 - 3px);left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3b4650,#0e1114 70%)}
+  .method-dialog>.dialog-toolbar{border-radius:clamp(14px,1.4vw,22px) clamp(14px,1.4vw,22px) 0 0;height:58px!important;padding:10px 14px 10px 22px!important}
+  .method-dialog>.method-frame{height:calc(100% - 58px)!important;border-radius:0 0 clamp(14px,1.4vw,22px) clamp(14px,1.4vw,22px);background:var(--paper)}
+  .method-dialog::backdrop{background:rgba(14,22,17,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .dialog-close{border-radius:99px!important}
+  .method-dialog[open]{animation:p-ipad .7s var(--p-ease) both}
+}
+@keyframes p-ipad{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .hero h1,.hero-lead,.hero-action-group,.hero-people,.hero-fit,.method-dialog[open]{animation:none!important}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* sem o rótulo, o título da seção ocupa a linha inteira */
+.a54-moment-head{display:block!important}
+.a54-moment-head>div{display:block!important}
+.a54-moment-head h2{text-align:left!important;max-width:none!important}
