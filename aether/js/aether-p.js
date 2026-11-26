@@ -117,6 +117,8 @@
   const box=document.querySelector('.founders');
   if(box&&!box.classList.contains('fx')){
     const people=[...box.querySelectorAll('.founder')];
+    /* começa pela Geórgia */
+    people.sort((a,b)=>(/Ge[óo]rgia/.test(b.querySelector('h3').textContent)?1:0)-(/Ge[óo]rgia/.test(a.querySelector('h3').textContent)?1:0));
     if(people.length>1){
       box.classList.add('fx');
       people.forEach(p=>p.classList.remove('rv'));
@@ -140,3 +142,113 @@
 
 /* 3 · as perguntas numa linha só: a quebra vira espaço */
 document.querySelectorAll('.a54-other-possibilities h3 br').forEach(br=>br.replaceWith(' '));
+
+/* exemplos do projeto como lista: cada linha (ou frase) vira um item, sem mudar o texto */
+document.querySelectorAll('.a54-project-examples').forEach(p=>{
+  if(p.querySelector('.pj-item'))return;
+  const hasBr=!!p.querySelector('br');
+  const parts=hasBr?p.innerHTML.split(/<br\s*\/?>/i):p.textContent.trim().split(/(?<=\.)\s+/);
+  p.innerHTML=parts.map(t=>t.trim()).filter(Boolean).map(t=>`<span class="pj-item">${t}</span>`).join(hasBr?'<br>':' ');
+});
+
+/* =====================================================================
+   A peça em 3D: profundidade gerada da própria foto (fundo longe, madeira
+   no meio, papel na frente) e um shader WebGL que desloca cada camada.
+   O papel fica como pivô e ondula de leve; a madeira e o fundo se movem
+   com o mouse e a rolagem.
+   ===================================================================== */
+(function(){
+  const ex=document.querySelector('.a54-exhibit');
+  if(!ex) return;
+  const imgs=[...ex.querySelectorAll('img.a54-art')];
+  if(!imgs.length||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test=document.createElement('canvas').getContext('webgl');
+  if(!test) return;
+
+  const src=imgs[0];
+  const ready=src.complete&&src.naturalWidth?Promise.resolve():new Promise(r=>src.addEventListener('load',r,{once:true}));
+  ready.then(()=>{
+    /* 1 · mapa de profundidade, numa versão reduzida da foto */
+    const W=420,H=Math.round(W*src.naturalHeight/src.naturalWidth);
+    const c=document.createElement('canvas');c.width=W;c.height=H;
+    const cx=c.getContext('2d',{willReadFrequently:true});cx.drawImage(src,0,0,W,H);
+    const px=cx.getImageData(0,0,W,H).data;
+    let d=new Float32Array(W*H);
+    for(let i=0;i<W*H;i++){
+      const r=px[i*4],g=px[i*4+1],b=px[i*4+2],mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=.299*r+.587*g+.114*b;
+      const y=Math.floor(i/W)/H;
+      let v=.12+Math.max(0,y-.7)*.6;                         /* fundo, com o chão mais perto */
+      if(r>g+6&&r>b+10&&lum>22&&lum<170)v=.55;               /* madeira */
+      if(lum>135&&mx-mn<48)v=1;                              /* papel */
+      d[i]=v;
+    }
+    /* suaviza para não rasgar a imagem nas bordas */
+    const blur=(a,rad)=>{const o=new Float32Array(a.length);
+      for(let y=0;y<H;y++){let s=0;for(let x=-rad;x<=rad;x++)s+=a[y*W+Math.min(W-1,Math.max(0,x))];for(let x=0;x<W;x++){o[y*W+x]=s/(2*rad+1);s+=a[y*W+Math.min(W-1,x+rad+1)]-a[y*W+Math.max(0,x-rad)]}}
+      const o2=new Float32Array(a.length);
+      for(let x=0;x<W;x++){let s=0;for(let y=-rad;y<=rad;y++)s+=o[Math.min(H-1,Math.max(0,y))*W+x];for(let y=0;y<H;y++){o2[y*W+x]=s/(2*rad+1);s+=o[Math.min(H-1,y+rad+1)*W+x]-o[Math.max(0,y-rad)*W+x]}}
+      return o2};
+    d=blur(blur(blur(d,5),5),4);
+    const dep=new Uint8Array(W*H*4);for(let i=0;i<W*H;i++){const v=Math.round(Math.min(1,d[i])*255);dep[i*4]=dep[i*4+1]=dep[i*4+2]=v;dep[i*4+3]=255}
+
+    /* 2 · um canvas WebGL no lugar de cada camada da foto */
+    const VS='attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;v.y=1.-v.y;gl_Position=vec4(p,0.,1.);}';
+    const FS=`precision mediump float;varying vec2 v;uniform sampler2D img,dep;uniform vec2 m;uniform float t;
+      void main(){
+        vec2 uv=(v-.5)/1.045+.5;
+        float z=texture2D(dep,uv).r;
+        float paper=smoothstep(.72,.95,z);
+        uv-= (z-.92)*m*vec2(.034,.026);                        /* paralaxe: o papel é o pivô */
+        uv.y+=sin(uv.x*13.+t*1.1)*.0022*paper;                 /* o papel ondula */
+        uv.x+=cos(uv.y*9.-t*.9)*.0012*paper;
+        vec3 col=texture2D(img,uv).rgb;
+        float sheen=.5+.5*sin(uv.x*5.5-uv.y*2.-t*.55+m.x*2.5);
+        col+=paper*.05*sheen;                                 /* brilho que corre pelo papel */
+        gl_FragColor=vec4(col,1.);
+      }`;
+    const views=imgs.map(im=>{
+      const cv=document.createElement('canvas');cv.className=im.className;cv.setAttribute('aria-hidden','true');
+      im.after(cv);im.style.visibility='hidden';
+      const gl=cv.getContext('webgl',{premultipliedAlpha:false,antialias:false});
+      const sh=(type,s)=>{const o=gl.createShader(type);gl.shaderSource(o,s);gl.compileShader(o);return o};
+      const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);gl.useProgram(pr);
+      const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+      const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+      const tex=(unit,data,w,h)=>{const tx=gl.createTexture();gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,tx);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+        if(w)gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,data);else gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,data)};
+      tex(0,src);tex(1,dep,W,H);
+      gl.uniform1i(gl.getUniformLocation(pr,'img'),0);gl.uniform1i(gl.getUniformLocation(pr,'dep'),1);
+      return{cv,gl,um:gl.getUniformLocation(pr,'m'),ut:gl.getUniformLocation(pr,'t')};
+    });
+    ex.classList.add('gl');
+    const size=()=>views.forEach(o=>{const r=o.cv.getBoundingClientRect(),k=Math.min(2,devicePixelRatio||1);o.cv.width=Math.max(1,Math.round(r.width*k));o.cv.height=Math.max(1,Math.round(r.height*k));o.gl.viewport(0,0,o.cv.width,o.cv.height)});
+    size();addEventListener('resize',size);
+
+    /* 3 · mouse (ou deriva lenta sem mouse) e rolagem */
+    const fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let tx=0,ty=0,mx=0,my=0,on=false;
+    if(fine){ex.addEventListener('pointermove',e=>{const r=ex.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5});ex.addEventListener('pointerleave',()=>{tx=ty=0})}
+    new IntersectionObserver(es=>es.forEach(e=>on=e.isIntersecting),{rootMargin:'120px'}).observe(ex);
+    const t0=performance.now();
+    const frame=now=>{
+      if(on){
+        const t=(now-t0)/1000;
+        const r=ex.getBoundingClientRect(),k=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        const ix=fine?tx:.35*Math.sin(t*.3),iy=(fine?ty:.25*Math.cos(t*.23))+k*.6;
+        mx+=(ix-mx)*.06;my+=(iy-my)*.06;
+        views.forEach(o=>{o.gl.uniform2f(o.um,mx,my);o.gl.uniform1f(o.ut,t);o.gl.drawArrays(o.gl.TRIANGLE_STRIP,0,4)});
+      }
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }).catch(()=>{});
+})();
+
+/* assinatura dos fundadores com as duas fotos */
+(function(){const hp=document.querySelector('.hero-people');if(!hp||hp.querySelector('.hp-faces'))return;
+  const t=document.createElement('span');t.className='hp-text';while(hp.firstChild)t.appendChild(hp.firstChild);
+  const f=document.createElement('span');f.className='hp-faces';f.setAttribute('aria-hidden','true');
+  f.innerHTML='<img src="img/img-5-5cc64970.jpg" alt="" width="52" height="52"><img src="img/img-4-448280f5.jpg" alt="" width="52" height="52">';
+  hp.append(f,t)})();
