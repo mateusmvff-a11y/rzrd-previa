@@ -121,6 +121,23 @@
 }
 
 /* O trabalho que ela exige: o painel verde entra deslizando */
-.a54-project-ink{clip-path:inset(0 0 0 100%);transition:clip-path 1.5s var(--p-ease)}
-.a54-project-composition.p-in .a54-project-ink{clip-path:inset(0 0 0 0)}
-@media (prefers-reduced-motion:reduce){.a54-project-ink{clip-path:none!important;transition:none!important}}
+.a54-project-ink{transform:translateX(62%);transition:transform 1.5s var(--p-ease)}
+.a54-project-composition.p-in .a54-project-ink{transform:none}
+@media (prefers-reduced-motion:reduce){.a54-project-ink{transform:none!important;transition:none!important}}
+
+/* =====================================================================
+   Auditoria
+   ===================================================================== */
+/* a peça inclinada não pode gerar rolagem lateral (Safari) */
+.a54-exhibit{overflow-x:clip}
+/* fundadores: retratos à altura dos títulos novos */
+.founder-top{display:grid!important;grid-template-columns:minmax(170px,.46fr) minmax(0,1fr)!important;gap:clamp(18px,2.4vw,34px)!important;align-items:end!important}
+.founder-top .portrait{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:4/5!important;object-position:center 24%!important;border-radius:3px;filter:grayscale(.35);transition:filter 1s var(--p-ease)}
+.founder:hover .founder-top .portrait{filter:none}
+.founder h3{font-size:clamp(30px,2.8vw,46px)!important;letter-spacing:-.05em!important;line-height:1!important}
+/* áreas de toque com no mínimo 44px */
+.desktop-nav a{display:inline-flex;align-items:center;min-height:44px}
+.conversation-head a[href^="mailto"],.site-footer a{display:inline-flex;align-items:center;min-height:44px}
+/* foco visível para quem navega pelo teclado */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #526d31;outline-offset:3px}
+@media (max-width:640px){.founder-top{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)!important;gap:16px!important}}
